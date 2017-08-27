@@ -1,0 +1,60 @@
+<!-- CONTENT HEADER -->
+<div class="header" layout="row" layout-align="space-between center">
+  <div class="font-white" layout="column" layout-align="start start">
+    <div class="h1" layout="row" layout-align="start center">
+      <md-icon md-font-icon="icon-cube-outline" class="font-white"></md-icon>
+      <span translate="COMPANY.LABEL" class="s32">Companies</span>
+    </div>
+    <div class="elements-count secondary-text">
+      <span translate="COMPANY.TOTAL">Total Companies:</span>
+      <span>{{comsVm.count}}</span>
+    </div>
+  </div>
+  <md-input-container class="md-block search">
+    <label class="font-white" translate="SEARCH">Search</label>
+    <md-icon md-font-icon="icon-magnify" class="font-white icon search-icon"></md-icon>
+    <input type="search" class="search-input" name="search" ng-model="comsVm.queryString" ng-change="comsVm.searchCompanies()"
+      ng-model-options="{ debounce: 400 }">
+  </md-input-container>
+  <md-button aria-label="button-label" class="md-default md-raised" ui-sref="home.newCompany">
+    <md-icon md-font-icon="icon-plus"></md-icon>
+    <span translate="COMPANY.ADD">Add new company</span>
+  </md-button>
+</div>
+<!-- / CONTENT HEADER -->
+<div class="md-whiteframe-3dp bg-white page-content">
+  <md-table-container>
+    <table md-table md-progress="comsVm.promise">
+      <thead md-head>
+        <tr md-row>
+          <th md-column><span translate="COMPANY.NAME">Name</span></th>
+          <th md-column>Code</th>
+          <th md-column><span translate="COMPANY.CHECKLIST">CheckList</span></th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row ng-repeat="company in comsVm.companies track by $index">
+          <td md-cell class="capitalize">{{company.name}}</td>
+          <td md-cell class="uppercase">{{company.code}}</td>
+          <td md-cell>
+            <ul>
+              <li ng-repeat="item in company.checklist track by $index">{{item}}</li>
+            </ul>
+          </td>
+          <td md-cell class="align-left">
+            <md-button class="md-icon-button md-warn" aria-label="Settings" ng-click="comsVm.deleteCompany($event, company._id, $index)">
+              <md-tooltip md-direction="bottom"><span translate="DELETE">Delete</span></md-tooltip>
+              <md-icon md-font-icon="icon-delete" class="icon s32"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Settings" ui-sref="home.company({companyId:company._id})">
+              <md-tooltip md-direction="bottom"><span translate="EDIT">Edit</span></md-tooltip>
+              <md-icon md-font-icon="icon-pencil" class="icon s32"></md-icon>
+            </md-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+
+  <md-data-pagination query="comsVm.query" limit-options="[3,6,10]" list-length="comsVm.companies.length" on-paginate="comsVm.getCompanies()"></md-data-pagination>
+</div>

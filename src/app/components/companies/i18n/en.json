@@ -1,0 +1,20 @@
+{
+	"COMPANY": {
+		"NAME": "Name",
+		"CHECKLIST": "CheckList",
+		"ADD": "Add new company",
+		"TOTAL": "Total Companies:",
+		"LABEL": "Companies",
+		"NEW": "New Company",
+		"UPDATE": "Update company",
+		"DELETE": "Would you like to delete this company?",
+		"DELETED": "Company was deleted successfully",
+		"SAVED": "Company was saved successfully",
+		"UPDATED": "Company was updated successfully",
+		"FORM": {
+			"NAME": "Company name",
+			"CODE": "Company code",
+			"CHECKLIST": "Company Checklist"
+		}
+	}
+}

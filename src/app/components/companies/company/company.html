@@ -1,0 +1,74 @@
+<!-- CONTENT HEADER -->
+<div class="header" layout="row" layout-align="space-between center">
+  <div class="font-white" layout="column" layout-align="start start">
+    <div class="h1" layout="row" layout-align="start center">
+      <md-icon md-font-icon="icon-arrow-left-bold-circle pointer" class="icon s32 font-white" ui-sref="home.companies"></md-icon>
+      <span class="s24 pointer" translate="COMPANY.LABEL" ui-sref="home.companies">Companies</span>
+      <md-icon md-font-icon="icon-chevron-right" class="font-white"></md-icon>
+      <span class="s24" translate="COMPANY.UPDATE" ng-if="comVm.isUpdate">update company</span>
+      <span class="s24" translate="COMPANY.NEW" ng-if="!comVm.isUpdate">New company</span>
+    </div>
+  </div>
+</div>
+<!-- / CONTENT HEADER -->
+<div class="page-content" layout="row" layout-align="center">
+  <form name="companyForm" novalidate layout-padding class="md-whiteframe-3dp bg-white" flex-gt-sm="50" flex-gt-xs="100">
+    <div layout-gt-xs="row">
+      <md-input-container class="md-icon-float md-block" flex-gt-xs>
+        <label translate="COMPANY.FORM.NAME">Company name</label>
+        <md-icon md-font-icon="icon-bank"></md-icon>
+        <input ng-model="comVm.company.name" name="companyName" required>
+        <div ng-messages="companyForm.companyName.$error">
+          <div ng-message="required" translate="FORM.REQUIRED">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-icon-float md-block" flex-gt-xs>
+        <label translate="COMPANY.FORM.CODE">Company code</label>
+        <md-icon md-font-icon="icon-qrcode"></md-icon>
+        <input ng-model="comVm.company.code" name="companyCode" required>
+        <div ng-messages="companyForm.companyCode.$error">
+          <div ng-message="required" translate="FORM.REQUIRED">This is required.</div>
+        </div>
+      </md-input-container>
+    </div>
+    <div layout-gt-xs="row">
+      <md-input-container class="md-icon-float md-block" flex>
+        <label translate="COMPANY.FORM.CHECKLIST">Company checklist</label>
+        <md-icon md-font-icon="icon-format-list-numbers"></md-icon>
+        <input ng-model="comVm.checklistItem" name="companyForm.checklistItem" ng-keyup="$event.keyCode === 13 && comVm.addItem()">
+      </md-input-container>
+      <md-input-container>
+        <md-button class="md-icon-button" ng-click="comVm.addItem()">
+          <md-tooltip md-direction="left"><span translate="ADD">Add</span></md-tooltip>
+          <md-icon md-font-icon="icon-plus" class="s32 green-color add-button"></md-icon>
+        </md-button>
+      </md-input-container>
+    </div>
+
+    <ol id="checklist-container">
+      <ul ng-repeat="item in comVm.company.checklist track by $index" layout="row">
+        <md-input-container flex>
+          <span>{{ ($index+1)+'- '+item }}</span>
+        </md-input-container>
+
+        <md-button class="md-icon-button" ng-click="comVm.removeItem($index)">
+          <md-tooltip md-direction="left"><span translate="DELETE">Delete</span></md-tooltip>
+          <md-icon md-font-icon="icon-delete" class="s32"></md-icon>
+        </md-button>
+
+        <md-button class="md-icon-button" ng-click="comVm.selectItem($index)">
+          <md-tooltip md-direction="right"><span translate="EDIT">Edit</span></md-tooltip>
+          <md-icon md-font-icon="icon-pencil" class="s32"></md-icon>
+        </md-button>
+      </ul>
+    </ol>
+    <div layout="row">
+      <span flex></span>
+      <md-button class="md-raised md-primary" ng-click="comVm.submit()" ng-disabled="companyForm.$prestine || companyForm.$invalid"
+        translate="SAVE">
+        Save
+      </md-button>
+    </div>
+  </form>
+</div>

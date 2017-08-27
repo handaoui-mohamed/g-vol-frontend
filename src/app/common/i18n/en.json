@@ -1,0 +1,27 @@
+{
+	"PAGINATIONLIMIT": "Rows per page",
+	"FROMDATE": "From date (dd/mm/yyyy)",
+	"TODATE": "To date (dd/mm/yyyy)",
+	"FILTERCOLUMN": "Filter",
+	"EDIT": "Edit",
+	"DELETE": "Delete",
+	"SAVE": "Save",
+	"CANCEL": "Cancel",
+	"CONFIRM": "Confirm",
+	"VALIDATION": {
+		"MIN-5": "At least 5 characters are required",
+		"MIN-8": "At least 8 characters are required",
+		"MAX-100": "This has to be less than 100 characters",
+		"REQUIRED": "This is required",
+		"EMAIL": "Not a valid Email",
+		"PASSWORDSMATCH": "Passwords do not match",
+		"TIME": "Incorrect time"
+	},
+	"SERVER": {
+		"400": "You must fill in all fields",
+		"401": "Unauthorized access",
+		"403": "Insufficient permission to perform the opération",
+		"404": "The content you requested does not exist",
+		"500": "Service not available for the moment"
+	}
+}

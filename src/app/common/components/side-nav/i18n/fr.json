@@ -1,0 +1,22 @@
+{
+	"SIDENAV": {
+		"DASHBOARD": "Tableau de bord",
+		"MANAGE": "Gérer",
+		"ACCOUNTS": {
+			"HEADER": "Comptes",
+			"LIST": "Liste des comptes",
+			"NEW": "Nouveau compte"
+		},
+		"FLIGHTS": {
+			"HEADER": "Vols",
+			"LIST": "Liste des vols",
+			"NEW": "Nouveau vol",
+			"NEWBATCH": "Nouveaux vols par lots"
+		},
+		"COMPANIES": {
+			"HEADER": "Compagnies",
+			"LIST": "Liste des compagnies",
+			"NEW": "Nouvelle compagnie"
+		}
+	}
+}

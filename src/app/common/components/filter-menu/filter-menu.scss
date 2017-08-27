@@ -1,0 +1,35 @@
+table.md-table th.md-column {
+	.filter-button {
+		padding: 0 !important;
+		margin: 0 !important;
+		.filter-button-icon {
+			font-size: 25px!important;
+			line-height: 29px!important;
+		}
+	}
+}
+
+.menu-checkbox {
+	padding-left: 15px !important;
+}
+
+.filter-menu-content {
+	overflow-x: hidden !important;
+}
+
+.menu-filter-button {
+	margin-top: -4px !important;
+	text-align: center !important;
+	height: 60px !important;
+}
+
+.date-filter-input {
+	margin-top: 10px !important;
+	label {
+		margin-left: 15px !important;
+	}
+}
+
+.filtered {
+	color: #388E3C !important;
+}

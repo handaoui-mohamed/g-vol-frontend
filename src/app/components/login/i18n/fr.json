@@ -1,0 +1,18 @@
+{
+	"AUTH": {
+		"LOGIN": "Se connecter",
+		"INCORRECT": "Nom d'utilisateur ou mot de passe incorrect!",
+		"SUCCESS": "Connexion réussie"
+	},
+	"FORM": {
+		"REQUIRED": "Ceci est nécessaire.",
+		"USERNAME": {
+			"LABEL": "Nom d'utilisateur",
+			"LENGTH": "Le nom d'utilisateur doit comporter au moins 5 caractères."
+		},
+		"PASSWORD": {
+			"LABEL": "Mot de passe",
+			"LENGTH": "Le mot de passe doit comporter au moins 8 caractères."
+		}
+	}
+}

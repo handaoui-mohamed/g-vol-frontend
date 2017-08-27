@@ -1,0 +1,22 @@
+{
+	"SIDENAV": {
+		"DASHBOARD": "Dashboard",
+		"MANAGE": "Manage",
+		"ACCOUNTS": {
+			"HEADER": "Accounts",
+			"LIST": "Accounts list",
+			"NEW": "New account"
+		},
+		"FLIGHTS": {
+			"HEADER": "Flights",
+			"LIST": "Flights list",
+			"NEW": "New flight",
+			"NEWBATCH": "New flights by batch"
+		},
+		"COMPANIES": {
+			"HEADER": "Companies",
+			"LIST": "Companies list",
+			"NEW": "New company"
+		}
+	}
+}

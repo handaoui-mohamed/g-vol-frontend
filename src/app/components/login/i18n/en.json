@@ -1,0 +1,18 @@
+{
+	"AUTH": {
+		"LOGIN": "Login",
+		"INCORRECT": "Username or password incorrect!",
+		"SUCCESS": "Login successful"
+	},
+	"FORM": {
+		"REQUIRED": "This is required.",
+		"USERNAME": {
+			"LABEL": "Username",
+			"LENGTH": "The username must be at least 5 characters long."
+		},
+		"PASSWORD": {
+			"LABEL": "Password",
+			"LENGTH": "The password must be at least 8 characters long."
+		}
+	}
+}

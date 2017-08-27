@@ -1,0 +1,145 @@
+html,
+body {
+  height: 100%;
+  overflow-y: hidden;
+  font-size: 100%;
+}
+
+@for $size from 2 through 64 {
+  .s#{$size * 2} {
+    font-size: #{($size * 2) + 'px'} !important;
+  }
+}
+
+p {
+  font-size: 16px;
+}
+
+.app {
+  height: 100%;
+  background-color: #ecf0f1;
+}
+
+// Toast themes
+md-toast.md-error-toast-theme div.md-toast-content {
+  color: white !important;
+  background-color: #c0392b !important;
+}
+
+md-toast.md-warning-toast-theme div.md-toast-content {
+  color: white !important;
+  background-color: #d35400 !important;
+}
+
+md-toast.md-success-toast-theme div.md-toast-content {
+  color: white !important;
+  background-color: #27ae60 !important;
+}
+
+.green-color {
+  color: #27ae60 !important;
+}
+
+.icon-delete {
+  color: #f44336 !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.bg-white {
+  background-color: white !important;
+}
+
+.fa-plus {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.font-white {
+  color: white !important;
+}
+
+.capitalize {
+  text-transform: capitalize !important;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2),
+table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+2) {
+  padding: 0 30px 0 0 !important;
+}
+
+.align-left {
+  text-align: right !important;
+}
+
+.page-content {
+  z-index: 1;
+  position: relative;
+  margin: 8px 20px 20px 10px;
+}
+
+.top-bg {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 200px;
+  background-image: url(/assets/images/header-bg.png);
+  background-size: cover;
+  background-color: rgb(226, 62, 31);
+  color: rgba(255, 255, 255, 1);
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  height: 136px !important;
+  min-height: 136px !important;
+  max-height: 136px !important;
+  padding: 24px 0;
+  margin: 0px 20px;
+  .h1 {
+    md-icon {
+      font-size: 32px;
+      margin-right: 12px;
+    }
+  }
+  .elements-count {
+    margin: 6px 0 0 45px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .search {
+    position: relative;
+    padding-left: 24px;
+    width: 100%;
+    max-width: 480px;
+    .search-icon {
+      margin: 0 -24px 0 0;
+      font-size: 32px;
+      line-height: 38px;
+    }
+    .search-input {
+      margin: 0 0 0 15px;
+      background: none;
+      font-size: 16px;
+      line-height: 40px;
+      height: 40px;
+      color: #FFFFFF;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      transition: border-color 300ms ease;
+      &:focus {
+        border-color: rgba(255, 255, 255, 1);
+      }
+      &::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}

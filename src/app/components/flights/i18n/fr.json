@@ -1,0 +1,26 @@
+{
+	"SEARCH": "Recherche",
+	"FLIGHT": {
+		"NUMBER": "Numéro de vol",
+		"ARRIVAL": "Date d'arrivée",
+		"DEPARTURE": "Date départ",
+		"COMPANY": "Compagnie",
+		"ADD": "Ajouter un nouveau vol",
+		"TOTAL": "Total des vols:",
+		"LABEL": "Vols",
+		"NEW": "Nouveau vol",
+		"IMPORT": "Importer fichier CSV",
+		"UPDATE": "Modifier vol",
+		"DELETE": "Voulez-vous supprimer ce vol?",
+		"DELETED": "Le vol a été supprimé avec succès",
+		"SAVED": "Le vol a été enregistré avec succès",
+		"SAVEALL": "Sauvegarder tous les vols",
+		"UPDATED": "Le vol a été modifié avec succès",
+		"STATUS": {
+			"LABEL": "Statut",
+			"NEW": "Nouveau",
+			"INPROGRESS": "En cours",
+			"DONE": "Clôturé"
+		}
+	}
+}

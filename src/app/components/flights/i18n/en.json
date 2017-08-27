@@ -1,0 +1,26 @@
+{
+	"SEARCH": "Search",
+	"FLIGHT": {
+		"NUMBER": "Flight number",
+		"ARRIVAL": "Arrival Date",
+		"DEPARTURE": "Departure Date",
+		"COMPANY": "Company",
+		"ADD": "Add new flight",
+		"TOTAL": "Total Flights:",
+		"LABEL": "Flights",
+		"NEW": "New flight",
+		"IMPORT": "Import CSV file",
+		"UPDATE": "Update flight",
+		"DELETE": "Would you like to delete this flight?",
+		"DELETED": "Flight was deleted successfully",
+		"SAVED": "Flight was saved successfully",
+		"SAVEALL": "Save all flights",
+		"UPDATED": "Flight was updated successfully",
+		"STATUS": {
+			"LABEL": "Status",
+			"NEW": "New",
+			"INPROGRESS": "In progress",
+			"DONE": "Closed"
+		}
+	}
+}
