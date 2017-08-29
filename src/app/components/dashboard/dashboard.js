@@ -1,5 +1,6 @@
 import angular from 'angular';
 import dashboardComponent from './dashboard.component';
+import flightNavBarComponent from './flights-nav-bar/flights-nav-bar.component';
 
 // translations
 import en from './i18n/en.json';
@@ -19,6 +20,7 @@ let dashboardModule = angular
     $translateProvider.translations('en', en);
     $translateProvider.translations('fr', fr);
   })
+  .component('flightsNavBar', flightNavBarComponent)
   .component('dashboard', dashboardComponent).name;
 
 export default dashboardModule;

@@ -1,0 +1,32 @@
+#dashboard{
+	.md-nav-bar{
+		padding-top: 15px;
+		background-color: white;
+		nav{
+			overflow-x: auto;
+		}
+		button{
+			min-width: 180px !important;
+			background-color: #fff;
+			color: #000 !important;
+			box-shadow: 0px -1px 5px 1px #ddd;
+			md-icon{
+				position: absolute !important;
+				top: 0 !important;
+				right: 5px !important;
+				font-size: 26px !important;
+				color: #e23e1f;
+			}
+		}
+		md-nav-ink-bar{
+			background-color: transparent !important;
+		}
+
+		.flight-selected{
+			button{
+				box-shadow: unset;
+				background-color: #CFD8DC;
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+<md-nav-bar md-selected-nav-item="tabVm.currentNavItem" nav-bar-aria-label="navigation links" flex>
+	<md-nav-item md-nav-click="tabVm.toggleFlight('page1')" ng-class="{'flight-selected': tabVm.selectedFlights['page1']}">
+		<md-icon md-font-icon="icon-arrow-expand" ng-if="!tabVm.selectedFlights['page1']"></md-icon>
+		<md-icon md-font-icon="icon-arrow-collapse" ng-if="tabVm.selectedFlights['page1']"></md-icon>
+		QR1027
+	</md-nav-item>
+	<md-nav-item md-nav-click="tabVm.toggleFlight('page2')" ng-class="{'flight-selected': tabVm.selectedFlights['page2']}">
+		<md-icon md-font-icon="icon-arrow-expand" ng-if="!tabVm.selectedFlights['page2']"></md-icon>
+		<md-icon md-font-icon="icon-arrow-collapse" ng-if="tabVm.selectedFlights['page2']"></md-icon>
+		AF1354
+	</md-nav-item>
+	<md-nav-item md-nav-click="tabVm.toggleFlight('page3')" ng-class="{'flight-selected': tabVm.selectedFlights['page3']}">
+		<md-icon md-font-icon="icon-arrow-expand" ng-if="!tabVm.selectedFlights['page3']"></md-icon>
+		<md-icon md-font-icon="icon-arrow-collapse" ng-if="tabVm.selectedFlights['page3']"></md-icon>
+		LH1318
+	</md-nav-item>
+</md-nav-bar>
