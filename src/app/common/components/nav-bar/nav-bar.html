@@ -3,7 +3,7 @@
     <md-button ng-if="!navVm.isLockedOpen()" class="md-icon-button" aria-label="Settings" ng-click="navVm.toggleSideNav()">
       <md-icon md-font-icon="icon-menu" class="icon s32" hide-sm></md-icon>
     </md-button>
-    <span flex></span>
+    <span flex><ng-clock></ng-clock></span>
     <div layout-padding>
       <md-progress-circular ng-if="$root.isLoading" md-mode="indeterminate" md-diameter="40"></md-progress-circular>
     </div>

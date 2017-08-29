@@ -1,6 +1,7 @@
 import angular from 'angular';
 import sideNav from './side-nav/side-nav';
 import navBar from './nav-bar/nav-bar.component';
+import clock from './clock/clock.component';
 import mdDataPagination from './md-data-pagination/md-data-pagination.component';
 import filterMenu from './filter-menu/filter-menu.component';
 
@@ -17,6 +18,7 @@ let commonComponentModule = angular
   })
   .component('ngNavBar', navBar)
   .component('ngFilterMenu', filterMenu)
+  .component('ngClock', clock)
   .component('mdDataPagination', mdDataPagination)
   .name;
 
