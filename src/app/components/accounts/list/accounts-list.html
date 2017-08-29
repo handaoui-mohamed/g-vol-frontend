@@ -15,10 +15,6 @@
     <md-icon md-font-icon="icon-magnify" class="font-white icon search-icon"></md-icon>
     <input type="search" class="search-input" name="search" ng-model="acsVm.queryString" ng-change="acsVm.searchAccounts()" ng-model-options="{ debounce: 400 }">
   </md-input-container>
-  <md-button aria-label="button-label" class="md-default md-raised" ui-sref="home.newAccount">
-    <md-icon md-font-icon="icon-plus"></md-icon>
-    <span translate="ACCOUNT.ADD">Add new account</span>
-  </md-button>
 </div>
 <!-- / CONTENT HEADER -->
 <div class="md-whiteframe-3dp bg-white page-content">
@@ -37,7 +33,6 @@
           <th md-column><span translate="ACCOUNT.PHONE">Phone</span></th>
           <th md-column>Sexe</th>
           <th md-column><span translate="ACCOUNT.BIRTHDAY">Birthday</span></th>
-          <th md-column></th>
         </tr>
       </thead>
       <tbody md-body>
@@ -50,16 +45,6 @@
           <td md-cell>{{account.phone}}</td>
           <td md-cell><span translate="{{account.sexe | uppercase}}">{{account.sexe}}</span></td>
           <td md-cell>{{account.birthday | date:'dd/MM/yyyy'}}</td>
-          <td md-cell class="align-left">
-            <md-button class="md-icon-button md-warn" aria-label="Settings" ng-click="acsVm.deleteAccount($event, account._id, $index)">
-              <md-tooltip md-direction="bottom"><span translate="DELETE">Delete</span></md-tooltip>
-              <md-icon md-font-icon="icon-delete" class="icon s32"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Settings" ui-sref="home.account({accountId: account._id})">
-              <md-tooltip md-direction="bottom"><span translate="EDIT">Edit</span></md-tooltip>
-              <md-icon md-font-icon="icon-pencil" class="icon s32"></md-icon>
-            </md-button>
-          </td>
         </tr>
       </tbody>
     </table>

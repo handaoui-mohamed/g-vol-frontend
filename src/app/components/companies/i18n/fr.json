@@ -2,19 +2,7 @@
 	"COMPANY": {
 		"NAME": "Nom",
 		"CHECKLIST": "Liste de contrôle",
-		"ADD": "Ajouter une nouvelle compagnie",
 		"TOTAL": "Total des compagnies:",
-		"LABEL": "Compagnies",
-		"NEW": "Nouvelle compagnie",
-		"UPDATE": "Modifier compagnie",
-		"DELETE": "Voulez-vous supprimer cette compagnie?",
-		"DELETED": "La compagnie a été supprimé avec succès",
-		"SAVED": "La compagnie a été enregistré avec succès",
-		"UPDATED": "La compagnie a été modifié avec succès",
-		"FORM": {
-			"NAME": "Nom de la compagnie",
-			"CODE": "Code de la compagnie",
-			"CHECKLIST": "Liste de contrôle de la compagnie"
-		}
+		"LABEL": "Compagnies"
 	}
 }

@@ -32,6 +32,7 @@ function ($rootScope, $auth, $state, $location, $window, AccountService, $transi
 
   $transitions.onStart({}, (trans) => {
     $rootScope.isLoading = true; //activation the progress circular in nav bar
+    $rootScope.hideTopBG = false; // show the top background
     // close the navbar
     if ($mdComponentRegistry.get("left") && !$mdSidenav("left").isLockedOpen())
       $mdSidenav("left").close();

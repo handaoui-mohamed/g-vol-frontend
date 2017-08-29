@@ -1,6 +1,5 @@
 import angular from 'angular';
-import accountComponent from './account/account.component';
-import accountsListComponent from './list/accounts-list.component';
+import accountsComponent from './list/accounts-list.component';
 
 // translations
 import en from './i18n/en.json';
@@ -13,25 +12,14 @@ let accountModule = angular
     $stateProvider
       .state('home.accounts', {
         url: 'accounts',
-        component: 'accountsList',
-        loginRequired: true
-      })
-      .state('home.newAccount', {
-        url: 'accounts/add',
-        component: 'account',
-        loginRequired: true
-      })
-      .state('home.account', {
-        url: 'accounts/:accountId',
-        component: 'account',
+        component: 'accounts',
         loginRequired: true
       });
 
     $translateProvider.translations('en', en);
     $translateProvider.translations('fr', fr);
   })
-  .component('account', accountComponent)
-  .component('accountsList', accountsListComponent)
+  .component('accounts', accountsComponent)
   .name;
 
 export default accountModule;

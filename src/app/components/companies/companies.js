@@ -1,6 +1,5 @@
 import angular from 'angular';
-import companyComponent from './company/company.component';
-import companiesListComponent from './list/companies-list.component';
+import companiesComponent from './list/companies-list.component';
 
 // translations
 import en from './i18n/en.json';
@@ -13,24 +12,13 @@ let companyModule = angular
     $stateProvider
       .state('home.companies', {
         url: 'companies',
-        component: 'companiesList',
+        component: 'companies',
         loginRequired: true
       })
-      .state('home.newCompany', {
-        url: 'companies/add',
-        component: 'company',
-        loginRequired: true
-      })
-      .state('home.company', {
-        url: 'companies/:companyId',
-        component: 'company',
-        loginRequired: true
-      });
     $translateProvider.translations('en', en);
     $translateProvider.translations('fr', fr);
   })
-  .component('company', companyComponent)
-  .component('companiesList', companiesListComponent)
+  .component('companies', companiesComponent)
   .name;
 
 export default companyModule;

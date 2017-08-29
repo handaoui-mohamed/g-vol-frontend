@@ -8,22 +8,7 @@
 		"ADDRESS": "Address",
 		"PHONE": "Phone",
 		"BIRTHDAY": "Birthday",
-		"ADD": "Add new account",
 		"TOTAL": "Total Accounts:",
-		"LABEL": "Accounts",
-		"NEW": "New account",
-		"UPDATE": "Update account",
-		"DELETE": "Would you like to delete this account?",
-		"DELETED": "Account was deleted successfully",
-		"SAVED": "Account was saved successfully",
-		"UPDATED": "Account was updated successfully",
-		"FORM": {
-			"FIRSTNAME": "First name",
-			"LASTNAME": "Last name",
-			"CHANGEPASSWORD": "Change password",
-			"CANCEL": "Cancel",
-			"PASSWORD": "Password",
-			"CONFIRMPASSWORD": "Confirm password"
-		}
+		"LABEL": "Accounts"
 	}
 }

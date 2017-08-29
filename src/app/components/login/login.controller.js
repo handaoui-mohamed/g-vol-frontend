@@ -21,7 +21,7 @@ class LoginController {
         if (!response.data.errors) {
           this.toast.success("Login successful", "AUTH.SUCCESS");
           this.$window.localStorage['current_account'] = response.data.account._id;
-          this.$rootScope.current_user = response.data.account;
+          this.$rootScope.currentAccount = response.data.account;
           if (this.$rootScope.next)
             this.$location.path(this.$rootScope.next);
           else

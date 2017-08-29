@@ -3,7 +3,7 @@
   <md-content flex>
     <ng-nav-bar></ng-nav-bar>
     <md-content style="height:90%">
-      <div class="top-bg md-accent-bg"></div>
+      <div class="top-bg md-accent-bg" ng-if="!$root.hideTopBG"></div>
       <div ui-view></div>
     </md-content>
   </md-content>
