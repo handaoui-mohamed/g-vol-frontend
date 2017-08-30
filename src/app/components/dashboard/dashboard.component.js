@@ -6,7 +6,7 @@ let dashboardComponent = {
   bindings: {},
   template,
   controller,
-  controllerAs: 'dashdVm'
+  controllerAs: 'dashVm'
 };
 
 export default dashboardComponent;
