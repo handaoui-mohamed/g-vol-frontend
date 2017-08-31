@@ -1,3 +1,5 @@
+import io from 'socket.io-client';
+
 class LoginController {
   constructor($auth, $window, $rootScope, $state, $location, SocketService, Toast, API_ENDPOINT) {
     'ngInject';
@@ -27,7 +29,8 @@ class LoginController {
             this.$location.path(this.$rootScope.next);
           else
             this.$state.go('home.dashboard');
-          this.socketService.init();
+          let socket = this.socketService.io = this.socketService.connect();
+          this.socketService.initEvents(socket);
         } else
           this.toast.warning("Username or password incorrect!", "AUTH.INCORRECT");
         this.disableSubmit = false;
