@@ -1,18 +1,65 @@
+import FlightSelectionDialogController from '../dialogs/flight-selection/flight-selection.controller';
+import dialogTemplate from '../dialogs/flight-selection/flight-selection.html';
+
 class FlightsNavBarController {
-	constructor() {
-		this.selectedFlights = {};
+	constructor($scope, $mdDialog, SocketService, FlightTeamService) {
+		'ngInject';
+		this.$mdDialog = $mdDialog;
+		this.socket = SocketService.io;
+		this.flightTeamService = FlightTeamService;
+		this.$scope = $scope;
 	}
 
 	$onInit() {
-		this.flights = [
-			{ _id: 'id1', flightNumber: 'QR1027' },
-			{ _id: 'id2', flightNumber: 'AF0024' },
-			{ _id: 'id3', flightNumber: 'LH3655' }
-		]
+		this.socket.on("joined", (data) => {
+			data = JSON.parse(data);
+			let flight = this.selectedFlights.find(selecteFlight => data.flightId === selecteFlight._id);
+			if (flight) {
+				this.$scope.$apply(() => {
+					flight.team[data.account._id] = data.account;
+				});
+			}
+		});
 	}
 
-	toggleFlight(flightId) {
-		this.selectedFlights[flightId] = !this.selectedFlights[flightId];
+	toggleFlight(flight) {
+		flight.opened = !flight.opened;
+	}
+
+	openFlightSelectionDialog(ev) {
+		this.$mdDialog.show({
+			controller: FlightSelectionDialogController,
+			controllerAs: 'fldVm',
+			template: dialogTemplate,
+			parent: angular.element(document.body),
+			targetEvent: ev,
+			clickOutsideToClose: true,
+			fullscreen: true,
+			locals: {
+				SelectedFlights: this.selectedFlights
+			}
+		})
+			.then((selectedFlights) => {
+				this.selectedFlights = selectedFlights;
+				this.selectedFlights.forEach((flight) => {
+					this.flightTeamService.save({ flightId: flight._id }, {}, (team) => {
+						flight.team = this.convertTeamArrayToObject(team);
+						this.joinFlight(flight._id);
+					});
+				})
+			});
+	}
+
+	joinFlight(flightId) {
+		this.socket.emit('flightId', flightId)
+	}
+
+	convertTeamArrayToObject(flightTeam) {
+		let team = {};
+		flightTeam.forEach((account) => {
+			team[account._id] = account;
+		});
+		return team;
 	}
 }
 

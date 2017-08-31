@@ -4,8 +4,12 @@ class DashboardController {
     $rootScope.hideTopBG = true;
   }
 
-  $onInit(){
-    this.selectedFlights = [1,2,3]
+  $onInit() {
+    this.selectedFlights = [];
+  }
+
+  openFlights() {
+    return this.selectedFlights.filter(flight => flight.opened);
   }
 }
 

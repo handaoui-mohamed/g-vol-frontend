@@ -1,55 +1,61 @@
 class FlightMessagesController {
-	constructor($element, $timeout, $filter) {
+	constructor($scope, $element, $timeout, $filter, $window, SocketService, Toast, MessageService) {
 		'ngInject';
 		this.$element = $element;
 		this.$timeout = $timeout;
 		this.$filter = $filter;
-		// add focus
+		this.$window = $window;
+		this.$scope = $scope;
+		this.socket = SocketService.io;
+		this.messageService = MessageService;
+		this.toast = Toast;
 	}
 
 	$onInit() {
-		this.accountId = '599c3061817d4114149483dd'; //current clc account
-		this.team = [
-			{ _id: 1, username: 'usertrc', function: { name: 'trc' } },
-			{ _id: 2, username: 'usertl', function: { name: 'tl' } },
-			{ _id: 3, username: 'usertb', function: { name: 'tb' } },
-			{ _id: this.accountId, username: 'userclc', function: { name: 'clc' } },
-		];
-		this.team = this.convertTeamArrayToObject();
-		this.messages = [
-			{ accountId: 1, content: "hello from trc sdlkjflksdjflkjdsfskldfjlskdf", createdAt: "2017-08-30 09:33:02.360Z" },
-			{ accountId: 2, content: "hello from tl", createdAt: "2017-08-29 09:34:31.985Z" },
-			{ accountId: this.accountId, content: "hello from clc", createdAt: "2017-08-29 09:34:13.029Z" },
-			{ accountId: 3, content: "hello from tb", createdAt: "2017-08-29 10:06:19.969Z" },
-			{ accountId: 1, content: "hello from trc again", createdAt: "2017-08-29 10:08:14.714Z" },
-		].map((message) => {
-			message.createdAt = this.convertDate(message.createdAt)
-			console.log(message.createdAt)
-			return message;
-		})
+		this.messages = [];
+		this.listenForNewMessages();
+		this.accountId = this.$window.localStorage['current_account'];
+		this.getFlightMessages();
 
 		// get message container
 		this.messageContainer = angular.element(this.$element[0].querySelector('md-content'))[0];
+	}
+
+	getFlightMessages() {
+		this.messageService.query({ flightId: this.flightId }, (messages) => {
+			this.messages = messages.map((message) => {
+				message.createdAt = this.convertDate(message.createdAt);
+				return message;
+			});
+		}, (error) => { this.toast.serverError(error); });
 	}
 
 	convertDate(ISODate) {
 		return this.$filter('date')(new Date(ISODate), 'dd/MM HH:mm');
 	}
 
-	convertTeamArrayToObject() {
-		let team = {};
-		this.team.forEach((account) => {
-			team[account._id] = account;
-		});
-		return team;
-	}
-
+	// sockets functions
 	sendMessage() {
-		this.messages.push({ accountId: this.accountId, content: this.newMessage, createdAt: this.convertDate((new Date()).toISOString()) });
+		this.socket.emit('new-message/' + this.flightId, JSON.stringify({
+			params: { flightId: this.flightId },
+			body: { content: this.newMessage }
+		}));
 		this.newMessage = null;
-		this.scrollToBottom();
 	}
 
+
+	listenForNewMessages() {
+		this.socket.on('messages/' + this.flightId, (message) => {
+			let newMessage = JSON.parse(message);
+			newMessage.createdAt = this.convertDate(newMessage.createdAt);
+			this.$scope.$apply(() => {
+				this.messages.push(newMessage);
+			})
+			this.messageContainer.scrollTop = this.messageContainer.scrollHeight;
+		});
+	}
+
+	// view functions
 	toggle() {
 		this.isOpen = !this.isOpen;
 		if (this.isOpen) this.scrollToBottom();

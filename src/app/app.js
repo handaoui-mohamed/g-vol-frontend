@@ -13,6 +13,8 @@ import Components from './components/components';
 import AppComponent from './app.component';
 import AppConfig from './app.config';
 import AppRun from './app.run';
+// socketio
+import socket from 'socket.io-client';
 
 //styles
 import 'normalize.css';
@@ -20,18 +22,18 @@ import 'angular-material/angular-material.css';
 import 'angular-material-data-table/dist/md-data-table.min.css';
 
 angular.module('app', [
-    ngAnimate,
-    ngMessages,
-    ngSanitize,
-    uiRouter,
-    ngResource,
-    ngMaterial,
-    mdDataTable,
-    translate,
-    ngFileUpload,
-    Common,
-    Components
-  ])
+  ngAnimate,
+  ngMessages,
+  ngSanitize,
+  uiRouter,
+  ngResource,
+  ngMaterial,
+  mdDataTable,
+  translate,
+  ngFileUpload,
+  Common,
+  Components
+])
   .config(AppConfig)
   .run(AppRun)
   .constant('API_ENDPOINT', 'http://localhost:4040/api/')

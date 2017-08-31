@@ -3,10 +3,12 @@ import controller from './flight-tracker.controller';
 import './flight-tracker.scss';
 
 let flightTrackerComponent = {
-	bindings: {},
+	bindings: {
+		flight: "="
+	},
 	template,
 	controller,
-	controllerAs: 'flight'
+	controllerAs: 'ftVm'
 };
 
 export default flightTrackerComponent;

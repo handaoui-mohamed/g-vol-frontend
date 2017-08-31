@@ -28,5 +28,19 @@
 				background-color: #CFD8DC;
 			}
 		}
+
+		.edit-selected-flights{
+			button{
+				background-color: rgb(226, 62, 31);
+				min-width: 50px !important;
+   				margin-bottom: -1px;
+				md-icon{
+					color: white;
+					position: unset !important;
+					top: unset !important;
+					font-size: 35px !important;
+				}
+			}
+		}
 	}
 }

@@ -25,7 +25,8 @@ class MdDataPaginationController {
 
   next() {
     this.query.page++;
-    this.pages.push(this.query.page);
+    if (!this.pages.includes(this.query.page))
+      this.pages.push(this.query.page);
     this.onPaginate();
   }
 }

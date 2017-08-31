@@ -1,5 +1,5 @@
 class NavBarController {
-  constructor($mdSidenav, $window, $state, $auth, $rootScope, $translate) {
+  constructor($mdSidenav, $window, $state, $auth, $rootScope, $translate, SocketService) {
     'ngInject';
     this.$mdSidenav = $mdSidenav;
     this.$rootScope = $rootScope;
@@ -7,6 +7,7 @@ class NavBarController {
     this.$state = $state;
     this.$auth = $auth;
     this.$translate = $translate;
+    this.socketService = SocketService;
   }
 
   $onInit() {
@@ -37,9 +38,10 @@ class NavBarController {
 
   logout() {
     this.$window.localStorage.removeItem('current_account');
-    delete this.$rootScope.current_user;
+    delete this.$rootScope.currentAccount;
     this.$auth.logout();
     this.$state.go('login');
+    this.socketService.disconnect();
   }
 
   changeLanguage(lang) {

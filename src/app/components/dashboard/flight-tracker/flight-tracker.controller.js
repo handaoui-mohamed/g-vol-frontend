@@ -1,6 +1,6 @@
 class FlightTrackerController {
-	reducePanel(){
-		console.log("reduced");
+	reducePanel() {
+		this.flight.opened = false;
 	}
 }
 

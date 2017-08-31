@@ -1,10 +1,11 @@
 class ToastService {
-  constructor($mdToast, $filter, $window, $state) {
+  constructor($mdToast, $filter, $window, $state, SocketService) {
     'ngInject';
     this.$mdToast = $mdToast;
     this.$filter = $filter;
     this.$window = $window;
     this.$state = $state;
+    this.socketSerivce = SocketService;
     this.toastPosition = "top right";
     this.toastDelay = 3000;
   }
@@ -40,6 +41,7 @@ class ToastService {
         this.$window.localStorage.removeItem('current_account');
         this.$auth.logout();
         this.$state.go('login');
+        this.socketSerivce.disconnect();
         break;
       case (403):
         this.error("Insufficient permission to perform the opération", 'SERVER.403');

@@ -1,14 +1,14 @@
 <div md-whiteframe="3" class="flight-tracker-container">
 	<md-toolbar>
 		<div layout="row" layout-align="space-between center">
-			<span class="flight-number">QR1027</span>
+			<span class="flight-number">{{ftVm.flight.flightNumber}}</span>
 			<span class="time-left">09:37</span>
-			<md-button aria-label="reduce" class="md-icon-button" ng-click="flight.reducePanel()">
+			<md-button aria-label="reduce" class="md-icon-button" ng-click="ftVm.reducePanel()">
 				<md-icon md-font-icon="icon-minus"></md-icon>
 			</md-button>
 		</div>
 	</md-toolbar>
 	<md-content style="height: 500px" class="bg-white">
-		<flight-messages></flight-messages>
+		<flight-messages flight-id="ftVm.flight._id" team="ftVm.flight.team"></flight-messages>
 	</md-content>
 </div>

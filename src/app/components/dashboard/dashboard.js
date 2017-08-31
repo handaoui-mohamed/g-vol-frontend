@@ -6,6 +6,10 @@ import flightTrackerComponent from './flight-tracker/flight-tracker.component';
 // flight tracker components
 import flightMessagesComponent from './flight-tracker/components/messages/messages.component';
 
+// flight Services
+import MessageService from './flight-tracker/components/messages/messages.service';
+import FlightTeamService from './flight-team.service';
+
 // translations
 import en from './i18n/en.json';
 import fr from './i18n/fr.json';
@@ -24,6 +28,8 @@ let dashboardModule = angular
     $translateProvider.translations('en', en);
     $translateProvider.translations('fr', fr);
   })
+  .factory('MessageService', MessageService)
+  .factory('FlightTeamService', FlightTeamService)
   .component('flightsNavBar', flightNavBarComponent)
   .component('flightTracker', flightTrackerComponent)
   .component('flightMessages', flightMessagesComponent)

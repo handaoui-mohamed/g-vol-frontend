@@ -1,17 +1,10 @@
+import socket from 'socket.io-client';
+
 export default
 
-function ($rootScope, $auth, $state, $location, $window, AccountService, $transitions, $mdSidenav, $translate, $mdComponentRegistry, Toast) {
+  function ($rootScope, $auth, $state, $location, $window, AccountService, $transitions, $mdSidenav, $translate, $mdComponentRegistry, Toast, SocketService) {
   'ngInject';
-  let accountId = $window.localStorage['current_account'];
-  if (accountId) {
-    AccountService.get({
-      accountId
-    }, (account) => {
-      $rootScope.currentAccount = account;
-    }, (error) => {
-      Toast.serverError(error)
-    });
-  }
+  // SocketService.init();
 
   $rootScope.tableLabel = {
     en: {

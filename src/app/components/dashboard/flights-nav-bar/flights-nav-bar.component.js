@@ -3,7 +3,9 @@ import controller from './flights-nav-bar.controller';
 import './flights-nav-bar.scss';
 
 let flightsNavBarComponent = {
-	bindings: {},
+	bindings: {
+		selectedFlights: '='
+	},
 	template,
 	controller,
 	controllerAs: 'tabVm'

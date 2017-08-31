@@ -1,11 +1,12 @@
 class LoginController {
-  constructor($auth, $window, $rootScope, $state, $location, Toast, API_ENDPOINT) {
+  constructor($auth, $window, $rootScope, $state, $location, SocketService, Toast, API_ENDPOINT) {
     'ngInject';
     this.$auth = $auth;
     this.$window = $window;
     this.$location = $location;
     this.$rootScope = $rootScope;
     this.$state = $state;
+    this.socketService = SocketService;
     this.toast = Toast;
     this.api_endpoint = API_ENDPOINT;
     this.disableSubmit = false;
@@ -26,6 +27,7 @@ class LoginController {
             this.$location.path(this.$rootScope.next);
           else
             this.$state.go('home.dashboard');
+          this.socketService.init();
         } else
           this.toast.warning("Username or password incorrect!", "AUTH.INCORRECT");
         this.disableSubmit = false;

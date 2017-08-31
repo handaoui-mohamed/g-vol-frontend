@@ -3,7 +3,10 @@ import controller from './messages.controller';
 import './messages.scss';
 
 let flightMessagesComponent = {
-	bindings: {},
+	bindings: {
+		flightId: "=",
+		team: "="
+	},
 	template,
 	controller,
 	controllerAs: 'msg'

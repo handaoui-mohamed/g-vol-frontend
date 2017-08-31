@@ -1,0 +1,80 @@
+<md-dialog aria-label="Flight" class="flight-selection-dialog">
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2 translate="FLIGHT.UPDATE">Update flight</h2>
+			<span flex></span>
+			<md-button class="md-icon-button" ng-click="fldVm.cancel()">
+				<md-icon md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-dialog-content layout-padding>
+		<!-- CONTENT HEADER -->
+		<div layout="row" layout-align="space-between center">
+			<md-button class="md-raised md-primary" ng-click="fldVm.showSelectedFlights()">
+				<span ng-if="!fldVm.show">Show selected flights</span>
+				<span ng-if="fldVm.show">Show all flights</span>
+			</md-button>
+			<md-input-container class="md-block search" style="margin-bottom:0" flex>
+				<label translate="SEARCH">Search</label>
+				<md-icon md-font-icon="icon-magnify" class="icon search-icon"></md-icon>
+				<input type="search" class="search-input" name="search" ng-model="fldVm.queryString" ng-change="fldVm.searchFlights()" ng-model-options="{ debounce: 400 }">
+			</md-input-container>
+		</div>
+		<!-- / CONTENT HEADER -->
+		<div class="bg-white">
+			<md-table-container>
+				<table md-table md-progress="fldVm.promise">
+					<thead md-head>
+						<tr md-row>
+							<td></td>
+							<th md-column><span translate="FLIGHT.NUMBER">Flight Number</span></th>
+							<th md-column><span translate="FLIGHT.ARRIVAL">Arrival Date</span>
+								<ng-filter-menu menu-type="date" menu-width="4" ng-model="fldVm.selectedArrivalDates" on-filter="fldVm.searchFlights()"></ng-filter-menu>
+							</th>
+							<th md-column>
+								<span translate="FLIGHT.DEPARTURE">Departure Date</span>
+								<ng-filter-menu menu-type="date" menu-width="4" ng-model="fldVm.selectedDepartureDates" on-filter="fldVm.searchFlights()"></ng-filter-menu>
+							</th>
+							<th md-column>STA</th>
+							<th md-column>STD</th>
+							<th md-column>Destination</th>
+							<th md-column>
+								<span translate="FLIGHT.STATUS.LABEL">Status</span>
+								<ng-filter-menu menu-items="fldVm.status" menu-width="2" ng-model="fldVm.selectedStatus" on-filter="fldVm.searchFlights()"></ng-filter-menu>
+							</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody md-body>
+						<tr md-row ng-repeat="flight in fldVm.flights track by $index" ng-class="{'in-progress-flight': flight.status === 'inprogress', 'finished-flight': flight.status === 'done'}">
+							<td md-cell>
+								<md-checkbox ng-disabled="fldVm.selectedFlights.length === 4 && !flight.selected" aria-label="flight-checkbox" ng-change="fldVm.toggleSelection(flight)"
+								 ng-model="flight.selected" class="md-primary"></md-checkbox>
+							</td>
+							<td md-cell class="uppercase">{{flight.flightNumber}}</td>
+							<td md-cell>{{flight.arrivalDate | date:'dd/MM/yyyy'}}</td>
+							<td md-cell>{{flight.departureDate | date:'dd/MM/yyyy'}}</td>
+							<td md-cell>{{flight.sta}}</td>
+							<td md-cell>{{flight.std}}</td>
+							<td md-cell class="uppercase">{{flight.dest}}</td>
+							<td md-cell class="capitalize" translate="{{'FLIGHT.STATUS.'+flight.status | uppercase}}">{{flight.status}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</md-table-container>
+
+			<md-data-pagination query="fldVm.query" list-length="fldVm.flights.length" on-paginate="fldVm.getFlights()"></md-data-pagination>
+		</div>
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row">
+		<span flex></span>
+		<md-button class="md-default" ng-click="fldVm.cancel()" translate="CANCEL">
+			Cancel
+		</md-button>
+		<md-button class="md-raised md-primary" ng-click="fldVm.submit()" ng-disabled="fldVm.selectedFlights.length === 0" translate="SAVE">
+			Save
+		</md-button>
+	</md-dialog-actions>
+</md-dialog>
