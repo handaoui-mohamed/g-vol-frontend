@@ -10,7 +10,7 @@ class flightSelectionController {
 		this.toast = Toast;
 
 		this.flights = [];
-		this.selectedStatus = [];
+		this.selectedStatus = ['new', 'inprogress'];
 		this.queryString = "";
 		this.query = {
 			page: 1,
@@ -76,7 +76,6 @@ class flightSelectionController {
 		} else if (flightIndex !== -1 && !flight.selected) {
 			this.selectedFlights.splice(flightIndex, 1);
 		}
-		console.log(this.selectedFlights);
 	}
 
 	initSelection() {

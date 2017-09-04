@@ -5,7 +5,8 @@
   </md-button>
   <md-menu-content class="filter-menu-content" width="{{$ctrl.menuWidth}}">
     <md-menu-item class="menu-checkbox" ng-if="$ctrl.menuType !== 'date'" ng-repeat="item in $ctrl.menuItems track by $index">
-      <md-checkbox ng-model="$ctrl.selectedItems[$index]" aria-label="{{item.value}}" ng-change="$ctrl.selectionChanged(item, $index)">
+      <md-checkbox ng-init="$ctrl.initSelection(item, $index)" ng-model="$ctrl.selectedItems[$index]" aria-label="{{item.value}}" class="md-primary"
+        ng-change="$ctrl.selectionChanged(item, $index)">
         <span translate="{{item.translate}}">{{item.value}}</span>
       </md-checkbox>
     </md-menu-item>

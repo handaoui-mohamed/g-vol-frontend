@@ -1,1 +1,7 @@
-{}
+{
+	"DASHBOARD": {
+		"NOFLIGHTS": "No flights selected. To select one, click on ",
+		"SHOWSELECTED": "Show selected flights",
+		"SHOWALL": "Show all flights"
+	}
+}
