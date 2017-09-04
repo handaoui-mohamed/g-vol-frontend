@@ -1,7 +1,14 @@
-<div id="dashboard">
-	<flights-nav-bar selected-flights="dashVm.selectedFlights"></flights-nav-bar>
-	<md-content class="flex-container">
+<div id="dashboard" layout-fill>
+	<flights-nav-bar selected-flights="dashVm.selectedFlights" opened-flights="dashVm.openedFlights"></flights-nav-bar>
+	<md-content class="flex-container" flex>
 		<flight-tracker ng-show="flight.opened" flight="flight" ng-repeat="flight in dashVm.selectedFlights track by $index"></flight-tracker>
 		<div class="flight-display-fix" ng-if="dashVm.openFlights().length % 2 !== 0"></div>
 	</md-content>
+	<div class="no-flight-selected" ng-if="dashVm.selectedFlights.length === 0 || dashVm.openedFlights === 0" layout="column" layout-align="center center">
+		<img src="/assets/images/logo.png" alt="Swissport GVOL for CLC" flex>
+		<div layout="row" layout-align="space-between center">
+			<span>No flights selected, to select one click on </span>
+			<img class="flight-add-button" src="/assets/images/add-button.PNG" alt="Add button">
+		</div>
+	</div>
 </div>

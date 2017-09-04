@@ -24,6 +24,8 @@ class FlightsNavBarController {
 
 	toggleFlight(flight) {
 		flight.opened = !flight.opened;
+		if (flight.opened) this.openedFlights++;
+		else this.openedFlights--;
 	}
 
 	openFlightSelectionDialog(ev) {
@@ -40,7 +42,7 @@ class FlightsNavBarController {
 			}
 		})
 			.then((selectedFlights) => {
-				this.selectedFlights = selectedFlights;
+				this.selectedFlights = selectedFlights || [];
 				this.selectedFlights.forEach((flight) => {
 					this.flightTeamService.save({ flightId: flight._id }, {}, (team) => {
 						flight.team = this.convertTeamArrayToObject(team);

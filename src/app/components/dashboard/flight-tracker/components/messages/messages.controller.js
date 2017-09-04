@@ -12,6 +12,8 @@ class FlightMessagesController {
 	}
 
 	$onInit() {
+		// unsub from socket event
+		this.socket.removeAllListeners('messages/' + this.flightId);
 		this.messages = [];
 		this.listenForNewMessages();
 		this.accountId = this.$window.localStorage['current_account'];
@@ -24,7 +26,7 @@ class FlightMessagesController {
 	getFlightMessages() {
 		this.messageService.query({ flightId: this.flightId }, (messages) => {
 			this.messages = messages.map((message) => {
-				message.createdAt = this.convertDate(message.createdAt);
+				message.sentAt = this.convertDate(message.createdAt);
 				return message;
 			});
 		}, (error) => { this.toast.serverError(error); });
@@ -36,6 +38,7 @@ class FlightMessagesController {
 
 	// sockets functions
 	sendMessage() {
+		console.log(this.socket);
 		this.socket.emit('new-message/' + this.flightId, JSON.stringify({
 			params: { flightId: this.flightId },
 			body: { content: this.newMessage }
@@ -47,7 +50,7 @@ class FlightMessagesController {
 	listenForNewMessages() {
 		this.socket.on('messages/' + this.flightId, (message) => {
 			let newMessage = JSON.parse(message);
-			newMessage.createdAt = this.convertDate(newMessage.createdAt);
+			newMessage.sentAt = this.convertDate(newMessage.createdAt);
 			this.$scope.$apply(() => {
 				this.messages.push(newMessage);
 			})

@@ -2,12 +2,12 @@ import io from 'socket.io-client';
 
 let socketFactory = function ($window, $rootScope, $state, $auth, API_ENDPOINT) {
 	'ngInject';
-	let token = $window.localStorage['token'];
 	var socketio;
 
 	initEvents(connect());
 
 	function connect() {
+		let token = $window.localStorage['token'];
 		return io.connect(API_ENDPOINT.replace('/api/', ''), { query: "token=bearer " + token });
 	}
 

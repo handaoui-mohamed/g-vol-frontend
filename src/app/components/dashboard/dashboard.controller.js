@@ -6,6 +6,7 @@ class DashboardController {
 
   $onInit() {
     this.selectedFlights = [];
+    this.openedFlights = 0;
   }
 
   openFlights() {

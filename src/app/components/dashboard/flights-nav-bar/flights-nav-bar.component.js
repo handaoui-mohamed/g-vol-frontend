@@ -4,7 +4,8 @@ import './flights-nav-bar.scss';
 
 let flightsNavBarComponent = {
 	bindings: {
-		selectedFlights: '='
+		selectedFlights: '=',
+		openedFlights: '='
 	},
 	template,
 	controller,
