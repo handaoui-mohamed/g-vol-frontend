@@ -54,10 +54,12 @@ class FlightMessagesController {
 		this.newMessage = null;
 	}
 
-
+ 
 	listenForNewMessages() {
-		this.socket.on('messages/' + this.flightId, (message) => {
-			let newMessage = JSON.parse(message);
+		this.socket.on('messages/' + this.flightId, (data) => {
+			console.log(data);
+			data = JSON.parse(data);
+			let newMessage = data.message;
 			newMessage.sentAt = this.convertDate(newMessage.createdAt);
 			this.$scope.$apply(() => {
 				this.messages.push(newMessage);

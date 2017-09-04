@@ -5,6 +5,7 @@ import flightTrackerComponent from './flight-tracker/flight-tracker.component';
 
 // flight tracker components
 import flightMessagesComponent from './flight-tracker/components/messages/messages.component';
+import FlightChecklistComponent from './flight-tracker/components/checklist/checklist.component';
 
 // flight Services
 import MessageService from './flight-tracker/components/messages/messages.service';
@@ -33,6 +34,7 @@ let dashboardModule = angular
   .component('flightsNavBar', flightNavBarComponent)
   .component('flightTracker', flightTrackerComponent)
   .component('flightMessages', flightMessagesComponent)
+  .component('flightChecklist', FlightChecklistComponent)
   .component('dashboard', dashboardComponent).name;
 
 export default dashboardModule;

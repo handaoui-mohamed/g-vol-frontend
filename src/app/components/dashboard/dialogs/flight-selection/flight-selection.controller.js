@@ -11,7 +11,7 @@ class flightSelectionController {
 
 		this.flights = [];
 		this.selectedStatus = ['new', 'inprogress'];
-		this.queryString = "";
+		this.queryString = "EWP";
 		this.query = {
 			page: 1,
 			limit: 5
@@ -72,7 +72,7 @@ class flightSelectionController {
 		let flightIndex = this.selectedFlights.findIndex((selectedFlight) => {
 			return selectedFlight._id === flight._id;
 		});
-
+		// TODO: fix here
 		if (flightIndex === -1 && flight.selected) {
 			this.selectedFlights.push(flight);
 		} else if (flightIndex !== -1 && !flight.selected) {
