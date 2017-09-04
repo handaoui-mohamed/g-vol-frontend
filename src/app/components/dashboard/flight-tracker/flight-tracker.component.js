@@ -4,7 +4,8 @@ import './flight-tracker.scss';
 
 let flightTrackerComponent = {
 	bindings: {
-		flight: "="
+		flight: "=",
+		openedFlights: "="
 	},
 	template,
 	controller,

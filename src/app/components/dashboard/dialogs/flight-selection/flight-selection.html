@@ -64,7 +64,7 @@
 				</table>
 			</md-table-container>
 
-			<md-data-pagination query="fldVm.query" list-length="fldVm.flights.length" on-paginate="fldVm.getFlights()"></md-data-pagination>
+			<md-data-pagination query="fldVm.query" limit-options="[5,10,15]" list-length="fldVm.flights.length" on-paginate="fldVm.getFlights()"></md-data-pagination>
 		</div>
 	</md-dialog-content>
 

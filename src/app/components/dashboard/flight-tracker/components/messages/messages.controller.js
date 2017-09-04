@@ -23,12 +23,20 @@ class FlightMessagesController {
 		this.messageContainer = angular.element(this.$element[0].querySelector('md-content'))[0];
 	}
 
-	getFlightMessages() {
-		this.messageService.query({ flightId: this.flightId }, (messages) => {
-			this.messages = messages.map((message) => {
+	loadOldMessages() {
+		if (this.messageContainer.scrollTop === 0) {
+			console.log("test");
+			this.getFlightMessages(this.messages.length, 10);
+		}
+	}
+
+
+	getFlightMessages(skip = 0, limit = 20) {
+		this.messageService.query({ flightId: this.flightId, skip, limit }, (messages) => {
+			this.messages.unshift(...messages.map((message) => {
 				message.sentAt = this.convertDate(message.createdAt);
 				return message;
-			});
+			}));
 		}, (error) => { this.toast.serverError(error); });
 	}
 

@@ -7,6 +7,8 @@
 	</md-button>
 	<div class="messages" ng-class="{'messages-opened' : msg.isOpen}" flex>
 		<md-content flex layout="column" layout-padding>
+			<md-button aria-label="Load More Messages" ng-if="msg.messages.length >= 20" class="load-messages" ng-click="msg.loadOldMessages()" translate="DASHBOARD.LOADMESSAGE">
+			Load More Messages </md-button>
 			<!-- TODO: virtual repeat -->
 			<div ng-repeat="message in msg.messages | orderBy: 'createdAt'  track by $index" class="align-left" ng-class="{'align-right': message.accountId === msg.accountId}">
 				<div class="message-username">{{ msg.team[message.accountId].function.name | uppercase }}</div>

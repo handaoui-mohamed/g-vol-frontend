@@ -2,6 +2,7 @@
 	"DASHBOARD": {
 		"NOFLIGHTS": "Aucun vol sélectionné. Pour sélectionner un, cliquez sur ",
 		"SHOWSELECTED": "Afficher les vols sélectionnés",
-		"SHOWALL": "Afficher tous les vols"
+		"SHOWALL": "Afficher tous les vols",
+		"LOADMESSAGE": "Chargez plus de messages"
 	}
 }

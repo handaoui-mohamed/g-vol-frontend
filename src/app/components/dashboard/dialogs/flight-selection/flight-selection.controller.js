@@ -26,8 +26,9 @@ class flightSelectionController {
 			translate: 'FLIGHT.STATUS.DONE',
 			value: 'done'
 		}];
-		this.selectedArrivalDates = {};
-		this.selectedDepartureDates = {};
+		let today = new Date((new Date()).toLocaleDateString());
+		this.selectedArrivalDates = { start: today };
+		this.selectedDepartureDates = { start: today };
 		this.getFlights();
 	}
 
@@ -40,6 +41,7 @@ class flightSelectionController {
 	}
 
 	getFlights() {
+		console.log(this.selectedArrivalDates, this.selectedDepartureDates)
 		let skip = (this.query.page - 1) * this.query.limit;
 		let limit = this.query.limit;
 		let q = this.queryString;
