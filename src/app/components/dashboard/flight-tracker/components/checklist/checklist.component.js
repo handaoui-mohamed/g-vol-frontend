@@ -4,7 +4,7 @@ import './checklist.scss';
 
 let checklistComponent = {
 	bindings: {
-		companyId: "="
+		flight: "="
 	},
 	template,
 	controller,

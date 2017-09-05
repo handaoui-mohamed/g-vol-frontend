@@ -10,8 +10,8 @@ class flightSelectionController {
 		this.toast = Toast;
 
 		this.flights = [];
-		this.selectedStatus = ['new', 'inprogress'];
-		this.queryString = "EWP";
+		this.selectedStatus = ['new'];
+		this.queryString = "";
 		this.query = {
 			page: 1,
 			limit: 5
@@ -41,7 +41,6 @@ class flightSelectionController {
 	}
 
 	getFlights() {
-		console.log(this.selectedArrivalDates, this.selectedDepartureDates)
 		let skip = (this.query.page - 1) * this.query.limit;
 		let limit = this.query.limit;
 		let q = this.queryString;
@@ -78,7 +77,6 @@ class flightSelectionController {
 		} else if (flightIndex !== -1 && !flight.selected) {
 			this.selectedFlights.splice(flightIndex, 1);
 		}
-		console.table(this.selectedFlights);
 	}
 
 

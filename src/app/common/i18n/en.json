@@ -8,6 +8,7 @@
 	"SAVE": "Save",
 	"CANCEL": "Cancel",
 	"CONFIRM": "Confirm",
+	"CLOSE": "Close",
 	"VALIDATION": {
 		"MIN-5": "At least 5 characters are required",
 		"MIN-8": "At least 8 characters are required",

@@ -2,12 +2,11 @@ import FlightSelectionDialogController from '../dialogs/flight-selection/flight-
 import dialogTemplate from '../dialogs/flight-selection/flight-selection.html';
 
 class FlightsNavBarController {
-	constructor($scope, $mdDialog, SocketService, FlightTeamService) {
+	constructor($scope, $mdDialog, SocketService) {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
-		this.socket = SocketService.io;
-		this.flightTeamService = FlightTeamService;
 		this.$scope = $scope;
+		this.socket = SocketService.io;
 	}
 
 	$onInit() {
@@ -42,25 +41,7 @@ class FlightsNavBarController {
 			}
 		}).then((selectedFlights) => {
 			this.selectedFlights = angular.copy(selectedFlights || []);
-			this.selectedFlights.forEach((flight) => {
-				this.flightTeamService.save({ flightId: flight._id }, {}, (team) => {
-					flight.team = this.convertTeamArrayToObject(team);
-					this.joinFlight(flight._id);
-				});
-			})
 		}, (msg) => { });
-	}
-
-	joinFlight(flightId) {
-		this.socket.emit('flightId', flightId)
-	}
-
-	convertTeamArrayToObject(flightTeam) {
-		let team = {};
-		flightTeam.forEach((account) => {
-			team[account._id] = account;
-		});
-		return team;
 	}
 }
 

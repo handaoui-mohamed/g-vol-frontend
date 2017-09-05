@@ -1,21 +1,25 @@
 class ChecklistController {
-	constructor(CompanyService, Toast) {
+	constructor(DocumentsService, Toast) {
 		'ngInject';
-		this.companyService = CompanyService;
+		this.documentsService = DocumentsService;
 		this.toast = Toast;
 	}
 
 	$onInit() {
 		this.checklist = {};
-		this.getCompany();
+		this.getDocuments();
 	}
 
-	getCompany() {
-		this.companyService.get({ companyId: this.companyId }, (company) => {
-			this.company = company;
-		}, (error) => {
-			this.toast.error(error);
-		});
+	getDocuments() {
+		if (this.flight.queryDocument) {
+			this.documentsService.get({ flightId: this.flight._id }, (flight) => {
+				this.documents = flight;
+				console.log("st",flight);
+			}, (error) => {
+				this.toast.error(error);
+			});
+		} else
+			this.documents = this.flight;
 	}
 
 }

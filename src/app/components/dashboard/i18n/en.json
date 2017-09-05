@@ -3,6 +3,8 @@
 		"NOFLIGHTS": "No flights selected. To select one, click on ",
 		"SHOWSELECTED": "Show selected flights",
 		"SHOWALL": "Show all flights",
-		"LOADMESSAGE": "Load More Messages"
+		"LOADMESSAGE": "Load More Messages",
+		"SELECT": "Select Flights",
+		"TEAM": "Flight team"
 	}
 }

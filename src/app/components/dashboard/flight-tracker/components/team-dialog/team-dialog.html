@@ -1,0 +1,26 @@
+<md-dialog aria-label="Flight" class="flight-team-dialog">
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2 translate="DASHBOARD.TEAM">Flight team</h2>
+			<span flex></span>
+			<md-button class="md-icon-button" ng-click="teamVm.close()">
+				<md-icon md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-dialog-content layout-padding>
+		<div layout="row" layout-align="space-between center" ng-repeat="member in teamVm.team track by member._id" class="capitalize">
+			<span>{{ member.function.name | uppercase }} : {{ member.firstname +" "+member.lastname }}</span>
+			<md-button ng-if="member._id !== $root.currentAccount._id" aria-label="delete-button" class="md-icon-button md-danger" ng-click="teamVm.removeMember(member._id)">
+				<md-icon md-font-icon="icon-delete"></md-icon>
+			</md-button>
+		</div>
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row">
+		<span flex></span>
+		<md-button class="md-default" ng-click="teamVm.close()" translate="CLOSE">
+			Close
+		</md-button>
+	</md-dialog-actions>
+</md-dialog>

@@ -5,11 +5,13 @@ import flightTrackerComponent from './flight-tracker/flight-tracker.component';
 
 // flight tracker components
 import flightMessagesComponent from './flight-tracker/components/messages/messages.component';
-import FlightChecklistComponent from './flight-tracker/components/checklist/checklist.component';
+import flightChecklistComponent from './flight-tracker/components/checklist/checklist.component';
+import flightDocumentsComponent from './flight-tracker/components/documents/documents.component';
 
 // flight Services
-import MessageService from './flight-tracker/components/messages/messages.service';
-import FlightTeamService from './flight-team.service';
+import MessageService from './services/messages.service';
+import FlightTeamService from './services/flight-team.service';
+import FlightDocumentsService from './services/flight-document.service';
 
 // translations
 import en from './i18n/en.json';
@@ -31,10 +33,12 @@ let dashboardModule = angular
   })
   .factory('MessageService', MessageService)
   .factory('FlightTeamService', FlightTeamService)
+  .factory('DocumentsService', FlightDocumentsService)
   .component('flightsNavBar', flightNavBarComponent)
   .component('flightTracker', flightTrackerComponent)
   .component('flightMessages', flightMessagesComponent)
-  .component('flightChecklist', FlightChecklistComponent)
+  .component('flightChecklist', flightChecklistComponent)
+  .component('flightDocuments', flightDocumentsComponent)
   .component('dashboard', dashboardComponent).name;
 
 export default dashboardModule;

@@ -6,6 +6,12 @@ let FlightTeamFactory = function ($resource, API_ENDPOINT) {
 			save: {
 				method: 'POST',
 				isArray: true
+			},
+			delete: {
+				method: 'DELETE',
+				hasBody: true,
+				headers: { "Content-Type": "application/json;charset=UTF-8" },
+				isArray: true
 			}
 		});
 };

@@ -4,7 +4,6 @@ class FilterMenuController {
     this.menuOffset = this.menuOffset || '0 60';
     this.ngModel = this.ngModel || (this.menuType === 'date' ? {} : []);
     this.selectedItems = this.selectedItems || {};
-    console.log(this.ngModel);
   }
   selectionChanged(item, index) {
     let itemSelected = this.selectedItems[index];

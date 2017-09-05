@@ -1,5 +1,5 @@
 <div md-whiteframe="3" class="flight-tracker-container">
-	<md-toolbar>
+	<md-toolbar class="md-primary">
 		<div layout="row" layout-align="space-between center">
 			<span class="flight-number">{{ftVm.flight.flightNumber}}</span>
 			<span class="time-left">09:37</span>
@@ -8,24 +8,34 @@
 			</md-button>
 		</div>
 	</md-toolbar>
-	<md-content style="height:600px" class="bg-white">
-		<div layout="column" layout-padding>
-			<div layout="row" layout-align="space-between end">
-				<span>{{ftVm.insert(ftVm.flight.sta, 2, ":")}}</span>
-				<span>{{ftVm.insert(ftVm.flight.std, 2, ":")}}</span>
-			</div>
-			<md-progress-linear md-mode="determinate" value="65" class="flight-progress"></md-progress-linear>
+	<md-content style="min-height:600px;padding-bottom: 20px" class="bg-white" id="flight-{{::ftVm.flight._id}}">
+
+		<div ng-if="!ftVm.initilized" class="flight-init" layout="column" layout-align="center center">
+			<md-button aria-label="Initilize flight" ng-click="ftVm.initFlight()" class="md-raised md-warn"> Initilize flight </md-button>
 		</div>
-		<div layout="row" layout-align="space-between" layout-padding>
-			<div flex="50"></div>
-			<div layout="column" flex="45">
-				<md-button aria-label="Flight's team" class="md-raised md-warn flight-team-button">
-					<md-icon md-font-icon="icon-people"></md-icon>
-					Flight's team
-				</md-button>
-				<flight-checklist flex company-id="ftVm.flight.company"></flight-checklist>
+		<div ng-if="ftVm.initilized">
+			<div layout="column" layout-padding>
+				<div layout="row" layout-align="space-between end">
+					<span>{{ftVm.flight.formattedSta}}</span>
+					<span>{{ftVm.flight.formattedStd}}</span>
+				</div>
+				<md-progress-linear md-mode="determinate" value="65" class="flight-progress"></md-progress-linear>
 			</div>
+			<div layout="row" layout-align="space-between" layout-padding>
+				<div flex="50">
+					<flight-documents flightId="ftVm.flight._id"></flight-documents>
+				</div>
+				<div layout="column" flex="45">
+					<md-button aria-label="Flight's team" class="md-raised md-warn flight-team-button" ng-click="ftVm.openFlightTeam($event)">
+						<md-icon md-font-icon="icon-people"></md-icon>
+						Flight's team
+					</md-button>
+					<flight-checklist flex flight="ftVm.flight"></flight-checklist>
+				</div>
+			</div>
+			<footer>
+				<flight-messages flight-id="ftVm.flight._id" team="ftVm.flight.team"></flight-messages>
+			</footer>
 		</div>
-		<flight-messages flight-id="ftVm.flight._id" team="ftVm.flight.team"></flight-messages>
 	</md-content>
 </div>
