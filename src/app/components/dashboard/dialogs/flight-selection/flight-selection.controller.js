@@ -37,7 +37,7 @@ class flightSelectionController {
 	}
 
 	cancel() {
-		this.$mdDialog.hide();
+		this.$mdDialog.cancel();
 	}
 
 	getFlights() {
@@ -72,13 +72,15 @@ class flightSelectionController {
 		let flightIndex = this.selectedFlights.findIndex((selectedFlight) => {
 			return selectedFlight._id === flight._id;
 		});
-		// TODO: fix here
+
 		if (flightIndex === -1 && flight.selected) {
 			this.selectedFlights.push(flight);
 		} else if (flightIndex !== -1 && !flight.selected) {
 			this.selectedFlights.splice(flightIndex, 1);
 		}
+		console.table(this.selectedFlights);
 	}
+
 
 	initSelection() {
 		this.selectedFlights.forEach((selectedFlight) => {

@@ -1,0 +1,12 @@
+.checklist-container{
+	background-color: #EEEEEE;
+	padding-left: 20px !important;
+	border-radius: 5px;
+	md-checkbox{
+		margin: 0 !important;
+	}
+
+	.item-checked{
+		color: #4CAF50 !important;
+	}
+}

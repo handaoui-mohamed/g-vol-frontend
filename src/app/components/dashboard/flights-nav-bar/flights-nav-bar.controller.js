@@ -40,16 +40,15 @@ class FlightsNavBarController {
 			locals: {
 				SelectedFlights: this.selectedFlights
 			}
-		})
-			.then((selectedFlights) => {
-				this.selectedFlights = selectedFlights || [];
-				this.selectedFlights.forEach((flight) => {
-					this.flightTeamService.save({ flightId: flight._id }, {}, (team) => {
-						flight.team = this.convertTeamArrayToObject(team);
-						this.joinFlight(flight._id);
-					});
-				})
-			});
+		}).then((selectedFlights) => {
+			this.selectedFlights = angular.copy(selectedFlights || []);
+			this.selectedFlights.forEach((flight) => {
+				this.flightTeamService.save({ flightId: flight._id }, {}, (team) => {
+					flight.team = this.convertTeamArrayToObject(team);
+					this.joinFlight(flight._id);
+				});
+			})
+		}, (msg) => { });
 	}
 
 	joinFlight(flightId) {

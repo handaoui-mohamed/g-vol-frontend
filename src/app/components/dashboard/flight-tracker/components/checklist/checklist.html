@@ -1,0 +1,3 @@
+<div class="checklist-container" layout-padding layout="column">
+	<md-checkbox class="md-primary" ng-repeat="item in chlVm.company.checklist track by $index" ng-model="chlVm.checklist[$index]" aria-label="label" ng-class="{'item-checked': chlVm.checklist[$index]}">{{item}}</md-checkbox>
+</div>

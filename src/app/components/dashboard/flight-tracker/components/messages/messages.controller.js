@@ -25,7 +25,6 @@ class FlightMessagesController {
 
 	loadOldMessages() {
 		if (this.messageContainer.scrollTop === 0) {
-			console.log("test");
 			this.getFlightMessages(this.messages.length, 10);
 		}
 	}
@@ -46,7 +45,6 @@ class FlightMessagesController {
 
 	// sockets functions
 	sendMessage() {
-		console.log(this.socket);
 		this.socket.emit('new-message/' + this.flightId, JSON.stringify({
 			params: { flightId: this.flightId },
 			body: { content: this.newMessage }
@@ -57,7 +55,6 @@ class FlightMessagesController {
  
 	listenForNewMessages() {
 		this.socket.on('messages/' + this.flightId, (data) => {
-			console.log(data);
 			data = JSON.parse(data);
 			let newMessage = data.message;
 			newMessage.sentAt = this.convertDate(newMessage.createdAt);
