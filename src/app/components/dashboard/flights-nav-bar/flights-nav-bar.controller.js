@@ -12,6 +12,7 @@ class FlightsNavBarController {
 	$onInit() {
 		this.socket.on("joined", (data) => {
 			data = JSON.parse(data);
+			console.log(data);
 			let flight = this.selectedFlights.find(selecteFlight => data.flightId === selecteFlight._id);
 			if (flight) {
 				this.$scope.$apply(() => {
@@ -19,6 +20,12 @@ class FlightsNavBarController {
 				});
 			}
 		});
+
+		this.socket.on("reconnect", (data) => {
+			this.selectedFlights.forEach((flight) => {
+				if (flight.initilized) this.socket.emit('flightId', flight._id);
+			})
+		})
 	}
 
 	toggleFlight(flight) {

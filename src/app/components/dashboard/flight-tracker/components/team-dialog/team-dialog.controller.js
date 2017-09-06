@@ -16,7 +16,6 @@ class TeamDialogController {
 	}
 
 	removeMember(accountId) {
-		console.log(accountId);
 		this.flightTeamService.delete({ flightId: this.flightId }, { accountId }, (team) => {
 			delete this.team[accountId];
 		}, (error) => { this.toast.error(error); });

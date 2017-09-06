@@ -8,14 +8,12 @@ class FlightInfoController {
 		this.documentsService = DocumentsService;
 		this.flight = Flight;
 		this.flightInfo = this.flight.flightInfo;
-		console.log("init", this.flightInfo);
 	}
 
 	submit() {
 		this.save().then((flightInfo) => {
 			this.flightInfo.ezfw = flightInfo.ezfw;
 			this.flightInfo.createdAt = this.flightInfo.createdAt || flightInfo.createdAt;
-			console.log("update", this.flightInfo);
 			this.$mdDialog.hide(flightInfo);
 		}, (error) => {
 			this.$mdDialog.cancel();

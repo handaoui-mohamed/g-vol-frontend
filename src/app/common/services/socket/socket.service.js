@@ -19,7 +19,6 @@ let socketFactory = function ($window, $rootScope, $state, $auth, API_ENDPOINT) 
 
 		socket.on('connected', (account) => {
 			$rootScope.currentAccount = account;
-			console.log(account)
 		});
 
 		socket.on('unauthorized', () => {

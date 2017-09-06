@@ -1,6 +1,10 @@
 .flex-container{
 	display: flex;
 	flex-wrap: wrap;
+	position: absolute;
+    top: 65px;
+    bottom: 0;
+    width: 100%;
 	flight-tracker, .flight-display-fix{
 		margin: 10px;
 		min-width: 500px;

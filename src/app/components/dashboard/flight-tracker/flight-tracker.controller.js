@@ -36,7 +36,7 @@ class FlightTrackerController {
 		this.flightTeamService.save({ flightId: this.flight._id }, {}, (team) => {
 			this.flight.team = this.convertTeamArrayToObject(team);
 			this.socket.emit('flightId', this.flight._id);
-			this.initilized = true;
+			this.flight.initilized = true;
 		});
 	}
 
@@ -70,9 +70,7 @@ class FlightTrackerController {
 				Team: this.flight.team,
 				FlightId: this.flight._id
 			}
-		}).then((team) => {
-			console.log("team :", team);
-		}, (msg) => { });
+		}).then((team) => { }, (msg) => { });
 	}
 }
 
