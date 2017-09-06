@@ -1,0 +1,52 @@
+.flight-info-dialog{
+	md-toolbar>.md-toolbar-tools{
+		background-color: #5d5d5d !important;
+		h2{
+			text-align: center !important;
+		}
+		button{
+			position: absolute !important;
+			top: 10px;
+			right: 10px;
+		}	
+	}
+
+
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td {
+		border: 1px solid #9c9090;
+		text-align: center;
+		padding: 8px;
+		width: 25% !important;
+	}
+
+	td:nth-child(odd){
+		font-weight: 600;
+	}
+
+	td:nth-child(even){
+		font-weight: 600;
+		color: rgb(63,81,181);
+	}
+
+	.input-cell{
+		padding: 0 10px !important;
+		text-align: left;
+    	font-weight: 500 !important;
+	}
+
+	md-input-container{
+		padding: 0 !important;
+		margin: 0 !important;
+		.md-errors-spacer{
+			min-height: 0 !important;
+    		min-width: 0 !important;
+		}
+	}
+
+}

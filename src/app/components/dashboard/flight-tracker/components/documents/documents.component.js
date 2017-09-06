@@ -4,7 +4,7 @@ import './documents.scss';
 
 let flightDocumentsComponent = {
 	bindings: {
-		flightId: "="
+		flight: "="
 	},
 	template,
 	controller,

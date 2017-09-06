@@ -11,7 +11,7 @@ class ChecklistController {
 	}
 
 	getDocuments() {
-		if (this.flight.queryDocument) {
+		if (this.flight.queryDocuments) {
 			this.documentsService.get({ flightId: this.flight._id }, (flight) => {
 				this.documents = flight;
 				console.log("st",flight);

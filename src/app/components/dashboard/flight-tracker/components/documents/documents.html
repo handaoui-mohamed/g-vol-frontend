@@ -1,3 +1,6 @@
 <div class="documents-container" flex>
-	<span>documents accordion</span>
-</div> 
+	<md-button aria-label="toggle-messages" class="md-button-toggle md-raised" ng-click="docVm.openFlightInfoDialog()">
+		FlightInfo
+		<md-icon md-font-icon="icon-chevron-up" class="md-toggle-icon" ng-class="{'toggled' : !docVm.isOpen}"></md-icon>
+	</md-button>
+</div>

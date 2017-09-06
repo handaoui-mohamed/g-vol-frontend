@@ -13,7 +13,10 @@ class FlightTrackerController {
 	$onInit() {
 		this.flight.formattedSta = this.insert(this.flight.sta, 2, ':');
 		this.flight.formattedStd = this.insert(this.flight.std, 2, ':');
-		if (this.flight.status !== "new") this.joinFlight();
+		if (this.flight.status !== "new") {
+			this.joinFlight();
+			this.flight.queryDocuments = true;
+		}
 	}
 
 	initFlight() {
