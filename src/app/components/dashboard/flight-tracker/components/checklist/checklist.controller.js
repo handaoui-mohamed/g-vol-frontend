@@ -12,9 +12,13 @@ class ChecklistController {
 
 	getDocuments() {
 		if (this.flight.queryDocuments) {
-			this.documentsService.get({ flightId: this.flight._id }, (flight) => {
-				this.documents = flight;
-				console.log("st",flight);
+			this.documentsService.get({ flightId: this.flight._id }, (documents) => {
+				for (var key in documents) {
+					if (documents.hasOwnProperty(key)) {
+						this.flight[key] = documents[key];
+					}
+				}
+				this.documents = documents;
 			}, (error) => {
 				this.toast.error(error);
 			});
