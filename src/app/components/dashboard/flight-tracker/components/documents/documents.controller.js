@@ -11,6 +11,14 @@ class FlightDocumentsController {
 
 	$onInit() {
 		this.initFlightInfoSocket();
+		this.documents = ['baggageReport', 'flightInfo'];
+	}
+
+	toggleDocument(documentType) {
+		this[documentType] = !this[documentType];
+		this.documents.forEach((document) => {
+			if (document !== documentType) this[document] = false;
+		})
 	}
 
 	initFlightInfoSocket() {

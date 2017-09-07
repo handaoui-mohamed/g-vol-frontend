@@ -6,7 +6,16 @@
 		margin: 0 !important;
 	}
 
+	md-checkbox[disabled] .md-label{
+		color : #000;
+	}
+
 	.item-checked{
-		color: #4CAF50 !important;
+		.md-label{
+			color: #4CAF50 !important;
+		}
+		.md-icon{
+			background-color: #4CAF50 !important;
+		}
 	}
 }
