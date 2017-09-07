@@ -1,6 +1,6 @@
 import './flight-info.scss';
 
-class FlightInfoController {
+class FlightInfoDialogController {
 	constructor($mdDialog, Toast, Flight, DocumentsService) {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
@@ -32,4 +32,4 @@ class FlightInfoController {
 			return this.documentsService.save({ flightId: this.flight._id, type: 'fi' }, this.flightInfo).$promise;
 	}
 }
-export default FlightInfoController;
+export default FlightInfoDialogController;

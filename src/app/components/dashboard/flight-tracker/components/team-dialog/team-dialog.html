@@ -9,7 +9,7 @@
 		</div>
 	</md-toolbar>
 	<md-dialog-content layout-padding>
-		<div layout="row" layout-align="space-between center" ng-repeat="member in teamVm.team track by member._id" class="capitalize">
+		<div layout="row" layout-align="space-between center" ng-repeat="member in teamVm.team track by $index" class="capitalize">
 			<span>{{ member.function.name | uppercase }} : {{ member.firstname +" "+member.lastname }}</span>
 			<md-button ng-if="member._id !== $root.currentAccount._id" aria-label="delete-button" class="md-icon-button md-danger" ng-click="teamVm.removeMember(member._id)">
 				<md-icon md-font-icon="icon-delete"></md-icon>

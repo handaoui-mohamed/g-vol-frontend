@@ -54,7 +54,7 @@
 		background-color: #fff;
 		height: 0;
 		max-height: 200px;
-		overflow-y: visible;
+		overflow-y: visible !important;
 		
 		-webkit-transition: height 0.5s; 
 		-moz-transition: height 0.5s; 

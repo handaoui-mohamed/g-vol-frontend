@@ -10,9 +10,10 @@ class FlightsNavBarController {
 	}
 
 	$onInit() {
+		console.log(this.openedFlights);
 		this.socket.on("joined", (data) => {
 			data = JSON.parse(data);
-			console.log(data);
+			console.log("joined",data);
 			let flight = this.selectedFlights.find(selecteFlight => data.flightId === selecteFlight._id);
 			if (flight) {
 				this.$scope.$apply(() => {
@@ -32,6 +33,7 @@ class FlightsNavBarController {
 		flight.opened = !flight.opened;
 		if (flight.opened) this.openedFlights++;
 		else this.openedFlights--;
+		console.log(this.openedFlights);
 	}
 
 	openFlightSelectionDialog(ev) {

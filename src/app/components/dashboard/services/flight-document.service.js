@@ -1,10 +1,8 @@
 let FlightDocumentsFactory = function ($resource, API_ENDPOINT) {
 	'ngInject';
-	return $resource(API_ENDPOINT + 'flight-documents/:flightId/:type:documentId/:docStatus', {
+	return $resource(API_ENDPOINT + 'flight-documents/:flightId/:type', {
 		flightId: '@id',
-		type: '@type',
-		documentId: '@documentId',
-		docStatus: '@docStatus',
+		type: '@type'
 	}, { update: { method: 'PUT' } });
 };
 

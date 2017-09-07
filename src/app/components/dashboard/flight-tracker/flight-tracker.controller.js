@@ -21,22 +21,24 @@ class FlightTrackerController {
 
 	initFlight() {
 		if (this.flight.status === "new") {
-			this.documentsService.save({ flightId: this.flight._id }, {}, (updatedFlight) => {
-				for (var key in updatedFlight) {
-					if (updatedFlight.hasOwnProperty(key)) {
-						this.flight[key] = updatedFlight[key];
+			this.joinFlight(() => {
+				this.documentsService.save({ flightId: this.flight._id }, {}, (updatedFlight) => {
+					for (var key in updatedFlight) {
+						if (updatedFlight.hasOwnProperty(key)) {
+							if (key !== 'team') this.flight[key] = updatedFlight[key];
+						}
 					}
-				}
-				this.joinFlight();
+				});
 			});
 		}
 	}
 
-	joinFlight() {
+	joinFlight(callback) {
 		this.flightTeamService.save({ flightId: this.flight._id }, {}, (team) => {
 			this.flight.team = this.convertTeamArrayToObject(team);
 			this.socket.emit('flightId', this.flight._id);
 			this.flight.initilized = true;
+			if (typeof callback === "function") callback();
 		});
 	}
 

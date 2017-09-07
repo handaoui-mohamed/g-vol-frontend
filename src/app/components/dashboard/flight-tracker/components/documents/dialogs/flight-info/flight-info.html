@@ -2,7 +2,7 @@
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 			<h2 flex>Flight info</h2>
-			<md-button class="md-icon-button" ng-click="fiVm.close()">
+			<md-button class="md-icon-button" ng-click="fidVm.close()">
 				<md-icon md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
 			</md-button>
 		</div>
@@ -11,60 +11,60 @@
 		<table>
 			<tr>
 				<td>REGISTRATION</td>
-				<td>{{fiVm.flight.registration}}</td>
+				<td>{{fidVm.flight.registration}}</td>
 				<td>CONFIGURATION</td>
-				<td>{{fiVm.flight.configuration}}</td>
+				<td>{{fidVm.flight.configuration}}</td>
 			</tr>
 			<tr>
 				<td>EZFW</td>
 				<td class="input-cell">
 					<md-input-container md-no-float>
-						<input ng-model="fiVm.flightInfo.ezfw" placeholder="Enter EZFW" type="text">
+						<input ng-model="fidVm.flightInfo.ezfw" placeholder="Enter EZFW" type="text">
 					</md-input-container>
 				</td>
 				<td>WATER UPLIFT</td>
-				<td>{{fiVm.flightInfo.waterUpLift}}</td>
+				<td>{{fidVm.flightInfo.waterUpLift}}</td>
 			</tr>
 			<tr>
 				<td>RTOW</td>
-				<td>{{fiVm.flightInfo.rtow}}</td>
+				<td>{{fidVm.flightInfo.rtow}}</td>
 				<td>CREW</td>
-				<td>{{fiVm.flightInfo.crew}}</td>
+				<td>{{fidVm.flightInfo.crew}}</td>
 			</tr>
 			<tr>
 				<td>BLOCK FUEL</td>
-				<td>{{fiVm.flightInfo.blockFuel}}</td>
+				<td>{{fidVm.flightInfo.blockFuel}}</td>
 				<td>LANDING TIME</td>
-				<td>{{fiVm.flightInfo.landingTime}}</td>
+				<td>{{fidVm.flightInfo.landingTime}}</td>
 			</tr>
 			<tr>
 				<td>TRIP FUEL</td>
-				<td>{{fiVm.flightInfo.tripFuel}}</td>
+				<td>{{fidVm.flightInfo.tripFuel}}</td>
 				<td>CHOCKS ON</td>
-				<td>{{fiVm.flightInfo.chocksOn}}</td>
+				<td>{{fidVm.flightInfo.chocksOn}}</td>
 			</tr>
 			<tr>
 				<td>TAXI FUEL</td>
-				<td>{{fiVm.flightInfo.taxiFuel}}</td>
+				<td>{{fidVm.flightInfo.taxiFuel}}</td>
 				<td>FlIGHT TIME</td>
-				<td>{{fiVm.flightInfo.flightTime}}</td>
+				<td>{{fidVm.flightInfo.flightTime}}</td>
 			</tr>
 			<tr>
 				<td>DOW</td>
-				<td>{{fiVm.flightInfo.dow}}</td>
+				<td>{{fidVm.flightInfo.dow}}</td>
 				<td>DOI</td>
-				<td>{{fiVm.flightInfo.doi}}</td>
+				<td>{{fidVm.flightInfo.doi}}</td>
 			</tr>
 		</table>
 	</md-dialog-content>
 
 	<md-dialog-actions layout="row">
 		<span flex></span>
-		<md-button class="md-default" ng-click="fiVm.close()" translate="CLOSE">
+		<md-button class="md-default" ng-click="fidVm.close()" translate="CLOSE">
 			Close
 		</md-button>
 
-		<md-button class="md-raised md-primary" ng-click="fiVm.submit()" translate="SAVE">
+		<md-button class="md-raised md-primary" ng-click="fidVm.submit()" translate="SAVE">
 			Save
 		</md-button>
 	</md-dialog-actions>
