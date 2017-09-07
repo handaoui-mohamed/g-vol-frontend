@@ -10,8 +10,8 @@ class flightSelectionController {
 		this.toast = Toast;
 
 		this.flights = [];
-		this.selectedStatus = ['new'];
-		this.queryString = "";
+		this.selectedStatus = ['new', 'inprogress'];
+		this.queryString = "YI6";
 		this.query = {
 			page: 1,
 			limit: 5
