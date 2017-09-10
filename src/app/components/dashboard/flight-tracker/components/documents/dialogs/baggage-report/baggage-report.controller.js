@@ -7,12 +7,13 @@ class BaggageReportDialogController {
 		this.toast = Toast;
 		this.documentsService = DocumentsService;
 		this.flight = Flight;
-		this.baggageReport = this.flight.baggageReport;
+		this.baggageReport = angular.copy(this.flight.baggageReport);
+		if (this.baggageReport.table.length === 0) this.addEmptyRowToBaggageReport();
 	}
 
 	submit() {
 		this.save().then((baggageReport) => {
-			this.baggageReport.createdAt = this.baggageReport.createdAt || baggageReport.createdAt;
+			this.flight.baggageReport.createdAt = baggageReport.createdAt;
 			this.$mdDialog.hide(baggageReport);
 		}, (error) => {
 			this.$mdDialog.cancel();
@@ -25,10 +26,20 @@ class BaggageReportDialogController {
 	}
 
 	save() {
-		if (this.baggageReport.createdAt)
-			return this.documentsService.update({ flightId: this.flight._id, type: 'fi' }, this.baggageReport).$promise;
-		else
-			return this.documentsService.save({ flightId: this.flight._id, type: 'fi' }, this.baggageReport).$promise;
+		return this.documentsService.save({ flightId: this.flight._id, type: 'br' }, this.baggageReport).$promise;
+	}
+
+	addEmptyRowToBaggageReport() {
+		this.baggageReport.table.push({});
+	}
+
+	removeRowFromBaggageReport(index) {
+		this.baggageReport.table.splice(index, 1);
+		if (this.baggageReport.table.length === 0) this.baggageReport.table.push({});
+	}
+
+	reset() {
+		this.baggageReport = angular.copy(this.flight.baggageReport);
 	}
 }
 export default BaggageReportDialogController;

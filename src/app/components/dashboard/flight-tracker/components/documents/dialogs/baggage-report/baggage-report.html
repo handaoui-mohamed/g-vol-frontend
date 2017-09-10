@@ -1,0 +1,60 @@
+<md-dialog aria-label="Flight" class="baggage-report-dialog">
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2 flex>Baggage Report</h2>
+			<md-button class="md-icon-button" ng-click="brdVm.close()">
+				<md-icon md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-dialog-content layout-padding>
+		<table>
+			<tr>
+				<th>N°</th>
+				<th>ULD Type</th>
+				<th>ULD Number</th>
+				<th>Baggage Type</th>
+				<th>Position</th>
+				<th>Nb pieces</th>
+				<th>
+					<md-button flex aria-label="Reload" class="remove-row-button" ng-click="brdVm.reset()">
+						<md-icon md-font-icon="icon-reload" class="icon s32"></md-icon>
+					</md-button>
+				</th>
+			</tr>
+
+			<tr ng-repeat="row in brdVm.baggageReport.table track by $index">
+				<td class="row-index">{{ $index + 1 }}</td>
+				<td class="input-cell">
+					<md-input-container md-no-float>
+						<input ng-model="row.uldType" placeholder="Enter ULD Type" type="text">
+					</md-input-container>
+				</td>
+				<td>{{row.uldNumber}}</td>
+				<td>{{row.baggageType}}</td>
+				<td>{{row.position}}</td>
+				<td>{{row.nbPieces}}</td>
+				<td>
+					<md-button flex aria-label="Remove row" class="md-warn remove-row-button" ng-click="brdVm.removeRowFromBaggageReport($index)">
+						<md-icon md-font-icon="icon-table-row-remove" class="icon s32"></md-icon>
+					</md-button>
+				</td>
+			</tr>
+		</table>
+		<md-button flex aria-label="Add new row" class="md-primary new-row-button" ng-click="brdVm.addEmptyRowToBaggageReport()">
+			<md-icon md-font-icon="icon-table-row-plus-after"></md-icon>
+			Add new row
+		</md-button>
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row">
+		<span flex></span>
+		<md-button class="md-default" ng-click="brdVm.close()" translate="CLOSE">
+			Close
+		</md-button>
+
+		<md-button class="md-raised md-primary" ng-click="brdVm.submit()" translate="SAVE">
+			Save
+		</md-button>
+	</md-dialog-actions>
+</md-dialog>

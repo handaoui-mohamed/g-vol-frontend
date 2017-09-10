@@ -1,6 +1,7 @@
 class FlightMessagesController {
-	constructor($scope, $element, $timeout, $filter, $window, SocketService, Toast, MessageService) {
+	constructor($rootScope, $scope, $element, $timeout, $filter, $window, SocketService, Toast, MessageService) {
 		'ngInject';
+		this.$root = $rootScope;
 		this.$element = $element;
 		this.$timeout = $timeout;
 		this.$filter = $filter;
@@ -18,6 +19,9 @@ class FlightMessagesController {
 		this.listenForNewMessages();
 		this.accountId = this.$window.localStorage['current_account'];
 		this.getFlightMessages();
+
+		//init messages count
+		this.newMsgCount = 0;
 
 		// get message container
 		this.messageContainer = angular.element(this.$element[0].querySelector('md-content'))[0];
@@ -52,13 +56,16 @@ class FlightMessagesController {
 		this.newMessage = null;
 	}
 
- 
+
 	listenForNewMessages() {
 		this.socket.on('messages/' + this.flightId, (data) => {
 			data = JSON.parse(data);
 			let newMessage = data.message;
 			newMessage.sentAt = this.convertDate(newMessage.createdAt);
 			this.$scope.$apply(() => {
+				if (!this.isFocused && this.$root.currentAccount._id !== newMessage.accountId)
+					this.newMsgCount++;
+
 				this.messages.push(newMessage);
 			})
 			this.messageContainer.scrollTop = this.messageContainer.scrollHeight;

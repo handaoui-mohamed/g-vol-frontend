@@ -15,6 +15,7 @@ class BaggageReportController {
 
 	initBaggageReportSocket() {
 		this.socket.on('baggage-report/' + this.flight._id, (data) => {
+			console.log("baggage",data);
 			this.$scope.$apply(() => {
 				let baggageReport = JSON.parse(data).baggageReport;
 				for (let key in baggageReport) {

@@ -1,0 +1,65 @@
+.baggage-report-dialog{
+	md-toolbar>.md-toolbar-tools{
+		background-color: #5d5d5d !important;
+		h2{
+			text-align: center !important;
+		}
+		button{
+			position: absolute !important;
+			top: 10px;
+			right: 10px;
+		}	
+	}
+
+
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td,th {
+		border: 1px solid #9c9090;
+		text-align: center;
+		padding: 8px;
+	}
+
+	td{
+		color:rgb(63,81,181);
+	}
+
+	.row-index{
+		color: #000 !important;
+	}
+
+	.new-row-button{
+		width: 100%;
+		padding: 5px !important;
+		margin: 0;    
+		border: 1px solid #9c9090;
+		border-radius: 0;
+		border-top: transparent;
+	}
+
+	.remove-row-button{
+		margin: 0!important;
+		padding: 0!important;
+		min-width: 50px!important;
+	}
+
+	.input-cell{
+		padding: 0 10px !important;
+		text-align: left;
+    	font-weight: 500 !important;
+	}
+
+	md-input-container{
+		padding: 0 !important;
+		margin: 0 !important;
+		.md-errors-spacer{
+			min-height: 0 !important;
+    		min-width: 0 !important;
+		}
+	}
+
+}

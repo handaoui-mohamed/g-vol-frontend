@@ -2,18 +2,18 @@ import FlightSelectionDialogController from '../dialogs/flight-selection/flight-
 import dialogTemplate from '../dialogs/flight-selection/flight-selection.html';
 
 class FlightsNavBarController {
-	constructor($scope, $mdDialog, SocketService) {
+	constructor($window, $scope, $mdDialog, SocketService) {
 		'ngInject';
+		this.$window = $window;
 		this.$mdDialog = $mdDialog;
 		this.$scope = $scope;
 		this.socket = SocketService.io;
 	}
 
 	$onInit() {
-		console.log(this.openedFlights);
 		this.socket.on("joined", (data) => {
 			data = JSON.parse(data);
-			console.log("joined",data);
+			console.log("joined", data);
 			let flight = this.selectedFlights.find(selecteFlight => data.flightId === selecteFlight._id);
 			if (flight) {
 				this.$scope.$apply(() => {
@@ -22,7 +22,8 @@ class FlightsNavBarController {
 			}
 		});
 
-		this.socket.on("reconnect", (data) => {
+		// for reconnection
+		this.socket.on("connected", (data) => {
 			this.selectedFlights.forEach((flight) => {
 				if (flight.initilized) this.socket.emit('flightId', flight._id);
 			})

@@ -1,15 +1,16 @@
 <div class="messages-container" tabindex="-1" ng-class="{'md-whiteframe-1dp' : msg.isOpen, 'messages-focused': msg.isFocused}"
- ng-focus="msg.isFocused = true" ng-blur="msg.isFocused = false">
-	<md-button aria-label="toggle-messages" class="md-button-toggle" ng-click="msg.toggle()" ng-focus="msg.isFocused = true"
+ ng-focus="msg.isFocused = true; msg.newMsgCount = 0" ng-blur="msg.isFocused = false">
+	<md-button aria-label="toggle-messages" class="md-button-toggle" ng-click="msg.toggle()" ng-focus="msg.isFocused = true; msg.newMsgCount = 0"
 	 ng-blur="msg.isFocused = false">
 		Messages
+		<span class="msg-notification" ng-if="msg.newMsgCount > 0">{{msg.newMsgCount}}</span>
 		<md-icon md-font-icon="icon-chevron-up" class="md-toggle-icon" ng-class="{'toggled' : !msg.isOpen}"></md-icon>
 	</md-button>
 	<div class="messages" ng-class="{'messages-opened' : msg.isOpen}" flex>
 		<md-content flex layout="column" layout-padding>
-			<md-button aria-label="Load More Messages" ng-if="msg.messages.length >= 20" class="load-messages" ng-click="msg.loadOldMessages()" translate="DASHBOARD.LOADMESSAGE">
-			Load More Messages </md-button>
-			<!-- TODO: virtual repeat -->
+			<md-button aria-label="Load More Messages" ng-if="msg.messages.length >= 20" class="load-messages" ng-click="msg.loadOldMessages()"
+			 translate="DASHBOARD.LOADMESSAGE">
+				Load More Messages </md-button>
 			<div ng-repeat="message in msg.messages | orderBy: 'createdAt'  track by $index" class="align-left" ng-class="{'align-right': message.accountId === msg.accountId}">
 				<div class="message-username">{{ msg.team[message.accountId].function.name | uppercase }}</div>
 				<div class="wrap-message">
@@ -20,7 +21,7 @@
 		</md-content>
 		<div class="message-input" layout="row" layout-align="space-between" flex>
 			<input type="text" name="messageInput" ng-model="msg.newMessage" flex placeholder="Tapez votre message" ng-keyup="$event.keyCode === 13 && msg.sendMessage()"
-			 ng-focus="msg.isFocused = true" ng-blur="msg.isFocused = false">
+			 ng-focus="msg.isFocused = true; msg.newMsgCount = 0" ng-blur="msg.isFocused = false">
 			<md-button aria-label="reduce" class="md-icon-button" ngf-select>
 				<md-icon md-font-icon="icon-paperclip"></md-icon>
 			</md-button>
