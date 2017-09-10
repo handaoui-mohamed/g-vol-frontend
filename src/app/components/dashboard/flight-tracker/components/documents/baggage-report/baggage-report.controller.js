@@ -21,7 +21,10 @@ class BaggageReportController {
 			this.$scope.$apply(() => {
 				data = JSON.parse(data);
 				let baggageReport = data.baggageReport;
-				if (data.accountId !== this.$root.currentAccount._id) this.hasChanges = true;
+				if (data.accountId !== this.$root.currentAccount._id) {
+					this.hasChanges = true;
+					this.notification = true;
+				}
 				for (let key in baggageReport) {
 					if (baggageReport.hasOwnProperty(key)) {
 						this.flight.baggageReport[key] = baggageReport[key];

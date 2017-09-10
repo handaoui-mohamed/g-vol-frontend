@@ -23,14 +23,14 @@
 			</div>
 			<div layout="row" layout-align="space-between" layout-padding>
 				<div flex="50">
-					<flight-documents flight="ftVm.flight"></flight-documents>
+					<flight-documents notification="ftVm.flight.notification" flight="ftVm.flight"></flight-documents>
 				</div>
 				<div layout="column" flex="45">
 					<md-button aria-label="Flight's team" class="md-raised md-warn flight-team-button" ng-click="ftVm.openFlightTeam($event)">
 						<md-icon md-font-icon="icon-people"></md-icon>
 						Flight's team
 					</md-button>
-					<flight-checklist flex flight="ftVm.flight"></flight-checklist>
+					<flight-checklist notification="ftVm.flight.notification" flex flight="ftVm.flight"></flight-checklist>
 				</div>
 			</div>
 			<footer>

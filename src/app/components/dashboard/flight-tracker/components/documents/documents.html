@@ -1,6 +1,7 @@
 <div class="documents-container md-whiteframe-1dp" flex>
-	<baggage-report flight="docVm.flight" toggle="docVm.toggleDocument('baggageReport')" toggled="docVm.baggageReport"></baggage-report>
+	<baggage-report notification="docVm.flight.notification" flight="docVm.flight" toggle="docVm.toggleDocument('baggageReport')"
+	 toggled="docVm.baggageReport"></baggage-report>
 	<md-divider flex></md-divider>
-	<flight-info flight="docVm.flight" toggle="docVm.toggleDocument('flightInfo')" toggled="docVm.flightInfo"></flight-info>
+	<flight-info notification="docVm.flight.notification" flight="docVm.flight" toggle="docVm.toggleDocument('flightInfo')" toggled="docVm.flightInfo"></flight-info>
 	<md-divider flex></md-divider>
 </div>

@@ -6,6 +6,7 @@ let flightInfoComponent = {
 	bindings: {
 		flight: "=",
 		toggled: '=',
+		notification: "=",
 		toggle: "&"
 	},
 	template,

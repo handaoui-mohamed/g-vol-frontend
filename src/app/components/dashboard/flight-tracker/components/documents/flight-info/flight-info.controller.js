@@ -20,7 +20,11 @@ class FlightInfoController {
 			this.$scope.$apply(() => {
 				data = JSON.parse(data);
 				let flightInfo = data.flightInfo;
-				if (data.accountId !== this.$root.currentAccount._id) this.hasChanges = true;
+				if (data.accountId !== this.$root.currentAccount._id) {
+					this.hasChanges = true;
+					this.notification = true;
+				}
+				
 				for (let key in flightInfo) {
 					if (flightInfo.hasOwnProperty(key)) {
 						this.flight.flightInfo[key] = flightInfo[key];

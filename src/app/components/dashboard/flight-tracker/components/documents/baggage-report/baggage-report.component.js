@@ -6,6 +6,7 @@ let baggageReportComponent = {
 	bindings: {
 		flight: "=",
 		toggled: '=',
+		notification: '=',
 		toggle: "&"
 	},
 	template,
