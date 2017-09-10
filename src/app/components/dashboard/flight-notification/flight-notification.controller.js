@@ -5,17 +5,20 @@ class FlightNotificationController {
 		this.flightNotification = FlightNotification;
 		this.selectedFlights = [
 			{ _id: "flight id", flightNumber: "QR54654", messages: 120, flightInfo: true, baggageReport: true },
-			{ _id: "flight id2", flightNumber: "FR46548", messages: 220, flightInfo: false, baggageReport: true }
+			{ _id: "flight id2", flightNumber: "FR46548", messages: 220, flightInfo: false, baggageReport: true },
+			{ _id: "flight id3", flightNumber: "QR54654", messages: 120, flightInfo: true, baggageReport: true },
+			{ _id: "flight id4", flightNumber: "FR46548", messages: 220, flightInfo: false, baggageReport: true },
 		]
 	}
 
 	closeToast() {
-		this.$mdToast.hide()
+		this.$mdToast.hide();
+		this.flightNotification.clearAll();
 	}
 
 	dismiss(index) {
 		this.selectedFlights.splice(index, 1);
-		if(this.selectedFlights.length === 0) this.closeToast();
+		if (this.selectedFlights.length === 0) this.closeToast();
 	}
 }
 

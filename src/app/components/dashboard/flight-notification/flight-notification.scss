@@ -4,13 +4,20 @@
 	}
 	ul{
 		font-size: 1em;
-		margin-left: 0 !important;
-   		padding-left: 10px !important;
+		margin-left: 0px !important;
+		padding: 0 !important;
 		list-style-type: none !important;
 		margin-top: 0 !important;
 		li{
-			margin-bottom: 15px;
+			margin-bottom: 10px;
+			padding: 0 10px;
+			padding-bottom: 10px;
 		}
+	}
+
+	li:hover, li:focus{
+		background-color: rgba(255, 255, 255, 0.08) !important;
+		outline:0;
 	}
 
 	.notifications{

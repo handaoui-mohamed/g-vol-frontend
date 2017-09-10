@@ -21,7 +21,7 @@ class FlightNoticationService {
 	}
 
 	initSelectedFlights(flights) {
-		this.closeAll();
+		this.clearAll();
 		this.selectedFlights = flights.map((flight) => {
 			return {
 				_id: flight._id,
@@ -67,7 +67,7 @@ class FlightNoticationService {
 		return this.selectedFlights.find(flt => flt._id === flight._id);
 	}
 
-	closeAll() {
+	clearAll() {
 
 	}
 }
