@@ -1,7 +1,11 @@
 <div class="flight-info-accordion">
 	<div layout="column">
-		<md-button flex aria-label="toggle-flight-info" class="md-button-toggle" ng-click="fiVm.toggle()">
-			Flight Info
+		<md-button flex aria-label="toggle-flight-info" class="md-button-toggle" ng-click="fiVm.toggle(); 
+		fiVm.hasChanges = false">
+			<div>
+				<span>Flight Info</span>
+				<span class="flight-notification" ng-if="fiVm.hasChanges"></span>
+			</div>
 			<md-icon md-font-icon="icon-chevron-up " class="md-toggle-icon " ng-class="{ 'toggled' : !fiVm.toggled} "></md-icon>
 		</md-button>
 		<md-button flex aria-label="dialog-flight-info" class="document-edit-button" ng-if="fiVm.toggled" ng-click="fiVm.openFlightInfoDialog($event) ">

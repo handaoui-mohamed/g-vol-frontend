@@ -1,7 +1,10 @@
 <div class="baggage-report-accordion">
 	<div layout="column">
-		<md-button flex aria-label="toggle-baggage-report" class="md-button-toggle" ng-click="brVm.toggle()">
-			Baggage Report
+		<md-button flex aria-label="toggle-baggage-report" class="md-button-toggle" ng-click="brVm.toggle();brVm.hasChanges = false">
+			<div>
+				<span>Baggage Report</span>
+				<span class="flight-notification" ng-if="brVm.hasChanges"></span>
+			</div>
 			<md-icon md-font-icon="icon-chevron-up" class="md-toggle-icon" ng-class="{'toggled' : !brVm.toggled}"></md-icon>
 		</md-button>
 		<md-button flex aria-label="dialog-flight-info" class="document-edit-button" ng-if="brVm.toggled" ng-click="brVm.openBaggageReportDialog($event)">

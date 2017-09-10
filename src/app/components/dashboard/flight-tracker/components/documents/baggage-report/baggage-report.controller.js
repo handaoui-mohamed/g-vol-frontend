@@ -2,8 +2,9 @@ import BaggageReportDialogController from '../dialogs/baggage-report/baggage-rep
 import dialogTemplate from '../dialogs/baggage-report/baggage-report.html';
 
 class BaggageReportController {
-	constructor($scope, $mdDialog, SocketService) {
+	constructor($rootScope, $scope, $mdDialog, SocketService) {
 		'ngInject';
+		this.$root = $rootScope;
 		this.$mdDialog = $mdDialog;
 		this.$scope = $scope;
 		this.socket = SocketService.io;
@@ -11,13 +12,16 @@ class BaggageReportController {
 
 	$onInit() {
 		this.initBaggageReportSocket();
+		this.hasChanges = false;
 	}
 
 	initBaggageReportSocket() {
 		this.socket.on('baggage-report/' + this.flight._id, (data) => {
-			console.log("baggage",data);
+			console.log("baggage", data);
 			this.$scope.$apply(() => {
-				let baggageReport = JSON.parse(data).baggageReport;
+				data = JSON.parse(data);
+				let baggageReport = data.baggageReport;
+				if (data.accountId !== this.$root.currentAccount._id) this.hasChanges = true;
 				for (let key in baggageReport) {
 					if (baggageReport.hasOwnProperty(key)) {
 						this.flight.baggageReport[key] = baggageReport[key];
@@ -28,6 +32,7 @@ class BaggageReportController {
 	}
 
 	openBaggageReportDialog(ev) {
+		this.hasChanges = false;
 		this.$mdDialog.show({
 			controller: BaggageReportDialogController,
 			controllerAs: 'brdVm',

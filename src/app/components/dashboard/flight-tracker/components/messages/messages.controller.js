@@ -65,7 +65,7 @@ class FlightMessagesController {
 			this.$scope.$apply(() => {
 				if (!this.isFocused && this.$root.currentAccount._id !== newMessage.accountId)
 					this.newMsgCount++;
-
+				if (this.newMsgCount !== 0 /*and flight not focused*/) this.notification = true;
 				this.messages.push(newMessage);
 			})
 			this.messageContainer.scrollTop = this.messageContainer.scrollHeight;
