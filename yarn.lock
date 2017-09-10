@@ -90,10 +90,6 @@ angular-mocks@^1.6.5:
   version "1.6.5"
   resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.6.5.tgz#c62f8014cc6d3ed3fd1b383a634ca0009af3efee"
 
-angular-notification-icons@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/angular-notification-icons/-/angular-notification-icons-0.4.4.tgz#e3113b1843eda848f7a3495b06bad63a3786b7cd"
-
 angular-resource@^1.6.5:
   version "1.6.5"
   resolved "https://registry.yarnpkg.com/angular-resource/-/angular-resource-1.6.5.tgz#d1e712ab01afa5d2ec649f5e471673a704f2be40"
@@ -101,6 +97,10 @@ angular-resource@^1.6.5:
 angular-sanitize@^1.6.5:
   version "1.6.5"
   resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.6.5.tgz#b5625a817afad2ba58c333e98eef169a1c6f517a"
+
+angular-toastr@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/angular-toastr/-/angular-toastr-2.1.1.tgz#9f8350ca482145a44d011a755b8fb3623d60544c"
 
 angular-translate@^2.15.2:
   version "2.15.2"

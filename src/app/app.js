@@ -8,6 +8,7 @@ import ngResource from 'angular-resource';
 import mdDataTable from 'angular-material-data-table';
 import translate from 'angular-translate';
 import ngFileUpload from 'ng-file-upload';
+import toastr from 'angular-toastr';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
@@ -21,6 +22,7 @@ import socket from 'socket.io-client';
 import 'normalize.css';
 import 'angular-material/angular-material.css';
 import 'angular-material-data-table/dist/md-data-table.min.css';
+import 'angular-toastr/dist/angular-toastr.min.css';
 
 angular.module('app', [
   ngAnimate,
@@ -32,6 +34,7 @@ angular.module('app', [
   mdDataTable,
   translate,
   ngFileUpload,
+  toastr,
   Common,
   Components
 ])

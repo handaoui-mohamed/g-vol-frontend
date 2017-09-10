@@ -1,0 +1,43 @@
+.flight-notification{
+	md-icon{
+		color: #fff;
+	}
+	ul{
+		font-size: 1em;
+		margin-left: 0 !important;
+   		padding-left: 10px !important;
+		list-style-type: none !important;
+		margin-top: 0 !important;
+		li{
+			margin-bottom: 15px;
+		}
+	}
+
+	.notifications{
+		padding-left: 45px;
+	}
+
+	.md-toast-content{
+		max-height: max-content;
+		padding: 0;
+	}
+
+	.toast-notification-list{
+		margin-left: 20px;
+		margin-bottom: 5px;
+	}
+
+	.md-toast-text{
+		color: rgb(255,82,82);
+		font-size: 1.3em; 
+	}
+
+	.markasread-button{
+		font-size: 0.7em !important;
+		color: #FFC107 !important;
+		md-icon{
+			font-size: 2em !important;
+			color: #FFC107 !important;
+		}
+	}
+}

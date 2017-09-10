@@ -1,0 +1,27 @@
+<md-toast class="flight-notification">
+	<div layout="column" flex>
+		<div layout="row" layout-align="space-between center" flex>
+			<span class="md-toast-text" flex>Flights Notification</span>
+			<md-button aria-label="close button" class="md-icon-button" ng-click="toastVm.closeToast()">
+				<md-icon md-font-icon="icon-close"></md-icon>
+			</md-button>
+		</div>
+		<ul class="toast-notification-list">
+			<li class="pointer" ng-click="toastVm.dismiss($index)" ng-repeat="flight in toastVm.selectedFlights track by flight._id">
+				<div class="toast-flightNumber" flex layout="row" layout-align="space-between center">
+					<span flex><span>Flight:</span> {{flight.flightNumber}}</span>
+					<md-button aria-label="close button" class="markasread-button" ng-click="toastVm.dismiss($index)">
+						<md-icon md-font-icon="icon-transcribe-close"></md-icon>
+						<span>Mark as read</span>
+					</md-button>
+				</div>
+				<div class="notifications">
+					<div ng-if="flight.messages > 0"><span>New Messages :</span> {{flight.messages}}</div>
+					<div ng-if="flight.flightInfo">Flight Info updated</div>
+					<div ng-if="flight.baggageReport">Baggage Report updated</div>
+					<div>Other notifications</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</md-toast>

@@ -2,12 +2,13 @@ import FlightSelectionDialogController from '../dialogs/flight-selection/flight-
 import dialogTemplate from '../dialogs/flight-selection/flight-selection.html';
 
 class FlightsNavBarController {
-	constructor($window, $scope, $mdDialog, SocketService) {
+	constructor($window, $scope, $mdDialog, SocketService, FlightNotification) {
 		'ngInject';
 		this.$window = $window;
 		this.$mdDialog = $mdDialog;
 		this.$scope = $scope;
 		this.socket = SocketService.io;
+		this.flightNotification = FlightNotification;
 	}
 
 	$onInit() {
@@ -20,6 +21,7 @@ class FlightsNavBarController {
 				});
 			}
 		});
+		this.flightNotification.openToast();
 
 		// for reconnection
 		this.socket.on("connected", (data) => {
