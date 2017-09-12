@@ -21,7 +21,6 @@ class FlightsNavBarController {
 				});
 			}
 		});
-		this.flightNotification.openToast();
 
 		// for reconnection
 		this.socket.on("connected", (data) => {
@@ -51,6 +50,7 @@ class FlightsNavBarController {
 			}
 		}).then((selectedFlights) => {
 			this.selectedFlights = angular.copy(selectedFlights || []);
+			this.flightNotification.initSelectedFlights(this.selectedFlights);
 		}, (msg) => { });
 	}
 }

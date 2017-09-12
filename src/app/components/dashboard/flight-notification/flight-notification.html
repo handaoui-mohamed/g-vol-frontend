@@ -7,19 +7,22 @@
 			</md-button>
 		</div>
 		<ul class="toast-notification-list">
-			<li class="pointer" ng-click="toastVm.dismiss($index)" ng-repeat="flight in toastVm.selectedFlights track by flight._id">
+			<li class="pointer" ng-click="toastVm.dismiss(flight)" ng-repeat="flight in toastVm.selectedFlights track by flight._id"
+			 ng-if="flight.showNotification">
 				<div class="toast-flightNumber" flex layout="row" layout-align="space-between center">
 					<span flex><span>Flight:</span> {{flight.flightNumber}}</span>
-					<md-button aria-label="close button" class="markasread-button" ng-click="toastVm.dismiss($index)">
+					<div class="mark-as-read">
 						<md-icon md-font-icon="icon-transcribe-close"></md-icon>
 						<span>Mark as read</span>
-					</md-button>
+					</div>
 				</div>
 				<div class="notifications">
 					<div ng-if="flight.messages > 0"><span>New Messages :</span> {{flight.messages}}</div>
 					<div ng-if="flight.flightInfo">Flight Info updated</div>
 					<div ng-if="flight.baggageReport">Baggage Report updated</div>
-					<div>Other notifications</div>
+					<div ng-if="flight.paxReport">Pax Report updated</div>
+					<div ng-if="flight.DocumentState">Document state updated</div>
+					<div ng-if="flight.other">Other notifications</div>
 				</div>
 			</li>
 		</ul>

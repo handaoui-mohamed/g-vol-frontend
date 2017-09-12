@@ -1,5 +1,5 @@
 class FlightMessagesController {
-	constructor($rootScope, $scope, $element, $timeout, $filter, $window, SocketService, Toast, MessageService) {
+	constructor($rootScope, $scope, $element, $timeout, $filter, $window, SocketService, Toast, MessageService, FlightNotification) {
 		'ngInject';
 		this.$root = $rootScope;
 		this.$element = $element;
@@ -10,6 +10,7 @@ class FlightMessagesController {
 		this.socket = SocketService.io;
 		this.messageService = MessageService;
 		this.toast = Toast;
+		this.flightNotification = FlightNotification;
 	}
 
 	$onInit() {
@@ -63,8 +64,10 @@ class FlightMessagesController {
 			let newMessage = data.message;
 			newMessage.sentAt = this.convertDate(newMessage.createdAt);
 			this.$scope.$apply(() => {
-				if (!this.isFocused && this.$root.currentAccount._id !== newMessage.accountId)
+				if (!this.isFocused && this.$root.currentAccount._id !== newMessage.accountId) {
 					this.newMsgCount++;
+					this.flightNotification.newMessage(this.flightId);
+				}
 				if (this.newMsgCount !== 0 /*and flight not focused*/) this.notification = true;
 				this.messages.push(newMessage);
 			})
@@ -76,6 +79,11 @@ class FlightMessagesController {
 	toggle() {
 		this.isOpen = !this.isOpen;
 		if (this.isOpen) this.scrollToBottom();
+	}
+
+	initMessagesCount() {
+		this.newMsgCount = 0;
+		this.flightNotification.initMessages(this.flightId);
 	}
 
 	scrollToBottom() {

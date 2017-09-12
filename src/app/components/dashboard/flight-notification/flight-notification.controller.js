@@ -3,22 +3,18 @@ class FlightNotificationController {
 		'ngInject';
 		this.$mdToast = $mdToast;
 		this.flightNotification = FlightNotification;
-		this.selectedFlights = [
-			{ _id: "flight id", flightNumber: "QR54654", messages: 120, flightInfo: true, baggageReport: true },
-			{ _id: "flight id2", flightNumber: "FR46548", messages: 220, flightInfo: false, baggageReport: true },
-			{ _id: "flight id3", flightNumber: "QR54654", messages: 120, flightInfo: true, baggageReport: true },
-			{ _id: "flight id4", flightNumber: "FR46548", messages: 220, flightInfo: false, baggageReport: true },
-		]
+		this.selectedFlights = FlightNotification.selectedFlights;
 	}
 
 	closeToast() {
 		this.$mdToast.hide();
-		this.flightNotification.clearAll();
+		this.flightNotification.toastIsOpen = false;
+		this.flightNotification.initAll();
 	}
 
-	dismiss(index) {
-		this.selectedFlights.splice(index, 1);
-		if (this.selectedFlights.length === 0) this.closeToast();
+	dismiss(flight) {
+		this.flightNotification.initFlight(flight);
+		if (!this.flightNotification.stillNotifications()) this.closeToast();
 	}
 }
 

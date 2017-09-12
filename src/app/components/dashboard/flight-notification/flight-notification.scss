@@ -39,11 +39,12 @@
 		font-size: 1.3em; 
 	}
 
-	.markasread-button{
-		font-size: 0.7em !important;
+	.mark-as-read{
+		font-size: 1em !important;
 		color: #FFC107 !important;
 		md-icon{
-			font-size: 2em !important;
+    		margin-right: -10px;
+			font-size: 1em !important;
 			color: #FFC107 !important;
 		}
 	}
