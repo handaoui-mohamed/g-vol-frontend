@@ -1,0 +1,32 @@
+<div class="offload-report-accordion">
+	<div layout="column">
+		<md-button ng-disabled="true" flex aria-label="toggle-offload-report" class="md-button-toggle" ng-click="ofVm.toggle(); 
+		ofVm.removeNotification()">
+			<div>
+				<span>Offload Report</span>
+				<span class="flight-notification" ng-if="ofVm.hasChanges"></span>
+			</div>
+			<md-icon md-font-icon="icon-chevron-up " class="md-toggle-icon " ng-class="{ 'toggled' : !ofVm.toggled} "></md-icon>
+		</md-button>
+	</div>
+	<md-content ng-class="{ 'content-opened' : ofVm.toggled} ">
+		<table>
+			<tr>
+				<td>Total Offload Baggages</td>
+				<td>{{ofVm.flight.offloadReport.totalBaggageOffload}}</td>
+			</tr>
+			<tr>
+				<td>Crew Baggage</td>
+				<td>{{ofVm.flight.offloadReport.crewBaggage}}</td>
+			</tr>
+			<tr>
+				<td>DAA</td>
+				<td>{{ofVm.flight.offloadReport.daa}}</td>
+			</tr>
+			<tr>
+				<td>Rush</td>
+				<td>{{ofVm.flight.offloadReport.rush}}</td>
+			</tr>
+		</table>
+	</md-content>
+</div>

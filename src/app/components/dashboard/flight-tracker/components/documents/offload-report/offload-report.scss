@@ -1,0 +1,10 @@
+.offload-report-accordion{
+	md-content{
+    	overflow-y: hidden !important;
+	}
+
+	.content-opened{
+		height: 145px !important;
+		padding: 5px 5px 0 5px !important;
+	}
+}
