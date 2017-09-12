@@ -56,38 +56,20 @@ class FlightNoticationService {
 		}
 	}
 
-	// flights notification
-	newFlightInfo(flightId) {
+	// document notification
+	documentUpdate(flightId, type) {
 		let selectedFlight = this.getSelectedFlight(flightId);
 		if (selectedFlight) {
-			selectedFlight.flightInfo = true;
+			selectedFlight[type] = true;
 			selectedFlight.showNotification = true;
 			if (!this.toastIsOpen) this.openToast();
 		}
 	}
 
-	initFlightInfo(flightId) {
+	initDocument(flightId, type) {
 		let selectedFlight = this.getSelectedFlight(flightId);
 		if (selectedFlight) {
-			selectedFlight.flightInfo = false;
-			this.shouldCloseToast(selectedFlight);
-		}
-	}
-
-	// baggage report notification
-	newBaggageReport(flightId) {
-		let selectedFlight = this.getSelectedFlight(flightId);
-		if (selectedFlight) {
-			selectedFlight.baggageReport = true;
-			selectedFlight.showNotification = true;
-			if (!this.toastIsOpen) this.openToast();
-		}
-	}
-
-	initBaggageReport(flightId) {
-		let selectedFlight = this.getSelectedFlight(flightId);
-		if (selectedFlight) {
-			selectedFlight.baggageReport = false;
+			selectedFlight[type] = false;
 			this.shouldCloseToast(selectedFlight);
 		}
 	}
@@ -121,7 +103,8 @@ class FlightNoticationService {
 			selectedFlight &&
 			selectedFlight.messages === 0 &&
 			!selectedFlight.flightInfo &&
-			!selectedFlight.baggageReport
+			!selectedFlight.baggageReport &&
+			!selectedFlight.paxReport
 		)
 	}
 

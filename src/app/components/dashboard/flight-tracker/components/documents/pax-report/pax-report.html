@@ -1,0 +1,32 @@
+<div class="pax-report-accordion">
+	<div layout="column">
+		<md-button flex aria-label="toggle-pax-report" class="md-button-toggle" ng-click="prVm.toggle(); 
+		prVm.removeNotification()">
+			<div>
+				<span>Pax Report</span>
+				<span class="flight-notification" ng-if="prVm.hasChanges"></span>
+			</div>
+			<md-icon md-font-icon="icon-chevron-up " class="md-toggle-icon " ng-class="{ 'toggled' : !prVm.toggled} "></md-icon>
+		</md-button>
+	</div>
+	<md-content ng-class="{ 'content-opened' : prVm.toggled} ">
+		<table>
+			<tr>
+				<td>Total Pax Baggages</td>
+				<td>{{prVm.flight.paxReport.totalBaggagePax}}</td>
+			</tr>
+			<tr>
+				<td>Crew Baggage</td>
+				<td>{{prVm.flight.paxReport.crewBaggage}}</td>
+			</tr>
+			<tr>
+				<td>DAA</td>
+				<td>{{prVm.flight.paxReport.daa}}</td>
+			</tr>
+			<tr>
+				<td>Rush</td>
+				<td>{{prVm.flight.paxReport.rush}}</td>
+			</tr>
+		</table>
+	</md-content>
+</div>

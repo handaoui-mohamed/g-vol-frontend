@@ -35,13 +35,13 @@
 				<td>{{row.position}}</td>
 				<td>{{row.nbPieces}}</td>
 				<td>
-					<md-button flex aria-label="Remove row" class="md-warn remove-row-button" ng-click="brdVm.removeRowFromBaggageReport($index)">
+					<md-button flex aria-label="Remove row" class="md-warn remove-row-button" ng-click="brdVm.removeRow($index)">
 						<md-icon md-font-icon="icon-table-row-remove" class="icon s32"></md-icon>
 					</md-button>
 				</td>
 			</tr>
 		</table>
-		<md-button flex aria-label="Add new row" class="md-primary new-row-button" ng-click="brdVm.addEmptyRowToBaggageReport()">
+		<md-button flex aria-label="Add new row" class="md-primary new-row-button" ng-click="brdVm.addEmptyRowt()">
 			<md-icon md-font-icon="icon-table-row-plus-after"></md-icon>
 			Add new row
 		</md-button>

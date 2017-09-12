@@ -24,7 +24,7 @@ class FlightInfoController {
 				if (data.accountId !== this.$root.currentAccount._id) {
 					this.hasChanges = true;
 					this.notification = true;
-					this.flightNotification.newFlightInfo(this.flight._id);
+					this.flightNotification.documentUpdate(this.flight._id, 'flightInfo');
 				}
 
 				for (let key in flightInfo) {
@@ -54,7 +54,7 @@ class FlightInfoController {
 
 	removeNotification() {
 		this.hasChanges = false;
-		this.flightNotification.initFlightInfo(this.flight._id);
+		this.flightNotification.initDocument(this.flight._id, 'flightInfo');
 	}
 }
 

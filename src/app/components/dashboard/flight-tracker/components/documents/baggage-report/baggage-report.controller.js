@@ -25,7 +25,7 @@ class BaggageReportController {
 				if (data.accountId !== this.$root.currentAccount._id) {
 					this.hasChanges = true;
 					this.notification = true;
-					this.flightNotification.newBaggageReport(this.flight._id);
+					this.flightNotification.documentUpdate(this.flight._id, 'baggageReport');
 				}
 				for (let key in baggageReport) {
 					if (baggageReport.hasOwnProperty(key)) {
@@ -54,7 +54,7 @@ class BaggageReportController {
 
 	removeNotification() {
 		this.hasChanges = false;
-		this.flightNotification.initBaggageReport(this.flight._id);
+		this.flightNotification.initDocument(this.flight._id, 'baggageReport');
 	}
 }
 

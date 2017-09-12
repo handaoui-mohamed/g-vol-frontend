@@ -8,7 +8,7 @@ class BaggageReportDialogController {
 		this.documentsService = DocumentsService;
 		this.flight = Flight;
 		this.baggageReport = angular.copy(this.flight.baggageReport);
-		if (this.baggageReport.table.length === 0) this.addEmptyRowToBaggageReport();
+		if (this.baggageReport.table.length === 0) this.addEmptyRow();
 	}
 
 	submit() {
@@ -29,11 +29,11 @@ class BaggageReportDialogController {
 		return this.documentsService.save({ flightId: this.flight._id, type: 'br' }, this.baggageReport).$promise;
 	}
 
-	addEmptyRowToBaggageReport() {
+	addEmptyRow() {
 		this.baggageReport.table.push({});
 	}
 
-	removeRowFromBaggageReport(index) {
+	removeRow(index) {
 		this.baggageReport.table.splice(index, 1);
 		if (this.baggageReport.table.length === 0) this.baggageReport.table.push({});
 	}
