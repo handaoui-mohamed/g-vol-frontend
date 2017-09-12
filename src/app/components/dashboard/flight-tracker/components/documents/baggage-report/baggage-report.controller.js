@@ -22,11 +22,7 @@ class BaggageReportController {
 			this.$scope.$apply(() => {
 				data = JSON.parse(data);
 				let baggageReport = data.baggageReport;
-				if (data.accountId !== this.$root.currentAccount._id) {
-					this.hasChanges = true;
-					this.notification = true;
-					this.flightNotification.documentUpdate(this.flight._id, 'baggageReport');
-				}
+				this.showNotification(data.accountId);
 				for (let key in baggageReport) {
 					if (baggageReport.hasOwnProperty(key)) {
 						this.flight.baggageReport[key] = baggageReport[key];
@@ -55,6 +51,14 @@ class BaggageReportController {
 	removeNotification() {
 		this.hasChanges = false;
 		this.flightNotification.initDocument(this.flight._id, 'baggageReport');
+	}
+
+	showNotification(accountId) {
+		if (accountId !== this.$root.currentAccount._id) {
+			this.hasChanges = true;
+			this.notification = true;
+			this.flightNotification.documentUpdate(this.flight._id, 'baggageReport');
+		}
 	}
 }
 

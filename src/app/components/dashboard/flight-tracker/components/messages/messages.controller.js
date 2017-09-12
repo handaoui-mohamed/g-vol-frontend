@@ -64,11 +64,7 @@ class FlightMessagesController {
 			let newMessage = data.message;
 			newMessage.sentAt = this.convertDate(newMessage.createdAt);
 			this.$scope.$apply(() => {
-				if (!this.isFocused && this.$root.currentAccount._id !== newMessage.accountId) {
-					this.newMsgCount++;
-					this.flightNotification.newMessage(this.flightId);
-				}
-				if (this.newMsgCount !== 0 /*and flight not focused*/) this.notification = true;
+				this.showNotification(newMessage.accountId);
 				this.messages.push(newMessage);
 			})
 			this.messageContainer.scrollTop = this.messageContainer.scrollHeight;
@@ -84,6 +80,14 @@ class FlightMessagesController {
 	removeNotification() {
 		this.newMsgCount = 0;
 		this.flightNotification.initMessages(this.flightId);
+	}
+
+	showNotification(accountId) {
+		if (!this.isFocused && this.$root.currentAccount._id !== accountId) {
+			this.newMsgCount++;
+			this.flightNotification.newMessage(this.flightId);
+		}
+		if (this.newMsgCount !== 0 /*and flight not focused*/) this.notification = true;
 	}
 
 	scrollToBottom() {

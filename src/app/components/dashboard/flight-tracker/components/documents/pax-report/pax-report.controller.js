@@ -17,12 +17,7 @@ class PaxReportController {
 			this.$scope.$apply(() => {
 				data = JSON.parse(data);
 				let paxReport = data.paxReport;
-				if (data.accountId !== this.$root.currentAccount._id) {
-					this.hasChanges = true;
-					this.notification = true;
-					this.flightNotification.documentUpdate(this.flight._id, 'paxReport');
-				}
-
+				this.showNotification();
 				for (let key in paxReport) {
 					if (paxReport.hasOwnProperty(key)) {
 						this.flight.paxReport[key] = paxReport[key];
@@ -30,6 +25,12 @@ class PaxReportController {
 				}
 			})
 		});
+	}
+
+	showNotification(data) {
+		this.hasChanges = true;
+		this.notification = true;
+		this.flightNotification.documentUpdate(this.flight._id, 'paxReport');
 	}
 
 	removeNotification() {

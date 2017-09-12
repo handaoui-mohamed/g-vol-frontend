@@ -21,12 +21,7 @@ class FlightInfoController {
 			this.$scope.$apply(() => {
 				data = JSON.parse(data);
 				let flightInfo = data.flightInfo;
-				if (data.accountId !== this.$root.currentAccount._id) {
-					this.hasChanges = true;
-					this.notification = true;
-					this.flightNotification.documentUpdate(this.flight._id, 'flightInfo');
-				}
-
+				this.showNotification(data.accountId);
 				for (let key in flightInfo) {
 					if (flightInfo.hasOwnProperty(key)) {
 						this.flight.flightInfo[key] = flightInfo[key];
@@ -55,6 +50,14 @@ class FlightInfoController {
 	removeNotification() {
 		this.hasChanges = false;
 		this.flightNotification.initDocument(this.flight._id, 'flightInfo');
+	}
+
+	showNotification(accoutId) {
+		if (accountId !== this.$root.currentAccount._id) {
+			this.hasChanges = true;
+			this.notification = true;
+			this.flightNotification.documentUpdate(this.flight._id, 'flightInfo');
+		}
 	}
 }
 
