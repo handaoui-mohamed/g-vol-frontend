@@ -11,6 +11,17 @@ class FlightTrackerController {
 	}
 
 	$onInit() {
+		this.status = [{
+			translate: 'FLIGHT.STATUS.NEW',
+			value: 'new'
+		}, {
+			translate: 'FLIGHT.STATUS.INPROGRESS',
+			value: 'inprogress'
+		}, {
+			translate: 'FLIGHT.STATUS.DONE',
+			value: 'done'
+		}];
+
 		this.flight.formattedSta = this.insert(this.flight.sta, 2, ':');
 		this.flight.formattedStd = this.insert(this.flight.std, 2, ':');
 		if (this.flight.status !== "new") {
@@ -73,6 +84,27 @@ class FlightTrackerController {
 				FlightId: this.flight._id
 			}
 		}).then((team) => { }, (msg) => { });
+	}
+
+	openFlightStatusDialog(ev) {
+		console.log('here')
+		let confirm = this.$mdDialog.prompt()
+			.title('Are you sure you want to close this flight?')
+			.textContent('Add a comment if needed:')
+			.placeholder('Comment')
+			.ariaLabel('Comment')
+			.initialValue('')
+			.targetEvent(ev)
+			.parent(angular.element(document.querySelector('#flight-' + this.flight._id)))
+			.ok('Close Fligth')
+			.cancel('Cancel');
+
+		this.$mdDialog.show(confirm).then((result) => {
+			console.log(result);
+			// this.flightService.update({ flightId: this.flight._id }, (data) => {
+
+			// }, (error) => { this.toast.error(error) });
+		}, () => { });
 	}
 }
 

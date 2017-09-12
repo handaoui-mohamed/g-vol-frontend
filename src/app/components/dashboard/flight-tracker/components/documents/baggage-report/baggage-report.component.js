@@ -5,9 +5,7 @@ import './baggage-report.scss';
 let baggageReportComponent = {
 	bindings: {
 		flight: "=",
-		toggled: '=',
 		notification: '=',
-		toggle: "&"
 	},
 	template,
 	controller,
