@@ -1,7 +1,7 @@
 <div class="flight-info-accordion">
 	<div layout="column">
 		<md-button flex aria-label="toggle-flight-info" class="md-button-toggle" ng-click="fiVm.toggle(); 
-		fiVm.hasChanges = false">
+		fiVm.removeNotification()">
 			<div>
 				<span>Flight Info</span>
 				<span class="flight-notification" ng-if="fiVm.hasChanges"></span>

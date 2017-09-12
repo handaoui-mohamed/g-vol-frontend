@@ -2,17 +2,18 @@ import FlightInfoDialogController from '../dialogs/flight-info/flight-info.contr
 import dialogTemplate from '../dialogs/flight-info/flight-info.html';
 
 class FlightInfoController {
-	constructor($rootScope, $scope, $mdDialog, SocketService) {
+	constructor($rootScope, $scope, $mdDialog, SocketService, FlightNotification) {
 		'ngInject';
 		this.$root = $rootScope;
 		this.$mdDialog = $mdDialog;
 		this.$scope = $scope;
 		this.socket = SocketService.io;
+		this.flightNotification = FlightNotification;
 	}
 
 	$onInit() {
 		this.initFlightInfoSocket();
-		this.hasChanges = false;
+		this.removeNotification();
 	}
 
 	initFlightInfoSocket() {
@@ -23,8 +24,9 @@ class FlightInfoController {
 				if (data.accountId !== this.$root.currentAccount._id) {
 					this.hasChanges = true;
 					this.notification = true;
+					this.flightNotification.newFlightInfo(this.flight._id);
 				}
-				
+
 				for (let key in flightInfo) {
 					if (flightInfo.hasOwnProperty(key)) {
 						this.flight.flightInfo[key] = flightInfo[key];
@@ -48,6 +50,11 @@ class FlightInfoController {
 				Flight: this.flight,
 			}
 		}).then((flightInfo) => { }, (msg) => { });
+	}
+
+	removeNotification() {
+		this.hasChanges = false;
+		this.flightNotification.initFlightInfo(this.flight._id);
 	}
 }
 

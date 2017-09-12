@@ -2,17 +2,18 @@ import BaggageReportDialogController from '../dialogs/baggage-report/baggage-rep
 import dialogTemplate from '../dialogs/baggage-report/baggage-report.html';
 
 class BaggageReportController {
-	constructor($rootScope, $scope, $mdDialog, SocketService) {
+	constructor($rootScope, $scope, $mdDialog, SocketService, FlightNotification) {
 		'ngInject';
 		this.$root = $rootScope;
 		this.$mdDialog = $mdDialog;
 		this.$scope = $scope;
 		this.socket = SocketService.io;
+		this.flightNotification = FlightNotification;
 	}
 
 	$onInit() {
 		this.initBaggageReportSocket();
-		this.hasChanges = false;
+		this.removeNotification();
 	}
 
 	initBaggageReportSocket() {
@@ -24,6 +25,7 @@ class BaggageReportController {
 				if (data.accountId !== this.$root.currentAccount._id) {
 					this.hasChanges = true;
 					this.notification = true;
+					this.flightNotification.newBaggageReport(this.flight._id);
 				}
 				for (let key in baggageReport) {
 					if (baggageReport.hasOwnProperty(key)) {
@@ -35,7 +37,7 @@ class BaggageReportController {
 	}
 
 	openBaggageReportDialog(ev) {
-		this.hasChanges = false;
+		this.removeNotification();
 		this.$mdDialog.show({
 			controller: BaggageReportDialogController,
 			controllerAs: 'brdVm',
@@ -48,6 +50,11 @@ class BaggageReportController {
 				Flight: this.flight,
 			}
 		}).then((baggageReport) => { }, (msg) => { });
+	}
+
+	removeNotification() {
+		this.hasChanges = false;
+		this.flightNotification.initBaggageReport(this.flight._id);
 	}
 }
 

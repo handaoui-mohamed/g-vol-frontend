@@ -81,7 +81,7 @@ class FlightMessagesController {
 		if (this.isOpen) this.scrollToBottom();
 	}
 
-	initMessagesCount() {
+	removeNotification() {
 		this.newMsgCount = 0;
 		this.flightNotification.initMessages(this.flightId);
 	}

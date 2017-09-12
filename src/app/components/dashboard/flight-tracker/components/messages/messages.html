@@ -1,6 +1,6 @@
 <div class="messages-container" tabindex="-1" ng-class="{'md-whiteframe-1dp' : msg.isOpen, 'messages-focused': msg.isFocused}"
- ng-focus="msg.isFocused = true; msg.initMessagesCount()" ng-blur="msg.isFocused = false">
-	<md-button aria-label="toggle-messages" class="md-button-toggle" ng-click="msg.toggle()" ng-focus="msg.isFocused = true; msg.initMessagesCount()"
+ ng-focus="msg.isFocused = true; msg.removeNotification()" ng-blur="msg.isFocused = false">
+	<md-button aria-label="toggle-messages" class="md-button-toggle" ng-click="msg.toggle()" ng-focus="msg.isFocused = true; msg.removeNotification()"
 	 ng-blur="msg.isFocused = false">
 		Messages
 		<span class="msg-notification" ng-if="msg.newMsgCount > 0">{{msg.newMsgCount}}</span>
@@ -21,7 +21,7 @@
 		</md-content>
 		<div class="message-input" layout="row" layout-align="space-between" flex>
 			<input type="text" name="messageInput" ng-model="msg.newMessage" flex placeholder="Tapez votre message" ng-keyup="$event.keyCode === 13 && msg.sendMessage()"
-			 ng-focus="msg.isFocused = true; msg.initMessagesCount()" ng-blur="msg.isFocused = false">
+			 ng-focus="msg.isFocused = true; msg.removeNotification()" ng-blur="msg.isFocused = false">
 			<md-button aria-label="reduce" class="md-icon-button" ngf-select>
 				<md-icon md-font-icon="icon-paperclip"></md-icon>
 			</md-button>

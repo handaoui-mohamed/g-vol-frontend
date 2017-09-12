@@ -1,6 +1,6 @@
 <div class="baggage-report-accordion">
 	<div layout="column">
-		<md-button flex aria-label="toggle-baggage-report" class="md-button-toggle" ng-click="brVm.toggle();brVm.hasChanges = false">
+		<md-button flex aria-label="toggle-baggage-report" class="md-button-toggle" ng-click="brVm.toggle();brVm.removeNotification()">
 			<div>
 				<span>Baggage Report</span>
 				<span class="flight-notification" ng-if="brVm.hasChanges"></span>
