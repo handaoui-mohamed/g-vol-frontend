@@ -26,7 +26,7 @@ class flightSelectionController {
 			translate: 'FLIGHT.STATUS.DONE',
 			value: 'done'
 		}];
-		let today = new Date((new Date()).toLocaleDateString());
+		let today = new Date();
 		this.selectedArrivalDates = { start: today };
 		this.selectedDepartureDates = { start: today };
 		this.getFlights();
@@ -59,6 +59,7 @@ class flightSelectionController {
 			this.initSelection();
 		}, (error) => {
 			this.toast.serverError(error);
+			console.log(error);
 		}).$promise;
 	}
 
