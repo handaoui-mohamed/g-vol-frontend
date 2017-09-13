@@ -1,5 +1,5 @@
-import OffloadReportDialogController from '../dialogs/offload-report/offload-report.controller';
-import dialogTemplate from '../dialogs/offload-report/offload-report.html';
+import OffloadReportDialogController from './dialog/offload-report.controller';
+import dialogTemplate from './dialog/offload-report.html';
 
 class OffloadReportController {
 	constructor($rootScope, $scope, $mdDialog, SocketService, FlightNotification, OffloadReport) {

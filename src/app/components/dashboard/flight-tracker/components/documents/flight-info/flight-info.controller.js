@@ -1,5 +1,5 @@
-import FlightInfoDialogController from '../dialogs/flight-info/flight-info.controller';
-import dialogTemplate from '../dialogs/flight-info/flight-info.html';
+import FlightInfoDialogController from './dialog/flight-info.controller';
+import dialogTemplate from './dialog/flight-info.html';
 
 class FlightInfoController {
 	constructor($rootScope, $scope, $mdDialog, SocketService, FlightNotification) {
