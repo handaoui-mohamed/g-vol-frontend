@@ -12,31 +12,24 @@ class FlightProgressController {
 	}
 
 	calculateProgress() {
-		let nbDocuments = 0;
+		let nbDocuments = 3;
 		let finishedDocuments = 0;
-		if (this.flight.flightInfo && this.flight.flightInfo.status) {
-			nbDocuments++; finishedDocuments++;
-		}
-		if (this.flight.baggageReport && this.flight.baggageReport.status) {
-			nbDocuments++; finishedDocuments++;
-		}
 
-		if (this.flight.offloadList && this.flight.offloadList.status) {
-			nbDocuments++; finishedDocuments++;
-		}
+		if (this.flight.flightInfo && this.flight.flightInfo.status) finishedDocuments++;
+		if (this.flight.baggageReport && this.flight.baggageReport.status) finishedDocuments++;
+		if (this.flight.paxReport && this.flight.paxReport.status) finishedDocuments++;
 
-		if (this.flight.paxReport && this.flight.paxReport.status) {
-			nbDocuments++; finishedDocuments++;
+		if (this.flight.offloadList) {
+			nbDocuments++;
+			if (this.flight.offloadList.status) finishedDocuments++;
 		}
-
+		
 		if (this.flight.otherDocuments) {
 			nbDocuments += this.flight.otherDocuments.length;
 			this.flight.otherDocuments.forEach((document) => {
 				if (document.status) finishedDocuments++;
 			})
 		}
-
-		console.log("here", finishedDocuments, nbDocuments, nbDocuments * 100 / finishedDocuments);
 		return finishedDocuments ? finishedDocuments * 100 / nbDocuments : 0;
 	}
 }
