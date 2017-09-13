@@ -8,6 +8,8 @@ import MessageService from './services/messages.service';
 import FlightTeamService from './services/flight-team.service';
 import FlightDocumentsService from './services/flight-document.service';
 import FlightNotificationService from './flight-notification/flight-notification.service';
+import FlightStatusService from './services/flight-status.service';
+import OffloadReportGenerator from './services/offloadReport.service';
 
 // translations
 import en from './i18n/en.json';
@@ -30,7 +32,9 @@ let dashboardModule = angular
   .factory('MessageService', MessageService)
   .factory('FlightTeamService', FlightTeamService)
   .factory('DocumentsService', FlightDocumentsService)
+  .factory('FlightStatusService', FlightStatusService)
   .service('FlightNotification', FlightNotificationService)
+  .service('OffloadReport', OffloadReportGenerator)
   .component('flightsNavBar', flightNavBarComponent)
   .component('dashboard', dashboardComponent).name;
 

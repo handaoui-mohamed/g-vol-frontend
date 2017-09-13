@@ -14,13 +14,7 @@
 			<md-button aria-label="Initilize flight" ng-click="ftVm.initFlight()" class="md-raised md-warn"> Initilize flight </md-button>
 		</div>
 		<div ng-if="ftVm.flight.initilized || ftVm.flight.status !== 'new'">
-			<div layout="column" layout-padding>
-				<div layout="row" layout-align="space-between end">
-					<span>{{ftVm.flight.formattedSta}}</span>
-					<span>{{ftVm.flight.formattedStd}}</span>
-				</div>
-				<md-progress-linear md-mode="determinate" value="65" class="flight-progress"></md-progress-linear>
-			</div>
+			<flight-progress flight="ftVm.flight"></flight-progress>
 			<div layout="row" layout-align="space-between" layout-padding>
 				<div flex="50" layout="column">
 					<div layout="column">
@@ -32,10 +26,11 @@
 					<flight-documents notification="ftVm.flight.notification" flight="ftVm.flight"></flight-documents>
 				</div>
 				<div layout="column" flex="45">
-					<md-button class="md-raised md-warn close-flight-button" ng-click="ftVm.openFlightStatusDialog($event)">
+					<md-button ng-if="ftVm.flight.status !== 'done'" class="md-raised md-warn close-flight-button" ng-click="ftVm.openFlightStatusDialog($event)">
 						<md-icon md-font-icon="icon-close-network"></md-icon>
 						Close flight
 					</md-button>
+					<md-button ng-if="ftVm.flight.status === 'done'" aria-label="Reopen Flight" ng-click="ftVm.reopenFlight()" class="md-raised md-warn close-flight-button"> Reopen Flight </md-button>
 					<flight-checklist notification="ftVm.flight.notification" flex flight="ftVm.flight"></flight-checklist>
 				</div>
 			</div>

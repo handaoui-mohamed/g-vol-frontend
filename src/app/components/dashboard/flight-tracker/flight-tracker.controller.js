@@ -2,10 +2,12 @@ import FlightTeamDialog from './components/team-dialog/team-dialog.controller';
 import dialogTemplate from './components/team-dialog/team-dialog.html';
 
 class FlightTrackerController {
-	constructor($mdDialog, DocumentsService, SocketService, FlightTeamService) {
+	constructor($mdDialog, FlightService, FlightTeamService, DocumentsService, SocketService, FlightStatusService) {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
 		this.socket = SocketService.io;
+		this.flightService = FlightService;
+		this.flightStatusService = FlightStatusService;
 		this.flightTeamService = FlightTeamService;
 		this.documentsService = DocumentsService;
 	}
@@ -22,8 +24,6 @@ class FlightTrackerController {
 			value: 'done'
 		}];
 
-		this.flight.formattedSta = this.insert(this.flight.sta, 2, ':');
-		this.flight.formattedStd = this.insert(this.flight.std, 2, ':');
 		if (this.flight.status !== "new") {
 			this.joinFlight();
 			this.flight.queryDocuments = true;
@@ -66,10 +66,6 @@ class FlightTrackerController {
 		this.openedFlights--;
 	}
 
-	insert(str, index, value) {
-		return str.substr(0, index) + value + str.substr(index);
-	}
-
 	openFlightTeam(ev) {
 		this.$mdDialog.show({
 			controller: FlightTeamDialog,
@@ -87,24 +83,33 @@ class FlightTrackerController {
 	}
 
 	openFlightStatusDialog(ev) {
-		console.log('here')
 		let confirm = this.$mdDialog.prompt()
 			.title('Are you sure you want to close this flight?')
 			.textContent('Add a comment if needed:')
 			.placeholder('Comment')
 			.ariaLabel('Comment')
-			.initialValue('')
+			.initialValue(this.flight.comment)
 			.targetEvent(ev)
 			.parent(angular.element(document.querySelector('#flight-' + this.flight._id)))
-			.ok('Close Fligth')
+			.clickOutsideToClose(true)
+			.ok('Close Flight')
 			.cancel('Cancel');
 
-		this.$mdDialog.show(confirm).then((result) => {
-			console.log(result);
-			// this.flightService.update({ flightId: this.flight._id }, (data) => {
-
-			// }, (error) => { this.toast.error(error) });
+		this.$mdDialog.show(confirm).then((comment) => {
+			this.flightStatusService.save({ flightId: this.flight._id }, { status: 'done', comment },
+				(data) => {
+					console.log(data);
+					this.flight.comment = data.comment;
+					this.flight.status = data.status;
+				}, (error) => { this.toast.error(error) });
 		}, () => { });
+	}
+
+	reopenFlight() {
+		this.flightStatusService.save({ flightId: this.flight._id }, { status: 'inprogress' },
+			(data) => {
+				this.flight.status = data.status;
+			}, (error) => { this.toast.error(error) });
 	}
 }
 

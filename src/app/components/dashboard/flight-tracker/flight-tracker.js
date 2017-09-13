@@ -4,6 +4,7 @@ import flightTrackerComponent from './flight-tracker.component';
 import flightMessagesComponent from './components/messages/messages.component';
 import flightChecklistComponent from './components/checklist/checklist.component';
 import flightDocumentsComponent from './components/documents/documents.component';
+import flightProgressComponent from './components/flight-progress/flight-progress.component';
 
 
 // translations
@@ -19,6 +20,7 @@ let flightTrackerModule = angular
 	})
 	.component('flightMessages', flightMessagesComponent)
 	.component('flightChecklist', flightChecklistComponent)
+	.component('flightProgress', flightProgressComponent)
 	.component('flightTracker', flightTrackerComponent).name;
 
 export default flightTrackerModule;

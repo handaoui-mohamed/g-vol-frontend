@@ -1,0 +1,63 @@
+<md-dialog aria-label="Flight" class="offload-report-dialog">
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2 flex>Offload Report</h2>
+			<md-button class="md-icon-button" ng-click="ofdVm.close()">
+				<md-icon md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-dialog-content layout-padding>
+		<span> Passengers Report</span>
+		<md-divider></md-divider>
+		<table class="passengers-table">
+			<tr>
+				<th>Total</th>
+				<th>Male</th>
+				<th>Female</th>
+				<th>Child</th>
+				<th>Infant</th>
+			</tr>
+			<tr>
+				<td>{{ofdVm.offloadReport.pax.total}}</td>
+				<td>{{ofdVm.offloadReport.pax.male}}</td>
+				<td>{{ofdVm.offloadReport.pax.female}}</td>
+				<td>{{ofdVm.offloadReport.pax.child}}</td>
+				<td>{{ofdVm.offloadReport.pax.infant}}</td>
+			</tr>
+		</table>
+		<br><br>
+		<span> Offloaded Baggage Report</span>
+		<md-divider></md-divider>
+		<table class="baggage-table">
+			<tr>
+				<td>Total baggage</td>
+				<td>{{ofdVm.offloadReport.nbPcs}}</td>
+			</tr>
+			<tr>
+				<td>Total weight</td>
+				<td>{{ofdVm.offloadReport.totalWeight}}</td>
+			</tr>
+		</table>
+		<br><br>
+		<span> Baggage Position Report</span>
+		<md-divider></md-divider>
+		<table class="baggage-position-table">
+			<tr>
+				<th>Piece ID</th>
+				<th>Offload Postion</th>
+			</tr>
+			<tr ng-repeat="row in ofdVm.offloadReport.table track by row._id" ng-if="row.pieceId || row.position">
+				<td>{{row.pieceId}}</td>
+				<td>{{row.position}}</td>
+			</tr>
+		</table>
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row">
+		<span flex></span>
+		<md-button class="md-default" ng-click="ofdVm.close()" translate="CLOSE">
+			Close
+		</md-button>
+	</md-dialog-actions>
+</md-dialog>

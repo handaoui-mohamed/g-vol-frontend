@@ -1,6 +1,6 @@
 <div class="offload-report-accordion">
-	<div layout="column">
-		<md-button ng-disabled="true" flex aria-label="toggle-offload-report" class="md-button-toggle" ng-click="ofVm.toggle(); 
+	<div layout="column" ng-class="{'disabled':!ofVm.flight.offloadReport}">
+		<md-button ng-disabled="!ofVm.flight.offloadReport" flex aria-label="toggle-offload-report" class="md-button-toggle" ng-click="ofVm.toggle(); 
 		ofVm.removeNotification()">
 			<div>
 				<span>Offload Report</span>
@@ -8,25 +8,29 @@
 			</div>
 			<md-icon md-font-icon="icon-chevron-up " class="md-toggle-icon " ng-class="{ 'toggled' : !ofVm.toggled} "></md-icon>
 		</md-button>
+
+		<md-button flex aria-label="dialog-offload-report" class="document-edit-button" ng-if="ofVm.toggled" ng-click="ofVm.openOffloadReportDialog($event) ">
+			<md-icon md-font-icon="icon-eye"></md-icon>
+			Show details
+		</md-button>
 	</div>
 	<md-content ng-class="{ 'content-opened' : ofVm.toggled} ">
 		<table>
 			<tr>
-				<td>Total Offload Baggages</td>
-				<td>{{ofVm.flight.offloadReport.totalBaggageOffload}}</td>
+				<th>Total</th>
+				<th>Male</th>
+				<th>Female</th>
+				<th>Child</th>
+				<th>Infant</th>
 			</tr>
 			<tr>
-				<td>Crew Baggage</td>
-				<td>{{ofVm.flight.offloadReport.crewBaggage}}</td>
-			</tr>
-			<tr>
-				<td>DAA</td>
-				<td>{{ofVm.flight.offloadReport.daa}}</td>
-			</tr>
-			<tr>
-				<td>Rush</td>
-				<td>{{ofVm.flight.offloadReport.rush}}</td>
+				<td>{{ofVm.flight.offloadReport.pax.total}}</td>
+				<td>{{ofVm.flight.offloadReport.pax.male}}</td>
+				<td>{{ofVm.flight.offloadReport.pax.female}}</td>
+				<td>{{ofVm.flight.offloadReport.pax.child}}</td>
+				<td>{{ofVm.flight.offloadReport.pax.infant}}</td>
 			</tr>
 		</table>
 	</md-content>
+	<md-divider flex ng-if="ofVm.flight.offloadReport"></md-divider>
 </div>

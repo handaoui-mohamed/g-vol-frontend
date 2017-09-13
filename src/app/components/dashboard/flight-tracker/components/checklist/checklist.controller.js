@@ -1,10 +1,11 @@
 class ChecklistController {
-	constructor($scope, DocumentsService, Toast, SocketService) {
+	constructor($scope, DocumentsService, Toast, SocketService, OffloadReport) {
 		'ngInject';
 		this.$scope = $scope;
 		this.documentsService = DocumentsService;
 		this.toast = Toast;
 		this.socket = SocketService.io;
+		this.offloadReport = OffloadReport;
 	}
 
 	$onInit() {
@@ -43,6 +44,7 @@ class ChecklistController {
 					}
 				}
 				this.documents = documents;
+				this.flight.offloadReport = this.offloadReport.generate(documents.offloadList);
 			}, (error) => {
 				this.toast.error(error);
 			});
