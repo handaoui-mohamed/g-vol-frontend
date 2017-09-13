@@ -52,7 +52,7 @@ class FlightInfoController {
 		this.flightNotification.initDocument(this.flight._id, 'flightInfo');
 	}
 
-	showNotification(accoutId) {
+	showNotification(accountId) {
 		if (accountId !== this.$root.currentAccount._id) {
 			this.hasChanges = true;
 			this.notification = true;

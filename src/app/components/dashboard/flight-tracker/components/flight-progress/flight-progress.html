@@ -1,7 +1,13 @@
-<div layout="column" layout-padding>
+<div layout="column" layout-padding class="flight-progress-container">
 	<div layout="row" layout-align="space-between end">
 		<span>{{fpVm.flight.formattedSta}}</span>
 		<span>{{fpVm.flight.formattedStd}}</span>
 	</div>
-	<md-progress-linear md-mode="determinate" value="65" class="flight-progress"></md-progress-linear>
+	<div class="meter">
+		<span ng-style="{'width': fpVm.calculateProgress()+'%'}"></span>
+	</div>
+	<div layout="row" layout-align="space-between end" class="plane-icons">
+		<img width="40" src="/assets/images/arrival.png" alt="arrival">
+		<img width="40" src="/assets/images/departure.png" alt="departure">
+	</div>
 </div>
