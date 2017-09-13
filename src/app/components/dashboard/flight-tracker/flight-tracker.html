@@ -11,7 +11,7 @@
 			</md-button>
 		</div>
 	</md-toolbar>
-	<md-content style="min-height:600px;padding-bottom: 20px" class="bg-white" id="flight-{{::ftVm.flight._id}}">
+	<md-content style="min-height:650px;padding-bottom: 20px" class="bg-white" id="flight-{{::ftVm.flight._id}}">
 
 		<div ng-if="!ftVm.flight.initilized && ftVm.flight.status === 'new'" class="flight-init" layout="column" layout-align="center center">
 			<md-button aria-label="Initilize flight" ng-click="ftVm.initFlight()" class="md-raised md-warn"> Initilize flight </md-button>

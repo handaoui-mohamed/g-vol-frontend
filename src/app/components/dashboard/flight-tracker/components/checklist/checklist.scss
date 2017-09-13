@@ -19,4 +19,10 @@
 			background-color: #4CAF50 !important;
 		}
 	}
+
+	md-content{
+		background-color: transparent;
+		max-height: 410px;
+		overflow-y: auto
+	}
 }

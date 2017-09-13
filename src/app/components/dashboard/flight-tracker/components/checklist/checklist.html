@@ -3,13 +3,19 @@
 		<span>Checklist</span>
 	</div>
 	<md-divider flex></md-divider>
-	<md-checkbox disabled class="md-primary" ng-model="chlVm.documents.baggageReport.status" aria-label="label" ng-class="{'item-checked': chlVm.documents.baggageReport.status}">Baggage report</md-checkbox>
-
-	<md-checkbox disabled class="md-primary" ng-model="chlVm.documents.flightInfo.status" aria-label="label" ng-class="{'item-checked': chlVm.documents.flightInfo.status}">Flight info</md-checkbox>
-
-	<md-checkbox disabled class="md-primary" ng-model="chlVm.documents.offloadList.status" aria-label="label" ng-class="{'item-checked': chlVm.documents.offloadList.status}">Offload List</md-checkbox>
-
-
-	<md-checkbox disabled class="md-primary" ng-repeat="document in chlVm.documents.otherDocuments track by $index" ng-model="document.status"
-	 aria-label="label" ng-class="{'item-checked': document.status}">{{document.title}}</md-checkbox>
+	<md-content layout="column" layout-padding>
+		<div>
+			<md-checkbox disabled class="md-primary" ng-model="chlVm.documents.baggageReport.status" aria-label="label" ng-class="{'item-checked': chlVm.documents.baggageReport.status}">Baggage report</md-checkbox>
+		</div>
+		<div>
+			<md-checkbox disabled class="md-primary" ng-model="chlVm.documents.flightInfo.status" aria-label="label" ng-class="{'item-checked': chlVm.documents.flightInfo.status}">Flight info</md-checkbox>
+		</div>
+		<div>
+			<md-checkbox disabled class="md-primary" ng-model="chlVm.documents.offloadList.status" aria-label="label" ng-class="{'item-checked': chlVm.documents.offloadList.status}">Offload List</md-checkbox>
+		</div>
+		<div ng-repeat="document in chlVm.documents.otherDocuments track by $index">
+			<md-checkbox disabled class="md-primary" ng-model="document.status"
+			 aria-label="label" ng-class="{'item-checked': document.status}">{{document.title}}</md-checkbox>
+		</div>
+	</md-content>
 </div>
