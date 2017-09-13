@@ -2,14 +2,14 @@ import FlightTeamDialog from './components/team-dialog/team-dialog.controller';
 import dialogTemplate from './components/team-dialog/team-dialog.html';
 
 class FlightTrackerController {
-	constructor($mdDialog, FlightService, FlightTeamService, DocumentsService, SocketService, FlightStatusService) {
+	constructor($mdDialog, FlightService, FlightTeamService, DocumentService, SocketService, FlightStatusService) {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
 		this.socket = SocketService.io;
 		this.flightService = FlightService;
 		this.flightStatusService = FlightStatusService;
 		this.flightTeamService = FlightTeamService;
-		this.documentsService = DocumentsService;
+		this.documentService = DocumentService;
 	}
 
 	$onInit() {
@@ -33,7 +33,7 @@ class FlightTrackerController {
 	initFlight() {
 		if (this.flight.status === "new") {
 			this.joinFlight(() => {
-				this.documentsService.save({ flightId: this.flight._id }, {}, (updatedFlight) => {
+				this.documentService.save({ flightId: this.flight._id }, {}, (updatedFlight) => {
 					for (var key in updatedFlight) {
 						if (updatedFlight.hasOwnProperty(key)) {
 							if (key !== 'team') this.flight[key] = updatedFlight[key];

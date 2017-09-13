@@ -1,8 +1,8 @@
 class ChecklistController {
-	constructor($scope, DocumentsService, Toast, SocketService, OffloadReport) {
+	constructor($scope, DocumentService, Toast, SocketService, OffloadReport) {
 		'ngInject';
 		this.$scope = $scope;
-		this.documentsService = DocumentsService;
+		this.documentService = DocumentService;
 		this.toast = Toast;
 		this.socket = SocketService.io;
 		this.offloadReport = OffloadReport;
@@ -37,7 +37,7 @@ class ChecklistController {
 
 	getDocuments() {
 		if (this.flight.queryDocuments) {
-			this.documentsService.get({ flightId: this.flight._id }, (documents) => {
+			this.documentService.get({ flightId: this.flight._id }, (documents) => {
 				for (var key in documents) {
 					if (documents.hasOwnProperty(key)) {
 						this.flight[key] = documents[key];

@@ -1,11 +1,11 @@
 import './flight-info.scss';
 
 class FlightInfoDialogController {
-	constructor($mdDialog, Toast, Flight, DocumentsService) {
+	constructor($mdDialog, Toast, Flight, DocumentService) {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
 		this.toast = Toast;
-		this.documentsService = DocumentsService;
+		this.documentService = DocumentService;
 		this.flight = Flight;
 		this.flightInfo = this.flight.flightInfo;
 	}
@@ -27,9 +27,9 @@ class FlightInfoDialogController {
 
 	save() {
 		if (this.flightInfo.createdAt)
-			return this.documentsService.update({ flightId: this.flight._id, type: 'fi' }, this.flightInfo).$promise;
+			return this.documentService.update({ flightId: this.flight._id, type: 'fi' }, this.flightInfo).$promise;
 		else
-			return this.documentsService.save({ flightId: this.flight._id, type: 'fi' }, this.flightInfo).$promise;
+			return this.documentService.save({ flightId: this.flight._id, type: 'fi' }, this.flightInfo).$promise;
 	}
 }
 export default FlightInfoDialogController;

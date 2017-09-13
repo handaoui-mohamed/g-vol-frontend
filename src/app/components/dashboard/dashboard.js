@@ -31,7 +31,7 @@ let dashboardModule = angular
   })
   .factory('MessageService', MessageService)
   .factory('FlightTeamService', FlightTeamService)
-  .factory('DocumentsService', FlightDocumentsService)
+  .factory('DocumentService', FlightDocumentsService)
   .factory('FlightStatusService', FlightStatusService)
   .service('FlightNotification', FlightNotificationService)
   .service('OffloadReport', OffloadReportGenerator)

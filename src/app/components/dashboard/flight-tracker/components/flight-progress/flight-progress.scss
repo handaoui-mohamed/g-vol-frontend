@@ -42,7 +42,7 @@
 		position: relative;
 		overflow: hidden;
 	}
-	.meter > span:after, .animate > span > span {
+	.meter > span:after {
 		content: "";
 		position: absolute;
 		top: 0; left: 0; bottom: 0; right: 0;
@@ -72,10 +72,6 @@
 		overflow: hidden;
 	}
 	
-	.animate > span:after {
-		display: none;
-	}
-	
 	@keyframes move {
 		0% {
 			background-position: 0 0;
@@ -83,5 +79,27 @@
 		100% {
 			background-position: 50px 50px;
 		}
+	}
+}
+
+.flight-closed{
+	.meter > span{
+		background-color: #607D8B;
+		background-image: -webkit-gradient(
+			linear,
+			left bottom,
+			left top,
+			color-stop(0, #607D8B),
+			color-stop(1, #90A4AE)
+			);
+		background-image: -moz-linear-gradient(
+			center bottom,
+			#607D8B 37%,
+			#90A4AE 69%
+			);
+	}
+
+	.meter > span:after{
+		animation: unset !important;
 	}
 }

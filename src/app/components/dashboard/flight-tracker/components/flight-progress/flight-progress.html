@@ -1,4 +1,4 @@
-<div layout="column" layout-padding class="flight-progress-container">
+<div layout="column" layout-padding class="flight-progress-container" ng-class="{'flight-closed': fpVm.flight.status === 'done'}">
 	<div layout="row" layout-align="space-between end" class="flight-schedule">
 		<span>{{fpVm.flight.formattedSta}}</span>
 		<span>{{fpVm.flight.formattedStd}}</span>

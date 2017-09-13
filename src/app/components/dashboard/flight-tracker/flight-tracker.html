@@ -1,7 +1,10 @@
 <div md-whiteframe="3" class="flight-tracker-container">
 	<md-toolbar class="md-primary">
 		<div layout="row" layout-align="space-between center">
-			<span class="flight-number">{{ftVm.flight.flightNumber}}</span>
+			<span class="flight-number">
+				<md-icon md-font-icon="icon-folder-lock" ng-if="ftVm.flight.status === 'done'"></md-icon>
+				{{ftVm.flight.flightNumber}}
+			</span>
 			<span class="time-left">09:37</span>
 			<md-button aria-label="reduce" class="md-icon-button" ng-click="ftVm.reducePanel()">
 				<md-icon md-font-icon="icon-minus"></md-icon>
@@ -27,10 +30,13 @@
 				</div>
 				<div layout="column" flex="45">
 					<md-button ng-if="ftVm.flight.status !== 'done'" class="md-raised md-warn close-flight-button" ng-click="ftVm.openFlightStatusDialog($event)">
-						<md-icon md-font-icon="icon-close-network"></md-icon>
+						<md-icon md-font-icon="icon-folder-lock"></md-icon>
 						Close flight
 					</md-button>
-					<md-button ng-if="ftVm.flight.status === 'done'" aria-label="Reopen Flight" ng-click="ftVm.reopenFlight()" class="md-raised md-warn close-flight-button"> Reopen Flight </md-button>
+					<md-button ng-if="ftVm.flight.status === 'done'" aria-label="Reopen Flight" ng-click="ftVm.reopenFlight()" class="md-raised md-warn close-flight-button">
+						<md-icon md-font-icon="icon-folder-lock-open"></md-icon>
+						Reopen Flight
+					</md-button>
 					<flight-checklist notification="ftVm.flight.notification" flex flight="ftVm.flight"></flight-checklist>
 				</div>
 			</div>

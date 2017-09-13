@@ -1,13 +1,13 @@
 import './baggage-report.scss';
 
 class BaggageReportDialogController {
-	constructor($mdDialog, Toast, Flight, DocumentsService) {
+	constructor($mdDialog, Toast, Flight, DocumentService) {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
 		this.toast = Toast;
-		this.documentsService = DocumentsService;
+		this.documentService = DocumentService;
 		this.flight = Flight;
-		this.baggageReport = angular.copy(this.flight.baggageReport);
+		this.baggageReport = this.flight.baggageReport;
 		if (this.baggageReport.table.length === 0) this.addEmptyRow();
 	}
 
@@ -26,7 +26,7 @@ class BaggageReportDialogController {
 	}
 
 	save() {
-		return this.documentsService.save({ flightId: this.flight._id, type: 'br' }, this.baggageReport).$promise;
+		return this.documentService.save({ flightId: this.flight._id, type: 'br' }, this.baggageReport).$promise;
 	}
 
 	addEmptyRow() {
@@ -39,7 +39,14 @@ class BaggageReportDialogController {
 	}
 
 	reset() {
-		this.baggageReport = angular.copy(this.flight.baggageReport);
+		this.documentService.get({ flightId: this.flight._id, type: 'br' }, (document) => {
+			console.log(document);
+			for (let key in document) {
+				if (document.hasOwnProperty(key)) {
+					this.baggageReport[key] = document[key];
+				}
+			}
+		}, (error) => { this.toast.error(error) });
 	}
 }
 export default BaggageReportDialogController;
