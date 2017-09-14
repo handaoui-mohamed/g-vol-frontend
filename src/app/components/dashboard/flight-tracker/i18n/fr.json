@@ -1,0 +1,23 @@
+{
+	"NOTIFICATION": {
+		"TITLE": "Notification des vols",
+		"READ": "Marquer comme lu",
+		"MSG": "Nouveaux messages :",
+		"FLIGHTINFO": "Flight Info a été mise à jour",
+		"BAGGAGE": "Rapport Baggage a été mise à jour",
+		"PAX": "Rapport Pax a été mise à jour",
+		"OFFLOAD": "Rapport offload a été mise à jour",
+		"STATE": "État d'un document a été mise à jour"
+	},
+	"MESSAGES": {
+		"LOAD": "Chargez plus de messages",
+		"INPUT": "Entrez votre message"
+	},
+	"FLIGHTSTATUS": {
+		"CONFIRMATION": "Êtes-vous sûr de vouloir fermer ce vol?",
+		"CLOSE": "Fermer le vol",
+		"REOPEN": "Réouvrir le vol",
+		"ADDCOMMENT": "Ajoutez un commentaire si nécessaire:",
+		"COMMENT": "Commentaire"
+	}
+}

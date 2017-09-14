@@ -2,9 +2,10 @@ import FlightTeamDialog from './components/team-dialog/team-dialog.controller';
 import dialogTemplate from './components/team-dialog/team-dialog.html';
 
 class FlightTrackerController {
-	constructor($mdDialog, FlightService, FlightTeamService, DocumentService, SocketService, FlightStatusService) {
+	constructor($mdDialog, $filter, FlightService, FlightTeamService, DocumentService, SocketService, FlightStatusService) {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
+		this.$translate = $filter('translate');
 		this.socket = SocketService.io;
 		this.flightService = FlightService;
 		this.flightStatusService = FlightStatusService;
@@ -84,16 +85,16 @@ class FlightTrackerController {
 
 	openFlightStatusDialog(ev) {
 		let confirm = this.$mdDialog.prompt()
-			.title('Are you sure you want to close this flight?')
-			.textContent('Add a comment if needed:')
-			.placeholder('Comment')
+			.title(this.$translate('FLIGHTSTATUS.CONFIRMATION'))
+			.textContent(this.$translate('FLIGHTSTATUS.ADDCOMMENT'))
+			.placeholder(this.$translate('FLIGHTSTATUS.COMMENT'))
 			.ariaLabel('Comment')
 			.initialValue(this.flight.comment)
 			.targetEvent(ev)
 			.parent(angular.element(document.querySelector('#flight-' + this.flight._id)))
 			.clickOutsideToClose(true)
-			.ok('Close Flight')
-			.cancel('Cancel');
+			.ok(this.$translate('FLIGHTSTATUS.CLOSE'))
+			.cancel(this.$translate('CANCEL'));
 
 		this.$mdDialog.show(confirm).then((comment) => {
 			this.flightStatusService.save({ flightId: this.flight._id }, { status: 'done', comment },

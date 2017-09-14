@@ -6,15 +6,15 @@ import paxReportComponent from './pax-report/pax-report.component';
 import offloadReportComponent from './offload-report/offload-report.component';
 
 // translations
-// import en from './i18n/en.json';
-// import fr from './i18n/fr.json';
+import en from './i18n/en.json';
+import fr from './i18n/fr.json';
 
 let flightDocumentsModule = angular
 	.module('flightDocuments', [])
 	.config(($translateProvider) => {
 		"ngInject";
-		// $translateProvider.translations('en', en);
-		// $translateProvider.translations('fr', fr);
+		$translateProvider.translations('en', en);
+		$translateProvider.translations('fr', fr);
 	})
 	.component('flightInfo', flightInfoComponent)
 	.component('baggageReport', baggageReportComponent)

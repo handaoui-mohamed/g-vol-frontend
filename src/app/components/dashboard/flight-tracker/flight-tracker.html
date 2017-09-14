@@ -23,7 +23,7 @@
 					<div layout="column">
 						<md-button aria-label="Flight's team" class="md-raised flight-team-button" ng-click="ftVm.openFlightTeam($event)">
 							<md-icon md-font-icon="icon-people"></md-icon>
-							Flight's team
+							<span translate="DASHBOARD.TEAM">Flight team</span>
 						</md-button>
 					</div>
 					<flight-documents notification="ftVm.flight.notification" flight="ftVm.flight"></flight-documents>
@@ -31,11 +31,11 @@
 				<div layout="column" flex="45">
 					<md-button ng-if="ftVm.flight.status !== 'done'" class="md-raised md-warn close-flight-button" ng-click="ftVm.openFlightStatusDialog($event)">
 						<md-icon md-font-icon="icon-folder-lock"></md-icon>
-						Close flight
+						<span translate="FLIGHTSTATUS.CLOSE">Close flight</span>
 					</md-button>
 					<md-button ng-if="ftVm.flight.status === 'done'" aria-label="Reopen Flight" ng-click="ftVm.reopenFlight()" class="md-raised md-warn close-flight-button">
 						<md-icon md-font-icon="icon-folder-lock-open"></md-icon>
-						Reopen Flight
+						<span translate="FLIGHTSTATUS.REOPEN">Reopen Flight</span>
 					</md-button>
 					<flight-checklist notification="ftVm.flight.notification" flex flight="ftVm.flight"></flight-checklist>
 				</div>

@@ -1,7 +1,7 @@
 <md-toast class="flight-notification">
 	<div layout="column" flex>
 		<div layout="row" layout-align="space-between center" flex>
-			<span class="md-toast-text" flex>Flights Notification</span>
+			<span class="md-toast-text" flex translate="NOTIFICATION.TITLE">Flights Notification</span>
 			<md-button aria-label="close button" class="md-icon-button" ng-click="toastVm.closeToast()">
 				<md-icon md-font-icon="icon-close"></md-icon>
 			</md-button>
@@ -10,19 +10,19 @@
 			<li class="pointer" ng-click="toastVm.dismiss(flight)" ng-repeat="flight in toastVm.selectedFlights track by flight._id"
 			 ng-if="flight.showNotification">
 				<div class="toast-flightNumber" flex layout="row" layout-align="space-between center">
-					<span flex><span>Flight:</span> {{flight.flightNumber}}</span>
+					<span flex><span translate="FLIGHT.LABEL">Flight</span>: {{flight.flightNumber}}</span>
 					<div class="mark-as-read">
 						<md-icon md-font-icon="icon-transcribe-close"></md-icon>
-						<span>Mark as read</span>
+						<span translate="NOTIFICATION.READ">Mark as read</span>
 					</div>
 				</div>
 				<div class="notifications">
-					<div ng-if="flight.messages > 0"><span>New Messages :</span> {{flight.messages}}</div>
-					<div ng-if="flight.flightInfo">Flight Info updated</div>
-					<div ng-if="flight.baggageReport">Baggage Report updated</div>
-					<div ng-if="flight.paxReport">Pax Report updated</div>
-					<div ng-if="flight.offloadReport">Offload Report updated</div>
-					<div ng-if="flight.documentState">Document state updated</div>
+					<div ng-if="flight.messages > 0"><span translate="NOTIFICATION.MSG">New Messages :</span> {{flight.messages}}</div>
+					<div ng-if="flight.flightInfo" translate="NOTIFICATION.FLIGHTINFO">Flight Info updated</div>
+					<div ng-if="flight.baggageReport" translate="NOTIFICATION.BAGGAGE">Baggage Report updated</div>
+					<div ng-if="flight.paxReport" translate="NOTIFICATION.PAX">Pax Report updated</div>
+					<div ng-if="flight.offloadReport" translate="NOTIFICATION.OFFLOAD">Offload Report updated</div>
+					<div ng-if="flight.documentState" translate="NOTIFICATION.STATE">Document state updated</div>
 				</div>
 			</li>
 		</ul>

@@ -1,0 +1,23 @@
+{
+	"NOTIFICATION": {
+		"TITLE": "Flights Notification",
+		"READ": "Mark as read",
+		"MSG": "New Messages :",
+		"FLIGHTINFO": "Flight Info updated",
+		"BAGGAGE": "Baggage Report updated",
+		"PAX": "Pax Report updated",
+		"OFFLOAD": "Offload Report updated",
+		"STATE": "Document state updated"
+	},
+	"MESSAGES": {
+		"LOAD": "Load More Messages",
+		"INPUT": "Enter your message"
+	},
+	"FLIGHTSTATUS": {
+		"CONFIRMATION": "Are you sure you want to close this flight?",
+		"CLOSE": "Close Flight",
+		"REOPEN": "Reopen Flight",
+		"ADDCOMMENT": "Add a comment if needed:",
+		"COMMENT": "Comment"
+	}
+}

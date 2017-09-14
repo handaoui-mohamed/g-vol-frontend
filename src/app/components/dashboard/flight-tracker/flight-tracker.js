@@ -8,15 +8,15 @@ import flightProgressComponent from './components/flight-progress/flight-progres
 
 
 // translations
-// import en from './i18n/en.json';
-// import fr from './i18n/fr.json';
+import en from './i18n/en.json';
+import fr from './i18n/fr.json';
 
 let flightTrackerModule = angular
 	.module('flightTracker', [flightDocuments])
-	.config(() => {
+	.config(($translateProvider) => {
 		"ngInject";
-		// $translateProvider.translations('en', en);
-		// $translateProvider.translations('fr', fr);
+		$translateProvider.translations('en', en);
+		$translateProvider.translations('fr', fr);
 	})
 	.component('flightMessages', flightMessagesComponent)
 	.component('flightChecklist', flightChecklistComponent)
