@@ -1,0 +1,1 @@
+var APIENDPOINT = 'http://localhost:4040/api/';

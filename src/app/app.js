@@ -40,5 +40,5 @@ angular.module('app', [
 ])
   .config(AppConfig)
   .run(AppRun)
-  .constant('API_ENDPOINT', 'http://localhost:4040/api/')
+  .constant('API_ENDPOINT', APIENDPOINT)
   .component('app', AppComponent);

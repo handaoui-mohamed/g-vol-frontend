@@ -31,7 +31,7 @@
 			color-stop(0, #149bdf),
 			color-stop(1, #37a9e3)
 			);
-		background-image: -moz-linear-gradient(
+		background-image: linear-gradient(
 			center bottom,
 			#149bdf 37%,
 			#37a9e3 69%
@@ -47,7 +47,7 @@
 		position: absolute;
 		top: 0; left: 0; bottom: 0; right: 0;
 		background-image: 
-			-webkit-gradient(linear, 0 0, 100% 100%, 
+			gradient(linear, 0 0, 100% 100%, 
 				color-stop(.25, rgba(255, 255, 255, .2)), 
 				color-stop(.25, transparent), color-stop(.5, transparent), 
 				color-stop(.5, rgba(255, 255, 255, .2)), 
@@ -55,7 +55,7 @@
 				color-stop(.75, transparent), to(transparent)
 			);
 		background-image: 
-			-moz-linear-gradient(
+			linear-gradient(
 				-45deg, 
 				rgba(255, 255, 255, .2) 25%, 
 				transparent 25%, 
@@ -91,12 +91,12 @@
 			left top,
 			color-stop(0, #607D8B),
 			color-stop(1, #90A4AE)
-			);
-		background-image: -moz-linear-gradient(
+		);
+		background-image: linear-gradient(
 			center bottom,
 			#607D8B 37%,
 			#90A4AE 69%
-			);
+		);
 	}
 
 	.meter > span:after{

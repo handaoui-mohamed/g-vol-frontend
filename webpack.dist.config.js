@@ -14,6 +14,10 @@ config.plugins = config.plugins.concat([
     from: 'src/assets',
     to: 'assets'
   }]),
+  new CopyWebpackPlugin([{
+    from: 'src/config',
+    to: 'config'
+  }]),
   // Reduces bundles total size
   new webpack.optimize.UglifyJsPlugin({
     mangle: {
@@ -22,7 +26,7 @@ config.plugins = config.plugins.concat([
       // For example if your vendor dependency doesn't use modules
       // and relies on global variables. Most of angular modules relies on
       // angular global variable, so we should keep it unchanged
-      except: ['$super', '$', 'exports', 'require', 'angular', 'socket']
+      except: ['$super', '$', 'exports', 'require', 'angular', 'socket', 'APIENDPOINT']
     }
   })
 ]);
