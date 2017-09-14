@@ -59,7 +59,6 @@ class flightSelectionController {
 			this.initSelection();
 		}, (error) => {
 			this.toast.serverError(error);
-			console.log(error);
 		}).$promise;
 	}
 

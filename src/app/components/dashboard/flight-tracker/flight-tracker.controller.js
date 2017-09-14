@@ -98,7 +98,6 @@ class FlightTrackerController {
 		this.$mdDialog.show(confirm).then((comment) => {
 			this.flightStatusService.save({ flightId: this.flight._id }, { status: 'done', comment },
 				(data) => {
-					console.log(data);
 					this.flight.comment = data.comment;
 					this.flight.status = data.status;
 				}, (error) => { this.toast.serverError(error) });

@@ -40,11 +40,8 @@ class BaggageReportDialogController {
 
 	reset() {
 		this.documentService.get({ flightId: this.flight._id, type: 'br' }, (document) => {
-			console.log(document);
 			for (let key in document) {
-				if (document.hasOwnProperty(key)) {
-					this.baggageReport[key] = document[key];
-				}
+				if (document.hasOwnProperty(key)) this.baggageReport[key] = document[key];
 			}
 		}, (error) => { this.toast.serverError(error) });
 	}

@@ -28,7 +28,6 @@ class FlightProgressController {
 	initFlightTimeSocket() {
 		this.socket.on('flight-time/' + this.flight._id, (data) => {
 			data = JSON.parse(data);
-			console.log(data);
 			this.$scope.$apply(() => {
 				this.flight.eta = data.eta;
 				this.flight.etd = data.etd;

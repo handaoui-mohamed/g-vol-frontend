@@ -9,7 +9,6 @@ class FlightDocumentsController {
 	}
 
 	toggleDocument(documentType) {
-		console.log(documentType);
 		this[documentType] = !this[documentType];
 		this.documents.forEach((document) => {
 			if (document !== documentType) this[document] = false;
