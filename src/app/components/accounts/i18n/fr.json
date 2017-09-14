@@ -8,7 +8,22 @@
 		"ADDRESS": "Adresse",
 		"PHONE": "Téléphone",
 		"BIRTHDAY": "Date naissance",
+		"ADD": "Ajouter un nouveau compte",
 		"TOTAL": "Total des comptes:",
-		"LABEL": "Comptes"
+		"LABEL": "Comptes",
+		"NEW": "Nouveau compte",
+		"UPDATE": "Modifier compte",
+		"DELETE": "Voulez-vous supprimer ce compte?",
+		"DELETED": "Le compte a été supprimé avec succès",
+		"SAVED": "Le compte a été enregistré avec succès",
+		"UPDATED": "Le compte a été modifié avec succès",
+		"FORM": {
+			"FIRSTNAME": "Prénom",
+			"LASTNAME": "Nom",
+			"CHANGEPASSWORD": "Changer le mot de passe",
+			"CANCEL": "Annuler",
+			"PASSWORD": "Mot de passe",
+			"CONFIRMPASSWORD": "Confirmer le mot de passe"
+		}
 	}
 }

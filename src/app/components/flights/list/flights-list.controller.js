@@ -1,3 +1,6 @@
+import FlightDialogController from '../dialogs/flight-dialog/flight-dialog.controller';
+import template from '../dialogs/flight-dialog/flight-dialog.html';
+
 class FlightsListController {
   constructor($mdDialog, $filter, FlightService, CompanyService, Toast) {
     'ngInject';
@@ -86,20 +89,40 @@ class FlightsListController {
     })
   }
 
+  deleteFlight(ev, flightId, index) {
+    var confirm = this.$mdDialog.confirm()
+      .title(this.$translate('FLIGHT.DELETE'))
+      .ariaLabel('confirm dialog')
+      .targetEvent(ev)
+      .ok(this.$translate('CONFIRM'))
+      .cancel(this.$translate('CANCEL'));
+
+    this.$mdDialog.show(confirm).then(() => {
+      this.flightService.delete({
+        flightId
+      }, () => {
+        this.flights.splice(index, 1);
+        this.toast.success('Flight was deleted successfully', 'FLIGHT.DELETED');
+      }, (error) => {
+        this.toast.serverError(error);
+      });
+    });
+  }
+
   editFlight(ev, flight) {
     this.$mdDialog.show({
-        controller: FlightDialogController,
-        controllerAs: 'fldVm',
-        template,
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose: true,
-        fullscreen: true,
-        locals: {
-          Flight: flight,
-          Companies: this.companies
-        }
-      })
+      controller: FlightDialogController,
+      controllerAs: 'fldVm',
+      template,
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      fullscreen: true,
+      locals: {
+        Flight: flight,
+        Companies: this.companies
+      }
+    })
       .then((updatedFlight) => {
         angular.forEach(updatedFlight, (value, key) => {
           flight[key] = value;

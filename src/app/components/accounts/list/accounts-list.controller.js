@@ -84,7 +84,6 @@ class AccountsListController {
       });
     });
   }
-
 }
 
 export default AccountsListController;

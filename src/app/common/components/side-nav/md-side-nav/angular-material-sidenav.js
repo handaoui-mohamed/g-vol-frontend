@@ -364,7 +364,7 @@
         '   aria-controls="docs-menu-{{section.name}}"\n' +
         '   aria-expanded="{{isOpen(section)}}">\n' +
         '   <div flex layout="row">\n' +
-        '       <span ng-if="section.icon" class="{{section.icon}}">&nbsp;&nbsp;</span><span translate="{{section.translate}}">{{section.name}}</span>\n' +
+        '       <span ng-if="section.icon" class="{{section.icon}} menu-icon">&nbsp;&nbsp;</span><span translate="{{section.translate}}">{{section.name}}</span>\n' +
         '       <span flex></span>\n' +
         '       <span aria-hidden="true" class="md-toggle-icon"\n' +
         '           ng-class="{\'toggled\' : isOpen(section)}">\n' +
@@ -387,7 +387,7 @@
         '<ul class="menu">' +
         '    <li class="side-menu-devider" ng-repeat="section in menu.sections" ng-if="!section.hidden">' +
         '        <h2 class="menu-heading md-subhead" ng-if="section.type === \'heading\'">' +
-        '            <span ng-if="section.icon" class="{{section.icon}}">&nbsp;&nbsp;</span><span translate="{{section.translate}}">{{section.name}}</span>\n' +
+        '            <span ng-if="section.icon" class="{{section.icon}} menu-icon">&nbsp;&nbsp;</span><span translate="{{section.translate}}">{{section.name}}</span>\n' +
         '        </h2>' +
         '        <menu-link section="section" ng-if="section.type === \'link\'"></menu-link>' +
         '        <menu-toggle section="section" ng-if="section.type === \'toggle\'"></menu-toggle>' +

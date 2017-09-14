@@ -15,6 +15,11 @@
     <md-icon md-font-icon="icon-magnify" class="font-white icon search-icon"></md-icon>
     <input type="search" class="search-input" name="search" ng-model="flsVm.queryString" ng-change="flsVm.searchFlights()" ng-model-options="{ debounce: 400 }">
   </md-input-container>
+
+  <md-button aria-label="button-label" class="md-default md-raised" ui-sref="home.newFlight">
+    <md-icon md-font-icon="icon-plus"></md-icon>
+    <span translate="FLIGHT.ADD">Add new flight</span>
+  </md-button>
 </div>
 <!-- / CONTENT HEADER -->
 <div class="md-whiteframe-3dp bg-white page-content">
@@ -65,14 +70,14 @@
           <td md-cell class="uppercase">{{flight.dest}}</td>
           <td md-cell class="uppercase">{{flight.company.code}}</td>
           <td md-cell class="capitalize" translate="{{'FLIGHT.STATUS.'+flight.status | uppercase}}">{{flight.status}}</td>
-          <td md-cell class="align-left">
-            <md-button class="md-icon-button" aria-label="Settings" ng-click="fls.openDialog(flight, $index)">
+          <td md-cell class="align-right">
+            <md-button ng-if="flight.status === 'new'" class="md-icon-button md-warn" aria-label="Settings" ng-click="flsVm.deleteFlight($event, flight._id, $index)">
+              <md-tooltip md-direction="bottom"><span translate="DELETE">Delete</span></md-tooltip>
+              <md-icon md-font-icon="icon-delete" class="icon s32"></md-icon>
+            </md-button>
+            <md-button ng-if="flight.status === 'new'" class="md-icon-button" aria-label="Settings" ui-sref="home.flight({flightId: flight._id})">
               <md-tooltip md-direction="bottom"><span translate="EDIT">Edit</span></md-tooltip>
               <md-icon md-font-icon="icon-pencil" class="icon s32"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Settings" ui-sref="home.flight({flightId: flight._id})">
-              <md-tooltip md-direction="bottom"><span translate="EDIT">Edit</span></md-tooltip>
-              <md-icon md-font-icon="icon-arrow-expand" class="icon s32"></md-icon>
             </md-button>
           </td>
         </tr>

@@ -19,7 +19,7 @@ class LoginController {
     if (this.loginForm.$valid) {
       this.disableSubmit = true;
       this.$auth.login(this.account, {
-        url: this.api_endpoint + 'auth/login-clc'
+        url: this.api_endpoint + 'auth/login-superadmin-clc'
       }).then((response) => {
         if (!response.data.errors) {
           this.toast.success("Login successful", "AUTH.SUCCESS");
