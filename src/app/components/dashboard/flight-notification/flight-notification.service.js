@@ -32,8 +32,8 @@ class FlightNoticationService {
 				flightInfo: false,
 				baggageReport: false,
 				paxReport: false,
-				documentState: false,
-				other: false
+				offloadReport: false,
+				documentState: false
 			})
 		});
 	}
@@ -93,6 +93,7 @@ class FlightNoticationService {
 		flight.flightInfo = false;
 		flight.baggageReport = false;
 		flight.paxReport = false;
+		flight.offloadReport = false;
 		flight.documentState = false;
 		flight.other = false;
 		flight.showNotification = false;
@@ -104,7 +105,9 @@ class FlightNoticationService {
 			selectedFlight.messages === 0 &&
 			!selectedFlight.flightInfo &&
 			!selectedFlight.baggageReport &&
-			!selectedFlight.paxReport
+			!selectedFlight.paxReport &&
+			!selectedFlight.offloadReport &&
+			!selectedFlight.documentState
 		)
 	}
 

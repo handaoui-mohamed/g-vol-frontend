@@ -21,6 +21,11 @@
 		overflow-y: hidden;
 	}
 
+	.flight-tracker-content{
+		min-height:650px;
+		padding-bottom: 20px;
+	}
+
 	.flight-number{
 		margin-left: 10px;
 		md-icon{

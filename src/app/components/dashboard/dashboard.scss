@@ -8,7 +8,8 @@
 	flight-tracker, .flight-display-fix{
 		margin: 10px;
 		min-width: 500px;
-		flex-grow:1
+		max-width: 49%;
+		flex-grow: 1;
 	}
 }
 
