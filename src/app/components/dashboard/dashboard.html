@@ -1,11 +1,10 @@
 <div id="dashboard" layout-fill>
 	<flights-nav-bar selected-flights="dashVm.selectedFlights" opened-flights="dashVm.openedFlights"></flights-nav-bar>
 	<md-content class="flex-container" flex>
-		<flight-tracker ng-show="flight.opened" flight="flight" opened-flights="dashVm.openedFlights" ng-repeat="flight in dashVm.selectedFlights track by flight._id"></flight-tracker>
+		<flight-tracker ng-show="flight.opened" flight="flight" opened-flights="dashVm.openedFlights" ng-repeat="flight in dashVm.selectedFlights"></flight-tracker>
 		<div class="flight-display-fix" ng-if="dashVm.openFlights().length % 2 !== 0"></div>
 	</md-content>
-	{{dashVm.selectedFlights.length}}
-	{{dashVm.openedFlights}}
+	{{dashVm.selectedFlights.length}} {{dashVm.openedFlights}}
 	<div class="no-flight-selected" ng-if="dashVm.selectedFlights.length === 0 || dashVm.openedFlights === 0" layout="column"
 	 layout-align="center center">
 		<img src="/assets/images/logo.png" alt="Swissport GVOL for CLC" flex>
