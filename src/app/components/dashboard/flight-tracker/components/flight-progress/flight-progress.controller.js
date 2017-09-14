@@ -1,7 +1,8 @@
 class FlightProgressController {
-	constructor($scope, SocketService) {
+	constructor($scope, $interval, SocketService) {
 		'ngInject';
 		this.$scope = $scope;
+		this.$interval = $interval;
 		this.socket = SocketService.io;
 	}
 
@@ -10,6 +11,14 @@ class FlightProgressController {
 		this.flight.formattedSta = this.insert(this.flight.sta, 2, ':');
 		this.flight.formattedStd = this.insert(this.flight.std, 2, ':');
 		this.progress = 0;
+		this.setFlightTimeOut();
+		this.initTimeOut();
+	}
+
+	initTimeOut() {
+		this.$interval(() => {
+			this.setFlightTimeOut();
+		}, 60000);
 	}
 
 	insert(str, index, value) {
@@ -27,6 +36,14 @@ class FlightProgressController {
 				this.flight.atd = data.atd;
 			});
 		})
+	}
+
+	setFlightTimeOut() {
+		let start = new Date();
+		let end = new Date(this.flight.departureDate);
+		let diff = Math.abs(end.getTime() - start.getTime()) / (1000 * 60);
+		let hours = Math.floor(diff / 60);
+		this.timeLeft = hours + ":" + Math.round(diff - hours * 60);
 	}
 
 	calculateProgress() {

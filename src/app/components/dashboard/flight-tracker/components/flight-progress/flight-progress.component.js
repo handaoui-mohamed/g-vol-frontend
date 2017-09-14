@@ -4,7 +4,8 @@ import './flight-progress.scss';
 
 let flightProgressComponent = {
 	bindings: {
-		flight: "="
+		flight: "=",
+		timeLeft: "="
 	},
 	template,
 	controller,
