@@ -17,7 +17,7 @@ class BaggageReportDialogController {
 			this.$mdDialog.hide(baggageReport);
 		}, (error) => {
 			this.$mdDialog.cancel();
-			this.toast.error(error);
+			this.toast.serverError(error);
 		})
 	}
 
@@ -46,7 +46,7 @@ class BaggageReportDialogController {
 					this.baggageReport[key] = document[key];
 				}
 			}
-		}, (error) => { this.toast.error(error) });
+		}, (error) => { this.toast.serverError(error) });
 	}
 }
 export default BaggageReportDialogController;

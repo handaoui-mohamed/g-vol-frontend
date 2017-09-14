@@ -101,7 +101,7 @@ class FlightTrackerController {
 					console.log(data);
 					this.flight.comment = data.comment;
 					this.flight.status = data.status;
-				}, (error) => { this.toast.error(error) });
+				}, (error) => { this.toast.serverError(error) });
 		}, () => { });
 	}
 
@@ -109,7 +109,7 @@ class FlightTrackerController {
 		this.flightStatusService.save({ flightId: this.flight._id }, { status: 'inprogress' },
 			(data) => {
 				this.flight.status = data.status;
-			}, (error) => { this.toast.error(error) });
+			}, (error) => { this.toast.serverError(error) });
 	}
 }
 

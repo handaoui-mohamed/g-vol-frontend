@@ -17,7 +17,7 @@ class FlightInfoDialogController {
 			this.$mdDialog.hide(flightInfo);
 		}, (error) => {
 			this.$mdDialog.cancel();
-			this.toast.error(error);
+			this.toast.serverError(error);
 		})
 	}
 

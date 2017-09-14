@@ -1,7 +1,12 @@
 class FlightProgressController {
-	constructor() { }
+	constructor($scope, SocketService) {
+		'ngInject';
+		this.$scope = $scope;
+		this.socket = SocketService.io;
+	}
 
 	$onInit() {
+		this.initFlightTimeSocket();
 		this.flight.formattedSta = this.insert(this.flight.sta, 2, ':');
 		this.flight.formattedStd = this.insert(this.flight.std, 2, ':');
 		this.progress = 0;
@@ -9,6 +14,19 @@ class FlightProgressController {
 
 	insert(str, index, value) {
 		return str.substr(0, index) + value + str.substr(index);
+	}
+
+	initFlightTimeSocket() {
+		this.socket.on('flight-time/' + this.flight._id, (data) => {
+			data = JSON.parse(data);
+			console.log(data);
+			this.$scope.$apply(() => {
+				this.flight.eta = data.eta;
+				this.flight.etd = data.etd;
+				this.flight.ata = data.ata;
+				this.flight.atd = data.atd;
+			});
+		})
 	}
 
 	calculateProgress() {
@@ -29,7 +47,7 @@ class FlightProgressController {
 				if (document.status) finishedDocuments++;
 			})
 		}
-		
+
 		return finishedDocuments ? finishedDocuments * 100 / nbDocuments : 0;
 	}
 }

@@ -47,7 +47,7 @@ class ChecklistController {
 				this.documents = documents;
 				this.flight.offloadReport = this.offloadReport.generate(documents.offloadList);
 			}, (error) => {
-				this.toast.error(error);
+				this.toast.serverError(error);
 			});
 		} else
 			this.documents = this.flight;
