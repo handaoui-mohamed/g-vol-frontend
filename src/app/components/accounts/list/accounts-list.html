@@ -1,69 +1,70 @@
 <!-- CONTENT HEADER -->
 <div class="header" layout="row" layout-align="space-between center">
-  <div class="font-white" layout="column" layout-align="start start">
-    <div class="h1" layout="row" layout-align="start center">
-      <md-icon md-font-icon="icon-account-multiple" class="font-white"></md-icon>
-      <span translate="ACCOUNT.LABEL" class="s32">Accounts</span>
-    </div>
-    <div class="elements-count secondary-text">
-      <span translate="ACCOUNT.TOTAL">Total Accounts:</span>
-      <span>{{acsVm.count}}</span>
-    </div>
-  </div>
-  <md-input-container class="md-block search">
-    <label class="font-white" translate="SEARCH">Search</label>
-    <md-icon md-font-icon="icon-magnify" class="font-white icon search-icon"></md-icon>
-    <input type="search" class="search-input" name="search" ng-model="acsVm.queryString" ng-change="acsVm.searchAccounts()" ng-model-options="{ debounce: 400 }">
-  </md-input-container>
-  <md-button aria-label="button-label" class="md-default md-raised" ui-sref="home.newAccount">
-    <md-icon md-font-icon="icon-plus"></md-icon>
-    <span translate="ACCOUNT.ADD">Add new account</span>
-  </md-button>
+	<div class="font-white" layout="column" layout-align="start start">
+		<div class="h1" layout="row" layout-align="start center">
+			<md-icon md-font-icon="icon-account-multiple" class="font-white"></md-icon>
+			<span translate="ACCOUNT.LABEL" class="s32">Accounts</span>
+		</div>
+		<div class="elements-count secondary-text">
+			<span translate="ACCOUNT.TOTAL">Total Accounts:</span>
+			<span>{{acsVm.count}}</span>
+		</div>
+	</div>
+	<md-input-container class="md-block search">
+		<label class="font-white" translate="SEARCH">Search</label>
+		<md-icon md-font-icon="icon-magnify" class="font-white icon search-icon"></md-icon>
+		<input type="search" class="search-input" name="search" ng-model="acsVm.queryString" ng-change="acsVm.searchAccounts()" ng-model-options="{ debounce: 400 }">
+	</md-input-container>
+	<md-button aria-label="button-label" class="md-default md-raised" ui-sref="home.newAccount">
+		<md-icon md-font-icon="icon-plus"></md-icon>
+		<span translate="ACCOUNT.ADD">Add new account</span>
+	</md-button>
 </div>
 <!-- / CONTENT HEADER -->
-<div class="md-whiteframe-3dp bg-white page-content">
-  <md-table-container>
-    <table md-table md-progress="acsVm.promise">
-      <thead md-head>
-        <tr md-row>
-          <th md-column><span translate="ACCOUNT.USERNAME">Username</span></th>
-          <th md-column><span translate="ACCOUNT.FULLNAME">Full name</span></th>
-          <th md-column>
-            <span translate="ACCOUNT.FUNCTION">Function</span>
-            <ng-filter-menu menu-items="acsVm.functions" menu-width="2" ng-model="acsVm.selectedFunctions" on-filter="acsVm.searchAccounts()"></ng-filter-menu>
-          </th>
-          <th md-column><span>Address</span></th>
-          <th md-column>Email</th>
-          <th md-column><span translate="ACCOUNT.PHONE">Phone</span></th>
-          <th md-column>Sexe</th>
-          <th md-column><span translate="ACCOUNT.BIRTHDAY">Birthday</span></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody md-body>
-        <tr md-row ng-repeat="account in acsVm.accounts track by $index">
-          <td md-cell>{{account.username}}</td>
-          <td md-cell class="capitalize">{{account.firstname +' '+account.lastname}}</td>
-          <td md-cell class="uppercase">{{account.function.name}}</td>
-          <td md-cell class="capitalize">{{account.address}}</td>
-          <td md-cell>{{account.email}}</td>
-          <td md-cell>{{account.phone}}</td>
-          <td md-cell><span translate="{{account.sexe | uppercase}}">{{account.sexe}}</span></td>
-          <td md-cell>{{account.birthday | date:'dd/MM/yyyy'}}</td>
-          <td md-cell class="align-right">
-            <md-button class="md-icon-button md-warn" aria-label="Settings" ng-click="acsVm.deleteAccount($event, account._id, $index)">
-              <md-tooltip md-direction="bottom"><span translate="DELETE">Delete</span></md-tooltip>
-              <md-icon md-font-icon="icon-delete" class="icon s32"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Settings" ui-sref="home.account({accountId: account._id})">
-              <md-tooltip md-direction="bottom"><span translate="EDIT">Edit</span></md-tooltip>
-              <md-icon md-font-icon="icon-pencil" class="icon s32"></md-icon>
-            </md-button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </md-table-container>
 
-  <md-data-pagination query="acsVm.query" list-length="acsVm.accounts.length" on-paginate="acsVm.getAccounts()"></md-data-pagination>
+<div class="md-whiteframe-3dp bg-white page-content">
+	<md-table-container>
+		<table md-table md-progress="acsVm.promise">
+			<thead md-head>
+				<tr md-row>
+					<th md-column><span translate="ACCOUNT.USERNAME">Username</span></th>
+					<th md-column><span translate="ACCOUNT.FULLNAME">Full name</span></th>
+					<th md-column>
+						<span translate="ACCOUNT.FUNCTION">Function</span>
+						<ng-filter-menu menu-items="acsVm.functions" menu-width="2" ng-model="acsVm.selectedFunctions" on-filter="acsVm.searchAccounts()"></ng-filter-menu>
+					</th>
+					<th md-column><span>Address</span></th>
+					<th md-column>Email</th>
+					<th md-column><span translate="ACCOUNT.PHONE">Phone</span></th>
+					<th md-column>Sexe</th>
+					<th md-column><span translate="ACCOUNT.BIRTHDAY">Birthday</span></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody md-body>
+				<tr md-row ng-repeat="account in acsVm.accounts track by $index">
+					<td md-cell>{{account.username}}</td>
+					<td md-cell class="capitalize">{{account.firstname +' '+account.lastname}}</td>
+					<td md-cell class="uppercase">{{account.function.name}}</td>
+					<td md-cell class="capitalize">{{account.address}}</td>
+					<td md-cell>{{account.email}}</td>
+					<td md-cell>{{account.phone}}</td>
+					<td md-cell><span translate="{{account.sexe | uppercase}}">{{account.sexe}}</span></td>
+					<td md-cell>{{account.birthday | date:'dd/MM/yyyy'}}</td>
+					<td md-cell class="align-right">
+						<md-button class="md-icon-button md-warn" aria-label="Settings" ng-click="acsVm.deleteAccount($event, account._id, $index)">
+							<md-tooltip md-direction="bottom"><span translate="DELETE">Delete</span></md-tooltip>
+							<md-icon md-font-icon="icon-delete" class="icon s32"></md-icon>
+						</md-button>
+						<md-button class="md-icon-button" aria-label="Settings" ui-sref="home.account({accountId: account._id})">
+							<md-tooltip md-direction="bottom"><span translate="EDIT">Edit</span></md-tooltip>
+							<md-icon md-font-icon="icon-pencil" class="icon s32"></md-icon>
+						</md-button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</md-table-container>
+
+	<md-data-pagination query="acsVm.query" list-length="acsVm.accounts.length" on-paginate="acsVm.getAccounts()"></md-data-pagination>
 </div>

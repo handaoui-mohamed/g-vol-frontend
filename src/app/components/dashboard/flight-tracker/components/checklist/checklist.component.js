@@ -4,7 +4,8 @@ import './checklist.scss';
 
 let checklistComponent = {
 	bindings: {
-		flight: "="
+		flight: "=",
+		checklistDocuments: "=documents"
 	},
 	template,
 	controller,

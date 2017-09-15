@@ -12,10 +12,10 @@ class ChecklistController {
 	$onInit() {
 		this.checklist = {};
 		this.documentTypes = {
-			fi: 'flightInfo',
-			br: 'baggageReport',
-			ol: 'offloadList',
-			oth: 'otherDocuments'
+			fi: { value: 'flightInfo', index: 0 },
+			br: { value: 'baggageReport', index: 1 },
+			ol: { value: 'offloadList', index: 2 },
+			oth: { value: 'otherDocuments' }
 		}
 		this.getDocuments();
 		this.initFlightDocumentStatusSocket()
@@ -27,11 +27,12 @@ class ChecklistController {
 			this.flightNotification.documentUpdate(this.flight._id, 'documentState');
 			this.$scope.$apply(() => {
 				if (data.type !== 'oth')
-					this.flight[this.documentTypes[data.type]].status = data.status;
+					this.flight[this.documentTypes[data.type].value].status = data.status;
 				else {
 					let document = this.flight.otherDocuments.find(doc => doc._id === data.docId);
 					if (document) document.status = data.status;
 				}
+				this.updateDocuments(data);
 			})
 		});
 	}
@@ -45,12 +46,36 @@ class ChecklistController {
 					}
 				}
 				this.documents = documents;
+				this.setDocuments(this.documents);
 				this.flight.offloadReport = this.offloadReport.generate(documents.offloadList);
 			}, (error) => {
 				this.toast.serverError(error);
 			});
-		} else
+		} else {
 			this.documents = this.flight;
+			this.setDocuments(this.documents);
+		}
+	}
+
+	setDocuments(documents) {
+		this.checklistDocuments = [
+			documents.flightInfo,
+			documents.baggageReport,
+			documents.offloadList
+		].concat(documents.otherDocuments || []);
+	}
+
+	updateDocuments(data) {
+		let document;
+		if (data.type !== 'oth')
+			document = this.checklistDocuments[this.documentTypes[data.type].index];
+		else
+			document = this.checklistDocuments.find(doc => doc._id === data.docId);
+
+		if (document) {
+			document.status = data.status;
+			if (document.status) document.finishedAt = data.finishedAt;
+		}
 	}
 
 }

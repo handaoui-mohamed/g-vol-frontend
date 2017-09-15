@@ -1,53 +1,47 @@
 class accountController {
-  constructor($state, $stateParams, AccountService, Toast) {
-    'ngInject';
-    this.$state = $state;
-    this.accountService = AccountService;
-    this.toast = Toast;
-    let accountId = $stateParams.accountId;
-    if (accountId) this.accountId = accountId;
-  }
+	constructor($state, $stateParams, AccountService, Toast) {
+		'ngInject';
+		this.$state = $state;
+		this.accountService = AccountService;
+		this.toast = Toast;
 
-  $onInit() {
-    this.account = {};
-    if (this.accountId) this.getSelectedAccount();
-  }
+		// get accountId from state params if exists
+		this.accountId = $stateParams.accountId;
+	}
 
-  getSelectedAccount() {
-    this.accountService.get({
-      accountId: this.accountId
-    }, (data) => {
-      this.account = data;
-      this.isUpdate = true;
-    }, (error) => {
-      this.toast.serverError(error);
-    });
-  }
+	$onInit() {
+		this.account = {};
+		// if accountId, we get the selected account from server
+		if (this.accountId) this.getSelectedAccount();
+	}
 
-  submit() {
-    this.isUpdate ? this.update() : this.save();
-  }
+	getSelectedAccount() {
+		this.accountService.get({ accountId: this.accountId }, (data) => {
+			this.account = data;
+			this.isUpdate = true;
+		}, (error) => { this.toast.serverError(error); });
+	}
 
-  save() {
-    this.accountService.save(this.account, (data) => {
-      this.toast.success('Account was saved successfully', 'ACCOUNT.SAVED');
-      this.$state.go('home.accounts');
-    }, (error) => {
-      this.toast.serverError(error);
-    });
-  }
+	submit() {
+		// if this is an update, update account else save a new one
+		this.isUpdate ? this.update() : this.save();
+	}
 
-  update() {
-    if (!this.changePassord) delete this.account.password;
-    this.accountService.update({
-      accountId: this.accountId
-    }, this.account, (data) => {
-      this.toast.success('Account was updated successfully', 'ACCOUNT.UPDATED');
-      this.$state.go('home.accounts');
-    }, (error) => {
-      this.toast.serverError(error);
-    });
-  }
+	save() {
+		this.accountService.save(this.account, (data) => {
+			this.toast.success('Account was saved successfully', 'ACCOUNT.SAVED');
+			this.$state.go('home.accounts');
+		}, (error) => { this.toast.serverError(error); });
+	}
+
+	update() {
+		// if update account without changing password, we remove it
+		if (!this.changePassword) delete this.account.password;
+		this.accountService.update({ accountId: this.accountId }, this.account, (data) => {
+			this.toast.success('Account was updated successfully', 'ACCOUNT.UPDATED');
+			this.$state.go('home.accounts');
+		}, (error) => { this.toast.serverError(error); });
+	}
 }
 
 export default accountController;

@@ -14,6 +14,7 @@ class FlightTrackerController {
 	}
 
 	$onInit() {
+		this.documents = [];
 		this.status = [{
 			translate: 'FLIGHT.STATUS.NEW',
 			value: 'new'

@@ -1,24 +1,37 @@
 <div layout="column" layout-align="center none" class="login-container">
-  <div class="form" class="md-whiteframe-4dp">
-    <div class="thumbnail"><img src="/assets/images/logo.png" /></div>
-    <form name="loginVm.loginForm" class="login-form" novalidate ng-submit="loginVm.loginAccount()">
-      <md-input-container class="md-block">
-        <label translate="FORM.USERNAME.LABEL">Username</label>
-        <input minlength="5" required name="username" ng-model="loginVm.account.username">
-        <div ng-messages="loginVm.loginForm.username.$error">
-          <div ng-message="required" translate="FORM.REQUIRED">This is required.</div>
-          <div ng-message="minlength" translate="FORM.USERNAME.LENGTH">The username must be at 5 characters long.</div>
-        </div>
-      </md-input-container>
-      <md-input-container class="md-block">
-        <label translate="FORM.PASSWORD.LABEL">Password</label>
-        <input minlength="8" type="password" required name="password" ng-model="loginVm.account.password">
-        <div ng-messages="loginVm.loginForm.password.$error">
-          <div ng-message="required" translate="FORM.REQUIRED">This is required.</div>
-          <div ng-message="minlength" translate="FORM.PASSWORD.LENGTH">The password must be at 8 characters long.</div>
-        </div>
-      </md-input-container>
-      <md-button class="md-warn md-raised" type="submit" ng-disabled="loginVm.disableSubmit" translate="AUTH.LOGIN"> login </md-button>
-    </form>
-  </div>
+	<div class="form" class="md-whiteframe-4dp">
+		<!-- gvol logo -->
+		<div class="thumbnail">
+			<img src="/assets/images/logo.png" />
+		</div>
+		<!-- /gvol logo -->
+
+		<!-- login form -->
+		<form name="loginVm.loginForm" class="login-form" novalidate ng-submit="loginVm.loginAccount()">
+			<!-- Username input -->
+			<md-input-container class="md-block">
+				<label translate="FORM.USERNAME.LABEL">Username</label>
+				<input minlength="5" required name="username" ng-model="loginVm.account.username">
+				<div ng-messages="loginVm.loginForm.username.$error">
+					<div ng-message="required" translate="FORM.REQUIRED">This is required.</div>
+					<div ng-message="minlength" translate="FORM.USERNAME.LENGTH">The username must be at 5 characters long.</div>
+				</div>
+			</md-input-container>
+			<!-- /Username input -->
+
+			<!-- password input -->
+			<md-input-container class="md-block">
+				<label translate="FORM.PASSWORD.LABEL">Password</label>
+				<input minlength="8" type="password" required name="password" ng-model="loginVm.account.password">
+				<div ng-messages="loginVm.loginForm.password.$error">
+					<div ng-message="required" translate="FORM.REQUIRED">This is required.</div>
+					<div ng-message="minlength" translate="FORM.PASSWORD.LENGTH">The password must be at 8 characters long.</div>
+				</div>
+			</md-input-container>
+			<!-- /password input -->
+
+			<md-button class="md-warn md-raised" type="submit" ng-disabled="loginVm.disableSubmit" translate="AUTH.LOGIN"> login </md-button>
+		</form>
+		<!-- /login form -->
+	</div>
 </div>

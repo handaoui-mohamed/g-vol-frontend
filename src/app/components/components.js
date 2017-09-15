@@ -7,13 +7,13 @@ import Companies from './companies/companies';
 import Flights from './flights/flights';
 
 let componentModule = angular
-  .module('app.components', [
-    Login,
-    Home,
-    Dashboard,
-    Accounts,
-    Companies,
-    Flights
-  ]).name;
+	.module('app.components', [
+		Login,
+		Home,
+		Dashboard,
+		Accounts,
+		Companies,
+		Flights
+	]).name;
 
 export default componentModule;

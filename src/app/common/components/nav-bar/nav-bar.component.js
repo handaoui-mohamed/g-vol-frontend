@@ -3,10 +3,10 @@ import controller from './nav-bar.controller';
 import './nav-bar.scss';
 
 let navBarComponent = {
-  bindings: {},
-  template,
-  controller,
-  controllerAs: "navVm"
+	bindings: {},
+	template,
+	controller,
+	controllerAs: "navVm"
 };
 
 export default navBarComponent;

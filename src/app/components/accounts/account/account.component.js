@@ -3,10 +3,10 @@ import controller from './account.controller';
 import './account.scss';
 
 let accountComponent = {
-  bindings: {},
-  template,
-  controller,
-  controllerAs: 'acVm'
+	bindings: {},
+	template,
+	controller,
+	controllerAs: 'acVm'
 };
 
 export default accountComponent;

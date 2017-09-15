@@ -1,146 +1,173 @@
 <!-- CONTENT HEADER -->
 <div class="header account-container" layout="row" layout-align="space-between center">
-  <div class="font-white" layout="column" layout-align="start start">
-    <div class="h1" layout="row" layout-align="start center">
-      <md-icon md-font-icon="icon-arrow-left-bold-circle pointer" class="icon s32 font-white" ui-sref="home.accounts"></md-icon>
-      <span class="s24 pointer" translate="ACCOUNT.LABEL" ui-sref="home.accounts">Accounts</span>
-      <md-icon md-font-icon="icon-chevron-right" class="font-white"></md-icon>
-      <span class="s24" translate="ACCOUNT.UPDATE" ng-if="acVm.isUpdate">update account</span>
-      <span class="s24" translate="ACCOUNT.NEW" ng-if="!acVm.isUpdate">New account</span>
-    </div>
-  </div>
+	<div class="font-white" layout="column" layout-align="start start">
+		<div class="h1" layout="row" layout-align="start center">
+			<md-icon md-font-icon="icon-arrow-left-bold-circle pointer" class="icon s32 font-white" ui-sref="home.accounts"></md-icon>
+			<span class="s24 pointer" translate="ACCOUNT.LABEL" ui-sref="home.accounts">Accounts</span>
+			<md-icon md-font-icon="icon-chevron-right" class="font-white"></md-icon>
+			<span class="s24" translate="ACCOUNT.UPDATE" ng-if="acVm.isUpdate">update account</span>
+			<span class="s24" translate="ACCOUNT.NEW" ng-if="!acVm.isUpdate">New account</span>
+		</div>
+	</div>
 </div>
 <!-- / CONTENT HEADER -->
+
 <div class="page-content" layout="row" layout-align="center">
-  <form name="accountForm" novalidate layout-padding class="md-whiteframe-3dp bg-white" flex-gt-sm="70" flex-gt-xs="100">
-    <div layout-gt-xs="row">
-      <md-input-container class="md-block" flex-gt-xs>
-        <label translate="ACCOUNT.FORM.FIRSTNAME">First name</label>
-        <input ng-model="acVm.account.firstname" name="firstname" required>
-        <div ng-messages="accountForm.firstname.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
+	<form name="accountForm" novalidate layout-padding class="md-whiteframe-3dp bg-white" flex-gt-sm="70" flex-gt-xs="100">
+		<div layout-gt-xs="row">
+			<!-- first name input -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label translate="ACCOUNT.FORM.FIRSTNAME">First name</label>
+				<input ng-model="acVm.account.firstname" name="firstname" required>
+				<div ng-messages="accountForm.firstname.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
+			<!-- /first name input -->
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <label translate="ACCOUNT.FORM.LASTNAME">Last name</label>
-        <input ng-model="acVm.account.lastname" name="lastname" required>
-        <div ng-messages="accountForm.lastname.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
+			<!-- last name input -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label translate="ACCOUNT.FORM.LASTNAME">Last name</label>
+				<input ng-model="acVm.account.lastname" name="lastname" required>
+				<div ng-messages="accountForm.lastname.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
+			<!-- /last name input -->
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <label translate="ACCOUNT.USERNAME">Username</label>
-        <input ng-model="acVm.account.username" minlength="5" name="username" required ng-disabled="acVm.isUpdate">
-        <div ng-messages="accountForm.username.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-          <div ng-message="minLength" translate="VALIDATION.MIN-5">At least 5 characters are required</div>
-        </div>
-      </md-input-container>
-    </div>
+			<!-- username input -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label translate="ACCOUNT.USERNAME">Username</label>
+				<input ng-model="acVm.account.username" minlength="5" name="username" required ng-disabled="acVm.isUpdate">
+				<div ng-messages="accountForm.username.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+					<div ng-message="minLength" translate="VALIDATION.MIN-5">At least 5 characters are required</div>
+				</div>
+			</md-input-container>
+			<!-- /username input -->
+		</div>
 
-    <div layout-gt-xs="row">
-      <md-input-container class="md-block" flex-gt-xs>
-        <label translate="ACCOUNT.FUNCTION">Function</label>
-        <md-select ng-model="acVm.account.function.name" name="function" required ng-disabled="acVm.accountId === $root.currentAccount._id">
-          <md-option ng-value="function" ng-repeat="function in ['admin','clc','trc','tl','tb']">{{function | uppercase}}</md-option>
-        </md-select>
-        <div ng-messages="accountForm.function.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
+		<div layout-gt-xs="row">
+			<!-- function select list -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label translate="ACCOUNT.FUNCTION">Function</label>
+				<md-select ng-model="acVm.account.function.name" name="function" required ng-disabled="acVm.accountId === $root.currentAccount._id">
+					<md-option ng-value="function" ng-repeat="function in ['admin','clc','trc','tl','tb']">{{function | uppercase}}</md-option>
+				</md-select>
+				<div ng-messages="accountForm.function.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
+			<!-- /function select list -->
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <label>Sexe</label>
-        <md-select ng-model="acVm.account.sexe" name="sexe" required>
-          <md-option ng-value="sexe" ng-repeat="sexe in ['male','female']"><span translate="{{ sexe | uppercase}}">{{sexe}}</span></md-option>
-        </md-select>
-        <div ng-messages="accountForm.sexe.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
+			<!-- sexe select list -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label>Sexe</label>
+				<md-select ng-model="acVm.account.sexe" name="sexe" required>
+					<md-option ng-value="sexe" ng-repeat="sexe in ['male','female']"><span translate="{{ sexe | uppercase}}">{{sexe}}</span></md-option>
+				</md-select>
+				<div ng-messages="accountForm.sexe.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
+			<!-- /sexe select list -->
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <md-datepicker ng-model="acVm.account.birthday" md-placeholder="{{ 'ACCOUNT.BIRTHDAY' | translate}}" name="birthday" required></md-datepicker>
-        <div ng-messages="accountForm.birthday.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
-    </div>
+			<!-- birthday date input -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<md-datepicker ng-model="acVm.account.birthday" md-placeholder="{{ 'ACCOUNT.BIRTHDAY' | translate}}" name="birthday" required></md-datepicker>
+				<div ng-messages="accountForm.birthday.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
+			<!-- /birthday date input -->
+		</div>
 
-    <div layout-gt-xs="row">
-      <md-input-container class="md-block" flex-gt-xs>
-        <label translate="ACCOUNT.PHONE">Phone</label>
-        <input ng-model="acVm.account.phone" name="phone" minlength="5">
-        <div ng-messages="accountForm.phone.$error">
-          <div ng-message="minLength" translate="VALIDATION.MIN-5">At least 5 characters are required</div>
-        </div>
-      </md-input-container>
+		<div layout-gt-xs="row">
+			<!-- phone input -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label translate="ACCOUNT.PHONE">Phone</label>
+				<input ng-model="acVm.account.phone" name="phone" minlength="5">
+				<div ng-messages="accountForm.phone.$error">
+					<div ng-message="minLength" translate="VALIDATION.MIN-5">At least 5 characters are required</div>
+				</div>
+			</md-input-container>
+			<!-- /phone input -->
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <label>Email</label>
-        <input ng-model="acVm.account.email" name="email" ng-pattern="/^.+@.+\..+$/">
-        <div ng-messages="accountForm.email.$error">
-          <div ng-message="pattern" translate="VALIDATION.EMAIL">Not a valid email</div>
-        </div>
-      </md-input-container>
-    </div>
+			<!-- email input -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label>Email</label>
+				<input ng-model="acVm.account.email" name="email" ng-pattern="/^.+@.+\..+$/">
+				<div ng-messages="accountForm.email.$error">
+					<div ng-message="pattern" translate="VALIDATION.EMAIL">Not a valid email</div>
+				</div>
+			</md-input-container>
+			<!-- /email input -->
+		</div>
 
-    <div layout="row">
-      <md-input-container class="md-block" flex-gt-xs>
-        <label translate="ACCOUNT.ADDRESS">Address</label>
-        <input ng-model="acVm.account.address" md-maxlength="100" name="address">
-        <div ng-messages="accountForm.address.$error">
-          <div ng-message="md-maxlength" translate="VALIDATION.MAX-100">This has to be less than 100 characters</div>
-        </div>
-      </md-input-container>
+		<div layout="row">
+			<!-- address input -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label translate="ACCOUNT.ADDRESS">Address</label>
+				<input ng-model="acVm.account.address" md-maxlength="100" name="address">
+				<div ng-messages="accountForm.address.$error">
+					<div ng-message="md-maxlength" translate="VALIDATION.MAX-100">This has to be less than 100 characters</div>
+				</div>
+			</md-input-container>
+			<!-- /address input -->
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <label>Description</label>
-        <input ng-model="acVm.account.function.description" md-maxlength="100" name="description">
-        <div ng-messages="accountForm.description.$error">
-          <div ng-message="md-maxlength" translate="VALIDATION.MAX-100">This has to be less than 100 characters</div>
-        </div>
-      </md-input-container>
-    </div>
+			<!-- description input -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label>Description</label>
+				<input ng-model="acVm.account.function.description" md-maxlength="100" name="description">
+				<div ng-messages="accountForm.description.$error">
+					<div ng-message="md-maxlength" translate="VALIDATION.MAX-100">This has to be less than 100 characters</div>
+				</div>
+			</md-input-container>
+			<!-- /description input -->
+		</div>
 
-    <div layout-gt-xs="row" ng-if="acVm.isUpdate">
-      <md-button class="md-raised md-warn" ng-click="acVm.changePassord = !acVm.changePassord">
-        <span ng-if="!acVm.changePassord" translate="ACCOUNT.FORM.CHANGEPASSWORD">Change Password</span>
-        <span ng-if="acVm.changePassord" translate="ACCOUNT.FORM.CANCEL">Cancel</span>
-      </md-button>
-    </div>
+		<!-- Password section -->
 
-    <div layout-gt-xs="row" ng-if="!acVm.isUpdate || acVm.changePassord">
-      <md-input-container class="md-block" flex-gt-xs>
-        <label translate="ACCOUNT.FORM.PASSWORD">Password</label>
-        <input type="password" ng-model="acVm.account.password" name="password" minlength="8" required>
-        <div ng-messages="accountForm.password.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required</div>
-          <div ng-message="minLength" translate="VALIDATION.MIN-8">At least 8 characters are required</div>
-        </div>
-      </md-input-container>
+		<!-- if update show button to change password -->
+		<div layout-gt-xs="row" ng-if="acVm.isUpdate">
+			<md-button class="md-raised md-warn" ng-click="acVm.changePassword = !acVm.changePassword">
+				<span ng-if="!acVm.changePassword" translate="ACCOUNT.FORM.CHANGEPASSWORD">Change Password</span>
+				<span ng-if="acVm.changePassword" translate="ACCOUNT.FORM.CANCEL">Cancel</span>
+			</md-button>
+		</div>
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <label translate="ACCOUNT.FORM.CONFIRMPASSWORD">Confirm password</label>
-        <input type="password" ng-model="acVm.passwordConfirmation" name="passwordConfirmation" minlength="8" pattern="^({{acVm.account.password}})$"
-          required>
-        <div ng-messages="accountForm.passwordConfirmation.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required</div>
-          <div ng-message="minLength" translate="VALIDATION.MIN-8">At least 8 characters are required</div>
-          <div ng-message="pattern" translate="VALIDATION.PASSWORDSMATCH">The passwords must match</div>
-        </div>
-      </md-input-container>
-    </div>
+		<div layout-gt-xs="row" ng-if="!acVm.isUpdate || acVm.changePassword">
+			<!-- password input -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label translate="ACCOUNT.FORM.PASSWORD">Password</label>
+				<input type="password" ng-model="acVm.account.password" name="password" minlength="8" required>
+				<div ng-messages="accountForm.password.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required</div>
+					<div ng-message="minLength" translate="VALIDATION.MIN-8">At least 8 characters are required</div>
+				</div>
+			</md-input-container>
+			<!-- /password input -->
+
+			<!-- password confirmation input -->
+			<md-input-container class="md-block" flex-gt-xs>
+				<label translate="ACCOUNT.FORM.CONFIRMPASSWORD">Confirm password</label>
+				<input type="password" ng-model="acVm.passwordConfirmation" name="passwordConfirmation" minlength="8" pattern="^({{acVm.account.password}})$"
+				 required>
+				<div ng-messages="accountForm.passwordConfirmation.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required</div>
+					<div ng-message="minLength" translate="VALIDATION.MIN-8">At least 8 characters are required</div>
+					<div ng-message="pattern" translate="VALIDATION.PASSWORDSMATCH">The passwords must match</div>
+				</div>
+			</md-input-container>
+			<!-- /password confirmation input -->
+		</div>
 
 
-    <div layout="row">
-      <span flex></span>
-      <md-button class="md-raised md-primary" ng-click="acVm.submit()" ng-disabled="accountForm.$prestine || accountForm.$invalid"
-        translate="SAVE">
-        Save
-      </md-button>
-    </div>
-  </form>
+		<div layout="row">
+			<span flex></span>
+			<md-button translate="SAVE" class="md-raised md-primary" ng-click="acVm.submit()" ng-disabled="accountForm.$prestine || accountForm.$invalid">
+				Save
+			</md-button>
+		</div>
+	</form>
 </div>

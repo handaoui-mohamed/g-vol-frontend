@@ -1,62 +1,70 @@
-import socket from 'socket.io-client';
-
 export default
 
-  function ($rootScope, $auth, $state, $location, $window, AccountService, $transitions, $mdSidenav, $translate, $mdComponentRegistry, Toast, SocketService) {
-  'ngInject';
-  // SocketService.init();
+	function ($rootScope, $location, $window, AccountService, $transitions, $mdSidenav, $translate, $mdComponentRegistry) {
+	'ngInject';
 
-  $rootScope.tableLabel = {
-    en: {
-      rowsPerPage: "Rows per page",
-      of: "of"
-    },
-    fr: {
-      rowsPerPage: "Lignes par page",
-      of: "sur"
-    }
-  }
+	// get the current selected language from the localStorage
+	let language = $window.localStorage['language'];
+	if (language && (language === "fr" || language === "en")) {
+		// if it's a valid language, use it
+		$translate.use(language);
+	}
 
-  let language = $window.localStorage['language'];
-  if (language && (language === "fr" || language === "en")) {
-    $translate.use(language);
-  }
-  $rootScope.language = language || "en";
 
-  $transitions.onStart({}, (trans) => {
-    $rootScope.isLoading = true; //activation the progress circular in nav bar
-    $rootScope.hideTopBG = false; // show the top background
-    // close the navbar
-    if ($mdComponentRegistry.get("left") && !$mdSidenav("left").isLockedOpen())
-      $mdSidenav("left").close();
+	// Pages (routes) transition function to constrole user connection and permissions
+	$transitions.onStart({}, (trans) => {
+		// activation the progress circular in nav bar, this is usefull when using a slow internet connection
+		$rootScope.isLoading = true;
 
-    let notAllowedStates = ['/login'];
-    let toState = trans.to();
-    let $state = trans.router.stateService;
-    let authService = trans.injector().get('$auth');
+		// To avoid copying the same top background html code, 
+		// we used a global one, and the choose to show the top background
+		$rootScope.hideTopBG = false;
 
-    if (notAllowedStates.indexOf($location.url()) === -1)
-      $rootScope.next = $location.url();
+		// check if the sidenav is loaded, if it is, check if it's not locked open the close it
+		if ($mdComponentRegistry.get("left") && !$mdSidenav("left").isLockedOpen())
+			$mdSidenav("left").close();
 
-    if (authService.isAuthenticated()) {
-      if (notAllowedStates.indexOf(toState['url']) !== -1)
-        return $state.current.name === 'home.dashboard' ? false : $state.target('home.dashboard');
-    } else {
-      if (toState['loginRequired']) {
-        return $state.target('login');
-      }
-    }
-  });
+		// define the not allowed states when user is already logged in
+		let notAllowedStates = ['/login'];
 
-  $transitions.onFinish({}, (trans) => {
-    $rootScope.isLoading = false;
-  });
+		// get the target route
+		let toState = trans.to();
 
-  $transitions.onRetain({}, (trans) => {
-    $rootScope.isLoading = false;
-  });
+		// get the state module to change routes if needed
+		let $state = trans.router.stateService;
 
-  $transitions.onError({}, (trans) => {
-    $rootScope.isLoading = false;
-  });
+		// inject the $auth module to check if user if authenticated
+		let authService = trans.injector().get('$auth');
+
+		// if user go to one of the not allowed states we register the current one in "next"
+		// to be used for redirection when the user is not logged in
+		if (notAllowedStates.indexOf($location.url()) === -1)
+			$rootScope.next = $location.url();
+
+		// check if user is authenticated
+		if (authService.isAuthenticated()) {
+			// TODO: handle permissions
+			if (notAllowedStates.indexOf(toState['url']) !== -1)
+				return $state.current.name === 'home.dashboard' ? false : $state.target('home.dashboard');
+		} else {
+			// if user not authenticated, and the target state require being logged in
+			// we redirect him to the login page
+			if (toState['loginRequired']) {
+				return $state.target('login');
+			}
+		}
+	});
+
+	// handle some transitions events, to close the loading circular progress
+	$transitions.onFinish({}, (trans) => {
+		$rootScope.isLoading = false;
+	});
+
+	$transitions.onRetain({}, (trans) => {
+		$rootScope.isLoading = false;
+	});
+
+	$transitions.onError({}, (trans) => {
+		$rootScope.isLoading = false;
+	});
 };

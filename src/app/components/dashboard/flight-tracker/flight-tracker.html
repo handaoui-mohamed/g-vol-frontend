@@ -17,7 +17,7 @@
 			<md-button aria-label="Initilize flight" ng-click="ftVm.initFlight()" class="md-raised md-warn"> Initilize flight </md-button>
 		</div>
 		<div ng-if="ftVm.flight.initilized || ftVm.flight.status !== 'new'">
-			<flight-progress flight="ftVm.flight" time-left="ftVm.timeLeft"></flight-progress>
+			<flight-progress documents="ftVm.documents" flight="ftVm.flight" time-left="ftVm.timeLeft"></flight-progress>
 			<div layout="row" layout-align="space-between" layout-padding>
 				<div flex="50" layout="column">
 					<div layout="column">
@@ -37,7 +37,7 @@
 						<md-icon md-font-icon="icon-folder-lock-open"></md-icon>
 						<span translate="FLIGHTSTATUS.REOPEN">Reopen Flight</span>
 					</md-button>
-					<flight-checklist notification="ftVm.flight.notification" flex flight="ftVm.flight"></flight-checklist>
+					<flight-checklist documents="ftVm.documents" notification="ftVm.flight.notification" flex flight="ftVm.flight"></flight-checklist>
 				</div>
 			</div>
 			<footer>

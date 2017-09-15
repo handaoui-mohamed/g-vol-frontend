@@ -66,6 +66,11 @@ class FlightProgressController {
 
 		return finishedDocuments ? finishedDocuments * 100 / nbDocuments : 0;
 	}
+
+	getMargins() {
+		let length = this.documents.length + 2;
+		return 100 / length;
+	}
 }
 
 export default FlightProgressController;

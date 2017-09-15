@@ -6,6 +6,15 @@
 	<div class="meter">
 		<span ng-style="{'width': fpVm.calculateProgress()+'%'}"></span>
 	</div>
+	<div class="finished-documents">
+		<div layout="column" ng-repeat="document in fpVm.documents track by $index" ng-style="::{'margin-left': fpVm.getMargins()+'%'}">
+			<div class="doc-circular">
+				<div></div>
+			</div>
+			<span class="doc-lines"></span>
+			<div class="doc-title">{{ $index }}</div>
+		</div>
+	</div>
 	<div layout="row" layout-align="space-between end" class="plane-icons">
 		<img width="40" src="/assets/images/arrival.png" alt="arrival">
 		<img width="40" src="/assets/images/departure.png" alt="departure">
