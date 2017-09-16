@@ -6,9 +6,4 @@ export default function ($locationProvider, $mdThemingProvider, $translateProvid
 	// angular-translate configuration, set default language to English
 	$translateProvider.preferredLanguage('en');
 	$translateProvider.useSanitizeValueStrategy('sce');
-
-	// Register toast themes
-	$mdThemingProvider.theme("success-toast");
-	$mdThemingProvider.theme("error-toast");
-	$mdThemingProvider.theme("warning-toast");
 };

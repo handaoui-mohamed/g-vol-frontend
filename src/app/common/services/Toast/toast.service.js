@@ -1,34 +1,22 @@
 class ToastService {
-	constructor($mdToast, $filter, $window, $state) {
+	constructor($filter, $window, $state, toastr) {
 		'ngInject';
-		this.$mdToast = $mdToast;
-		this.$filter = $filter;
+		this.$translate = $filter('translate');
 		this.$window = $window;
 		this.$state = $state;
-		// toast configuration
-		this.toastPosition = "top right";
-		this.toastDelay = 3000;
-	}
-
-	showToast(message, type, translate) {
-		this.$mdToast.show(this.$mdToast
-			.simple()
-			.content(translate ? this.$filter('translate')(translate) : message)
-			.theme(type)
-			.position(this.toastPosition)
-			.hideDelay(this.toastDelay));
+		this.toastr = toastr;
 	}
 
 	success(message, translate) {
-		this.showToast(message, "success-toast", translate);
+		this.toastr.success(translate ? this.$translate(translate) : message);
 	}
 
 	warning(message, translate) {
-		this.showToast(message, "warning-toast", translate);
+		this.toastr.warning(translate ? this.$translate(translate) : message);
 	}
 
 	error(message, translate) {
-		this.showToast(message, "error-toast", translate);
+		this.toastr.warning(translate ? this.$translate(translate) : message);
 	}
 
 	serverError(error) {

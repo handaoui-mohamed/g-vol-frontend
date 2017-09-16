@@ -16,6 +16,7 @@ class FlightProgressController {
 		this.setFlightTimeOut();
 		this.initTimeOut();
 		this.width = angular.element(this.$element[0].querySelector('.meter'))[0].clientWidth;
+		// TODO: get width on sreen resize
 	}
 
 	initTimeOut() {
@@ -73,13 +74,13 @@ class FlightProgressController {
 	openDialog(ev, index) {
 		let title;
 		switch (index) {
-			case (0): // flight info
+			case (0):
 				title = "Flight info";
 				break;
-			case (1): // baggage report
+			case (1):
 				title = "Baggage report";
 				break;
-			case (2): // offload list
+			case (2):
 				title = "Offload list";
 				break;
 			default: // other documents
