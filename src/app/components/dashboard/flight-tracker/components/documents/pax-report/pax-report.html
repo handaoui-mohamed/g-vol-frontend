@@ -10,24 +10,27 @@
 		</md-button>
 	</div>
 	<md-content ng-class="{ 'content-opened' : prVm.toggled} ">
-		<table>
-			<tr>
-				<td>Total Pax Baggages</td>
-				<td>{{prVm.flight.paxReport.totalBaggagePax}}</td>
-			</tr>
-			<tr>
-				<td>Crew Baggage</td>
-				<td>{{prVm.flight.paxReport.crewBaggage}}</td>
-			</tr>
-			<tr>
-				<td>DAA</td>
-				<td>{{prVm.flight.paxReport.daa}}</td>
-			</tr>
-			<tr>
-				<td>Rush</td>
-				<td>{{prVm.flight.paxReport.rush}}</td>
-			</tr>
-		</table>
+
+		<md-content class="table-content">
+			<table>
+				<tr>
+					<td>Total Pax Baggages</td>
+					<td>{{prVm.flight.paxReport.totalBaggagePax}}</td>
+				</tr>
+				<tr>
+					<td>Crew Baggage</td>
+					<td>{{prVm.flight.paxReport.crewBaggage}}</td>
+				</tr>
+				<tr>
+					<td>DAA</td>
+					<td>{{prVm.flight.paxReport.daa}}</td>
+				</tr>
+				<tr>
+					<td>Rush</td>
+					<td>{{prVm.flight.paxReport.rush}}</td>
+				</tr>
+			</table>
+		</md-content>
 	</md-content>
 	<md-divider flex></md-divider>
 </div>

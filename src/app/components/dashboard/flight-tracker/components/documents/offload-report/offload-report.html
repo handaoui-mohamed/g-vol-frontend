@@ -8,29 +8,31 @@
 			</div>
 			<md-icon md-font-icon="icon-chevron-up " class="md-toggle-icon " ng-class="{ 'toggled' : !ofVm.toggled} "></md-icon>
 		</md-button>
-
-		<md-button flex aria-label="dialog-offload-report" class="document-edit-button" ng-if="ofVm.toggled" ng-click="ofVm.openOffloadReportDialog($event) ">
+	</div>
+	<md-content layout="column" ng-class="{ 'content-opened' : ofVm.toggled} ">
+		<md-button flex aria-label="dialog-offload-report" class="document-edit-button" ng-click="ofVm.openOffloadReportDialog($event) ">
 			<md-icon md-font-icon="icon-eye"></md-icon>
 			Show details
 		</md-button>
-	</div>
-	<md-content ng-class="{ 'content-opened' : ofVm.toggled} ">
-		<table>
-			<tr>
-				<th>Total</th>
-				<th>Male</th>
-				<th>Female</th>
-				<th>Child</th>
-				<th>Infant</th>
-			</tr>
-			<tr>
-				<td>{{ofVm.flight.offloadReport.pax.total}}</td>
-				<td>{{ofVm.flight.offloadReport.pax.male}}</td>
-				<td>{{ofVm.flight.offloadReport.pax.female}}</td>
-				<td>{{ofVm.flight.offloadReport.pax.child}}</td>
-				<td>{{ofVm.flight.offloadReport.pax.infant}}</td>
-			</tr>
-		</table>
+
+		<md-content class="table-content">
+			<table>
+				<tr>
+					<th>Total</th>
+					<th>Male</th>
+					<th>Female</th>
+					<th>Child</th>
+					<th>Infant</th>
+				</tr>
+				<tr>
+					<td>{{ofVm.flight.offloadReport.pax.total}}</td>
+					<td>{{ofVm.flight.offloadReport.pax.male}}</td>
+					<td>{{ofVm.flight.offloadReport.pax.female}}</td>
+					<td>{{ofVm.flight.offloadReport.pax.child}}</td>
+					<td>{{ofVm.flight.offloadReport.pax.infant}}</td>
+				</tr>
+			</table>
+		</md-content>
 	</md-content>
 	<md-divider flex ng-if="ofVm.flight.offloadReport"></md-divider>
 </div>

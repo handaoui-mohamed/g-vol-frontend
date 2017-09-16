@@ -1,28 +1,22 @@
-.offload-report-accordion{
-	md-content{
-    	overflow-y: hidden !important;
-	}
-
-	.content-opened{
-		padding: 5px !important;
-	}
-
-	.disabled{
-		background-color: rgba(255, 255, 255, 0.5);
-	}
-
-	td,th {
-		border: 1px solid #9c9090;
-		text-align: center;
-		padding: 8px;
-		width: auto !important;
-	}
-
-	th{
-		color: black !important
-	}
-
-	td{
-		color: rgb(63,81,181);
-	}
+.offload-report-accordion {
+    md-content.table-content {
+        padding: 5px;
+        overflow-y: hidden !important;
+    }
+    .disabled {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    td,
+    th {
+        border: 1px solid #9c9090;
+        text-align: center;
+        padding: 8px;
+        width: auto !important;
+    }
+    th {
+        color: black !important
+    }
+    td {
+        color: rgb(63, 81, 181);
+    }
 }

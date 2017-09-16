@@ -1,10 +1,11 @@
 class FlightProgressController {
-	constructor($scope, $interval, $element, $mdDialog, SocketService) {
+	constructor($scope, $interval, $element, $mdDialog, $filter, SocketService) {
 		'ngInject';
 		this.$scope = $scope;
 		this.$interval = $interval;
 		this.$element = $element;
 		this.$mdDialog = $mdDialog;
+		this.$translate = $filter('translate');
 		this.socket = SocketService.io;
 	}
 
@@ -94,7 +95,7 @@ class FlightProgressController {
 				.clickOutsideToClose(true)
 				.textContent("Document : " + title)
 				.ariaLabel('document')
-				.ok('Close')
+				.ok(this.$translate('CLOSE'))
 				.targetEvent(ev)
 		);
 	}
