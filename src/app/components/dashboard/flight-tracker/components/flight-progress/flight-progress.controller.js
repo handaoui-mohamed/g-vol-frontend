@@ -1,8 +1,10 @@
 class FlightProgressController {
-	constructor($scope, $interval, SocketService) {
+	constructor($scope, $interval, $element, $mdDialog, SocketService) {
 		'ngInject';
 		this.$scope = $scope;
 		this.$interval = $interval;
+		this.$element = $element;
+		this.$mdDialog = $mdDialog;
 		this.socket = SocketService.io;
 	}
 
@@ -13,6 +15,7 @@ class FlightProgressController {
 		this.progress = 0;
 		this.setFlightTimeOut();
 		this.initTimeOut();
+		this.width = angular.element(this.$element[0].querySelector('.meter'))[0].clientWidth;
 	}
 
 	initTimeOut() {
@@ -67,9 +70,32 @@ class FlightProgressController {
 		return finishedDocuments ? finishedDocuments * 100 / nbDocuments : 0;
 	}
 
-	getMargins() {
-		let length = this.documents.length + 2;
-		return 100 / length;
+	openDialog(ev, index) {
+		let title;
+		switch (index) {
+			case (0): // flight info
+				title = "Flight info";
+				break;
+			case (1): // baggage report
+				title = "Baggage report";
+				break;
+			case (2): // offload list
+				title = "Offload list";
+				break;
+			default: // other documents
+				title = this.documents[index].title;
+				break;
+		}
+
+		this.$mdDialog.show(
+			this.$mdDialog.alert()
+				.parent(angular.element(document.querySelector('#flight-' + this.flight._id)))
+				.clickOutsideToClose(true)
+				.textContent("Document : " + title)
+				.ariaLabel('document')
+				.ok('Close')
+				.targetEvent(ev)
+		);
 	}
 }
 
