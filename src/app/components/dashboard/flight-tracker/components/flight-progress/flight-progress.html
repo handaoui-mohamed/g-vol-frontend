@@ -4,15 +4,15 @@
 		<span>{{fpVm.flight.formattedStd}}</span>
 	</div>
 	<div class="meter">
-		<span ng-style="{'width': fpVm.calculateProgress()+'%'}"></span>
+		<span ng-style="{'width': fpVm.progress}"></span>
 		<div class="finished-documents">
-			<div layout="column" ng-repeat="document in fpVm.documents | orderBy: 'finishedAt' track by $index" ng-style="{'margin-left': ((fpVm.width / (fpVm.documents.length + 1)) - 17)+'px'}"
+			<div layout="column" ng-repeat="document in fpVm.documents | orderBy: 'finishedAt' track by document.index" ng-style="{'margin-left': fpVm.documentMargin}"
 			 ng-if="document.status">
 				<div class="doc-circular">
 					<div></div>
 				</div>
 				<span class="doc-lines"></span>
-				<div class="doc-title" ng-click="fpVm.openDialog($event, $index)">{{ $index + 1 }}</div>
+				<div class="doc-title" ng-click="fpVm.openDialog($event, document.index)">{{ document.index + 1 }}</div>
 			</div>
 		</div>
 	</div>

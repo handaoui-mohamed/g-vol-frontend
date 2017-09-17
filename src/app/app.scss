@@ -77,7 +77,8 @@ table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+
     top: 0;
     right: 0;
     left: 0;
-    height: 200px;
+	height: 200px;
+	width: 100%;
     background-image: url(/assets/images/header-bg.png);
     background-size: cover;
     background-color: rgb(226, 62, 31);

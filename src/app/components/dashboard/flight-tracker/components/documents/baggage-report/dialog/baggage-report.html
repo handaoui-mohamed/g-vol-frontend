@@ -17,7 +17,7 @@
 				<th>Position</th>
 				<th>Nb pieces</th>
 				<th>
-					<md-button flex aria-label="Reload" class="remove-row-button" ng-click="brdVm.reset()">
+					<md-button aria-label="Reload" class="remove-row-button" ng-click="brdVm.reset()">
 						<md-icon md-font-icon="icon-reload" class="icon s32"></md-icon>
 					</md-button>
 				</th>
@@ -35,13 +35,13 @@
 				<td>{{row.position}}</td>
 				<td>{{row.nbPieces}}</td>
 				<td>
-					<md-button flex aria-label="Remove row" class="md-warn remove-row-button" ng-click="brdVm.removeRow($index)">
+					<md-button aria-label="Remove row" class="md-warn remove-row-button" ng-click="brdVm.removeRow($index)">
 						<md-icon md-font-icon="icon-table-row-remove" class="icon s32"></md-icon>
 					</md-button>
 				</td>
 			</tr>
 		</table>
-		<md-button flex aria-label="Add new row" class="md-primary new-row-button" ng-click="brdVm.addEmptyRow()">
+		<md-button aria-label="Add new row" class="md-primary new-row-button" ng-click="brdVm.addEmptyRow()">
 			<md-icon md-font-icon="icon-table-row-plus-after"></md-icon>
 			Add new row
 		</md-button>

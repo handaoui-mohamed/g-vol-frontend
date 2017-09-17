@@ -5,8 +5,7 @@ import './flight-progress.scss';
 let flightProgressComponent = {
 	bindings: {
 		flight: "=",
-		timeLeft: "=",
-		documents: "="
+		timeLeft: "="
 	},
 	template,
 	controller,

@@ -1,6 +1,7 @@
 class ChecklistController {
-	constructor($scope, DocumentService, Toast, SocketService, OffloadReport, FlightNotification) {
+	constructor($rootScope, $scope, DocumentService, Toast, SocketService, OffloadReport, FlightNotification) {
 		'ngInject';
+		this.$root = $rootScope;
 		this.$scope = $scope;
 		this.documentService = DocumentService;
 		this.toast = Toast;
@@ -12,8 +13,8 @@ class ChecklistController {
 	$onInit() {
 		this.checklist = {};
 		this.documentTypes = {
-			fi: { value: 'flightInfo', index: 0 },
-			br: { value: 'baggageReport', index: 1 },
+			br: { value: 'baggageReport', index: 0 },
+			fi: { value: 'flightInfo', index: 1 },
 			ol: { value: 'offloadList', index: 2 },
 			oth: { value: 'otherDocuments' }
 		}
@@ -33,6 +34,7 @@ class ChecklistController {
 					if (document) document.status = data.status;
 				}
 				this.updateDocuments(data);
+				this.emitDocumentChanges(this.checklistDocuments);
 			})
 		});
 	}
@@ -47,6 +49,7 @@ class ChecklistController {
 				}
 				this.documents = documents;
 				this.setDocuments(this.documents);
+				this.emitDocumentChanges(this.checklistDocuments);
 				this.flight.offloadReport = this.offloadReport.generate(documents.offloadList);
 			}, (error) => {
 				this.toast.serverError(error);
@@ -54,13 +57,18 @@ class ChecklistController {
 		} else {
 			this.documents = this.flight;
 			this.setDocuments(this.documents);
+			this.emitDocumentChanges(this.checklistDocuments);
 		}
+	}
+
+	emitDocumentChanges(documents) {
+		this.$root.$broadcast('document-state' + this.flight._id, documents);
 	}
 
 	setDocuments(documents) {
 		this.checklistDocuments = [
-			documents.flightInfo,
 			documents.baggageReport,
+			documents.flightInfo,
 			documents.offloadList
 		].concat(documents.otherDocuments || []);
 	}

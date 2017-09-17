@@ -4,17 +4,21 @@
 	</div>
 	<md-divider flex></md-divider>
 	<md-content layout="column" layout-padding>
-		<div>
-			<md-checkbox disabled class="md-primary" ng-model="chlVm.documents.baggageReport.status" aria-label="label" ng-class="{'item-checked': chlVm.documents.baggageReport.status}">Baggage report</md-checkbox>
+		<div layout="row" class="checklist-element" ng-class="{'item-checked': chlVm.documents.baggageReport.status}">
+			<div class="doc-number">{{ 1 }}</div>
+			<span>Baggage report</span>
 		</div>
-		<div>
-			<md-checkbox disabled class="md-primary" ng-model="chlVm.documents.flightInfo.status" aria-label="label" ng-class="{'item-checked': chlVm.documents.flightInfo.status}">Flight info</md-checkbox>
+		<div layout="row" class="checklist-element" ng-class="{'item-checked': chlVm.documents.flightInfo.status}">
+			<div class="doc-number">{{ 2 }}</div>
+			<span>Flight info</span>
 		</div>
-		<div>
-			<md-checkbox disabled class="md-primary" ng-model="chlVm.documents.offloadList.status" aria-label="label" ng-class="{'item-checked': chlVm.documents.offloadList.status, 'not-initilized': !chlVm.documents.offloadList.createdAt}">Offload List</md-checkbox>
+		<div layout="row" class="checklist-element" ng-class="{'item-checked': chlVm.documents.offloadList.status, 'not-initilized': !chlVm.documents.offloadList.createdAt}">
+			<div class="doc-number">{{ 3 }}</div>
+			<span>Offload List</span>
 		</div>
-		<div ng-repeat="document in chlVm.documents.otherDocuments track by $index">
-			<md-checkbox disabled class="md-primary" ng-model="document.status" aria-label="label" ng-class="{'item-checked': document.status}">{{document.title}}</md-checkbox>
+		<div ng-repeat="document in chlVm.documents.otherDocuments track by $index" class="checklist-element" layout="row" ng-class="{'item-checked': document.status}">
+			<div class="doc-number">{{ $index + 4 }}</div>
+			<span>{{document.title}}</span>
 		</div>
 	</md-content>
 </div>
