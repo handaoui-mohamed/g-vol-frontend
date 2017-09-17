@@ -12,6 +12,7 @@ class ChecklistController {
 
 	$onInit() {
 		this.checklist = {};
+		this.checklistDocuments = [];
 		this.documentTypes = {
 			br: { value: 'baggageReport', index: 0 },
 			fi: { value: 'flightInfo', index: 1 },
@@ -40,25 +41,19 @@ class ChecklistController {
 	}
 
 	getDocuments() {
-		if (this.flight.queryDocuments) {
-			this.documentService.get({ flightId: this.flight._id }, (documents) => {
-				for (var key in documents) {
-					if (documents.hasOwnProperty(key)) {
-						this.flight[key] = documents[key];
-					}
+		this.documentService.get({ flightId: this.flight._id }, (documents) => {
+			for (var key in documents) {
+				if (documents.hasOwnProperty(key)) {
+					this.flight[key] = documents[key];
 				}
-				this.documents = documents;
-				this.setDocuments(this.documents);
-				this.emitDocumentChanges(this.checklistDocuments);
-				this.flight.offloadReport = this.offloadReport.generate(documents.offloadList);
-			}, (error) => {
-				this.toast.serverError(error);
-			});
-		} else {
-			this.documents = this.flight;
+			}
+			this.documents = documents;
 			this.setDocuments(this.documents);
 			this.emitDocumentChanges(this.checklistDocuments);
-		}
+			this.flight.offloadReport = this.offloadReport.generate(documents.offloadList);
+		}, (error) => {
+			this.toast.serverError(error);
+		});
 	}
 
 	emitDocumentChanges(documents) {
