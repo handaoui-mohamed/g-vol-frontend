@@ -1,4 +1,4 @@
-<div id="dashboard" layout-fill>
+<div id="clc-flight-tracking" clc-required layout-fill>
 	<flights-nav-bar selected-flights="dashVm.selectedFlights" opened-flights="dashVm.openedFlights"></flights-nav-bar>
 	<md-content class="flex-container" flex>
 		<flight-tracker ng-show="flight.opened" flight="flight" opened-flights="dashVm.openedFlights" ng-repeat="flight in dashVm.selectedFlights"></flight-tracker>
@@ -15,5 +15,11 @@
 			 alt="Add
 			 button ">
 		</div>
+	</div>
+</div>
+
+<div id="admin-dashboard" admin-required>
+	<div class="no-flight-selected" layout="column" layout-align="center center">
+		<img src="/assets/images/logo.png" alt="Swissport GVOL">
 	</div>
 </div>
