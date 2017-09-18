@@ -10,16 +10,17 @@ import en from './nav-bar/i18n/en.json';
 import fr from './nav-bar/i18n/fr.json';
 
 let commonComponentModule = angular
-  .module('common.components', [sideNav])
-  .config(($translateProvider) => {
-    'ngInject';
-    $translateProvider.translations('en', en);
-    $translateProvider.translations('fr', fr);
-  })
-  .component('ngNavBar', navBar)
-  .component('ngFilterMenu', filterMenu)
-  .component('ngClock', clock)
-  .component('mdDataPagination', mdDataPagination)
-  .name;
+	.module('common.components', [sideNav])
+	.config(($translateProvider) => {
+		'ngInject';
+		// nav bar translations
+		$translateProvider.translations('en', en);
+		$translateProvider.translations('fr', fr);
+	})
+	.component('ngNavBar', navBar)
+	.component('ngFilterMenu', filterMenu)
+	.component('ngClock', clock)
+	.component('mdDataPagination', mdDataPagination)
+	.name;
 
 export default commonComponentModule;

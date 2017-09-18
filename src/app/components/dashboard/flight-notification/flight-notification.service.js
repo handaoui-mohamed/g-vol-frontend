@@ -117,7 +117,10 @@ class FlightNoticationService {
 
 	shouldCloseToast(selectedFlight) {
 		selectedFlight.showNotification = !this.shouldCloseNotification(selectedFlight);
-		if (!this.stillNotifications()) this.$mdToast.hide();
+		if (!this.stillNotifications()) {
+			this.$mdToast.hide();
+			this.toastIsOpen = false;
+		}
 	}
 }
 

@@ -1,6 +1,7 @@
 class ChecklistController {
-	constructor($scope, DocumentService, Toast, SocketService, OffloadReport, FlightNotification) {
+	constructor($rootScope, $scope, DocumentService, Toast, SocketService, OffloadReport, FlightNotification) {
 		'ngInject';
+		this.$root = $rootScope;
 		this.$scope = $scope;
 		this.documentService = DocumentService;
 		this.toast = Toast;
@@ -11,13 +12,14 @@ class ChecklistController {
 
 	$onInit() {
 		this.checklist = {};
+		this.checklistDocuments = [];
 		this.documentTypes = {
-			fi: 'flightInfo',
-			br: 'baggageReport',
-			ol: 'offloadList',
-			oth: 'otherDocuments'
+			br: { value: 'baggageReport', index: 0 },
+			fi: { value: 'flightInfo', index: 1 },
+			ol: { value: 'offloadList', index: 2 },
+			oth: { value: 'otherDocuments' }
 		}
-		this.getDocuments();
+		this.$scope.$on('documents' + this.flight._id, this.getDocuments.bind(this));
 		this.initFlightDocumentStatusSocket()
 	}
 
@@ -27,30 +29,64 @@ class ChecklistController {
 			this.flightNotification.documentUpdate(this.flight._id, 'documentState');
 			this.$scope.$apply(() => {
 				if (data.type !== 'oth')
-					this.flight[this.documentTypes[data.type]].status = data.status;
+					this.flight[this.documentTypes[data.type].value].status = data.status;
 				else {
 					let document = this.flight.otherDocuments.find(doc => doc._id === data.docId);
 					if (document) document.status = data.status;
 				}
+				this.updateDocuments(data);
+				this.emitDocumentChanges(this.checklistDocuments);
 			})
 		});
 	}
 
-	getDocuments() {
-		if (this.flight.queryDocuments) {
+	getDocuments(event, queryDocuments) {
+		console.log("query", queryDocuments);
+		if (queryDocuments) {
 			this.documentService.get({ flightId: this.flight._id }, (documents) => {
 				for (var key in documents) {
 					if (documents.hasOwnProperty(key)) {
 						this.flight[key] = documents[key];
 					}
 				}
+				console.log("fetch");
 				this.documents = documents;
+				this.setDocuments(this.documents);
+				this.emitDocumentChanges(this.checklistDocuments);
 				this.flight.offloadReport = this.offloadReport.generate(documents.offloadList);
 			}, (error) => {
 				this.toast.serverError(error);
 			});
-		} else
+		} else {
 			this.documents = this.flight;
+			this.setDocuments(this.documents);
+			this.emitDocumentChanges(this.checklistDocuments);
+		}
+	}
+
+	emitDocumentChanges(documents) {
+		this.$root.$broadcast('document-state' + this.flight._id, documents);
+	}
+
+	setDocuments(documents) {
+		this.checklistDocuments = [
+			documents.baggageReport,
+			documents.flightInfo,
+			documents.offloadList
+		].concat(documents.otherDocuments || []);
+	}
+
+	updateDocuments(data) {
+		let document;
+		if (data.type !== 'oth')
+			document = this.checklistDocuments[this.documentTypes[data.type].index];
+		else
+			document = this.checklistDocuments.find(doc => doc._id === data.docId);
+
+		if (document) {
+			document.status = data.status;
+			if (document.status) document.finishedAt = data.finishedAt;
+		}
 	}
 
 }

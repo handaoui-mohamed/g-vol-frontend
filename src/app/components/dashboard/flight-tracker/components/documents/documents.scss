@@ -1,74 +1,62 @@
-.documents-container{
-	height: auto;
-	background-color: rgba(0, 0, 0, 0.5);
-	color: #fff;
-	.md-button-toggle{
-		color: #fff;
-		border-radius: 0;
-		width: 100% !important;
-		margin: 0;
-		padding: 10px;
-		md-icon{
-			position: absolute !important;
-			top: 15px !important;
-			right: 10px !important;
-			color: #fff;
-		}
-	}
-
-	.document-edit-button{
-		margin: 0;
-		padding: 5px;
-		background-color: #fff;
-		color: #000;
-		border-radius: 0;
-		
-	}
-	button.document-edit-button:not([disabled]):hover{
-		background-color: #eee !important;	
-	}
-
-	table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
-	}
-
-	td,th {
-		border: 1px solid #9c9090;
-		text-align: center;
-		padding: 8px;
-		width: 50% !important;
-	}
-
-	td:nth-child(odd){
-		font-weight: 600;
-	}
-
-	td:nth-child(even){
-		font-weight: 600;
-		color: rgb(63,81,181);
-	}
-
-	md-content{
-		background-color: #fff;
-		height: auto !important;
-		max-height: 0px;
-		overflow-y: visible !important;
-		
-		-webkit-transition: max-height 0.5s; 
-		-moz-transition: max-height 0.5s; 
-		-ms-transition: max-height 0.5s; 
-		-o-transition: max-height 0.5s; 
-		transition: max-height 0.5s;  
-	}
-
-	.content-opened{
-		max-height: 200px;
-		-webkit-transition: max-height 0.5s; 
-		-moz-transition: max-height 0.5s; 
-		-ms-transition: max-height 0.5s; 
-		-o-transition: max-height 0.5s; 
-		transition: max-height 0.5s;  
-	}
+.documents-container {
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    .md-button-toggle {
+        color: #fff;
+        border-radius: 0;
+        width: 100% !important;
+        margin: 0;
+        padding: 10px;
+        md-icon {
+            position: absolute !important;
+            top: 15px !important;
+            right: 10px !important;
+            color: #fff;
+        }
+    }
+    .document-edit-button {
+        margin: 0;
+        padding: 5px;
+        background-color: #fff;
+        color: #000;
+        border-radius: 0;
+    }
+    button.document-edit-button:not([disabled]):hover {
+        background-color: #eee !important;
+    }
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td,
+    th {
+        border: 1px solid #9c9090;
+        text-align: center;
+        padding: 8px;
+        width: 50% !important;
+    }
+    td:nth-child(odd) {
+        font-weight: 600;
+    }
+    td:nth-child(even) {
+        font-weight: 600;
+        color: rgb(63, 81, 181);
+    }
+    md-content {
+        background-color: #fff;
+        height: auto !important;
+        max-height: 0px;
+        overflow-y: hidden !important;
+        transition: max-height 0.5s;
+    }
+    md-content.table-content {
+        overflow-y: visible !important;
+        max-height: 200px;
+    }
+    .content-opened {
+        max-height: 247px;
+        transition: max-height 0.5s;
+    }
 }

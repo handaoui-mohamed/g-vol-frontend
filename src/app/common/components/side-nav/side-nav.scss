@@ -1,80 +1,74 @@
 .md-sidenav-left {
-	height: 100% !important;
-	max-width: 250px;
-	background-color: #f44336 !important;
-	ul {
-		background-color: #f44336 !important;
-	}
-	.md-raised {
-		background-color: #f44336 !important;
-	}
-	.side-menu-devider {
-		border-bottom-color: rgba(236, 164, 164, 0.19) !important;
-		:hover {
-			background-color: rgb(251, 91, 79) !important
-		}
-	}
-	.menu-heading {
-		color: rgb(210, 208, 208) !important;
-	}
-	.md-toggle-icon md-icon {
-		height: auto !important;
-	}
-	.nav-header {
-		flex-shrink: 0;
-		z-index: 2;
-	}
-	.nav-header h1,
-	.nav-header h4 {
-		color: white;
-		text-align: center;
-	}
-	.nav-header a.logo {
-		text-decoration: none;
-	}
-	md-content {
-		overflow-x: hidden !important;
-	}
-	md-toolbar.md-default-theme:not(.md-menu-toolbar),
-	md-toolbar:not(.md-menu-toolbar) {
-		background-color: #e53935;
-		color: rgb(255, 255, 255);
-	}
-	#side-nav-pin {
-		outline: 0;
-		font-size: 25px;
-		margin-right: 10px !important;
-		-webkit-transform: rotate(0deg);
-		-moz-transform: rotate(0deg);
-		-o-transform: rotate(0deg);
-		transform: rotate(0deg);
-		-webkit-transition: .2s ease-in-out;
-		-moz-transition: .2s ease-in-out;
-		-o-transition: .2s ease-in-out;
-		transition: .2s ease-in-out;
-		cursor: pointer;
-	}
-	#side-nav-pin.pinned {
-		-webkit-transform: rotate(90deg);
-		-moz-transform: rotate(90deg);
-		-o-transform: rotate(90deg);
-		transform: rotate(90deg);
-	}
-	.md-sidemenu .md-button {
-		background-color: #f44336 !important;
-		color: #fff !important;
-		md-icon {
-			color: #fff !important;
-		}
-	}
-	.md-subheader {
-		color: rgba(255, 255, 255, 0.6) !important;
-		background-color: #f44336 !important;
-	}
-	.md-raised.side-menu-selected {
-		background-color: #FF7043 !important;
-		span {
-			background-color: #FF7043 !important;
-		}
-	}
+    height: 100% !important;
+    max-width: 250px;
+    .menu-icon {
+        margin: auto !important;
+    }
+    background-color: #f44336 !important;
+    ul {
+        background-color: #f44336 !important;
+    }
+    .md-raised {
+        background-color: #f44336 !important;
+    }
+    .side-menu-devider {
+        border-bottom-color: rgba(236, 164, 164, 0.19) !important;
+         :hover {
+            background-color: rgb(251, 91, 79) !important
+        }
+    }
+    .menu-heading {
+        color: rgb(210, 208, 208) !important;
+    }
+    .md-toggle-icon md-icon {
+        height: auto !important;
+    }
+    .nav-header {
+        flex-shrink: 0;
+        z-index: 2;
+    }
+    .nav-header h1,
+    .nav-header h4 {
+        color: white;
+        text-align: center;
+    }
+    .nav-header a.logo {
+        text-decoration: none;
+    }
+    md-content {
+        overflow-x: hidden !important;
+    }
+    md-toolbar.md-default-theme:not(.md-menu-toolbar),
+    md-toolbar:not(.md-menu-toolbar) {
+        background-color: #e53935;
+        color: rgb(255, 255, 255);
+    }
+    #side-nav-pin {
+        outline: 0;
+        font-size: 25px;
+        margin-right: 10px !important;
+        transform: rotate(0deg);
+        transition: .2s ease-in-out;
+        cursor: pointer;
+    }
+    #side-nav-pin.pinned {
+        transform: rotate(90deg);
+    }
+    .md-sidemenu .md-button {
+        background-color: #f44336 !important;
+        color: #fff !important;
+        md-icon {
+            color: #fff !important;
+        }
+    }
+    .md-subheader {
+        color: rgba(255, 255, 255, 0.6) !important;
+        background-color: #f44336 !important;
+    }
+    .md-raised.side-menu-selected {
+        background-color: #FF7043 !important;
+        span {
+            background-color: #FF7043 !important;
+        }
+    }
 }

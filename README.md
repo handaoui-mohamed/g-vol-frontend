@@ -1,4 +1,4 @@
-# Swissport G-Vol for CLC
+# Swissport G-Vol for Admins and CLC
 
 # Table of Contents
 * [Walkthrough](#walkthrough)

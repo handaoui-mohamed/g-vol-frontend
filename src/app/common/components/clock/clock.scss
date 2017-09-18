@@ -1,18 +1,19 @@
-@font-face{
- font-family:'digital-clock-font';
- src: url('/assets/fonts/digital-7.ttf');
+// digital clock font
+@font-face {
+    font-family: 'digital-clock-font';
+    src: url('/assets/fonts/digital-7.ttf');
 }
 
-.clock-container{
-	span{
-		font-family: 'digital-clock-font';
-		font-size: 50px;
-		color: #000;
-		margin-right: 10px;
-    	margin-left: 130px;
-	}
-	p{
-		font-size: 20px;
-		margin-bottom: 5px;
-	}
+.clock-container {
+    span {
+        font-family: 'digital-clock-font';
+        font-size: 50px;
+        color: #000;
+        margin-right: 10px;
+        margin-left: 130px;
+    }
+    p {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
 }

@@ -1,62 +1,54 @@
-import socket from 'socket.io-client';
-
 export default
 
-  function ($rootScope, $auth, $state, $location, $window, AccountService, $transitions, $mdSidenav, $translate, $mdComponentRegistry, Toast, SocketService) {
-  'ngInject';
-  // SocketService.init();
+	function ($rootScope, $window, AccountDetails, $transitions, $mdSidenav, $translate, $mdComponentRegistry) {
+	'ngInject';
 
-  $rootScope.tableLabel = {
-    en: {
-      rowsPerPage: "Rows per page",
-      of: "of"
-    },
-    fr: {
-      rowsPerPage: "Lignes par page",
-      of: "sur"
-    }
-  }
+	// get the current selected language from the localStorage
+	let language = $window.localStorage['language'];
+	if (language && (language === "fr" || language === "en")) {
+		// if it's a valid language, use it
+		$translate.use(language);
+	}
 
-  let language = $window.localStorage['language'];
-  if (language && (language === "fr" || language === "en")) {
-    $translate.use(language);
-  }
-  $rootScope.language = language || "en";
+	// Pages (routes) transition function to constrole user connection and permissions
+	$transitions.onStart({}, (trans) => {
+		// activation the progress circular in nav bar, this is usefull when using a slow internet connection
+		$rootScope.isLoading = true;
 
-  $transitions.onStart({}, (trans) => {
-    $rootScope.isLoading = true; //activation the progress circular in nav bar
-    $rootScope.hideTopBG = false; // show the top background
-    // close the navbar
-    if ($mdComponentRegistry.get("left") && !$mdSidenav("left").isLockedOpen())
-      $mdSidenav("left").close();
+		// check if the sidenav is loaded, if it is, check if it's not locked open the close it
+		if ($mdComponentRegistry.get("left") && !$mdSidenav("left").isLockedOpen())
+			$mdSidenav("left").close();
 
-    let notAllowedStates = ['/login'];
-    let toState = trans.to();
-    let $state = trans.router.stateService;
-    let authService = trans.injector().get('$auth');
+		//manage states permissions and not allowed ones when loggin
+		// get the target route
+		let toState = trans.to();
+		let params = trans.params();
 
-    if (notAllowedStates.indexOf($location.url()) === -1)
-      $rootScope.next = $location.url();
+		// get the state module to change routes if needed
+		let $state = trans.router.stateService;
+		$rootScope.state = $state;
 
-    if (authService.isAuthenticated()) {
-      if (notAllowedStates.indexOf(toState['url']) !== -1)
-        return $state.current.name === 'home.dashboard' ? false : $state.target('home.dashboard');
-    } else {
-      if (toState['loginRequired']) {
-        return $state.target('login');
-      }
-    }
-  });
+		// inject the authorization module to check if user if authorized
+		let authorization = trans.injector().get('Authorization');
 
-  $transitions.onFinish({}, (trans) => {
-    $rootScope.isLoading = false;
-  });
+		$rootScope.toState = toState;
+		$rootScope.toStateParams = params;
 
-  $transitions.onRetain({}, (trans) => {
-    $rootScope.isLoading = false;
-  });
+		if (AccountDetails.isIdentityResolved()) {
+			authorization.authorize();
+		}
+	});
 
-  $transitions.onError({}, (trans) => {
-    $rootScope.isLoading = false;
-  });
+	// handle some transitions events, to close the loading circular progress
+	$transitions.onFinish({}, (trans) => {
+		$rootScope.isLoading = false;
+	});
+
+	$transitions.onRetain({}, (trans) => {
+		$rootScope.isLoading = false;
+	});
+
+	$transitions.onError({}, (trans) => {
+		$rootScope.isLoading = false;
+	});
 };

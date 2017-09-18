@@ -1,9 +1,6 @@
-.pax-report-accordion{
-	md-content{
-    	overflow-y: hidden !important;
-	}
-
-	.content-opened{
-		padding: 5px !important;
-	}
+.pax-report-accordion {
+    md-content.table-content {
+        padding: 5px;
+        overflow-y: hidden !important;
+    }
 }

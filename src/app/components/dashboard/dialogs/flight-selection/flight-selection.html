@@ -11,7 +11,7 @@
 	<md-dialog-content layout-padding>
 		<!-- CONTENT HEADER -->
 		<div layout="row" layout-align="space-between center">
-			<md-button class="md-raised md-primary" ng-click="fldVm.showSelectedFlights()">
+			<md-button aria-label="show selected" class="md-raised md-primary" ng-click="fldVm.showSelectedFlights()">
 				<span ng-if="!fldVm.show" translate="DASHBOARD.SHOWSELECTED">Show selected flights</span>
 				<span ng-if="fldVm.show" translate="DASHBOARD.SHOWALL">Show all flights</span>
 			</md-button>

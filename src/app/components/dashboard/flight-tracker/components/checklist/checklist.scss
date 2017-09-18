@@ -1,34 +1,39 @@
-.checklist-container{
-	background-color: #EEEEEE;
-	padding: 5px 10px !important;
-	border-radius: 5px;
-	md-checkbox{
-		margin: 0 !important;
-    	margin-left: 15px !important;
-	}
-
-	md-checkbox[disabled] .md-label{
-		color : #000;
-	}
-
-	.item-checked{
-		.md-label{
-			color: #4CAF50 !important;
-		}
-		.md-icon{
-			background-color: #4CAF50 !important;
-		}
-	}
-
-	.not-initilized{	
-		.md-label{
-			color: #8f8a8a !important;
-		}
-	}
-
-	md-content{
-		background-color: transparent;
-		max-height: 410px;
-		overflow-y: auto
-	}
+.checklist-container {
+    background-color: #EEEEEE;
+    padding: 5px 10px !important;
+    border-radius: 5px;
+    .checklist-element {
+        margin: 0 !important;
+        margin-left: 15px !important;
+    }
+    .item-checked {
+        .doc-number {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        span {
+            color: #4CAF50 !important;
+        }
+    }
+    .not-initilized {
+        span {
+            color: #8f8a8a !important;
+        }
+    }
+    md-content {
+        background-color: transparent;
+        max-height: 410px;
+        overflow-y: auto
+    }
+    .doc-number {
+        background-color: #444;
+        color: #fff;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        border-radius: 11px;
+        padding: 1px;
+        margin-right: 10px;
+        font-size: 15px;
+    }
 }

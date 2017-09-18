@@ -1,30 +1,43 @@
 <md-menu md-offset="{{$ctrl.menuOffset}}" class="filter-menu-container">
-  <md-button aria-label="Filter" class="md-icon-button filter-button" ng-click="$mdMenu.open()">
-    <md-tooltip md-direction="bottom"><span translate="FILTERCOLUMN">Filter</span></md-tooltip>
-    <md-icon md-font-icon="icon-filter filter-button-icon" ng-class="{'filtered':$ctrl.filtered}"></md-icon>
-  </md-button>
-  <md-menu-content class="filter-menu-content" width="{{$ctrl.menuWidth}}">
-    <md-menu-item class="menu-checkbox" ng-if="$ctrl.menuType !== 'date'" ng-repeat="item in $ctrl.menuItems track by $index">
-      <md-checkbox ng-init="$ctrl.initSelection(item, $index)" ng-model="$ctrl.selectedItems[$index]" aria-label="{{item.value}}" class="md-primary"
-        ng-change="$ctrl.selectionChanged(item, $index)">
-        <span translate="{{item.translate}}">{{item.value}}</span>
-      </md-checkbox>
-    </md-menu-item>
-    <md-menu-item ng-if="$ctrl.menuType === 'date'">
-      <md-input-container class="date-filter-input">
-        <label translate="FROMDATE"></label>
-        <input type="date" name="startDate" ng-model="$ctrl.ngModel.start">
-      </md-input-container>
-    </md-menu-item>
-    <md-menu-item ng-if="$ctrl.menuType === 'date'">
-      <md-input-container class="date-filter-input">
-        <label translate="TODATE">To date (dd/mm/yyyy)</label>
-        <input type="date" name="endDate" ng-model="$ctrl.ngModel.end">
-      </md-input-container>
-    </md-menu-item>
-    <md-menu-divider></md-menu-divider>
-    <md-menu-item>
-      <md-button ng-click="$ctrl.filterColumn()" class="md-raised menu-filter-button" translate="FILTERCOLUMN">Filter</md-button>
-    </md-menu-item>
-  </md-menu-content>
+	<!-- filter menu button -->
+	<md-button aria-label="Filter" class="md-icon-button filter-button" ng-click="$mdMenu.open()">
+		<md-tooltip md-direction="bottom"><span translate="FILTERCOLUMN">Filter</span></md-tooltip>
+		<md-icon md-font-icon="icon-filter filter-button-icon" ng-class="{'filtered':$ctrl.filtered}"></md-icon>
+	</md-button>
+	<!-- /filter menu button -->
+	<!-- filter menu content -->
+	<md-menu-content class="filter-menu-content" width="{{$ctrl.menuWidth}}">
+		<!-- if menu type in not date, we use checkbox initilized from selectedItems -->
+		<!-- Multiselect list Filter-->
+		<md-menu-item class="menu-checkbox" ng-if="$ctrl.menuType !== 'date'" ng-repeat="item in $ctrl.menuItems track by $index">
+			<md-checkbox ng-init="$ctrl.initSelection(item, $index)" ng-model="$ctrl.selectedItems[$index]" aria-label="{{item.value}}"
+			 class="md-primary" ng-change="$ctrl.selectionChanged(item, $index)">
+				<span translate="{{item.translate}}">{{item.value}}</span>
+			</md-checkbox>
+		</md-menu-item>
+		<!-- /Multiselect list Filter -->
+
+		<!-- if menu type in date, we use dates input (start and end)-->
+		<!-- Date filter -->
+		<md-menu-item ng-if="$ctrl.menuType === 'date'">
+			<md-input-container class="date-filter-input">
+				<label translate="FROMDATE"></label>
+				<input type="date" name="startDate" ng-model="$ctrl.ngModel.start">
+			</md-input-container>
+		</md-menu-item>
+		<md-menu-item ng-if="$ctrl.menuType === 'date'">
+			<md-input-container class="date-filter-input">
+				<label translate="TODATE">To date (dd/mm/yyyy)</label>
+				<input type="date" name="endDate" ng-model="$ctrl.ngModel.end">
+			</md-input-container>
+		</md-menu-item>
+		<!-- /Date filter -->
+		<md-menu-divider></md-menu-divider>
+		<!-- filter button -->
+		<md-menu-item>
+			<md-button ng-click="$ctrl.filterColumn()" class="md-raised menu-filter-button" translate="FILTERCOLUMN">Filter</md-button>
+		</md-menu-item>
+		<!-- /filter button -->
+	</md-menu-content>
+	<!-- /filter menu content -->
 </md-menu>

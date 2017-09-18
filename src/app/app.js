@@ -15,30 +15,29 @@ import AppComponent from './app.component';
 import AppConfig from './app.config';
 import AppRun from './app.run';
 
-// socketio
-import socket from 'socket.io-client';
-
-//styles
+// global styles
 import 'normalize.css';
 import 'angular-material/angular-material.css';
 import 'angular-material-data-table/dist/md-data-table.min.css';
 import 'angular-toastr/dist/angular-toastr.min.css';
 
-angular.module('app', [
-  ngAnimate,
-  ngMessages,
-  ngSanitize,
-  uiRouter,
-  ngResource,
-  ngMaterial,
-  mdDataTable,
-  translate,
-  ngFileUpload,
-  toastr,
-  Common,
-  Components
-])
-  .config(AppConfig)
-  .run(AppRun)
-  .constant('API_ENDPOINT', APIENDPOINT)
-  .component('app', AppComponent);
+angular
+	.module('app', [
+		ngAnimate,
+		ngMessages,
+		ngSanitize,
+		uiRouter,
+		ngResource,
+		ngMaterial,
+		mdDataTable,
+		translate,
+		ngFileUpload,
+		toastr,
+		Common,
+		Components
+	])
+	.config(AppConfig)
+	.run(AppRun)
+	// APIENDPOINT is defined in the config file, for easy changes
+	.constant('API_ENDPOINT', APIENDPOINT)
+	.component('app', AppComponent);

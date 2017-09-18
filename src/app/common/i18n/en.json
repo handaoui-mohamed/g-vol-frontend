@@ -21,7 +21,7 @@
 	"SERVER": {
 		"400": "You must fill in all fields",
 		"401": "Unauthorized access",
-		"403": "Insufficient permission to perform the opération",
+		"403": "Insufficient permission to perform this operation",
 		"404": "The content you requested does not exist",
 		"500": "Service not available for the moment"
 	}

@@ -1,6 +1,6 @@
 <div class="flight-info-accordion">
 	<div layout="column">
-		<md-button flex aria-label="toggle-flight-info" class="md-button-toggle" ng-click="fiVm.toggle(); 
+		<md-button aria-label="toggle-flight-info" class="md-button-toggle" ng-click="fiVm.toggle(); 
 		fiVm.removeNotification()">
 			<div>
 				<span>Flight Info</span>
@@ -8,70 +8,72 @@
 			</div>
 			<md-icon md-font-icon="icon-chevron-up " class="md-toggle-icon " ng-class="{ 'toggled' : !fiVm.toggled} "></md-icon>
 		</md-button>
-		<md-button flex aria-label="dialog-flight-info" class="document-edit-button" ng-if="fiVm.toggled" ng-click="fiVm.openFlightInfoDialog($event) ">
+	</div>
+	<md-content layout="column" ng-class="{ 'content-opened' : fiVm.toggled} ">
+		<md-button aria-label="dialog-flight-info" class="document-edit-button" ng-click="fiVm.openFlightInfoDialog($event) ">
 			<md-icon md-font-icon="icon-pencil "></md-icon>
 			Edit Flight Info
 		</md-button>
-	</div>
-	<md-content ng-class="{ 'content-opened' : fiVm.toggled} ">
-		<table>
-			<tr>
-				<td>REGISTRATION</td>
-				<td>{{fiVm.flight.registration}}</td>
-			</tr>
-			<tr>
-				<td>CONFIGURATION</td>
-				<td>{{fiVm.flight.configuration}}</td>
-			</tr>
-			<tr>
-				<td>EZFW</td>
-				<td>{{fiVm.flight.flightInfo.ezfw}}</td>
-			</tr>
-			<tr>
-				<td>WATER UPLIFT</td>
-				<td>{{fiVm.flight.flightInfo.waterUpLift}}</td>
-			</tr>
-			<tr>
-				<td>RTOW</td>
-				<td>{{fiVm.flight.flightInfo.rtow}}</td>
-			</tr>
-			<tr>
-				<td>CREW</td>
-				<td>{{fiVm.flight.flightInfo.crew}}</td>
-			</tr>
-			<tr>
-				<td>BLOCK FUEL</td>
-				<td>{{fiVm.flight.flightInfo.blockFuel}}</td>
-			</tr>
-			<tr>
-				<td>LANDING TIME</td>
-				<td>{{fiVm.flight.flightInfo.landingTime}}</td>
-			</tr>
-			<tr>
-				<td>TRIP FUEL</td>
-				<td>{{fiVm.flight.flightInfo.tripFuel}}</td>
-			</tr>
-			<tr>
-				<td>CHOCKS ON</td>
-				<td>{{fiVm.flight.flightInfo.chocksOn}}</td>
-			</tr>
-			<tr>
-				<td>TAXI FUEL</td>
-				<td>{{fiVm.flight.flightInfo.taxiFuel}}</td>
-			</tr>
-			<tr>
-				<td>FlIGHT TIME</td>
-				<td>{{fiVm.flight.flightInfo.flightTime}}</td>
-			</tr>
-			<tr>
-				<td>DOW</td>
-				<td>{{fiVm.flight.flightInfo.dow}}</td>
-			</tr>
-			<tr>
-				<td>DOI</td>
-				<td>{{fiVm.flight.flightInfo.doi}}</td>
-			</tr>
-		</table>
+		<md-content class="table-content">
+			<table>
+				<tr>
+					<td>REGISTRATION</td>
+					<td>{{fiVm.flight.registration}}</td>
+				</tr>
+				<tr>
+					<td>CONFIGURATION</td>
+					<td>{{fiVm.flight.configuration}}</td>
+				</tr>
+				<tr>
+					<td>EZFW</td>
+					<td>{{fiVm.flight.flightInfo.ezfw}}</td>
+				</tr>
+				<tr>
+					<td>WATER UPLIFT</td>
+					<td>{{fiVm.flight.flightInfo.waterUpLift}}</td>
+				</tr>
+				<tr>
+					<td>RTOW</td>
+					<td>{{fiVm.flight.flightInfo.rtow}}</td>
+				</tr>
+				<tr>
+					<td>CREW</td>
+					<td>{{fiVm.flight.flightInfo.crew}}</td>
+				</tr>
+				<tr>
+					<td>BLOCK FUEL</td>
+					<td>{{fiVm.flight.flightInfo.blockFuel}}</td>
+				</tr>
+				<tr>
+					<td>LANDING TIME</td>
+					<td>{{fiVm.flight.flightInfo.landingTime}}</td>
+				</tr>
+				<tr>
+					<td>TRIP FUEL</td>
+					<td>{{fiVm.flight.flightInfo.tripFuel}}</td>
+				</tr>
+				<tr>
+					<td>CHOCKS ON</td>
+					<td>{{fiVm.flight.flightInfo.chocksOn}}</td>
+				</tr>
+				<tr>
+					<td>TAXI FUEL</td>
+					<td>{{fiVm.flight.flightInfo.taxiFuel}}</td>
+				</tr>
+				<tr>
+					<td>FlIGHT TIME</td>
+					<td>{{fiVm.flight.flightInfo.flightTime}}</td>
+				</tr>
+				<tr>
+					<td>DOW</td>
+					<td>{{fiVm.flight.flightInfo.dow}}</td>
+				</tr>
+				<tr>
+					<td>DOI</td>
+					<td>{{fiVm.flight.flightInfo.doi}}</td>
+				</tr>
+			</table>
+		</md-content>
 	</md-content>
 	<md-divider flex></md-divider>
 </div>

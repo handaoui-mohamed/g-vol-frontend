@@ -1,34 +1,39 @@
 <div class="md-data-pagination">
-  <div class="page-select">
-    <div class="label">Page </div>
-    <md-select virtual-page-select total="{{$ctrl.pages}}" class="md-table-select" ng-model="$ctrl.query.page" ng-change="$ctrl.onPaginate()"
-      md-container-class="md-pagination-select" aria-label="Page">
-      <md-content>
-        <md-option ng-repeat="page in $ctrl.pages track by $index" ng-value="page">{{page}}</md-option>
-      </md-content>
-    </md-select>
-  </div>
+	<!-- pages select list -->
+	<div class="page-select">
+		<div class="label">Page </div>
+		<md-select virtual-page-select total="{{$ctrl.pages}}" class="md-table-select" ng-model="$ctrl.query.page" ng-change="$ctrl.onPaginate()"
+		 md-container-class="md-pagination-select" aria-label="Page">
+			<md-content>
+				<md-option ng-repeat="page in $ctrl.pages track by $index" ng-value="page">{{page}}</md-option>
+			</md-content>
+		</md-select>
+	</div>
+	<!-- /pages select list -->
 
-  <div class="limit-select">
-    <div class="label" translate="PAGINATIONLIMIT">Row per Page</div>
+	<!-- Limit options select list -->
+	<div class="limit-select">
+		<div class="label" translate="PAGINATIONLIMIT">Row per Page</div>
 
-    <md-select class="md-table-select" ng-model="$ctrl.query.limit" ng-change="$ctrl.refresh()" md-container-class="md-pagination-select"
-      aria-label="Rows" placeholder="{{ $ctrl.limitOptions[0] }}">
-      <md-option ng-repeat="option in $ctrl.limitOptions" ng-value="option">{{option}}</md-option>
-    </md-select>
-  </div>
+		<md-select class="md-table-select" ng-model="$ctrl.query.limit" ng-change="$ctrl.refresh()" md-container-class="md-pagination-select"
+		 aria-label="Rows" placeholder="{{ $ctrl.limitOptions[0] }}">
+			<md-option ng-repeat="option in $ctrl.limitOptions" ng-value="option">{{option}}</md-option>
+		</md-select>
+	</div>
+	<!-- /Limit options select list -->
 
-  <div class="buttons">
-    <div class="label">{{$ctrl.min()}} - {{$ctrl.max()}}</div>
+	<!-- paginations buttons -->
+	<div class="buttons">
+		<div class="label">{{$ctrl.min()}} - {{$ctrl.max()}}</div>
 
-    <md-button class="md-icon-button" type="button" ng-click="$ctrl.previous()" ng-disabled="$ctrl.query.page === 1" aria-label="Previous">
-      <md-icon md-svg-icon="navigate-before.svg"></md-icon>
-    </md-button>
+		<md-button class="md-icon-button" type="button" ng-click="$ctrl.previous()" ng-disabled="$ctrl.query.page === 1" aria-label="Previous">
+			<md-icon md-svg-icon="navigate-before.svg"></md-icon>
+		</md-button>
 
-    <md-button class="md-icon-button" type="button" ng-click="$ctrl.next()" ng-disabled="$ctrl.listLength < $ctrl.query.limit"
-      aria-label="Next">
-      <md-icon md-svg-icon="navigate-next.svg"></md-icon>
-    </md-button>
-  </div>
-
+		<md-button class="md-icon-button" type="button" ng-click="$ctrl.next()" ng-disabled="$ctrl.listLength < $ctrl.query.limit"
+		 aria-label="Next">
+			<md-icon md-svg-icon="navigate-next.svg"></md-icon>
+		</md-button>
+	</div>
+	<!-- /paginations buttons -->
 </div>

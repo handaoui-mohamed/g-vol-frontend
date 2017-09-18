@@ -1,70 +1,74 @@
 #nav-bar-container {
-	background-color: #fff !important;
-	color: rgba(0, 0, 0, 0.54) !important;
-	md-icon {
-		color: rgba(0, 0, 0, 0.54) !important;
-	}
+    background-color: #fff !important;
+    color: rgba(0, 0, 0, 0.54) !important;
+    md-icon {
+        color: rgba(0, 0, 0, 0.54) !important;
+    }
 }
 
 .toolbar-separator {
-	height: 100%;
-	width: 1px;
-	background: rgba(0, 0, 0, 0.12);
+    height: 100%;
+    width: 1px;
+    background: rgba(0, 0, 0, 0.12);
 }
 
 #user-menu {
-	height: 100%;
-	padding: 0;
-	md-menu-item .md-button {
-		font-size: 15px;
-		md-icon {
-			margin: auto 16px auto 0;
-		}
-	}
-	.user-button {
-		margin: 0;
-		padding: 0 16px;
-		height: 100%;
-		text-transform: none;
-		.avatar-wrapper {
-			position: relative;
-			img {
-				margin-top: 7px;
-			}
-		}
-		.username {
-			margin: 0 12px 0 8px;
-			font-size: 16px;
-			font-weight: 600;
-			color: black;
-		}
-	}
+    height: 100%;
+    padding: 0;
+    md-menu-item .md-button {
+        font-size: 15px;
+        md-icon {
+            margin: auto 16px auto 0;
+        }
+    }
+    .user-button {
+        margin: 0;
+        padding: 0 16px;
+        height: 100%;
+        text-transform: none;
+        >div {
+            height: -webkit-fill-available;
+            padding-top: 6px;
+        }
+        .avatar-wrapper {
+            position: relative;
+            img {
+                margin-top: 7px;
+            }
+        }
+        .username {
+            margin: 0 12px 0 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: black;
+        }
+    }
 }
 
 #language-menu {
-	height: 100%;
-	.language-button {
-		min-width: 100%;
-		height: 100%;
-		margin: 0;
-		padding: 0 16px;
-		border-radius: 0;
-		.iso {
-			text-transform: uppercase;
-			font-size: 16px;
-			font-weight: 600;
-			color: black;
-		}
-		.flag {
-			margin-right: 8px;
-		}
-	}
+    height: 100%;
+    .language-button {
+        min-width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0 16px;
+        border-radius: 0;
+        .iso {
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: 600;
+            color: black;
+        }
+        .flag {
+            margin-right: 8px;
+        }
+    }
 }
 
 #language-menu-content {
-	md-menu-item {
-		.flag {
-			margin-right: 16px;
-		}
-	}
+    md-menu-item {
+        .flag {
+            margin-right: 16px;
+        }
+    }
 }
