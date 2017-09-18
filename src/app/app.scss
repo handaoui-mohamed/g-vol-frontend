@@ -72,13 +72,13 @@ table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+
 }
 
 .top-bg {
-    position: absolute;
+    position: fixed !important;
     z-index: 1;
-    top: 0;
+    top: 60px;
     right: 0;
-    left: 0;
-	height: 200px;
-	width: 100%;
+    height: 205px;
+    width: 100%;
+    overflow: hidden !important;
     background-image: url(/assets/images/header-bg.png);
     background-size: cover;
     background-color: rgb(226, 62, 31);

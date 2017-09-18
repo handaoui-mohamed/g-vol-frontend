@@ -1,114 +1,116 @@
+<div class="top-bg"></div>
+
 <!-- CONTENT HEADER -->
 <div class="header flight-container" layout="row" layout-align="space-between center">
-  <div class="font-white" layout="column" layout-align="start start">
-    <div class="h1" layout="row" layout-align="start center">
-      <md-icon md-font-icon="icon-arrow-left-bold-circle pointer" class="icon s32 font-white" ui-sref="home.flights"></md-icon>
-      <span class="s24 pointer" translate="FLIGHT.LABEL" ui-sref="home.flights">Flights</span>
-      <md-icon md-font-icon="icon-chevron-right" class="font-white"></md-icon>
-      <span class="s24" translate="FLIGHT.UPDATE" ng-if="flVm.isUpdate">update flight</span>
-      <span class="s24" translate="FLIGHT.NEW" ng-if="!flVm.isUpdate">New flight</span>
-    </div>
-  </div>
+	<div class="font-white" layout="column" layout-align="start start">
+		<div class="h1" layout="row" layout-align="start center">
+			<md-icon md-font-icon="icon-arrow-left-bold-circle pointer" class="icon s32 font-white" ui-sref="home.flights"></md-icon>
+			<span class="s24 pointer" translate="FLIGHT.LABEL" ui-sref="home.flights">Flights</span>
+			<md-icon md-font-icon="icon-chevron-right" class="font-white"></md-icon>
+			<span class="s24" translate="FLIGHT.UPDATE" ng-if="flVm.isUpdate">update flight</span>
+			<span class="s24" translate="FLIGHT.NEW" ng-if="!flVm.isUpdate">New flight</span>
+		</div>
+	</div>
 </div>
 <!-- / CONTENT HEADER -->
 <div class="page-content" layout="row" layout-align="center">
-  <form name="flightForm" novalidate layout-padding class="md-whiteframe-3dp bg-white" flex-gt-sm="70" flex-gt-xs="100">
-    <div layout-gt-xs="row">
-      <md-input-container class="md-block capitalize" flex-gt-xs>
-        <label translate="FLIGHT.COMPANY">Company</label>
-        <md-select ng-model="flVm.flight.company" name="company" required>
-          <md-option ng-value="company._id" ng-repeat="company in flVm.companies" class="capitalize">{{company.name}}</md-option>
-        </md-select>
-        <div ng-messages="flightForm.company.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
+	<form name="flightForm" novalidate layout-padding class="md-whiteframe-3dp bg-white" flex-gt-sm="70" flex-gt-xs="100">
+		<div layout-gt-xs="row">
+			<md-input-container class="md-block capitalize" flex-gt-xs>
+				<label translate="FLIGHT.COMPANY">Company</label>
+				<md-select ng-model="flVm.flight.company" name="company" required>
+					<md-option ng-value="company._id" ng-repeat="company in flVm.companies" class="capitalize">{{company.name}}</md-option>
+				</md-select>
+				<div ng-messages="flightForm.company.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <label translate="FLIGHT.NUMBER">Flight Number</label>
-        <input ng-model="flVm.flight.flightNumber" name="flightNumber" required>
-        <div ng-messages="flightForm.flightNumber.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
+			<md-input-container class="md-block" flex-gt-xs>
+				<label translate="FLIGHT.NUMBER">Flight Number</label>
+				<input ng-model="flVm.flight.flightNumber" name="flightNumber" required>
+				<div ng-messages="flightForm.flightNumber.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <label>Destination</label>
-        <input ng-model="flVm.flight.dest" name="destination" required>
-        <div ng-messages="flightForm.destination.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
-    </div>
+			<md-input-container class="md-block" flex-gt-xs>
+				<label>Destination</label>
+				<input ng-model="flVm.flight.dest" name="destination" required>
+				<div ng-messages="flightForm.destination.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
+		</div>
 
-    <div layout-gt-xs="row">
-      <md-input-container class="md-block" flex-gt-xs>
-        <label>Registration</label>
-        <input ng-model="flVm.flight.registration" name="registration" required>
-        <div ng-messages="flightForm.registration.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
+		<div layout-gt-xs="row">
+			<md-input-container class="md-block" flex-gt-xs>
+				<label>Registration</label>
+				<input ng-model="flVm.flight.registration" name="registration" required>
+				<div ng-messages="flightForm.registration.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <label>Configuration</label>
-        <input ng-model="flVm.flight.configuration" name="configuration" required>
-        <div ng-messages="flightForm.configuration.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
+			<md-input-container class="md-block" flex-gt-xs>
+				<label>Configuration</label>
+				<input ng-model="flVm.flight.configuration" name="configuration" required>
+				<div ng-messages="flightForm.configuration.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <label>AC Type</label>
-        <input ng-model="flVm.flight.acType" name="acType" required>
-        <div ng-messages="flightForm.acType.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
-    </div>
+			<md-input-container class="md-block" flex-gt-xs>
+				<label>AC Type</label>
+				<input ng-model="flVm.flight.acType" name="acType" required>
+				<div ng-messages="flightForm.acType.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
+		</div>
 
-    <div layout-gt-xs="row">
-      <md-input-container class="md-block" flex-gt-xs>
-        <md-datepicker ng-model="flVm.flight.arrivalDate" name="arrival" md-placeholder="{{ 'FLIGHT.ARRIVAL' | translate}}" required></md-datepicker>
-        <div ng-messages="flightForm.arrival.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
+		<div layout-gt-xs="row">
+			<md-input-container class="md-block" flex-gt-xs>
+				<md-datepicker ng-model="flVm.flight.arrivalDate" name="arrival" md-placeholder="{{ 'FLIGHT.ARRIVAL' | translate}}" required></md-datepicker>
+				<div ng-messages="flightForm.arrival.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
 
-      <md-input-container class="time-input">
-        <label>STA</label>
-        <input ng-model="flVm.flight.sta" name="sta" required ng-pattern="/^(([0-1][0-9])|(2[0-3]))[0-5][0-9]$/">
-        <div ng-messages="flightForm.sta.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-          <div ng-message="pattern" translate="VALIDATION.TIME">Incorrect time</div>
-        </div>
-      </md-input-container>
+			<md-input-container class="time-input">
+				<label>STA</label>
+				<input ng-model="flVm.flight.sta" name="sta" required ng-pattern="/^(([0-1][0-9])|(2[0-3]))[0-5][0-9]$/">
+				<div ng-messages="flightForm.sta.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+					<div ng-message="pattern" translate="VALIDATION.TIME">Incorrect time</div>
+				</div>
+			</md-input-container>
 
-      <md-input-container class="md-block" flex-gt-xs>
-        <md-datepicker ng-model="flVm.flight.departureDate" name="departure" md-placeholder="{{ 'FLIGHT.DEPARTURE' | translate}}"
-          required></md-datepicker>
-        <div ng-messages="flightForm.departure.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-        </div>
-      </md-input-container>
+			<md-input-container class="md-block" flex-gt-xs>
+				<md-datepicker ng-model="flVm.flight.departureDate" name="departure" md-placeholder="{{ 'FLIGHT.DEPARTURE' | translate}}"
+				 required></md-datepicker>
+				<div ng-messages="flightForm.departure.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+				</div>
+			</md-input-container>
 
 
-      <md-input-container class="time-input">
-        <label>STD</label>
-        <input ng-model="flVm.flight.std" name="std" required ng-pattern="/^(([0-1][0-9])|(2[0-3]))[0-5][0-9]$/">
-        <div ng-messages="flightForm.std.$error">
-          <div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
-          <div ng-message="pattern" translate="VALIDATION.TIME">Incorrect time</div>
-        </div>
-      </md-input-container>
-    </div>
+			<md-input-container class="time-input">
+				<label>STD</label>
+				<input ng-model="flVm.flight.std" name="std" required ng-pattern="/^(([0-1][0-9])|(2[0-3]))[0-5][0-9]$/">
+				<div ng-messages="flightForm.std.$error">
+					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
+					<div ng-message="pattern" translate="VALIDATION.TIME">Incorrect time</div>
+				</div>
+			</md-input-container>
+		</div>
 
-    <div layout="row">
-      <span flex></span>
-      <md-button class="md-raised md-primary" ng-click="flVm.submit()" ng-disabled="flightForm.$prestine || flightForm.$invalid"
-        translate="SAVE">
-        Save
-      </md-button>
-    </div>
-  </form>
+		<div layout="row" admin-required>
+			<span flex></span>
+			<md-button class="md-raised md-primary" ng-click="flVm.submit()" ng-disabled="flightForm.$prestine || flightForm.$invalid"
+			 translate="SAVE">
+				Save
+			</md-button>
+		</div>
+	</form>
 </div>

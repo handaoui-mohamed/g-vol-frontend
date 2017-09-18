@@ -19,7 +19,7 @@ class ChecklistController {
 			ol: { value: 'offloadList', index: 2 },
 			oth: { value: 'otherDocuments' }
 		}
-		this.getDocuments();
+		this.$scope.$on('documents' + this.flight._id, this.getDocuments.bind(this));
 		this.initFlightDocumentStatusSocket()
 	}
 
@@ -40,20 +40,28 @@ class ChecklistController {
 		});
 	}
 
-	getDocuments() {
-		this.documentService.get({ flightId: this.flight._id }, (documents) => {
-			for (var key in documents) {
-				if (documents.hasOwnProperty(key)) {
-					this.flight[key] = documents[key];
+	getDocuments(event, queryDocuments) {
+		console.log("query", queryDocuments);
+		if (queryDocuments) {
+			this.documentService.get({ flightId: this.flight._id }, (documents) => {
+				for (var key in documents) {
+					if (documents.hasOwnProperty(key)) {
+						this.flight[key] = documents[key];
+					}
 				}
-			}
-			this.documents = documents;
+				console.log("fetch");
+				this.documents = documents;
+				this.setDocuments(this.documents);
+				this.emitDocumentChanges(this.checklistDocuments);
+				this.flight.offloadReport = this.offloadReport.generate(documents.offloadList);
+			}, (error) => {
+				this.toast.serverError(error);
+			});
+		} else {
+			this.documents = this.flight;
 			this.setDocuments(this.documents);
 			this.emitDocumentChanges(this.checklistDocuments);
-			this.flight.offloadReport = this.offloadReport.generate(documents.offloadList);
-		}, (error) => {
-			this.toast.serverError(error);
-		});
+		}
 	}
 
 	emitDocumentChanges(documents) {

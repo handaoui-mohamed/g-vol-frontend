@@ -3,15 +3,21 @@ import homeComponent from './home.component';
 
 let homeModule = angular
 	.module('home', [])
-	.config(($stateProvider, $urlRouterProvider) => {
+	.config(($stateProvider) => {
 		"ngInject";
-		$urlRouterProvider.otherwise('/');
 		$stateProvider
 			.state('home', {
 				abstract: true,
 				url: '/',
 				component: 'home',
-				loginRequired: true
+				loginRequired: true,
+				resolve: {
+					authorize: ['Authorization',
+						function (Authorization) {
+							return Authorization.authorize();
+						}
+					]
+				}
 			});
 	})
 	.component('home', homeComponent).name;

@@ -1,3 +1,5 @@
+<div class="top-bg"></div>
+
 <!-- CONTENT HEADER -->
 <div class="header" layout="row" layout-align="space-between center">
 	<div class="font-white" layout="column" layout-align="start start">
@@ -46,7 +48,7 @@
 				<md-icon md-font-icon="icon-format-list-numbers"></md-icon>
 				<input ng-model="comVm.checklistItem" name="companyForm.checklistItem" ng-keyup="$event.keyCode === 13 && comVm.addItem()">
 			</md-input-container>
-			<md-input-container>
+			<md-input-container admin-required>
 				<md-button class="md-icon-button" ng-click="comVm.addItem()">
 					<md-tooltip md-direction="left"><span translate="ADD">Add</span></md-tooltip>
 					<md-icon md-font-icon="icon-plus" class="s32 green-color add-button"></md-icon>
@@ -62,12 +64,12 @@
 					<span>{{ ($index+1)+'- '+item }}</span>
 				</md-input-container>
 
-				<md-button class="md-icon-button" ng-click="comVm.removeItem($index)">
+				<md-button class="md-icon-button" ng-click="comVm.removeItem($index)" admin-required>
 					<md-tooltip md-direction="left"><span translate="DELETE">Delete</span></md-tooltip>
 					<md-icon md-font-icon="icon-delete" class="s32"></md-icon>
 				</md-button>
 
-				<md-button class="md-icon-button" ng-click="comVm.selectItem($index)">
+				<md-button class="md-icon-button" ng-click="comVm.selectItem($index)" admin-required>
 					<md-tooltip md-direction="right"><span translate="EDIT">Edit</span></md-tooltip>
 					<md-icon md-font-icon="icon-pencil" class="s32"></md-icon>
 				</md-button>
@@ -75,7 +77,7 @@
 		</ol>
 		<!-- /company checklist -->
 
-		<div layout="row">
+		<div layout="row" admin-required>
 			<span flex></span>
 			<md-button translate="SAVE" class="md-raised md-primary" ng-click="comVm.submit()" ng-disabled="companyForm.$prestine || companyForm.$invalid">
 				Save

@@ -1,9 +1,8 @@
 class ToastService {
-	constructor($filter, $window, $state, toastr) {
+	constructor($filter, AccountDetails, toastr) {
 		'ngInject';
 		this.$translate = $filter('translate');
-		this.$window = $window;
-		this.$state = $state;
+		this.accountDetails = AccountDetails;
 		this.toastr = toastr;
 	}
 
@@ -26,10 +25,7 @@ class ToastService {
 				break;
 			case (401):
 				// this.error("Unauthorized access", 'SERVER.401');
-				this.$window.localStorage.removeItem('current_account');
-				this.$auth.logout();
-				this.$state.go('login');
-				this.socketSerivce.disconnect();
+				this.accountDetails.logout();
 				break;
 			case (403):
 				this.error("Insufficient permission to perform this operation", 'SERVER.403');

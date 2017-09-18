@@ -1,5 +1,5 @@
 class LoginController {
-	constructor($auth, $window, $rootScope, $state, $location, SocketService, Toast, API_ENDPOINT) {
+	constructor($auth, $window, $rootScope, $state, $location, AccountDetails, SocketService, Toast, API_ENDPOINT) {
 		'ngInject';
 		this.$auth = $auth;
 		this.$window = $window;
@@ -7,6 +7,7 @@ class LoginController {
 		this.$rootScope = $rootScope;
 		this.$state = $state;
 		this.socketService = SocketService;
+		this.accountDetails = AccountDetails;
 		this.toast = Toast;
 		this.api_endpoint = API_ENDPOINT;
 	}
@@ -48,13 +49,12 @@ class LoginController {
 		// store current account id in localStorage
 		this.$window.localStorage['current_account'] = data.account._id;
 		// add logged in account to global variable
-		this.$rootScope.currentAccount = data.account;
+		this.accountDetails = data.account;
 		// if user came from another page, redirect him to it
 		if (this.$rootScope.next)
 			this.$location.path(this.$rootScope.next);
 		else
 			this.$state.go('home.dashboard');
-
 		// initilize socket connection
 		this.initSocket();
 	}

@@ -1,3 +1,5 @@
+<div class="top-bg"></div>
+
 <!-- CONTENT HEADER -->
 <div class="header account-container" layout="row" layout-align="space-between center">
 	<div class="font-white" layout="column" layout-align="start start">
@@ -129,7 +131,7 @@
 		<!-- Password section -->
 
 		<!-- if update show button to change password -->
-		<div layout-gt-xs="row" ng-if="acVm.isUpdate">
+		<div layout-gt-xs="row" ng-if="acVm.isUpdate" admin-required>
 			<md-button class="md-raised md-warn" ng-click="acVm.changePassword = !acVm.changePassword">
 				<span ng-if="!acVm.changePassword" translate="ACCOUNT.FORM.CHANGEPASSWORD">Change Password</span>
 				<span ng-if="acVm.changePassword" translate="ACCOUNT.FORM.CANCEL">Cancel</span>
@@ -163,7 +165,7 @@
 		</div>
 
 
-		<div layout="row">
+		<div layout="row" admin-required>
 			<span flex></span>
 			<md-button translate="SAVE" class="md-raised md-primary" ng-click="acVm.submit()" ng-disabled="accountForm.$prestine || accountForm.$invalid">
 				Save

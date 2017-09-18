@@ -18,7 +18,15 @@ let loginModule = angular
 		$stateProvider
 			.state('login', {
 				url: '/login',
-				component: 'login'
+				component: 'login',
+				notAllowed: true,
+				resolve: {
+					authorize: ['Authorization',
+						function (Authorization) {
+							return Authorization.authorize();
+						}
+					]
+				}
 			});
 
 		// login page translations

@@ -13,18 +13,18 @@ let companyModule = angular
 		$stateProvider
 			.state('home.companies', {
 				url: 'companies',
-				component: 'companies',
-				loginRequired: true
+				component: 'companies'
 			})
 			.state('home.newCompany', {
 				url: 'companies/add',
 				component: 'company',
-				loginRequired: true
+				data: {
+					roles: ['superadmin', 'admin']
+				}
 			})
 			.state('home.company', {
 				url: 'companies/:companyId',
-				component: 'company',
-				loginRequired: true
+				component: 'company'
 			});
 
 		// company pages translations

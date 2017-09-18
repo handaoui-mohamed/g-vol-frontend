@@ -1,3 +1,5 @@
+<div class="top-bg"></div>
+
 <!-- CONTENT HEADER -->
 <div class="header" layout="row" layout-align="space-between center">
 	<div class="font-white" layout="column" layout-align="start start">
@@ -16,7 +18,7 @@
 		<input type="search" class="search-input" name="search" ng-model="comsVm.queryString" ng-change="comsVm.searchCompanies()"
 		 ng-model-options="{ debounce: 400 }">
 	</md-input-container>
-	<md-button aria-label="button-label" class="md-default md-raised" ui-sref="home.newCompany">
+	<md-button admin-required aria-label="button-label" class="md-default md-raised" ui-sref="home.newCompany">
 		<md-icon md-font-icon="icon-plus"></md-icon>
 		<span translate="COMPANY.ADD">Add new company</span>
 	</md-button>
@@ -44,13 +46,14 @@
 						</ul>
 					</td>
 					<td md-cell class="align-right">
-						<md-button class="md-icon-button md-warn" aria-label="Settings" ng-click="comsVm.deleteCompany($event, company._id, $index)">
+						<md-button admin-required class="md-icon-button md-warn" aria-label="Settings" ng-click="comsVm.deleteCompany($event, company._id, $index)">
 							<md-tooltip md-direction="bottom"><span translate="DELETE">Delete</span></md-tooltip>
 							<md-icon md-font-icon="icon-delete" class="icon s32"></md-icon>
 						</md-button>
 						<md-button class="md-icon-button" aria-label="Settings" ui-sref="home.company({companyId:company._id})">
 							<md-tooltip md-direction="bottom"><span translate="EDIT">Edit</span></md-tooltip>
-							<md-icon md-font-icon="icon-pencil" class="icon s32"></md-icon>
+							<md-icon admin-required md-font-icon="icon-pencil" class="icon s32"></md-icon>
+							<md-icon clc-required md-font-icon="icon-eye" class="icon s32"></md-icon>
 						</md-button>
 					</td>
 				</tr>

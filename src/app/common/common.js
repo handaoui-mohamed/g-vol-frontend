@@ -3,6 +3,8 @@ import commonComponentModule from './components/components';
 
 // shared services
 import servicesModule from './services/services';
+//shared directives
+import directiveModule from './directives/directives';
 
 //styles
 import './icons.scss';
@@ -14,7 +16,8 @@ import fr from './i18n/fr.json';
 let commonModule = angular
 	.module('app.common', [
 		commonComponentModule,
-		servicesModule
+		servicesModule,
+		directiveModule
 	])
 	.config(($translateProvider) => {
 		'ngInject';

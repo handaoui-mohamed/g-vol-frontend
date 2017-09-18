@@ -13,18 +13,18 @@ let accountModule = angular
 		$stateProvider
 			.state('home.accounts', {
 				url: 'accounts',
-				component: 'accounts',
-				loginRequired: true
+				component: 'accounts'
 			})
 			.state('home.newAccount', {
 				url: 'accounts/add',
 				component: 'account',
-				loginRequired: true
+				data: {
+					roles: ['superadmin', 'admin']
+				}
 			})
 			.state('home.account', {
 				url: 'accounts/:accountId',
-				component: 'account',
-				loginRequired: true
+				component: 'account'
 			});
 
 		// account pages translations

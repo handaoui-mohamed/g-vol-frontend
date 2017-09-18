@@ -2,8 +2,9 @@ import FlightTeamDialog from './components/team-dialog/team-dialog.controller';
 import dialogTemplate from './components/team-dialog/team-dialog.html';
 
 class FlightTrackerController {
-	constructor($mdDialog, $filter, FlightService, FlightTeamService, DocumentService, SocketService, FlightStatusService) {
+	constructor($rootScope, $mdDialog, $filter, FlightService, FlightTeamService, DocumentService, SocketService, FlightStatusService) {
 		'ngInject';
+		this.$root = $rootScope;
 		this.$mdDialog = $mdDialog;
 		this.$translate = $filter('translate');
 		this.socket = SocketService.io;
@@ -26,10 +27,8 @@ class FlightTrackerController {
 			value: 'done'
 		}];
 
-		if (this.flight.status !== "new") {
+		if (this.flight.status !== "new")
 			this.joinFlight();
-			this.flight.queryDocuments = true;
-		}
 	}
 
 	initFlight() {
@@ -41,6 +40,7 @@ class FlightTrackerController {
 							if (key !== 'team') this.flight[key] = updatedFlight[key];
 						}
 					}
+					this.$root.$broadcast('documents' + this.flight._id, false);
 				});
 			});
 		}
@@ -52,6 +52,8 @@ class FlightTrackerController {
 			this.socket.emit('flightId', this.flight._id);
 			this.flight.initilized = true;
 			if (typeof callback === "function") callback();
+			else
+				this.$root.$broadcast('documents' + this.flight._id, true);
 		});
 	}
 

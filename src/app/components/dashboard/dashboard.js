@@ -16,26 +16,26 @@ import en from './i18n/en.json';
 import fr from './i18n/fr.json';
 
 let dashboardModule = angular
-  .module('dashboard', [flightTracker])
-  .config(($stateProvider, $translateProvider) => {
-    "ngInject";
-    $stateProvider
-      .state('home.dashboard', {
-        url: '',
-        component: 'dashboard',
-        loginRequired: true
-      });
+	.module('dashboard', [flightTracker])
+	.config(($stateProvider, $translateProvider) => {
+		"ngInject";
+		$stateProvider
+			.state('home.dashboard', {
+				url: '',
+				component: 'dashboard',
+				loginRequired: true
+			});
 
-    $translateProvider.translations('en', en);
-    $translateProvider.translations('fr', fr);
-  })
-  .factory('MessageService', MessageService)
-  .factory('FlightTeamService', FlightTeamService)
-  .factory('DocumentService', FlightDocumentsService)
-  .factory('FlightStatusService', FlightStatusService)
-  .service('FlightNotification', FlightNotificationService)
-  .service('OffloadReport', OffloadReportGenerator)
-  .component('flightsNavBar', flightNavBarComponent)
-  .component('dashboard', dashboardComponent).name;
+		$translateProvider.translations('en', en);
+		$translateProvider.translations('fr', fr);
+	})
+	.factory('MessageService', MessageService)
+	.factory('FlightTeamService', FlightTeamService)
+	.factory('DocumentService', FlightDocumentsService)
+	.factory('FlightStatusService', FlightStatusService)
+	.service('FlightNotification', FlightNotificationService)
+	.service('OffloadReport', OffloadReportGenerator)
+	.component('flightsNavBar', flightNavBarComponent)
+	.component('dashboard', dashboardComponent).name;
 
 export default dashboardModule;
