@@ -18,6 +18,7 @@
 		"CLOSE": "Close Flight",
 		"REOPEN": "Reopen Flight",
 		"ADDCOMMENT": "Add a comment if needed:",
-		"COMMENT": "Comment"
+		"COMMENT": "Comment",
+		"INCOMPLETE": "Can't close flight due to incomplete documents"
 	}
 }

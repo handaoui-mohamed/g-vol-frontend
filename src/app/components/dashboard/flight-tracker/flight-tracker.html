@@ -52,7 +52,7 @@
 				</div>
 				<!-- /left container -->
 
-				<!-- right container -->				
+				<!-- right container -->
 				<div layout="column" flex="45">
 					<!-- close flight button -->
 					<md-button ng-if="ftVm.flight.status !== 'done'" class="md-raised md-warn close-flight-button" ng-click="ftVm.openFlightStatusDialog($event)">
@@ -67,18 +67,18 @@
 						<span translate="FLIGHTSTATUS.REOPEN">Reopen Flight</span>
 					</md-button>
 					<!-- /reopen flight button -->
-					
+
 					<!-- flight checklist -->
 					<flight-checklist notification="ftVm.flight.notification" flight="ftVm.flight"></flight-checklist>
-					<!-- /flight checklist -->					
+					<!-- /flight checklist -->
 				</div>
-				<!-- /right container -->				
+				<!-- /right container -->
 			</div>
 			<!-- flight tracker footer -->
 			<footer>
 				<!-- flight messages -->
 				<flight-messages notification="ftVm.flight.notification" flight-id="ftVm.flight._id" team="ftVm.flight.team"></flight-messages>
-				<!-- /flight messages -->				
+				<!-- /flight messages -->
 			</footer>
 			<!-- /flight tracker footer -->
 		</div>

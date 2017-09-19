@@ -18,6 +18,7 @@
 		"CLOSE": "Fermer le vol",
 		"REOPEN": "Réouvrir le vol",
 		"ADDCOMMENT": "Ajoutez un commentaire si nécessaire:",
-		"COMMENT": "Commentaire"
+		"COMMENT": "Commentaire",
+		"INCOMPLETE": "Impossible de fermer le vol en raison de documents incomplets"
 	}
 }

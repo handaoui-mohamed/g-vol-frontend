@@ -2,11 +2,12 @@ import FlightTeamDialog from './components/team-dialog/team-dialog.controller';
 import dialogTemplate from './components/team-dialog/team-dialog.html';
 
 class FlightTrackerController {
-	constructor($rootScope, $mdDialog, $filter, FlightService, FlightTeamService, DocumentService, SocketService, FlightStatusService) {
+	constructor($rootScope, $mdDialog, $filter, Toast, FlightService, FlightTeamService, DocumentService, SocketService, FlightStatusService) {
 		'ngInject';
 		this.$root = $rootScope;
 		this.$mdDialog = $mdDialog;
 		this.$translate = $filter('translate');
+		this.toast = Toast;
 		this.socket = SocketService.io;
 		this.flightService = FlightService;
 		this.flightStatusService = FlightStatusService;
@@ -92,25 +93,30 @@ class FlightTrackerController {
 
 	// opens flight status dialog to close it, contains comment input
 	openFlightStatusDialog(ev) {
-		let confirm = this.$mdDialog.prompt()
-			.title(this.$translate('FLIGHTSTATUS.CONFIRMATION'))
-			.textContent(this.$translate('FLIGHTSTATUS.ADDCOMMENT'))
-			.placeholder(this.$translate('FLIGHTSTATUS.COMMENT'))
-			.ariaLabel('Comment')
-			.initialValue(this.flight.comment)
-			.targetEvent(ev)
-			.parent(angular.element(document.querySelector('#flight-' + this.flight._id)))
-			.clickOutsideToClose(true)
-			.ok(this.$translate('FLIGHTSTATUS.CLOSE'))
-			.cancel(this.$translate('CANCEL'));
+		// Baggage report, flight info are required to close the flight
+		if (this.flight.baggageReport.status &&
+			this.flight.flightInfo.status) {
+			let confirm = this.$mdDialog.prompt()
+				.title(this.$translate('FLIGHTSTATUS.CONFIRMATION'))
+				.textContent(this.$translate('FLIGHTSTATUS.ADDCOMMENT'))
+				.placeholder(this.$translate('FLIGHTSTATUS.COMMENT'))
+				.ariaLabel('Comment')
+				.initialValue(this.flight.comment)
+				.targetEvent(ev)
+				.parent(angular.element(document.querySelector('#flight-' + this.flight._id)))
+				.clickOutsideToClose(true)
+				.ok(this.$translate('FLIGHTSTATUS.CLOSE'))
+				.cancel(this.$translate('CANCEL'));
 
-		this.$mdDialog.show(confirm).then((comment) => {
-			// saves flight with status done, and comment if added
-			this.flightStatusService.save({ flightId: this.flight._id }, { status: 'done', comment }, (data) => {
-				this.flight.comment = data.comment;
-				this.flight.status = data.status;
-			}, (error) => { this.toast.serverError(error) });
-		}, () => { });
+			this.$mdDialog.show(confirm).then((comment) => {
+				// saves flight with status done, and comment if added
+				this.flightStatusService.save({ flightId: this.flight._id }, { status: 'done', comment }, (data) => {
+					this.flight.comment = data.comment;
+					this.flight.status = data.status;
+				}, (error) => { this.toast.serverError(error) });
+			}, () => { });
+		} else
+			this.toast.warning(this.$translate('FLIGHTSTATUS.INCOMPLETE'))
 	}
 
 	// reopen closed flight
