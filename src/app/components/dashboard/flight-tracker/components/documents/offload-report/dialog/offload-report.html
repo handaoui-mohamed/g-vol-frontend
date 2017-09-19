@@ -7,7 +7,9 @@
 			</md-button>
 		</div>
 	</md-toolbar>
+	<!-- offload report content -->
 	<md-dialog-content layout-padding>
+		<!-- passenger details -->
 		<span> Passengers Report</span>
 		<md-divider></md-divider>
 		<table class="passengers-table">
@@ -26,7 +28,9 @@
 				<td>{{ofdVm.offloadReport.pax.infant}}</td>
 			</tr>
 		</table>
+		<!-- :passenger details -->
 		<br><br>
+		<!-- Offload baggage report -->
 		<span> Offloaded Baggage Report</span>
 		<md-divider></md-divider>
 		<table class="baggage-table">
@@ -39,7 +43,9 @@
 				<td>{{ofdVm.offloadReport.totalWeight}}</td>
 			</tr>
 		</table>
+		<!-- /Offload baggage summary -->
 		<br><br>
+		<!-- Offload baggage IDs and positions -->
 		<span> Baggage Position Report</span>
 		<md-divider></md-divider>
 		<table class="baggage-position-table">
@@ -52,7 +58,9 @@
 				<td>{{row.position}}</td>
 			</tr>
 		</table>
+		<!-- /Offload baggage IDs and positions -->
 	</md-dialog-content>
+	<!-- /offload report content -->
 
 	<md-dialog-actions layout="row">
 		<span flex></span>

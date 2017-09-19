@@ -5,7 +5,7 @@ class FlightDocumentsController {
 	}
 
 	$onInit() {
-		this.documents = ['baggageReport', 'flightInfo', 'paxReport', 'offloadReport'];
+		this.documents = ['flightInfo', 'paxReport', 'offloadReport'];
 	}
 
 	toggleDocument(documentType) {

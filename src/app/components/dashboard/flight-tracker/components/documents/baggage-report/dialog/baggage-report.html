@@ -9,6 +9,7 @@
 	</md-toolbar>
 	<md-dialog-content layout-padding>
 		<table>
+			<!-- table header -->
 			<tr>
 				<th>N°</th>
 				<th>ULD Type</th>
@@ -16,13 +17,17 @@
 				<th>Baggage Type</th>
 				<th>Position</th>
 				<th>Nb pieces</th>
+				<!-- reload baggage report button -->
 				<th>
 					<md-button aria-label="Reload" class="remove-row-button" ng-click="brdVm.reset()">
 						<md-icon md-font-icon="icon-reload" class="icon s32"></md-icon>
 					</md-button>
 				</th>
+				<!-- /reload baggage report button -->
 			</tr>
+			<!-- /table header -->
 
+			<!-- baggage report content -->
 			<tr ng-repeat="row in brdVm.baggageReport.table track by $index">
 				<td class="row-index">{{ $index + 1 }}</td>
 				<td class="input-cell">
@@ -40,11 +45,14 @@
 					</md-button>
 				</td>
 			</tr>
+			<!-- /baggage report content -->
 		</table>
+		<!-- add new empty row button -->
 		<md-button aria-label="Add new row" class="md-primary new-row-button" ng-click="brdVm.addEmptyRow()">
 			<md-icon md-font-icon="icon-table-row-plus-after"></md-icon>
 			Add new row
 		</md-button>
+		<!-- /add new empty row button -->
 	</md-dialog-content>
 
 	<md-dialog-actions layout="row">

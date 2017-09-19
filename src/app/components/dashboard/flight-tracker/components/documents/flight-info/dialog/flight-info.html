@@ -8,6 +8,7 @@
 		</div>
 	</md-toolbar>
 	<md-dialog-content layout-padding layout="column" layout-align="center stretch">
+		<!-- Flight Info content -->
 		<table>
 			<tr>
 				<td>REGISTRATION</td>
@@ -17,11 +18,13 @@
 			</tr>
 			<tr>
 				<td>EZFW</td>
+				<!-- EZFW input -->
 				<td class="input-cell">
 					<md-input-container md-no-float>
 						<input ng-model="fidVm.flightInfo.ezfw" placeholder="Enter EZFW" type="text">
 					</md-input-container>
 				</td>
+				<!-- /EZFW input -->				
 				<td>WATER UPLIFT</td>
 				<td>{{fidVm.flightInfo.waterUpLift}}</td>
 			</tr>
@@ -56,6 +59,7 @@
 				<td>{{fidVm.flightInfo.doi}}</td>
 			</tr>
 		</table>
+		<!-- /Flight Info content -->
 	</md-dialog-content>
 
 	<md-dialog-actions layout="row">

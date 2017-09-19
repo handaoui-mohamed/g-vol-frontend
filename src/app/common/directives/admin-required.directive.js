@@ -15,7 +15,11 @@ let adminRequiredDirective = function (AccountDetails) {
 			AccountDetails.identity().then((account) => {
 				// if account has a role and doest not meet the requirements, delete element
 				if (account.function && !acceptedRoles.includes(account.function.name))
-					element.remove();
+					// if element is an input disable it, else remove it
+					if (element[0].tagName === "INPUT")
+						element[0].disabled = true;
+					else
+						element.remove();
 			})
 		}
 	}

@@ -21,6 +21,7 @@ class companyController {
 		}, (error) => { this.toast.serverError(error); });
 	}
 
+	// add item to the company checklist
 	addItem() {
 		if (this.checklistItem) {
 			this.company.checklist.push(this.checklistItem);
@@ -28,10 +29,12 @@ class companyController {
 		}
 	}
 
+	// remove item from company checklist
 	removeItem(index) {
 		this.company.checklist.splice(index, 1);
 	}
 
+	// edit item from company checklist
 	selectItem(index) {
 		this.checklistItem = this.company.checklist[index];
 		this.removeItem(index);

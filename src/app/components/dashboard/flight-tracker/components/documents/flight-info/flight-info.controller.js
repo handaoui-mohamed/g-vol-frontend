@@ -16,6 +16,7 @@ class FlightInfoController {
 		this.removeNotification();
 	}
 
+	// initilize flight info socket event
 	initFlightInfoSocket() {
 		this.socket.on('flight-info/' + this.flight._id, (data) => {
 			this.$scope.$apply(() => {
@@ -29,6 +30,7 @@ class FlightInfoController {
 		});
 	}
 
+	// open flight info details dialogs
 	openFlightInfoDialog(ev) {
 		this.hasChanges = false;
 		this.$mdDialog.show({
@@ -45,6 +47,7 @@ class FlightInfoController {
 		}).then((flightInfo) => { }, (msg) => { });
 	}
 
+	// flight info notifations
 	removeNotification() {
 		this.hasChanges = false;
 		this.flightNotification.initDocument(this.flight._id, 'flightInfo');

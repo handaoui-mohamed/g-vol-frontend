@@ -14,7 +14,10 @@ let clcRequiredDirective = function (AccountDetails) {
 			AccountDetails.identity().then((account) => {
 				// if account has a role and doest not meet the requirements, delete element
 				if (account.function && account.function.name !== 'clc')
-					element.remove();
+					if (element[0].tagName === "INPUT")
+						element[0].disabled = true;
+					else
+						element.remove();
 			})
 		}
 	}

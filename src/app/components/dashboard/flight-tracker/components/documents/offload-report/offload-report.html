@@ -10,13 +10,16 @@
 		</md-button>
 	</div>
 	<md-content layout="column" ng-class="{ 'content-opened' : ofVm.toggled} ">
+		<!-- offload report details dialog button -->
 		<md-button aria-label="dialog-offload-report" class="document-edit-button" ng-click="ofVm.openOffloadReportDialog($event) ">
 			<md-icon md-font-icon="icon-eye"></md-icon>
 			Show details
 		</md-button>
+		<!-- /offload report details dialog button -->
 
 		<md-content class="table-content">
 			<table>
+				<!-- offload report summary -->
 				<tr>
 					<th>Total</th>
 					<th>Male</th>
@@ -31,6 +34,7 @@
 					<td>{{ofVm.flight.offloadReport.pax.child}}</td>
 					<td>{{ofVm.flight.offloadReport.pax.infant}}</td>
 				</tr>
+				<!-- /offload report summary -->
 			</table>
 		</md-content>
 	</md-content>

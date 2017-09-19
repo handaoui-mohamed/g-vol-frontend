@@ -5,7 +5,7 @@ class OffloadReportDialogController {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
 		this.flight = Flight;
-		this.offloadReport = this.flight.offloadReport;
+		this.offloadReport = this.flight.offloadReport; // get current flight offload report
 	}
 
 	close() {

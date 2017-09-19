@@ -12,12 +12,14 @@ class PaxReportController {
 		this.removeNotification();
 	}
 
+	// initilize pax report socket event
 	initPaxReportSocket() {
 		this.socket.on('pax-report/' + this.flight._id, (data) => {
 			this.$scope.$apply(() => {
 				data = JSON.parse(data);
 				let paxReport = data.paxReport;
 				this.showNotification();
+				// initilize flight pax report
 				if (!this.flight.paxReport) this.flight.paxReport = {};
 				angular.forEach(paxReport, (value, key) => {
 					this.flight.paxReport[key] = paxReport[key]; F
@@ -26,6 +28,7 @@ class PaxReportController {
 		});
 	}
 
+	// Pax report notifications
 	showNotification(data) {
 		this.hasChanges = true;
 		this.notification = true;

@@ -12,8 +12,10 @@ class FlightInfoDialogController {
 
 	submit() {
 		this.save().then((flightInfo) => {
+			// save flight info and update EZFW and created At date
 			this.flightInfo.ezfw = flightInfo.ezfw;
 			this.flightInfo.createdAt = this.flightInfo.createdAt || flightInfo.createdAt;
+			// close dialog
 			this.$mdDialog.hide(flightInfo);
 		}, (error) => {
 			this.$mdDialog.cancel();
@@ -26,6 +28,7 @@ class FlightInfoDialogController {
 	}
 
 	save() {
+		// if flight info was not initilized then save it otherwise update it
 		if (this.flightInfo.createdAt)
 			return this.documentService.update({ flightId: this.flight._id, type: 'fi' }, this.flightInfo).$promise;
 		else

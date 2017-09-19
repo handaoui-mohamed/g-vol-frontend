@@ -13,18 +13,22 @@ class OffloadReportController {
 	}
 
 	$onInit() {
-		this.initOffloadReportSocket();
+		this.initOffloadListSocket();
 		this.removeNotification();
 	}
 
-	initOffloadReportSocket() {
+	// initilize offload list socket event
+	initOffloadListSocket() {
 		this.socket.on('offload-list/' + this.flight._id, (data) => {
 			this.$scope.$apply(() => {
 				data = JSON.parse(data);
+				// generate offload report from offload list
 				let offloadReport = this.offloadReport.generate(data.offloadList);
 				this.showNotification();
+				// add the offload report to the current flight
 				if (!this.flight.offloadReport) this.flight.offloadReport = offloadReport;
 				else
+					// update the current flight offload report
 					angular.forEach(offloadReport, (value, key) => {
 						this.flight.offloadReport[key] = offloadReport[key];
 					});
@@ -32,6 +36,7 @@ class OffloadReportController {
 		});
 	}
 
+	// open offload report details dialog
 	openOffloadReportDialog(ev) {
 		this.hasChanges = false;
 		this.$mdDialog.show({
@@ -48,7 +53,7 @@ class OffloadReportController {
 		}).then((flightInfo) => { }, (msg) => { });
 	}
 
-
+	// Offload list notifications
 	showNotification(data) {
 		this.hasChanges = true;
 		this.notification = true;
