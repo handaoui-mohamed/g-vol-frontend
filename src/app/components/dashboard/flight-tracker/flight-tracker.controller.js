@@ -16,45 +16,49 @@ class FlightTrackerController {
 
 	$onInit() {
 		this.documents = [];
-		this.status = [{
-			translate: 'FLIGHT.STATUS.NEW',
-			value: 'new'
-		}, {
-			translate: 'FLIGHT.STATUS.INPROGRESS',
-			value: 'inprogress'
-		}, {
-			translate: 'FLIGHT.STATUS.DONE',
-			value: 'done'
-		}];
-
+		// if the flight was initilized join the flight, else initFlight with button
 		if (this.flight.status !== "new")
 			this.joinFlight();
 	}
 
+	// initilize new flight and its documents with company checklist and join the flight
 	initFlight() {
 		if (this.flight.status === "new") {
 			this.joinFlight(() => {
 				this.documentService.save({ flightId: this.flight._id }, {}, (updatedFlight) => {
+					// update flight documents after initilizing them
 					angular.forEach(updatedFlight, (value, key) => {
 						if (key !== 'team') this.flight[key] = updatedFlight[key];
 					});
+					// broadcast an event that documents were initilized
 					this.$root.$broadcast('documents' + this.flight._id, false);
 				});
 			});
 		}
 	}
 
+	// function to join flight, has a callback if needed when flight is new
 	joinFlight(callback) {
 		this.flightTeamService.save({ flightId: this.flight._id }, {}, (team) => {
+			// convert team array to object for easy access and maintaining 
+			// unique team member using member ID as object key
 			this.flight.team = this.convertTeamArrayToObject(team);
+			// emit to server socket to join the flight
 			this.socket.emit('flightId', this.flight._id);
 			this.flight.initilized = true;
-			if (typeof callback === "function") callback();
+			if (typeof callback === "function") callback(); // execute callback if provided
 			else
+				// broadcast an event that documents were initilized
 				this.$root.$broadcast('documents' + this.flight._id, true);
 		});
 	}
 
+	/**
+	 * @param {Array[string]} flightTeam 
+	 * @return {Object: flightTeam}
+	 * @desc convert team array to object for easy access and maintaining 
+	 * 		 unique team member using member ID as object key
+	 */
 	convertTeamArrayToObject(flightTeam) {
 		let team = {};
 		angular.forEach(flightTeam, (account) => {
@@ -63,11 +67,13 @@ class FlightTrackerController {
 		return team;
 	}
 
+	// close flight tracker panel, and decrement open flights count
 	reducePanel() {
 		this.flight.opened = false;
 		this.openedFlights--;
 	}
 
+	// open dialog containg current flight team member
 	openFlightTeam(ev) {
 		this.$mdDialog.show({
 			controller: FlightTeamDialog,
@@ -84,6 +90,7 @@ class FlightTrackerController {
 		}).then((team) => { }, (msg) => { });
 	}
 
+	// opens flight status dialog to close it, contains comment input
 	openFlightStatusDialog(ev) {
 		let confirm = this.$mdDialog.prompt()
 			.title(this.$translate('FLIGHTSTATUS.CONFIRMATION'))
@@ -98,19 +105,19 @@ class FlightTrackerController {
 			.cancel(this.$translate('CANCEL'));
 
 		this.$mdDialog.show(confirm).then((comment) => {
-			this.flightStatusService.save({ flightId: this.flight._id }, { status: 'done', comment },
-				(data) => {
-					this.flight.comment = data.comment;
-					this.flight.status = data.status;
-				}, (error) => { this.toast.serverError(error) });
+			// saves flight with status done, and comment if added
+			this.flightStatusService.save({ flightId: this.flight._id }, { status: 'done', comment }, (data) => {
+				this.flight.comment = data.comment;
+				this.flight.status = data.status;
+			}, (error) => { this.toast.serverError(error) });
 		}, () => { });
 	}
 
+	// reopen closed flight
 	reopenFlight() {
-		this.flightStatusService.save({ flightId: this.flight._id }, { status: 'inprogress' },
-			(data) => {
-				this.flight.status = data.status;
-			}, (error) => { this.toast.serverError(error) });
+		this.flightStatusService.save({ flightId: this.flight._id }, { status: 'inprogress' }, (data) => {
+			this.flight.status = data.status;
+		}, (error) => { this.toast.serverError(error) });
 	}
 }
 

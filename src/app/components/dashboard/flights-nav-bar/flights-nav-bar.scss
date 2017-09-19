@@ -2,7 +2,9 @@
     .md-nav-bar {
         padding-top: 15px;
         background-color: #ECEFF1;
-        position: absolute;
+		// position: absolute;
+		// z-index: 2;
+		// top: 0;
         width: 100%;
         nav {
             overflow-x: auto;

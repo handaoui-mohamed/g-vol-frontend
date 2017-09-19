@@ -16,6 +16,7 @@
 <div class="page-content" layout="row" layout-align="center">
 	<form name="flightForm" novalidate layout-padding class="md-whiteframe-3dp bg-white" flex-gt-sm="70" flex-gt-xs="100">
 		<div layout-gt-xs="row">
+			<!-- flight company -->
 			<md-input-container class="md-block capitalize" flex-gt-xs>
 				<label translate="FLIGHT.COMPANY">Company</label>
 				<md-select ng-model="flVm.flight.company" name="company" required>
@@ -25,7 +26,9 @@
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
 			</md-input-container>
+			<!-- /flight company -->
 
+			<!-- flight number -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label translate="FLIGHT.NUMBER">Flight Number</label>
 				<input ng-model="flVm.flight.flightNumber" name="flightNumber" required>
@@ -33,7 +36,9 @@
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
 			</md-input-container>
+			<!-- /flight number -->
 
+			<!-- flight destination -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label>Destination</label>
 				<input ng-model="flVm.flight.dest" name="destination" required>
@@ -41,9 +46,11 @@
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
 			</md-input-container>
+			<!-- /flight destination -->
 		</div>
 
 		<div layout-gt-xs="row">
+			<!-- flight registration -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label>Registration</label>
 				<input ng-model="flVm.flight.registration" name="registration" required>
@@ -51,7 +58,9 @@
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
 			</md-input-container>
+			<!-- /flight registration -->
 
+			<!-- flight configuration -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label>Configuration</label>
 				<input ng-model="flVm.flight.configuration" name="configuration" required>
@@ -59,7 +68,9 @@
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
 			</md-input-container>
+			<!-- /flight configuration -->
 
+			<!-- flight AC type -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label>AC Type</label>
 				<input ng-model="flVm.flight.acType" name="acType" required>
@@ -67,16 +78,20 @@
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
 			</md-input-container>
+			<!-- /flight AC type -->
 		</div>
 
 		<div layout-gt-xs="row">
+			<!-- flight arrival date -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<md-datepicker ng-model="flVm.flight.arrivalDate" name="arrival" md-placeholder="{{ 'FLIGHT.ARRIVAL' | translate}}" required></md-datepicker>
 				<div ng-messages="flightForm.arrival.$error">
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
 			</md-input-container>
+			<!-- /flight arrival date -->
 
+			<!-- flight STA -->
 			<md-input-container class="time-input">
 				<label>STA</label>
 				<input ng-model="flVm.flight.sta" name="sta" required ng-pattern="/^(([0-1][0-9])|(2[0-3]))[0-5][0-9]$/">
@@ -85,7 +100,9 @@
 					<div ng-message="pattern" translate="VALIDATION.TIME">Incorrect time</div>
 				</div>
 			</md-input-container>
+			<!-- /flight STA -->
 
+			<!-- flight departure date -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<md-datepicker ng-model="flVm.flight.departureDate" name="departure" md-placeholder="{{ 'FLIGHT.DEPARTURE' | translate}}"
 				 required></md-datepicker>
@@ -93,8 +110,10 @@
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
 			</md-input-container>
+			<!-- /flight departure date -->
 
 
+			<!-- flight STD -->
 			<md-input-container class="time-input">
 				<label>STD</label>
 				<input ng-model="flVm.flight.std" name="std" required ng-pattern="/^(([0-1][0-9])|(2[0-3]))[0-5][0-9]$/">
@@ -103,6 +122,7 @@
 					<div ng-message="pattern" translate="VALIDATION.TIME">Incorrect time</div>
 				</div>
 			</md-input-container>
+			<!-- flight STD -->
 		</div>
 
 		<div layout="row" admin-required>

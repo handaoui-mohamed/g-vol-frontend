@@ -9,6 +9,7 @@ class flightSelectionController {
 		this.flightService = FlightService;
 		this.toast = Toast;
 
+		// Initilization
 		this.flights = [];
 		this.selectedStatus = ['new', 'inprogress'];
 		this.queryString = "YI6";
@@ -45,7 +46,7 @@ class flightSelectionController {
 		let limit = this.query.limit;
 		let q = this.queryString;
 		let status = this.selectedStatus.length > 0 ? this.selectedStatus : null;
-		this.promise = this.flightService.query({
+		let query = {
 			skip,
 			limit,
 			q,
@@ -54,12 +55,12 @@ class flightSelectionController {
 			arrivalend: this.selectedArrivalDates.end,
 			departurestart: this.selectedDepartureDates.start,
 			departureend: this.selectedDepartureDates.end,
-		}, (data) => {
+		};
+
+		this.promise = this.flightService.query(query, (data) => {
 			this.flights = data;
 			this.initSelection();
-		}, (error) => {
-			this.toast.serverError(error);
-		}).$promise;
+		}, (error) => { this.toast.serverError(error); }).$promise;
 	}
 
 	searchFlights() {
@@ -67,19 +68,24 @@ class flightSelectionController {
 		this.getFlights();
 	}
 
+	// toggle flight selection
 	toggleSelection(flight) {
+		// find the flight index from selected flights
 		let flightIndex = this.selectedFlights.findIndex((selectedFlight) => {
 			return selectedFlight._id === flight._id;
 		});
 
+		// if flight is selected but not is in the array push it
 		if (flightIndex === -1 && flight.selected) {
 			this.selectedFlights.push(flight);
-		} else if (flightIndex !== -1 && !flight.selected) {
-			this.selectedFlights.splice(flightIndex, 1);
-		}
+		} else
+			// if flight was unselected and existe in the array remove it
+			if (flightIndex !== -1 && !flight.selected) {
+				this.selectedFlights.splice(flightIndex, 1);
+			}
 	}
 
-
+	// when opening flight selection dialog, set the selected flight ckeckbox to true
 	initSelection() {
 		angular.forEach(this.selectedFlights, (selectedFlight) => {
 			this.flights = this.flights.map((flight) => {
@@ -89,6 +95,7 @@ class flightSelectionController {
 		})
 	}
 
+	// show all selected flights
 	showSelectedFlights() {
 		this.show = !this.show;
 		if (this.show) {

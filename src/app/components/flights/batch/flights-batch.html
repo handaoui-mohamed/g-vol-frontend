@@ -18,14 +18,18 @@
 		<input type="search" class="search-input" name="search" ng-model="flbVm.queryString" ng-change="flbVm.searchFlights()" ng-model-options="{ debounce: 200 }">
 	</md-input-container>
 	<div layout="column" layout-align="center">
+		<!-- Import file button -->
 		<md-button ngf-select="flbVm.parseCSV($file)" aria-label="button-label" class="md-default md-raised">
 			<md-icon md-font-icon="icon-upload"></md-icon>
 			<span translate="FLIGHT.IMPORT">Import CSV file</span>
 		</md-button>
+		<!-- /Import file button -->
+		<!-- Save data button -->
 		<md-button ng-if="flbVm.flights.length > 0" ng-click="flbVm.submitAll()" aria-label="button-label" class="md-warn md-raised">
 			<md-icon md-font-icon="icon-content-save-all"></md-icon>
 			<span translate="FLIGHT.SAVEALL">Save all flights</span>
 		</md-button>
+		<!-- /Save data button -->
 	</div>
 </div>
 <!-- / CONTENT HEADER -->

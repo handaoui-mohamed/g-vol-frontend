@@ -5,7 +5,7 @@ import './messages.scss';
 let flightMessagesComponent = {
 	bindings: {
 		flightId: "=",
-		team: "=",
+		team: "=",			// current flight team, to show corresponding messagess
 		notification: '='
 	},
 	template,

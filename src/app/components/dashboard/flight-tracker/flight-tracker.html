@@ -1,48 +1,87 @@
 <div md-whiteframe="3" class="flight-tracker-container">
+	<!-- flight teacker header -->
 	<md-toolbar class="md-primary">
 		<div layout="row" layout-align="space-between center">
+			<!-- flight number -->
 			<span class="flight-number">
 				<md-icon md-font-icon="icon-folder-lock" ng-if="ftVm.flight.status === 'done'"></md-icon>
 				{{ftVm.flight.flightNumber}}
 			</span>
+			<!-- /flight number -->
+
+			<!-- flight time to departure -->
 			<span class="time-left">{{ftVm.timeLeft}}</span>
+			<!-- /flight time to departure -->
+
+			<!-- reduce panel button -->
 			<md-button aria-label="reduce" class="md-icon-button" ng-click="ftVm.reducePanel()">
 				<md-icon md-font-icon="icon-minus"></md-icon>
 			</md-button>
+			<!-- /reduce panel button -->
 		</div>
 	</md-toolbar>
-	<md-content class="bg-white flight-tracker-content" id="flight-{{::ftVm.flight._id}}">
+	<!-- /flight teacker header -->
 
+	<!-- flight trecker container -->
+	<md-content class="bg-white flight-tracker-content" id="flight-{{::ftVm.flight._id}}">
+		<!-- Initilize flight button : shows only if flight status is new -->
 		<div ng-if="!ftVm.flight.initilized && ftVm.flight.status === 'new'" class="flight-init" layout="column" layout-align="center center">
 			<md-button aria-label="Initilize flight" ng-click="ftVm.initFlight()" class="md-raised md-warn"> Initilize flight </md-button>
 		</div>
+		<!-- /Initilize flight button -->
+
 		<div ng-if="ftVm.flight.initilized || ftVm.flight.status !== 'new'">
+			<!-- flight progress bar -->
 			<flight-progress flight="ftVm.flight" time-left="ftVm.timeLeft"></flight-progress>
+			<!-- /flight progress bar -->
+
 			<div layout="row" layout-align="space-between" layout-padding>
+				<!-- left container -->
 				<div flex="50" layout="column">
 					<div layout="column">
+						<!-- flight team button -->
 						<md-button aria-label="Flight's team" class="md-raised flight-team-button" ng-click="ftVm.openFlightTeam($event)">
 							<md-icon md-font-icon="icon-people"></md-icon>
 							<span translate="DASHBOARD.TEAM">Flight team</span>
 						</md-button>
+						<!-- /flight team button -->
 					</div>
+					<!-- flight documents -->
 					<flight-documents notification="ftVm.flight.notification" flight="ftVm.flight"></flight-documents>
+					<!-- /flight documents -->
 				</div>
+				<!-- /left container -->
+
+				<!-- right container -->				
 				<div layout="column" flex="45">
+					<!-- close flight button -->
 					<md-button ng-if="ftVm.flight.status !== 'done'" class="md-raised md-warn close-flight-button" ng-click="ftVm.openFlightStatusDialog($event)">
 						<md-icon md-font-icon="icon-folder-lock"></md-icon>
 						<span translate="FLIGHTSTATUS.CLOSE">Close flight</span>
 					</md-button>
+					<!-- /close flight button -->
+
+					<!-- reopen flight button -->
 					<md-button ng-if="ftVm.flight.status === 'done'" aria-label="Reopen Flight" ng-click="ftVm.reopenFlight()" class="md-raised md-warn close-flight-button">
 						<md-icon md-font-icon="icon-folder-lock-open"></md-icon>
 						<span translate="FLIGHTSTATUS.REOPEN">Reopen Flight</span>
 					</md-button>
+					<!-- /reopen flight button -->
+					
+					<!-- flight checklist -->
 					<flight-checklist notification="ftVm.flight.notification" flight="ftVm.flight"></flight-checklist>
+					<!-- /flight checklist -->					
 				</div>
+				<!-- /right container -->				
 			</div>
+			<!-- flight tracker footer -->
 			<footer>
+				<!-- flight messages -->
 				<flight-messages notification="ftVm.flight.notification" flight-id="ftVm.flight._id" team="ftVm.flight.team"></flight-messages>
+				<!-- /flight messages -->				
 			</footer>
+			<!-- /flight tracker footer -->
 		</div>
 	</md-content>
+	<!-- /flight trecker container -->
 </div>

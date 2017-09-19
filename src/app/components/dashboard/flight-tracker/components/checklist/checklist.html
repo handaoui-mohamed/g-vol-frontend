@@ -4,21 +4,32 @@
 	</div>
 	<md-divider flex></md-divider>
 	<md-content layout="column" layout-padding>
+		<!-- Baggage Report -->
 		<div layout="row" class="checklist-element" ng-class="{'item-checked': chlVm.documents.baggageReport.status}">
 			<div class="doc-number">{{ 1 }}</div>
 			<span>Baggage report</span>
 		</div>
+		<!-- /Baggage Report -->
+
+		<!-- FLight Info -->
 		<div layout="row" class="checklist-element" ng-class="{'item-checked': chlVm.documents.flightInfo.status}">
 			<div class="doc-number">{{ 2 }}</div>
 			<span>Flight info</span>
 		</div>
+		<!-- /FLight Info -->
+
+		<!-- Offload List -->
 		<div layout="row" class="checklist-element" ng-class="{'item-checked': chlVm.documents.offloadList.status, 'not-initilized': !chlVm.documents.offloadList.createdAt}">
 			<div class="doc-number">{{ 3 }}</div>
 			<span>Offload List</span>
 		</div>
+		<!-- /Offload List -->
+
+		<!-- Other documents -->
 		<div ng-repeat="document in chlVm.documents.otherDocuments track by $index" class="checklist-element" layout="row" ng-class="{'item-checked': document.status}">
 			<div class="doc-number">{{ $index + 4 }}</div>
 			<span>{{document.title}}</span>
 		</div>
+		<!-- /Other documents -->
 	</md-content>
 </div>

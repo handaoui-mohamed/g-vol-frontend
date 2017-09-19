@@ -71,6 +71,8 @@ class FlightsBatchController {
 		});
 	}
 
+	// validate all flights for errors
+	// if errors set flight errors to true
 	validateFlights(flights) {
 		return flights.map((flight) => {
 			flight.errors = this.flightHasErrors(flight);
@@ -78,11 +80,13 @@ class FlightsBatchController {
 		});
 	}
 
+	// validate single flight, used by validate flights
 	flightHasErrors(flight) {
 
 	}
 
-	filterFlightsWithErrors() {
+	// filters flight with no errors
+	filterFlightsWithNoErrors() {
 		return this.flights.filter(flight => !flight.errors);
 	}
 
@@ -94,8 +98,9 @@ class FlightsBatchController {
 		});
 	}
 
+	// sumbit flights to server after validating and filtering them
 	submitAll() {
-		let flights = this.mapToCompanies(this.filterFlightsWithErrors());
+		let flights = this.mapToCompanies(this.filterFlightsWithNoErrors());
 		this.flightService.save({ flightId: "batch" }, { flights }, (data) => {
 		}, (errors) => { this.toast.serverError(error); })
 	}

@@ -1,12 +1,7 @@
 class DashboardController {
-	constructor($rootScope) {
-		'ngInject';
-		$rootScope.hideTopBG = true;
-	}
-
 	$onInit() {
-		this.selectedFlights = [];
-		this.openedFlights = 0;
+		this.selectedFlights = [];	// selected flights array
+		this.openedFlights = 0;		// selected opened flights
 	}
 }
 

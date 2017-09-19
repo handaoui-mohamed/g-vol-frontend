@@ -8,12 +8,14 @@ class FlightNotificationController {
 
 	closeToast() {
 		this.$mdToast.hide();
-		this.flightNotification.toastIsOpen = false;
-		this.flightNotification.initAll();
+		this.flightNotification.toastIsOpen = false; // set toast open to false
+		this.flightNotification.initAll(); // init all flights notification when closing
 	}
 
+	// when clicking on a flight notification, dismiss it 
 	dismiss(flight) {
 		this.flightNotification.initFlight(flight);
+		// if not flight notification are left close the toast
 		if (!this.flightNotification.stillNotifications()) this.closeToast();
 	}
 }

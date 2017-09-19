@@ -1,7 +1,11 @@
 <md-nav-bar md-selected-nav-item="tabVm.currentNavItem" nav-bar-aria-label="navigation links" flex>
+	<!-- flight add button dialog -->
 	<md-nav-item aria-label="select-more-flights" md-nav-click="tabVm.openFlightSelectionDialog($event)" class="edit-selected-flights">
 		<md-icon aria-label="select-more" md-font-icon="icon-plus"></md-icon>
 	</md-nav-item>
+	<!-- /flight add button dialog -->
+	
+	<!-- selected flights tabs -->
 	<md-nav-item aria-label="selectedflights" ng-repeat="flight in tabVm.selectedFlights track by $index" md-nav-click="tabVm.toggleFlight(flight)"
 	 ng-class="{'flight-selected': flight.opened}">
 		<md-icon md-font-icon="icon-arrow-expand" ng-if="!flight.opened"></md-icon>
@@ -11,4 +15,5 @@
 			<!-- <span class="flight-notification" ng-if="flight.notification"></span> -->
 		</div>
 	</md-nav-item>
+	<!-- /selected flights tabs -->	
 </md-nav-bar>

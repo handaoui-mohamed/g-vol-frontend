@@ -15,6 +15,7 @@ let flightTrackerModule = angular
 	.module('flightTracker', [flightDocuments])
 	.config(($translateProvider) => {
 		"ngInject";
+		// flight tracker component translation
 		$translateProvider.translations('en', en);
 		$translateProvider.translations('fr', fr);
 	})

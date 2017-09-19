@@ -1,7 +1,15 @@
 class OffloadReport {
+	/**
+	 * @desc generate an offload report from the offloadlist
+	 * @param {*} offloadList 
+	 * @return {Object : offloadReport} 
+	 * 
+	 */
 	generate(offloadList) {
 		if (offloadList && offloadList.createdAt) {
+			// initilize offload report
 			let offloadReport = {
+				// detailed passengers count
 				pax: {
 					total: 0,
 					male: 0,
@@ -9,9 +17,9 @@ class OffloadReport {
 					child: 0,
 					infant: 0
 				},
-				totalWeight: 0,
-				nbPcs: 0,
-				table: [/*{pieceId, position}*/]
+				totalWeight: 0,	// total baggage weight
+				nbPcs: 0,		// total baggage pieces
+				table: []		// contains objects of {pieceId, position}
 			}
 			angular.forEach(offloadList.table, (row) => {
 				offloadReport.pax[row.passengerType]++;
