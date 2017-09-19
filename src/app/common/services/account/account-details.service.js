@@ -30,9 +30,8 @@ let accountDetailsFactory = function ($q, $window, $auth, $state, AccountService
 					_authenticated = true;
 					deferred.resolve(_identity);
 				}, function (error) {
-					_identity = null;
-					_authenticated = false;
-					deferred.reject(_identity);
+					logout();
+					error.status === 401 ? deferred.resolve(_identity) : deferred.reject(_identity);
 				})
 			}
 		}

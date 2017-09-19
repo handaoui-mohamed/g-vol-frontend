@@ -81,7 +81,7 @@ class flightSelectionController {
 
 
 	initSelection() {
-		this.selectedFlights.forEach((selectedFlight) => {
+		angular.forEach(this.selectedFlights, (selectedFlight) => {
 			this.flights = this.flights.map((flight) => {
 				if (flight._id === selectedFlight._id) flight.selected = true;
 				return flight;

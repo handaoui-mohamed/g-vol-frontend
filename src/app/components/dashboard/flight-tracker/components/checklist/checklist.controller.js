@@ -41,15 +41,11 @@ class ChecklistController {
 	}
 
 	getDocuments(event, queryDocuments) {
-		console.log("query", queryDocuments);
 		if (queryDocuments) {
 			this.documentService.get({ flightId: this.flight._id }, (documents) => {
-				for (var key in documents) {
-					if (documents.hasOwnProperty(key)) {
-						this.flight[key] = documents[key];
-					}
-				}
-				console.log("fetch");
+				angular.forEach(documents, (value, key) => {
+					this.flight[key] = documents[key];
+				})
 				this.documents = documents;
 				this.setDocuments(this.documents);
 				this.emitDocumentChanges(this.checklistDocuments);

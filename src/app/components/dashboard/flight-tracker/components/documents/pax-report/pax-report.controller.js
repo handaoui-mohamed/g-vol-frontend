@@ -19,11 +19,9 @@ class PaxReportController {
 				let paxReport = data.paxReport;
 				this.showNotification();
 				if (!this.flight.paxReport) this.flight.paxReport = {};
-				for (let key in paxReport) {
-					if (paxReport.hasOwnProperty(key)) {
-						this.flight.paxReport[key] = paxReport[key];
-					}
-				}
+				angular.forEach(paxReport, (value, key) => {
+					this.flight.paxReport[key] = paxReport[key]; F
+				});
 			})
 		});
 	}

@@ -22,11 +22,9 @@ class BaggageReportController {
 				data = JSON.parse(data);
 				let baggageReport = data.baggageReport;
 				this.showNotification(data.accountId);
-				for (let key in baggageReport) {
-					if (baggageReport.hasOwnProperty(key)) {
-						this.flight.baggageReport[key] = baggageReport[key];
-					}
-				}
+				angular.forEach(baggageReport, (value, key) => {
+					this.flight.baggageReport[key] = baggageReport[key];
+				});
 			})
 		});
 	}

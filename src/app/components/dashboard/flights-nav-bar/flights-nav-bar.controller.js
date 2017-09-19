@@ -28,7 +28,7 @@ class FlightsNavBarController {
 		this.socket.on("connected", (data) => {
 			if (this.selectedFlights.length > 0)
 				this.socket.emit('socket-reconnected', JSON.stringify(this.getSelectedFlightIds()));
-			this.selectedFlights.forEach((flight) => {
+			angular.forEach(this.selectedFlights, (flight) => {
 				if (flight.initilized) this.socket.emit('flightId', flight._id);
 			})
 		});
@@ -39,16 +39,14 @@ class FlightsNavBarController {
 	ListenForReconnectionData() {
 		this.socket.on("reconnected", (data) => {
 			let flights = JSON.parse(data);
-			if (flights.length > 0) {
+			if (flights && flights.length > 0) {
 				this.$scope.$apply(() => {
-					flights.forEach((flight) => {
+					angular.forEach(flights, (flight) => {
 						let selectedFlight = this.selectedFlights.find(flt => flt._id === flight._id);
 						if (selectedFlight) {
-							for (var key in flight) {
-								if (flight.hasOwnProperty(key)) {
-									selectedFlight = flight[key];
-								}
-							}
+							angular.forEach(flight, (value, key) => {
+								selectedFlight[key] = flight[key];
+							});
 							this.getFlightMessages(flight._id);
 						}
 					})

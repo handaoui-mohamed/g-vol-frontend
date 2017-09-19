@@ -35,11 +35,9 @@ class FlightTrackerController {
 		if (this.flight.status === "new") {
 			this.joinFlight(() => {
 				this.documentService.save({ flightId: this.flight._id }, {}, (updatedFlight) => {
-					for (var key in updatedFlight) {
-						if (updatedFlight.hasOwnProperty(key)) {
-							if (key !== 'team') this.flight[key] = updatedFlight[key];
-						}
-					}
+					angular.forEach(updatedFlight, (value, key) => {
+						if (key !== 'team') this.flight[key] = updatedFlight[key];
+					});
 					this.$root.$broadcast('documents' + this.flight._id, false);
 				});
 			});
@@ -59,7 +57,7 @@ class FlightTrackerController {
 
 	convertTeamArrayToObject(flightTeam) {
 		let team = {};
-		flightTeam.forEach((account) => {
+		angular.forEach(flightTeam, (account) => {
 			team[account._id] = account;
 		});
 		return team;

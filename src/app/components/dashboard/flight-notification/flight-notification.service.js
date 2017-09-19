@@ -24,7 +24,7 @@ class FlightNoticationService {
 
 	initSelectedFlights(flights) {
 		this.clearAll();
-		flights.forEach((flight) => {
+		angular.forEach(flights, (flight) => {
 			this.selectedFlights.push({
 				_id: flight._id,
 				flightNumber: flight.flightNumber,

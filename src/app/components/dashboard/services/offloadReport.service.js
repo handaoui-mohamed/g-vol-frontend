@@ -13,7 +13,7 @@ class OffloadReport {
 				nbPcs: 0,
 				table: [/*{pieceId, position}*/]
 			}
-			offloadList.table.forEach((row) => {
+			angular.forEach(offloadList.table, (row) => {
 				offloadReport.pax[row.passengerType]++;
 				offloadReport.pax.total++;
 				offloadReport.totalWeight += row.totalWeight;

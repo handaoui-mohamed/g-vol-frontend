@@ -25,11 +25,9 @@ class OffloadReportController {
 				this.showNotification();
 				if (!this.flight.offloadReport) this.flight.offloadReport = offloadReport;
 				else
-					for (let key in offloadReport) {
-						if (offloadReport.hasOwnProperty(key)) {
-							this.flight.offloadReport[key] = offloadReport[key];
-						}
-					}
+					angular.forEach(offloadReport, (value, key) => {
+						this.flight.offloadReport[key] = offloadReport[key];
+					});
 			})
 		});
 	}

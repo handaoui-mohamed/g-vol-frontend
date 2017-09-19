@@ -78,7 +78,7 @@ class FlightProgressController {
 
 		if (this.flight.otherDocuments) {
 			nbDocuments += this.flight.otherDocuments.length;
-			this.flight.otherDocuments.forEach((document) => {
+			angular.forEach(this.flight.otherDocuments, (document) => {
 				if (document.status) finishedDocuments++;
 			})
 		}

@@ -22,11 +22,9 @@ class FlightInfoController {
 				data = JSON.parse(data);
 				let flightInfo = data.flightInfo;
 				this.showNotification(data.accountId);
-				for (let key in flightInfo) {
-					if (flightInfo.hasOwnProperty(key)) {
-						this.flight.flightInfo[key] = flightInfo[key];
-					}
-				}
+				angular.forEach(flightInfo, (value, key) => {
+					this.flight.flightInfo[key] = flightInfo[key];
+				});
 			})
 		});
 	}

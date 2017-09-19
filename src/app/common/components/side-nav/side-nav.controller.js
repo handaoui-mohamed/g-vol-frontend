@@ -10,7 +10,7 @@ class SideNavController {
 	}
 
 	$onInit() {
-		// get from localStorage if the sidenav was loacked open
+		// get from localStorage whether the sidenav was loacked open
 		this.sideNavLocked = JSON.parse(this.$window.localStorage['sideNavLocked'] || "false");
 		this.setVisibility();
 		this.states = this.$state.get();
@@ -25,23 +25,19 @@ class SideNavController {
 
 	setVisibility() {
 		this.accountDetails.identity().then(() => {
-			this.menu.sections.forEach((section) => {
-				if (section.children) {
-					section.children.forEach((child) => {
-						if (child.pages) {
-							child.pages.forEach((page) => {
-								let route = this.states.find((state) => page.state === state.name);
-								if (route &&
-									route.data &&
-									route.data.roles &&
-									route.data.roles.length > 0 &&
-									!this.accountDetails.isInAnyRole(route.data.roles)) {
-									this.menu.setVisible(page.id, false);
-								}
-							})
+			angular.forEach(this.menu.sections, (section) => {
+				angular.forEach(section.children, (child) => {
+					angular.forEach(child.pages, (page) => {
+						let route = this.states.find((state) => page.state === state.name);
+						if (route &&
+							route.data &&
+							route.data.roles &&
+							route.data.roles.length > 0 &&
+							!this.accountDetails.isInAnyRole(route.data.roles)) {
+							this.menu.setVisible(page.id, false);
 						}
 					})
-				}
+				})
 			})
 		})
 	}
