@@ -46,7 +46,7 @@
 			<md-input-container class="md-icon-float md-block" flex>
 				<label translate="COMPANY.FORM.CHECKLIST">Company checklist</label>
 				<md-icon md-font-icon="icon-format-list-numbers"></md-icon>
-				<input ng-model="comVm.checklistItem" name="companyForm.checklistItem" ng-keyup="$event.keyCode === 13 && comVm.addItem()">
+				<input admin-required ng-model="comVm.checklistItem" name="companyForm.checklistItem" ng-keyup="$event.keyCode === 13 && comVm.addItem()">
 			</md-input-container>
 			<md-input-container admin-required>
 				<md-button class="md-icon-button" ng-click="comVm.addItem()">
@@ -59,9 +59,24 @@
 
 		<!-- company checklist -->
 		<ol id="checklist-container">
+			<ul layout="row">
+				<md-input-container flex>
+					<span>1- Baggage Report</span>
+				</md-input-container>
+			</ul>
+			<ul layout="row">
+				<md-input-container flex>
+					<span>2- Flight Info</span>
+				</md-input-container>
+			</ul>
+			<ul layout="row">
+				<md-input-container flex>
+					<span>3- Offload list</span>
+				</md-input-container>
+			</ul>
 			<ul ng-repeat="item in comVm.company.checklist track by $index" layout="row">
 				<md-input-container flex>
-					<span>{{ ($index+1)+'- '+item }}</span>
+					<span>{{ ($index + 4)+'- '+item }}</span>
 				</md-input-container>
 
 				<md-button class="md-icon-button" ng-click="comVm.removeItem($index)" admin-required>

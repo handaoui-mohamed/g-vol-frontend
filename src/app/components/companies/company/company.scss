@@ -2,6 +2,9 @@
     margin-top: -20px;
     margin-right: 45px;
     font-size: 18px;
+    md-input-container {
+        margin: 10px 0 !important;
+    }
 }
 
 md-icon[md-font-icon].s32.add-button,
