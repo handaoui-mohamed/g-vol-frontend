@@ -2,7 +2,7 @@
 	<ng-side-nav></ng-side-nav>
 	<md-content flex>
 		<ng-nav-bar></ng-nav-bar>
-		<md-content id="main-container">
+		<md-content id="main-container"  ng-style="{'zoom': this.$root.currentZoom+'%'}">
 			<div ui-view></div>
 		</md-content>
 	</md-content>

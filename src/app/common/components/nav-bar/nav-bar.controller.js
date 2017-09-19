@@ -1,6 +1,7 @@
 class NavBarController {
-	constructor($mdSidenav, $window, $translate, AccountDetails) {
+	constructor($rootScope, $mdSidenav, $window, $translate, AccountDetails) {
 		'ngInject';
+		this.$root = $rootScope;
 		this.$mdSidenav = $mdSidenav;
 		this.$window = $window;
 		this.$translate = $translate;
@@ -25,6 +26,9 @@ class NavBarController {
 		// get the selected language to select the flag
 		let language = this.$window.localStorage['language'];
 		this.selectedLanguage = this.languages[language || this.$translate.preferredLanguage()];
+
+		// get the current zoom levet from localstorage
+		this.$root.currentZoom = parseInt(this.$window.localStorage['zoom'] || "100");
 	}
 
 	logout() {
@@ -48,6 +52,14 @@ class NavBarController {
 	// check if sidenav is locked open, if so hide the toggle button
 	isLockedOpen() {
 		return this.$mdSidenav("left").isLockedOpen();
+	}
+
+	// handle page zoom
+	changeZoom(zoomIn) {
+		let zoom = this.$root.currentZoom + (zoomIn ? 5 : -5);
+		if (zoom <= 100 && zoom >= 75)
+			this.$root.currentZoom = zoom;
+		this.$window.localStorage['zoom'] = this.$root.currentZoom;
 	}
 }
 

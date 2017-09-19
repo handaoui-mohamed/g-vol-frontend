@@ -17,6 +17,18 @@
 		<!-- /circular progress bar -->
 
 		<div class="toolbar-separator"></div>
+
+		<div id="page-zoom" layout="column">
+			<md-button ng-click="navVm.changeZoom(true)" class="md-icon-button">
+				<md-icon class="icon-magnify-plus"></md-icon>
+			</md-button>
+			<md-button ng-click="navVm.changeZoom()" class="md-icon-button">
+				<md-icon class="icon-magnify-minus"></md-icon>
+			</md-button>
+		</div>
+
+		<div class="toolbar-separator"></div>
+
 		<!-- current connected user menu -->
 		<md-menu-bar id="user-menu">
 			<md-menu md-position-mode="left bottom">
