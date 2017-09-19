@@ -1,11 +1,12 @@
 import angular from 'angular';
+
 import AccountService from './account/account.service';
+import AccountDetailsService from './account/account-details.service';
+import AuthorizationService from './authorization/authorization.service';
 import FlightService from './flight/flight.service';
 import CompanyService from './company/company.service';
 import ToastService from './Toast/toast.service';
 import CsvToJsonService from './csv-to-json/csv-to-json.service';
-import AccountDetailsService from './account/account-details.service';
-import AuthorizationService from './authorization/authorization.service';
 
 //sockets
 import SocketService from './socket/socket.service';
@@ -15,6 +16,7 @@ let servicesModule = angular
 	.config((toastrConfig) => {
 		'ngInject'
 		// toastr configuration
+		// for more information about it, see angular-toastr github page
 		angular.extend(toastrConfig, {
 			"autoDismiss": true,
 			"positionClass": "toast-top-right",

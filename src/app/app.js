@@ -38,6 +38,5 @@ angular
 	])
 	.config(AppConfig)
 	.run(AppRun)
-	// APIENDPOINT is defined in the config file, for easy changes
-	.constant('API_ENDPOINT', APIENDPOINT)
+	.constant('API_ENDPOINT', APIENDPOINT)	// APIENDPOINT is defined in the config file, for easy changes
 	.component('app', AppComponent);

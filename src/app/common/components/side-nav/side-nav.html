@@ -1,11 +1,14 @@
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="sideVm.sideNavLocked">
-
+	<!-- side nav header -->
 	<md-toolbar layout="row" layout-align="space-around center" style="overflow:hidden" class="md-whiteframe-1dp">
-		<h1 class="md-toolbar-tools">G-Vol CLC</h1>
+		<h1 class="md-toolbar-tools">G-Vol {{$root.currentAccount.function.name | uppercase}}</h1>
 		<md-icon id="side-nav-pin" md-font-icon="icon-pin" aria-hidden="true" ng-class="{pinned:!sideVm.sideNavLocked}" ng-click="sideVm.toggleLock()"></md-icon>
 	</md-toolbar>
+	<!-- /side nav header -->
 
+	<!-- side nav menu -->
 	<md-content role="navigation">
 		<ss-sidenav flex menu="sideVm.menu"></ss-sidenav>
 	</md-content>
+	<!-- /side nav menu -->
 </md-sidenav>

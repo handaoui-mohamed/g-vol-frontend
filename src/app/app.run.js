@@ -1,3 +1,7 @@
+/**
+ * App module run configuration function
+ */
+
 export default
 
 	function ($rootScope, $window, AccountDetails, $transitions, $mdSidenav, $translate, $mdComponentRegistry) {
@@ -5,35 +9,38 @@ export default
 
 	// get the current selected language from the localStorage
 	let language = $window.localStorage['language'];
-	if (language && (language === "fr" || language === "en")) {
-		// if it's a valid language, use it
-		$translate.use(language);
-	}
+	// check if it's a valid language, then use it
+	if (language && (language === "fr" || language === "en")) $translate.use(language);
+
 
 	// Pages (routes) transition function to constrole user connection and permissions
 	$transitions.onStart({}, (trans) => {
 		// activation the progress circular in nav bar, this is usefull when using a slow internet connection
 		$rootScope.isLoading = true;
 
-		// check if the sidenav is loaded, if it is, check if it's not locked open the close it
+		// check if the sidenav is loaded, if so, check if it's not locked open, then close it
 		if ($mdComponentRegistry.get("left") && !$mdSidenav("left").isLockedOpen())
 			$mdSidenav("left").close();
 
-		//manage states permissions and not allowed ones when loggin
-		// get the target route
-		let toState = trans.to();
-		let params = trans.params();
+		/**
+		 * manage states permissions and not allowed ones when logged in
+		 * get the target route state and its params
+		 * 
+		 */
+		$rootScope.toState = trans.to();
+		$rootScope.toStateParams = trans.params();
 
-		// get the state module to change routes if needed
-		let $state = trans.router.stateService;
-		$rootScope.state = $state;
+		// get the state module and save it in rootscope for easy access
+		$rootScope.state = trans.router.stateService;
 
-		// inject the authorization module to check if user if authorized
+		// inject the authorization module to check if user if authorized to access the target state
 		let authorization = trans.injector().get('Authorization');
 
-		$rootScope.toState = toState;
-		$rootScope.toStateParams = params;
-
+		/**
+		 * since the verification of account authorization is sync
+		 * we check if the request is resolved and then authorize
+		 * 
+		 */
 		if (AccountDetails.isIdentityResolved()) {
 			authorization.authorize();
 		}

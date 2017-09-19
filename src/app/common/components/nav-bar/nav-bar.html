@@ -1,13 +1,23 @@
 <md-toolbar class="md-whiteframe-1dp" id="nav-bar-container">
 	<div class="md-toolbar-tools">
+		<!-- Side nav hamburger toggle button -->
 		<md-button ng-if="!navVm.isLockedOpen()" class="md-icon-button" aria-label="Settings" ng-click="navVm.toggleSideNav()">
 			<md-icon md-font-icon="icon-menu" class="icon s32" hide-sm></md-icon>
 		</md-button>
+		<!-- /Side nav hamburger toggle button -->
+
+		<!-- clock -->
 		<span flex><ng-clock></ng-clock></span>
+		<!-- /clock -->
+
+		<!-- circular progress bar, for state transitions -->
 		<div layout-padding>
 			<md-progress-circular ng-if="$root.isLoading" md-mode="indeterminate" md-diameter="40"></md-progress-circular>
 		</div>
+		<!-- /circular progress bar -->
+
 		<div class="toolbar-separator"></div>
+		<!-- current connected user menu -->
 		<md-menu-bar id="user-menu">
 			<md-menu md-position-mode="left bottom">
 				<md-button class="user-button" ng-click="$mdMenu.open()" aria-label="User settings" translate translate-attr-aria-label="TOOLBAR.USER_SETTINGS">
@@ -33,8 +43,11 @@
 				</md-menu-content>
 			</md-menu>
 		</md-menu-bar>
+		<!-- /current connected user menu -->
 
 		<div class="toolbar-separator"></div>
+
+		<!-- language selection menu -->
 		<md-menu id="language-menu" md-offset="0 72" md-position-mode="target-right target">
 			<md-button class="language-button" ng-click="$mdMenu.open()" aria-label="Language" md-menu-origin md-menu-align-target>
 				<div layout="row" layout-align="center center">
@@ -54,5 +67,6 @@
 				</md-menu-item>
 			</md-menu-content>
 		</md-menu>
+		<!-- /language selection menu -->
 	</div>
 </md-toolbar>

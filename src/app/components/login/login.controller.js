@@ -15,6 +15,7 @@ class LoginController {
 	$onInit() {
 		// login endpoint for superadmin, admin, clc
 		this.loginEndpoint = this.api_endpoint + 'auth/login-superadmin-clc';
+		// initilization
 		this.disableSubmit = false;
 		this.account = {};
 	}
@@ -51,10 +52,11 @@ class LoginController {
 		// add logged in account to global variable
 		this.accountDetails = data.account;
 		// if user came from another page, redirect him to it
-		if (this.$rootScope.next)
-			this.$location.path(this.$rootScope.next);
+		if (this.$rootScope.nextState)
+			this.$state.go(this.$rootScope.nextState, this.$rootScope.nextStateParams)
 		else
 			this.$state.go('home.dashboard');
+
 		// initilize socket connection
 		this.initSocket();
 	}

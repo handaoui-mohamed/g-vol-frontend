@@ -15,19 +15,18 @@ let loginModule = angular
 		$authProvider.authHeader = 'Authorization';
 		$authProvider.authToken = '';
 
-		$stateProvider
-			.state('login', {
-				url: '/login',
-				component: 'login',
-				notAllowed: true,
-				resolve: {
-					authorize: ['Authorization',
-						function (Authorization) {
-							return Authorization.authorize();
-						}
-					]
-				}
-			});
+		$stateProvider.state('login', {
+			url: '/login',
+			component: 'login',
+			notAllowed: true,
+			resolve: {
+				authorize: ['Authorization',
+					function (Authorization) {
+						return Authorization.authorize();
+					}
+				]
+			}
+		});
 
 		// login page translations
 		$translateProvider.translations('en', en);
