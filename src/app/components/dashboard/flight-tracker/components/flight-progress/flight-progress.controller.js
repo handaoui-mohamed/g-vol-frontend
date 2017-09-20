@@ -24,14 +24,8 @@ class FlightProgressController {
 	}
 
 	initDocumentStateEvent() {
-		this.$scope.$on('document-state' + this.flight._id, (event, documents) => {
-			this.documents = documents.map((document, index) => {
-				document.index = index;
-				return document;
-			});
-			this.progress = this.calculateProgress() + '%';
-			this.documentMargin = ((this.width / (this.documents.length + 1)) - 17) + 'px';
-		});
+		this.$scope.$on('document-state-init' + this.flight._id, this.initDocuments.bind(this));
+		this.$scope.$on('document-state' + this.flight._id, this.updateDocuments.bind(this));
 	}
 
 	initTimeOut() {
@@ -45,13 +39,13 @@ class FlightProgressController {
 	}
 
 	initFlightTimeSocket() {
+		// flight time: eta, etd, ata, atd
 		this.socket.on('flight-time/' + this.flight._id, (data) => {
 			data = JSON.parse(data);
 			this.$scope.$apply(() => {
-				this.flight.eta = data.eta;
-				this.flight.etd = data.etd;
-				this.flight.ata = data.ata;
-				this.flight.atd = data.atd;
+				angular.foEach(data, (value, key) => {
+					this.flight[key] = data[key];
+				});
 			});
 		})
 	}
@@ -88,21 +82,12 @@ class FlightProgressController {
 
 	openDialog(ev, index) {
 		let title;
-		if (index !== -1)
-			switch (index) {
-				case (0):
-					title = "Baggage report";
-					break;
-				case (1):
-					title = "Flight info";
-					break;
-				case (2):
-					title = "Offload list";
-					break;
-				default: // other documents
-					title = this.documents[index].title;
-					break;
-			}
+		switch (index) {
+			case (0): title = "Baggage report"; break;
+			case (1): title = "Flight info"; break;
+			case (2): title = "Offload list"; break;
+			default: title = this.documents[index].title; break; // other documents
+		}
 
 		this.$mdDialog.show(
 			this.$mdDialog.alert()
@@ -113,6 +98,34 @@ class FlightProgressController {
 				.ok(this.$translate('CLOSE'))
 				.targetEvent(ev)
 		);
+	}
+
+	// put all documents in one array, it would make it easy for flight progress
+	initDocuments(event) {
+		let documents = [
+			this.flight.baggageReport,
+			this.flight.flightInfo,
+			this.flight.offloadList
+		].concat(this.flight.otherDocuments || []);
+
+		this.documents = documents.map((document, index) => {
+			document.index = index;
+			return document;
+		});
+		this.progress = this.calculateProgress() + '%';
+		this.documentMargin = ((this.width / (this.documents.length + 1)) - 17) + 'px';
+	}
+
+	// update documents status, if status is true update finishedAt date
+	updateDocuments(event, data, documentTypes) {
+		let document;
+		if (data.type !== 'oth') document = this.documents[documentTypes[data.type].index];
+		else document = this.documents.find(doc => doc._id === data.docId);
+
+		if (document) {
+			document.status = data.status;
+			if (document.status) document.finishedAt = data.finishedAt;
+		}
 	}
 }
 

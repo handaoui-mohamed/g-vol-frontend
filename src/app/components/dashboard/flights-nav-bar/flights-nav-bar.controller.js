@@ -62,16 +62,14 @@ class FlightsNavBarController {
 						let selectedFlight = this.selectedFlights.find(flt => flt._id === flight._id);
 						if (selectedFlight) {
 							// update selected flight data
-							angular.forEach(flight, (value, key) => {
-								selectedFlight[key] = flight[key];
-							});
+							angular.forEach(flight, (value, key) => selectedFlight[key] = flight[key]);
 							// fetch latest selected flight messages and team members
 							this.$root.$broadcast("messages" + flight._id);
 							this.$root.$broadcast("team" + flight._id);
+							this.$root.$broadcast('document-state-init' + flight._id);
 
 							// generate offload report from offload list
-							if (flight.offloadList)
-								flight.offloadReport = this.offloadReport.generate(flight.offloadList);
+							if (flight.offloadList) flight.offloadReport = this.offloadReport.generate(flight.offloadList);
 						}
 					})
 				});
@@ -103,9 +101,7 @@ class FlightsNavBarController {
 			targetEvent: ev,
 			clickOutsideToClose: true,
 			fullscreen: true,
-			locals: {
-				SelectedFlights: this.selectedFlights
-			}
+			locals: { SelectedFlights: this.selectedFlights }
 		}).then((selectedFlights) => {
 			this.selectedFlights = angular.copy(selectedFlights || []);
 			// save selected flights in $rootScope			

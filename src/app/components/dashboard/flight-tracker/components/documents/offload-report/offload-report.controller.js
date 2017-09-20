@@ -28,7 +28,8 @@ class OffloadReportController {
 				// add the offload report to the current flight
 				if (!this.flight.offloadReport) this.flight.offloadReport = offloadReport;
 				else
-					// update the current flight offload report
+					// update the current flight offload report, this one is useful when dialog is open
+					// so that the object reference does not change
 					angular.forEach(offloadReport, (value, key) => {
 						this.flight.offloadReport[key] = offloadReport[key];
 					});

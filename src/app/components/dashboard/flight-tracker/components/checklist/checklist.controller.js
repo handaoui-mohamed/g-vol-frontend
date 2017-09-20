@@ -39,9 +39,8 @@ class ChecklistController {
 					let document = this.flight.otherDocuments.find(doc => doc._id === data.docId);
 					if (document) document.status = data.status;
 				}
-				// these function are used to assist flight progress, TODO: move this code to flight progress
-				this.updateDocuments(data);
-				this.emitDocumentChanges(this.checklistDocuments);
+				// these function are used to assist flight progress, emit changes to it
+				this.emitDocumentChanges(data, this.documentTypes);
 			})
 		});
 	}
@@ -51,54 +50,26 @@ class ChecklistController {
 		if (queryDocuments) {
 			this.documentService.get({ flightId: this.flight._id }, (documents) => {
 				// update flight with documents
-				angular.forEach(documents, (value, key) => {
-					this.flight[key] = documents[key];
-				})
+				angular.forEach(documents, (value, key) => this.flight[key] = documents[key]);
 				this.documents = documents;
-				this.setDocuments(this.documents);
-				this.emitDocumentChanges(this.checklistDocuments);
+				this.emitDocuments(this.documents);
 				// generate offload report if offload list existes
 				this.flight.offloadReport = this.offloadReport.generate(documents.offloadList);
-			}, (error) => {
-				this.toast.serverError(error);
-			});
+			}, (error) => { this.toast.serverError(error); });
 		} else {
 			this.documents = this.flight;
-			this.setDocuments(this.documents);
-			this.emitDocumentChanges(this.checklistDocuments);
+			this.emitDocuments(this.documents);
 		}
 	}
 
-	// ************ Used for flight progress
-
 	// emit document state changes
+	emitDocuments(documents) {
+		this.$root.$broadcast('document-state-init' + this.flight._id);
+	}
+
 	emitDocumentChanges(documents) {
 		this.$root.$broadcast('document-state' + this.flight._id, documents);
 	}
-
-	// put all documents in one array, it would make it easy for flight progress
-	setDocuments(documents) {
-		this.checklistDocuments = [
-			documents.baggageReport,
-			documents.flightInfo,
-			documents.offloadList
-		].concat(documents.otherDocuments || []);
-	}
-
-	// update documents status, if status is true update finishedAt date
-	updateDocuments(data) {
-		let document;
-		if (data.type !== 'oth')
-			document = this.checklistDocuments[this.documentTypes[data.type].index];
-		else
-			document = this.checklistDocuments.find(doc => doc._id === data.docId);
-
-		if (document) {
-			document.status = data.status;
-			if (document.status) document.finishedAt = data.finishedAt;
-		}
-	}
-
 }
 
 export default ChecklistController;
