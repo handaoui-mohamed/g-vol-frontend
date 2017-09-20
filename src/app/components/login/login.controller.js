@@ -50,7 +50,7 @@ class LoginController {
 		// store current account id in localStorage
 		this.$window.localStorage['current_account'] = data.account._id;
 		// add logged in account to global variable
-		this.accountDetails = data.account;
+		this.accountDetails.save(data.account);
 		// if user came from another page, redirect him to it
 		if (this.$rootScope.nextState)
 			this.$state.go(this.$rootScope.nextState, this.$rootScope.nextStateParams)

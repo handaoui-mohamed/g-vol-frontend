@@ -5,7 +5,8 @@
 		"ACCOUNTS": {
 			"HEADER": "Comptes",
 			"LIST": "Liste des comptes",
-			"NEW": "Nouveau compte"
+			"NEW": "Nouveau compte",
+			"DELETED": "Liste des comptes supprimés"
 		},
 		"FLIGHTS": {
 			"HEADER": "Vols",

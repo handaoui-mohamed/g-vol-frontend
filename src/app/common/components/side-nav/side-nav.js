@@ -42,6 +42,11 @@ let sideNavComponentModule = angular
 					translate: 'SIDENAV.ACCOUNTS.LIST',
 					state: 'home.accounts'
 				}, {
+					id: 'deleted_accounts',
+					name: 'Deleted Accounts List',
+					translate: 'SIDENAV.ACCOUNTS.DELETED',
+					state: 'home.deletedAccounts'
+				}, {
 					id: 'account_new',
 					name: 'New account',
 					translate: 'SIDENAV.ACCOUNTS.NEW',

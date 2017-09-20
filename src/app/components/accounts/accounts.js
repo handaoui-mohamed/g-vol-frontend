@@ -15,6 +15,16 @@ let accountModule = angular
 				url: 'accounts',
 				component: 'accounts'
 			})
+			.state('home.deletedAccounts', {
+				url: 'accounts/deleted',
+				component: 'accounts',
+				params: {
+					deleted: true
+				},
+				data: {
+					roles: ['superadmin', 'admin']
+				}
+			})
 			.state('home.newAccount', {
 				url: 'accounts/add',
 				component: 'account',

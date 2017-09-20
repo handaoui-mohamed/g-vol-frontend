@@ -45,7 +45,8 @@ class SideNavController {
 							pageState.data.roles.length > 0 &&
 							!this.accountDetails.isInAnyRole(pageState.data.roles)) {
 							this.menu.setVisible(page.id, false);
-						}
+						} else
+							this.menu.setVisible(page.id, true);
 					})
 				})
 			})

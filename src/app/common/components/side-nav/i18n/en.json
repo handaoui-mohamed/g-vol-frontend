@@ -5,7 +5,8 @@
 		"ACCOUNTS": {
 			"HEADER": "Accounts",
 			"LIST": "Accounts list",
-			"NEW": "New account"
+			"NEW": "New account",
+			"DELETED": "Deleted Accounts List"
 		},
 		"FLIGHTS": {
 			"HEADER": "Flights",

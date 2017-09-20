@@ -1,10 +1,11 @@
 class AccountsListController {
-	constructor($mdDialog, $filter, AccountService, Toast) {
+	constructor($stateParams, $mdDialog, $filter, AccountService, Toast) {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
 		this.$translate = $filter('translate');
 		this.accountService = AccountService;
 		this.toast = Toast;
+		this.deletedAccounts = $stateParams.deleted;
 	}
 
 	$onInit() {
@@ -41,7 +42,7 @@ class AccountsListController {
 		let functions = this.selectedFunctions.length > 0 ? this.selectedFunctions : null;
 
 		// this.promise is used by the table to show asyn progress bar
-		this.promise = this.accountService.query({ skip, limit, q, functions }, (data) => {
+		this.promise = this.accountService.query({ skip, limit, q, functions, deleted: this.deletedAccounts }, (data) => {
 			this.accounts = data;
 		}, (error) => { this.toast.serverError(error); }).$promise;
 	}
@@ -61,7 +62,7 @@ class AccountsListController {
 		// show confimation dialog before deleting selected account
 		var confirm = this.$mdDialog.confirm()
 			.title(this.$translate('ACCOUNT.DELETE'))
-			// .textContent('You can restore this account by going to deleted Accounts')
+			.textContent(this.$translate("ACCOUNT.CANRESTORE"))
 			.ariaLabel('confirm dialog')
 			.targetEvent(ev)
 			.ok(this.$translate('CONFIRM'))
@@ -73,6 +74,25 @@ class AccountsListController {
 				// if successful, remove account from accounts array
 				this.accounts.splice(index, 1);
 				this.toast.success('Account was deleted successfully', 'ACCOUNT.DELETED');
+			}, (error) => { this.toast.serverError(error); });
+		});
+	}
+
+	restoreAccount(ev, accountId, index) {
+		// show confimation dialog before deleting selected account
+		var confirm = this.$mdDialog.confirm()
+			.title(this.$translate('ACCOUNT.RESTORE'))
+			.ariaLabel('confirm dialog')
+			.targetEvent(ev)
+			.ok(this.$translate('CONFIRM'))
+			.cancel(this.$translate('CANCEL'));
+
+		this.$mdDialog.show(confirm).then(() => {
+			// if confirmed, delete user
+			this.accountService.patch({ accountId }, {}, () => {
+				// if successful, remove account from deleted accounts array
+				this.accounts.splice(index, 1);
+				this.toast.success('Account was restored successfully', 'ACCOUNT.RESTORED');
 			}, (error) => { this.toast.serverError(error); });
 		});
 	}

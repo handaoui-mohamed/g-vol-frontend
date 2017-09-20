@@ -53,7 +53,7 @@
 					<td md-cell>{{account.phone}}</td>
 					<td md-cell><span translate="{{account.sexe | uppercase}}">{{account.sexe}}</span></td>
 					<td md-cell>{{account.birthday | date:'dd/MM/yyyy'}}</td>
-					<td md-cell class="align-right"  admin-required>
+					<td md-cell class="align-right" admin-required ng-if="!acsVm.deletedAccounts">
 						<md-button class="md-icon-button md-warn" aria-label="Settings" ng-click="acsVm.deleteAccount($event, account._id, $index)">
 							<md-tooltip md-direction="bottom"><span translate="DELETE">Delete</span></md-tooltip>
 							<md-icon md-font-icon="icon-delete" class="icon s32"></md-icon>
@@ -61,6 +61,12 @@
 						<md-button class="md-icon-button" aria-label="Settings" ui-sref="home.account({accountId: account._id})">
 							<md-tooltip md-direction="bottom"><span translate="EDIT">Edit</span></md-tooltip>
 							<md-icon md-font-icon="icon-pencil" class="icon s32"></md-icon>
+						</md-button>
+					</td>
+					<td md-cell class="align-right" admin-required ng-if="acsVm.deletedAccounts">
+						<md-button class="md-icon-button md-warn" aria-label="Settings" ng-click="acsVm.restoreAccount($event, account._id, $index)">
+							<md-tooltip md-direction="bottom"><span translate="RESTORE">Restore</span></md-tooltip>
+							<md-icon md-font-icon="icon-restore" class="icon s32"></md-icon>
 						</md-button>
 					</td>
 				</tr>
