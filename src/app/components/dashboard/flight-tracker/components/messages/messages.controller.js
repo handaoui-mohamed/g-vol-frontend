@@ -19,6 +19,10 @@ class FlightMessagesController {
 		// remove all new messages socket listeners
 		this.socket.removeAllListeners('messages/' + this.flightId);
 		this.listenForNewMessages();	// listen for new messages
+		this.$scope.$on("messages" + this.flightId, () => {
+			this.messages = [];
+			this.getFlightMessages()
+		});
 		// get current account ID
 		this.accountDetails.identity().then((account) => this.accountId = account._id);
 		// fetch current flight messages
@@ -41,6 +45,7 @@ class FlightMessagesController {
 				message.sentAt = this.convertDate(message.createdAt);
 				return message;
 			}));
+			this.scrollToBottom();
 		}, (error) => { this.toast.serverError(error); });
 	}
 

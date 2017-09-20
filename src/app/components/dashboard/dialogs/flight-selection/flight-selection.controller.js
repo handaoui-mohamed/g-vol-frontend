@@ -12,7 +12,7 @@ class flightSelectionController {
 		// Initilization
 		this.flights = [];
 		this.selectedStatus = ['new', 'inprogress'];
-		this.queryString = "YI6";
+		this.queryString = "";
 		this.query = {
 			page: 1,
 			limit: 5

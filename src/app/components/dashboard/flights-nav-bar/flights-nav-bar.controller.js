@@ -2,7 +2,7 @@ import FlightSelectionDialogController from '../dialogs/flight-selection/flight-
 import dialogTemplate from '../dialogs/flight-selection/flight-selection.html';
 
 class FlightsNavBarController {
-	constructor($rootScope, $window, $scope, $filter, $mdDialog, SocketService, FlightNotification, MessageService) {
+	constructor($rootScope, $window, $scope, $filter, $mdDialog, SocketService, FlightNotification, OffloadReport) {
 		'ngInject';
 		this.$root = $rootScope;
 		this.$window = $window;
@@ -11,7 +11,7 @@ class FlightsNavBarController {
 		this.$filter = $filter;
 		this.socket = SocketService.io;
 		this.flightNotification = FlightNotification;
-		this.messageService = MessageService;
+		this.offloadReport = OffloadReport;
 	}
 
 	$onInit() {
@@ -65,29 +65,18 @@ class FlightsNavBarController {
 							angular.forEach(flight, (value, key) => {
 								selectedFlight[key] = flight[key];
 							});
-							// fetch latest selected flight messages
-							this.getFlightMessages(flight._id);
+							// fetch latest selected flight messages and team members
+							this.$root.$broadcast("messages" + flight._id);
+							this.$root.$broadcast("team" + flight._id);
+
+							// generate offload report from offload list
+							if (flight.offloadList)
+								flight.offloadReport = this.offloadReport.generate(flight.offloadList);
 						}
 					})
 				});
 			}
 		});
-	}
-
-	// fetch flight messages
-	getFlightMessages(flightId) {
-		this.messageService.query({ flightId, skip: 0, limit: 20 }, (messages) => {
-			let flight = this.selectedFlights.find(flt => flt._id === flightId);
-			if (flight) {
-				flight.messages = [];
-				// add new messages to the top of the array
-				flight.messages.unshift(...messages.map((message) => {
-					// formate sentAt ISO date to  'dd/MM HH:mm'
-					message.sentAt = this.$filter('date')(new Date(message.createdAt), 'dd/MM HH:mm');
-					return message;
-				}));
-			}
-		}, (error) => { this.toast.serverError(error); });
 	}
 
 	// get selected flight IDs

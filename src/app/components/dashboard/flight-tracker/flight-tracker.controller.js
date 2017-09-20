@@ -2,9 +2,10 @@ import FlightTeamDialog from './components/team-dialog/team-dialog.controller';
 import dialogTemplate from './components/team-dialog/team-dialog.html';
 
 class FlightTrackerController {
-	constructor($rootScope, $mdDialog, $filter, Toast, FlightService, FlightTeamService, DocumentService, SocketService, FlightStatusService) {
+	constructor($rootScope, $scope, $mdDialog, $filter, Toast, FlightService, FlightTeamService, DocumentService, SocketService, FlightStatusService) {
 		'ngInject';
 		this.$root = $rootScope;
+		this.$scope = $scope;
 		this.$mdDialog = $mdDialog;
 		this.$translate = $filter('translate');
 		this.toast = Toast;
@@ -20,6 +21,9 @@ class FlightTrackerController {
 		// if the flight was initilized join the flight, else initFlight with button
 		if (this.flight.status !== "new")
 			this.joinFlight();
+		this.$scope.$on("team" + this.flight._id, () => {
+			this.flight.team = this.convertTeamArrayToObject(this.flight.team)
+		});
 	}
 
 	// initilize new flight and its documents with company checklist and join the flight
