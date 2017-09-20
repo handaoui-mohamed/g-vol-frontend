@@ -16,7 +16,7 @@ import AppConfig from './app.config';
 import AppRun from './app.run';
 
 // global styles
-import 'normalize.css';
+import 'normalize.css/normalize.css';
 import 'angular-material/angular-material.css';
 import 'angular-material-data-table/dist/md-data-table.min.css';
 import 'angular-toastr/dist/angular-toastr.min.css';

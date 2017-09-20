@@ -15,6 +15,7 @@ class FlightInfoDialogController {
 			// save flight info and update EZFW and created At date
 			this.flightInfo.ezfw = flightInfo.ezfw;
 			this.flightInfo.createdAt = this.flightInfo.createdAt || flightInfo.createdAt;
+			this.toast.success("Flight info was successfully updated", "DOCUMENT.FLIGHT_INFO_UPDATED")
 			// close dialog
 			this.$mdDialog.hide(flightInfo);
 		}, (error) => {

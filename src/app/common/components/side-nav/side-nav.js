@@ -71,7 +71,7 @@ let sideNavComponentModule = angular
 				}, {
 					id: 'flight_new_batch',
 					name: 'New flights by batch',
-					translate: 'SIDENAV.FLIGHTS.NEWBATCH',
+					translate: 'SIDENAV.FLIGHTS.NEW_BATCH',
 					state: 'home.flightsBatch'
 				}]
 			},

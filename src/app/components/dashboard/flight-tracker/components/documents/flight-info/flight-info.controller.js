@@ -44,7 +44,7 @@ class FlightInfoController {
 			locals: {
 				Flight: this.flight,
 			}
-		}).then((flightInfo) => { }, (msg) => { });
+		});
 	}
 
 	// flight info notifations

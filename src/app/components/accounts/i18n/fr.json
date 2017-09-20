@@ -17,16 +17,16 @@
 		"DELETED": "Le compte a été supprimé avec succès",
 		"SAVED": "Le compte a été enregistré avec succès",
 		"UPDATED": "Le compte a été modifié avec succès",
-		"CANRESTORE": "Vous pouvez restaurer ce compte en allant dans la liste des comptes supprimés",
+		"CAN_RESTORE": "Vous pouvez restaurer ce compte en allant dans la liste des comptes supprimés",
 		"RESTORE": "Voulez-vous restaurer ce compte?",
 		"RESTORED": "Le compte a été restauré avec succès",
 		"FORM": {
 			"FIRSTNAME": "Prénom",
 			"LASTNAME": "Nom",
-			"CHANGEPASSWORD": "Changer le mot de passe",
+			"CHANGE_PASSWORD": "Changer le mot de passe",
 			"CANCEL": "Annuler",
 			"PASSWORD": "Mot de passe",
-			"CONFIRMPASSWORD": "Confirmer le mot de passe"
+			"CONFIRM_PASSWORD": "Confirmer le mot de passe"
 		}
 	}
 }

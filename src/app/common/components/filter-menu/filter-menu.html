@@ -1,7 +1,7 @@
 <md-menu md-offset="{{$ctrl.menuOffset}}" class="filter-menu-container">
 	<!-- filter menu button -->
 	<md-button aria-label="Filter" class="md-icon-button filter-button" ng-click="$mdMenu.open()">
-		<md-tooltip md-direction="bottom"><span translate="FILTERCOLUMN">Filter</span></md-tooltip>
+		<md-tooltip md-direction="bottom"><span translate="FILTER_COLUMN">Filter</span></md-tooltip>
 		<md-icon md-font-icon="icon-filter filter-button-icon" ng-class="{'filtered':$ctrl.filtered}"></md-icon>
 	</md-button>
 	<!-- /filter menu button -->
@@ -21,13 +21,13 @@
 		<!-- Date filter -->
 		<md-menu-item ng-if="$ctrl.menuType === 'date'">
 			<md-input-container class="date-filter-input">
-				<label translate="FROMDATE"></label>
+				<label translate="FROM_DATE"></label>
 				<input type="date" name="startDate" ng-model="$ctrl.ngModel.start">
 			</md-input-container>
 		</md-menu-item>
 		<md-menu-item ng-if="$ctrl.menuType === 'date'">
 			<md-input-container class="date-filter-input">
-				<label translate="TODATE">To date (dd/mm/yyyy)</label>
+				<label translate="TO_DATE">To date (dd/mm/yyyy)</label>
 				<input type="date" name="endDate" ng-model="$ctrl.ngModel.end">
 			</md-input-container>
 		</md-menu-item>
@@ -35,7 +35,7 @@
 		<md-menu-divider></md-menu-divider>
 		<!-- filter button -->
 		<md-menu-item>
-			<md-button ng-click="$ctrl.filterColumn()" class="md-raised menu-filter-button" translate="FILTERCOLUMN">Filter</md-button>
+			<md-button ng-click="$ctrl.filterColumn()" class="md-raised menu-filter-button" translate="FILTER_COLUMN">Filter</md-button>
 		</md-menu-item>
 		<!-- /filter button -->
 	</md-menu-content>

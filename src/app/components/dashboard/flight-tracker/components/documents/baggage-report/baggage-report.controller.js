@@ -44,7 +44,7 @@ class BaggageReportController {
 			locals: {
 				Flight: this.flight,
 			}
-		}).then((baggageReport) => { }, (msg) => { });
+		})
 	}
 
 	// Baggage report notifications

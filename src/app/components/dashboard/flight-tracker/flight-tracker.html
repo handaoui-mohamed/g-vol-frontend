@@ -57,14 +57,14 @@
 					<!-- close flight button -->
 					<md-button ng-if="ftVm.flight.status !== 'done'" class="md-raised md-warn close-flight-button" ng-click="ftVm.openFlightStatusDialog($event)">
 						<md-icon md-font-icon="icon-folder-lock"></md-icon>
-						<span translate="FLIGHTSTATUS.CLOSE">Close flight</span>
+						<span translate="FLIGHT_STATUS.CLOSE">Close flight</span>
 					</md-button>
 					<!-- /close flight button -->
 
 					<!-- reopen flight button -->
 					<md-button ng-if="ftVm.flight.status === 'done'" aria-label="Reopen Flight" ng-click="ftVm.reopenFlight()" class="md-raised md-warn close-flight-button">
 						<md-icon md-font-icon="icon-folder-lock-open"></md-icon>
-						<span translate="FLIGHTSTATUS.REOPEN">Reopen Flight</span>
+						<span translate="FLIGHT_STATUS.REOPEN">Reopen Flight</span>
 					</md-button>
 					<!-- /reopen flight button -->
 

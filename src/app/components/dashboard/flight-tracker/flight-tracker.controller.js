@@ -25,7 +25,7 @@ class FlightTrackerController {
 			this.flight.team = this.convertTeamArrayToObject(this.flight.team)
 		});
 	}
-
+	//TODO: show toast when async request result
 	// initilize new flight and its documents with company checklist and join the flight
 	initFlight() {
 		if (this.flight.status === "new") {
@@ -66,9 +66,7 @@ class FlightTrackerController {
 	 */
 	convertTeamArrayToObject(flightTeam) {
 		let team = {};
-		angular.forEach(flightTeam, (account) => {
-			team[account._id] = account;
-		});
+		angular.forEach(flightTeam, (account) => team[account._id] = account);
 		return team;
 	}
 
@@ -88,11 +86,8 @@ class FlightTrackerController {
 			targetEvent: ev,
 			clickOutsideToClose: true,
 			fullscreen: true,
-			locals: {
-				Team: this.flight.team,
-				FlightId: this.flight._id
-			}
-		}).then((team) => { }, (msg) => { });
+			locals: { Team: this.flight.team, FlightId: this.flight._id }
+		});
 	}
 
 	// opens flight status dialog to close it, contains comment input
@@ -101,15 +96,15 @@ class FlightTrackerController {
 		if (this.flight.baggageReport.status &&
 			this.flight.flightInfo.status) {
 			let confirm = this.$mdDialog.prompt()
-				.title(this.$translate('FLIGHTSTATUS.CONFIRMATION'))
-				.textContent(this.$translate('FLIGHTSTATUS.ADDCOMMENT'))
-				.placeholder(this.$translate('FLIGHTSTATUS.COMMENT'))
+				.title(this.$translate('FLIGHT_STATUS.CONFIRMATION'))
+				.textContent(this.$translate('FLIGHT_STATUS.ADD_COMMENT'))
+				.placeholder(this.$translate('FLIGHT_STATUS.COMMENT'))
 				.ariaLabel('Comment')
 				.initialValue(this.flight.comment)
 				.targetEvent(ev)
 				.parent(angular.element(document.querySelector('#flight-' + this.flight._id)))
 				.clickOutsideToClose(true)
-				.ok(this.$translate('FLIGHTSTATUS.CLOSE'))
+				.ok(this.$translate('FLIGHT_STATUS.CLOSE'))
 				.cancel(this.$translate('CANCEL'));
 
 			this.$mdDialog.show(confirm).then((comment) => {
@@ -117,16 +112,18 @@ class FlightTrackerController {
 				this.flightStatusService.save({ flightId: this.flight._id }, { status: 'done', comment }, (data) => {
 					this.flight.comment = data.comment;
 					this.flight.status = data.status;
+					this.toast.success("Flight closed successfully", 'FLIGHT_STATUS.CLOSED');
 				}, (error) => { this.toast.serverError(error) });
 			}, () => { });
 		} else
-			this.toast.warning(this.$translate('FLIGHTSTATUS.INCOMPLETE'))
+			this.toast.warning(this.$translate('FLIGHT_STATUS.INCOMPLETE'))
 	}
 
 	// reopen closed flight
 	reopenFlight() {
 		this.flightStatusService.save({ flightId: this.flight._id }, { status: 'inprogress' }, (data) => {
 			this.flight.status = data.status;
+			this.toast.success("Flight reopened successfully", 'FLIGHT_STATUS.REOPENED');
 		}, (error) => { this.toast.serverError(error) });
 	}
 }

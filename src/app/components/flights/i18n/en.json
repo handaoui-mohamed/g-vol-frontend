@@ -14,7 +14,7 @@
 		"DELETE": "Would you like to delete this flight?",
 		"DELETED": "Flight was deleted successfully",
 		"SAVED": "Flight was saved successfully",
-		"SAVEALL": "Save all flights",
+		"SAVE_ALL": "Save all flights",
 		"UPDATED": "Flight was updated successfully",
 		"STATUS": {
 			"LABEL": "Status",

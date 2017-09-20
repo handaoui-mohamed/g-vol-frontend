@@ -13,12 +13,19 @@
 		"LOAD": "Load More Messages",
 		"INPUT": "Enter your message"
 	},
-	"FLIGHTSTATUS": {
+	"FLIGHT_STATUS": {
 		"CONFIRMATION": "Are you sure you want to close this flight?",
 		"CLOSE": "Close Flight",
 		"REOPEN": "Reopen Flight",
-		"ADDCOMMENT": "Add a comment if needed:",
+		"ADD_COMMENT": "Add a comment if needed:",
 		"COMMENT": "Comment",
-		"INCOMPLETE": "Can't close flight due to incomplete documents"
+		"INCOMPLETE": "Can't close flight due to incomplete documents",
+		"REOPENED": "Flight reopened successfully",
+		"CLOSED": "Flight closed successfully"
+	},
+	"MEMBER_REMOVED": "The member was removed successfully",
+	"DOCUMENT": {
+		"BAGGAGE_REPORT_UPDATED": "Baggage report was successfully updated",
+		"FLIGHT_INFO_UPDATED": "Flight info was successfully updated"
 	}
 }

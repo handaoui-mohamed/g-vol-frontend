@@ -13,12 +13,19 @@
 		"LOAD": "Chargez plus de messages",
 		"INPUT": "Entrez votre message"
 	},
-	"FLIGHTSTATUS": {
+	"FLIGHT_STATUS": {
 		"CONFIRMATION": "Êtes-vous sûr de vouloir fermer ce vol?",
 		"CLOSE": "Fermer le vol",
 		"REOPEN": "Réouvrir le vol",
-		"ADDCOMMENT": "Ajoutez un commentaire si nécessaire:",
+		"ADD_COMMENT": "Ajoutez un commentaire si nécessaire:",
 		"COMMENT": "Commentaire",
-		"INCOMPLETE": "Impossible de fermer le vol en raison de documents incomplets"
+		"INCOMPLETE": "Impossible de fermer le vol en raison de documents incomplets",
+		"REOPENED": "Le vol a été rouvert avec succès",
+		"CLOSED": "Le vol a été fermé avec succès"
+	},
+	"MEMBER_REMOVED": "Le membre a été retiré avec succès",
+	"DOCUMENT": {
+		"BAGGAGE_REPORT_UPDATED": "Le rapport de bagages a été mis à jour avec succès",
+		"FLIGHT_INFO_UPDATED": "Flight Info a été mis à jour avec succès"
 	}
 }

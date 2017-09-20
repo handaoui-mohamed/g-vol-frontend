@@ -133,7 +133,7 @@
 		<!-- if update show button to change password -->
 		<div layout-gt-xs="row" ng-if="acVm.isUpdate" admin-required>
 			<md-button class="md-raised md-warn" ng-click="acVm.changePassword = !acVm.changePassword">
-				<span ng-if="!acVm.changePassword" translate="ACCOUNT.FORM.CHANGEPASSWORD">Change Password</span>
+				<span ng-if="!acVm.changePassword" translate="ACCOUNT.FORM.CHANGE_PASSWORD">Change Password</span>
 				<span ng-if="acVm.changePassword" translate="ACCOUNT.FORM.CANCEL">Cancel</span>
 			</md-button>
 		</div>
@@ -152,13 +152,13 @@
 
 			<!-- password confirmation input -->
 			<md-input-container class="md-block" flex-gt-xs>
-				<label translate="ACCOUNT.FORM.CONFIRMPASSWORD">Confirm password</label>
+				<label translate="ACCOUNT.FORM.CONFIRM_PASSWORD">Confirm password</label>
 				<input type="password" ng-model="acVm.passwordConfirmation" name="passwordConfirmation" minlength="8" pattern="^({{acVm.account.password}})$"
 				 required>
 				<div ng-messages="accountForm.passwordConfirmation.$error">
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required</div>
 					<div ng-message="minLength" translate="VALIDATION.MIN-8">At least 8 characters are required</div>
-					<div ng-message="pattern" translate="VALIDATION.PASSWORDSMATCH">The passwords must match</div>
+					<div ng-message="pattern" translate="VALIDATION.PASSWORDS_MATCH">The passwords must match</div>
 				</div>
 			</md-input-container>
 			<!-- /password confirmation input -->

@@ -1,8 +1,8 @@
 {
-	"PAGINATIONLIMIT": "Rows per page",
-	"FROMDATE": "From date (dd/mm/yyyy)",
-	"TODATE": "To date (dd/mm/yyyy)",
-	"FILTERCOLUMN": "Filter",
+	"PAGINATION_LIMIT": "Rows per page",
+	"FROM_DATE": "From date (dd/mm/yyyy)",
+	"TO_DATE": "To date (dd/mm/yyyy)",
+	"FILTER_COLUMN": "Filter",
 	"EDIT": "Edit",
 	"DELETE": "Delete",
 	"SAVE": "Save",
@@ -15,7 +15,7 @@
 		"MAX-100": "This has to be less than 100 characters",
 		"REQUIRED": "This is required",
 		"EMAIL": "Not a valid Email",
-		"PASSWORDSMATCH": "Passwords do not match",
+		"PASSWORDS_MATCH": "Passwords do not match",
 		"TIME": "Incorrect time"
 	},
 	"SERVER": {

@@ -15,6 +15,7 @@ class BaggageReportDialogController {
 		this.save().then((baggageReport) => {
 			// save baggage report and init createdAt date
 			this.flight.baggageReport.createdAt = baggageReport.createdAt;
+			this.toast.success("Baggage report was successfully updated", "DOCUMENT.BAGGAGE_REPORT_UPDATED")
 			// close dialog
 			this.$mdDialog.hide(baggageReport);
 		}, (error) => {

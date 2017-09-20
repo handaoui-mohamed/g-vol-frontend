@@ -17,16 +17,16 @@
 		"DELETED": "Account was deleted successfully",
 		"SAVED": "Account was saved successfully",
 		"UPDATED": "Account was updated successfully",
-		"CANRESTORE": "You can restore this account by going to Deleted Accounts List",
+		"CAN_RESTORE": "You can restore this account by going to Deleted Accounts List",
 		"RESTORE": "Would you like to restore this account?",
 		"RESTORED": "Account was restored successfully",
 		"FORM": {
 			"FIRSTNAME": "First name",
 			"LASTNAME": "Last name",
-			"CHANGEPASSWORD": "Change password",
+			"CHANGE_PASSWORD": "Change password",
 			"CANCEL": "Cancel",
 			"PASSWORD": "Password",
-			"CONFIRMPASSWORD": "Confirm password"
+			"CONFIRM_PASSWORD": "Confirm password"
 		}
 	}
 }

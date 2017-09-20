@@ -1,8 +1,8 @@
 {
-	"PAGINATIONLIMIT": "Lignes par page",
-	"FROMDATE": "A partir de (dd/mm/yyyy)",
-	"TODATE": "Vers (dd/mm/yyyy)",
-	"FILTERCOLUMN": "Filtrer",
+	"PAGINATION_LIMIT": "Lignes par page",
+	"FROM_DATE": "A partir de (dd/mm/yyyy)",
+	"TO_DATE": "Vers (dd/mm/yyyy)",
+	"FILTER_COLUMN": "Filtrer",
 	"EDIT": "Modifier",
 	"DELETE": "Supprimer",
 	"SAVE": "Sauvegarder",
@@ -15,7 +15,7 @@
 		"MAX-100": "Cela doit comporter moins de 100 caractères",
 		"REQUIRED": "Ceci est nécessaire",
 		"EMAIL": "Pas un email valide",
-		"PASSWORDSMATCH": "Mots de passes ne correspondent pas",
+		"PASSWORDS_MATCH": "Mots de passes ne correspondent pas",
 		"TIME": "Temps incorrect"
 	},
 	"SERVER": {

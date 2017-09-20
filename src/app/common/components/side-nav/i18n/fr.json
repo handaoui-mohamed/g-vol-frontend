@@ -12,7 +12,7 @@
 			"HEADER": "Vols",
 			"LIST": "Liste des vols",
 			"NEW": "Nouveau vol",
-			"NEWBATCH": "Nouveaux vols par lots"
+			"NEW_BATCH": "Nouveaux vols par lots"
 		},
 		"COMPANIES": {
 			"HEADER": "Compagnies",

@@ -14,7 +14,7 @@
 		"DELETE": "Voulez-vous supprimer ce vol?",
 		"DELETED": "Le vol a été supprimé avec succès",
 		"SAVED": "Le vol a été enregistré avec succès",
-		"SAVEALL": "Sauvegarder tous les vols",
+		"SAVE_ALL": "Sauvegarder tous les vols",
 		"UPDATED": "Le vol a été modifié avec succès",
 		"STATUS": {
 			"LABEL": "Statut",

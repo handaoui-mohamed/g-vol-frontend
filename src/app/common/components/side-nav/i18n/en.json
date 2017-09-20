@@ -12,7 +12,7 @@
 			"HEADER": "Flights",
 			"LIST": "Flights list",
 			"NEW": "New flight",
-			"NEWBATCH": "New flights by batch"
+			"NEW_BATCH": "New flights by batch"
 		},
 		"COMPANIES": {
 			"HEADER": "Companies",

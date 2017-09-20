@@ -62,7 +62,7 @@ class AccountsListController {
 		// show confimation dialog before deleting selected account
 		var confirm = this.$mdDialog.confirm()
 			.title(this.$translate('ACCOUNT.DELETE'))
-			.textContent(this.$translate("ACCOUNT.CANRESTORE"))
+			.textContent(this.$translate("ACCOUNT.CAN_RESTORE"))
 			.ariaLabel('confirm dialog')
 			.targetEvent(ev)
 			.ok(this.$translate('CONFIRM'))

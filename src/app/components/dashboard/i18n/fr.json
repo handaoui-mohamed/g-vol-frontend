@@ -1,8 +1,8 @@
 {
 	"DASHBOARD": {
-		"NOFLIGHTS": "Aucun vol sélectionné. Pour sélectionner un, cliquez sur ",
-		"SHOWSELECTED": "Afficher les vols sélectionnés",
-		"SHOWALL": "Afficher tous les vols",
+		"NO_FLIGHTS": "Aucun vol sélectionné. Pour sélectionner un, cliquez sur ",
+		"SHOW_SELECTED": "Afficher les vols sélectionnés",
+		"SHOW_ALL": "Afficher tous les vols",
 		"SELECT": "Sélectionner des vols",
 		"TEAM": "Équipe du vol"
 	}
