@@ -13,15 +13,16 @@ let adminRequiredDirective = function (AccountDetails) {
 	'ngInject';
 	return {
 		restrict: 'A',
-		link: function (scope, element) {
+		link: function (scope, element, attrs) {
 			let acceptedRoles = ['superadmin', 'admin'];
 			// get account details
 			AccountDetails.identity().then((account) => {
 				// if account has a role and doest not meet the requirements, delete element
+				let TAG_NAMES = ['INPUT', 'MD-SELECT', 'MD-DATEPICKER']
 				if (account.function && !acceptedRoles.includes(account.function.name))
 					// if element is an input disable it, else remove it
-					if (element[0].tagName === "INPUT")
-						element[0].disabled = true;
+					if (TAG_NAMES.includes(element[0].tagName))
+						attrs.$set('disabled', 'disabled');
 					else
 						element.remove();
 			})

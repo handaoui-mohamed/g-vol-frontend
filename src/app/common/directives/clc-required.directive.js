@@ -17,9 +17,10 @@ let clcRequiredDirective = function (AccountDetails) {
 			// get account details
 			AccountDetails.identity().then((account) => {
 				// if account has a role and doest not meet the requirements, delete element
+				let TAG_NAMES = ['INPUT', 'MD-SELECT', 'MD-DATEPICKER']
 				if (account.function && account.function.name !== 'clc')
-					if (element[0].tagName === "INPUT")
-						element[0].disabled = true;
+					if (TAG_NAMES.includes(element[0].tagName))
+						attrs.$set('disabled', 'disabled');
 					else
 						element.remove();
 			})

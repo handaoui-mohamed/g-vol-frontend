@@ -22,7 +22,7 @@
 			<md-input-container class="md-icon-float md-block" flex-gt-xs>
 				<label translate="COMPANY.FORM.NAME">Company name</label>
 				<md-icon md-font-icon="icon-bank"></md-icon>
-				<input ng-model="comVm.company.name" name="companyName" required>
+				<input ng-model="comVm.company.name" name="companyName" required admin-required>
 				<div ng-messages="companyForm.companyName.$error">
 					<div ng-message="required" translate="FORM.REQUIRED">This is required.</div>
 				</div>
@@ -33,7 +33,7 @@
 			<md-input-container class="md-icon-float md-block" flex-gt-xs>
 				<label translate="COMPANY.FORM.CODE">Company code</label>
 				<md-icon md-font-icon="icon-qrcode"></md-icon>
-				<input ng-model="comVm.company.code" name="companyCode" required>
+				<input ng-model="comVm.company.code" name="companyCode" required admin-required>
 				<div ng-messages="companyForm.companyCode.$error">
 					<div ng-message="required" translate="FORM.REQUIRED">This is required.</div>
 				</div>

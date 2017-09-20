@@ -20,7 +20,7 @@
 			<!-- first name input -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label translate="ACCOUNT.FORM.FIRSTNAME">First name</label>
-				<input ng-model="acVm.account.firstname" name="firstname" required>
+				<input ng-model="acVm.account.firstname" name="firstname" required admin-required>
 				<div ng-messages="accountForm.firstname.$error">
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
@@ -30,7 +30,7 @@
 			<!-- last name input -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label translate="ACCOUNT.FORM.LASTNAME">Last name</label>
-				<input ng-model="acVm.account.lastname" name="lastname" required>
+				<input ng-model="acVm.account.lastname" name="lastname" required admin-required>
 				<div ng-messages="accountForm.lastname.$error">
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
@@ -40,7 +40,7 @@
 			<!-- username input -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label translate="ACCOUNT.USERNAME">Username</label>
-				<input ng-model="acVm.account.username" minlength="5" name="username" required ng-disabled="acVm.isUpdate">
+				<input ng-model="acVm.account.username" minlength="5" name="username" required ng-disabled="acVm.isUpdate" admin-required>
 				<div ng-messages="accountForm.username.$error">
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 					<div ng-message="minLength" translate="VALIDATION.MIN-5">At least 5 characters are required</div>
@@ -53,7 +53,7 @@
 			<!-- function select list -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label translate="ACCOUNT.FUNCTION">Function</label>
-				<md-select ng-model="acVm.account.function.name" name="function" required ng-disabled="acVm.accountId === $root.currentAccount._id">
+				<md-select ng-model="acVm.account.function.name" name="function" required ng-disabled="acVm.accountId === $root.currentAccount._id" admin-required>
 					<md-option ng-value="function" ng-repeat="function in ['admin','clc','trc','tl','tb']">{{function | uppercase}}</md-option>
 				</md-select>
 				<div ng-messages="accountForm.function.$error">
@@ -65,7 +65,7 @@
 			<!-- sexe select list -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label>Sexe</label>
-				<md-select ng-model="acVm.account.sexe" name="sexe" required>
+				<md-select ng-model="acVm.account.sexe" name="sexe" required admin-required>
 					<md-option ng-value="sexe" ng-repeat="sexe in ['male','female']"><span translate="{{ sexe | uppercase}}">{{sexe}}</span></md-option>
 				</md-select>
 				<div ng-messages="accountForm.sexe.$error">
@@ -76,7 +76,7 @@
 
 			<!-- birthday date input -->
 			<md-input-container class="md-block" flex-gt-xs>
-				<md-datepicker ng-model="acVm.account.birthday" md-placeholder="{{ 'ACCOUNT.BIRTHDAY' | translate}}" name="birthday" required></md-datepicker>
+				<md-datepicker ng-model="acVm.account.birthday" md-placeholder="{{ 'ACCOUNT.BIRTHDAY' | translate}}" name="birthday" required admin-required></md-datepicker>
 				<div ng-messages="accountForm.birthday.$error">
 					<div ng-message="required" translate="VALIDATION.REQUIRED">This is required.</div>
 				</div>
@@ -88,7 +88,7 @@
 			<!-- phone input -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label translate="ACCOUNT.PHONE">Phone</label>
-				<input ng-model="acVm.account.phone" name="phone" minlength="5">
+				<input ng-model="acVm.account.phone" name="phone" minlength="5" admin-required>
 				<div ng-messages="accountForm.phone.$error">
 					<div ng-message="minLength" translate="VALIDATION.MIN-5">At least 5 characters are required</div>
 				</div>
@@ -98,7 +98,7 @@
 			<!-- email input -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label>Email</label>
-				<input ng-model="acVm.account.email" name="email" ng-pattern="/^.+@.+\..+$/">
+				<input ng-model="acVm.account.email" name="email" ng-pattern="/^.+@.+\..+$/" admin-required>
 				<div ng-messages="accountForm.email.$error">
 					<div ng-message="pattern" translate="VALIDATION.EMAIL">Not a valid email</div>
 				</div>
@@ -110,7 +110,7 @@
 			<!-- address input -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label translate="ACCOUNT.ADDRESS">Address</label>
-				<input ng-model="acVm.account.address" md-maxlength="100" name="address">
+				<input ng-model="acVm.account.address" md-maxlength="100" name="address" admin-required>
 				<div ng-messages="accountForm.address.$error">
 					<div ng-message="md-maxlength" translate="VALIDATION.MAX-100">This has to be less than 100 characters</div>
 				</div>
@@ -120,7 +120,7 @@
 			<!-- description input -->
 			<md-input-container class="md-block" flex-gt-xs>
 				<label>Description</label>
-				<input ng-model="acVm.account.function.description" md-maxlength="100" name="description">
+				<input ng-model="acVm.account.function.description" md-maxlength="100" name="description" admin-required>
 				<div ng-messages="accountForm.description.$error">
 					<div ng-message="md-maxlength" translate="VALIDATION.MAX-100">This has to be less than 100 characters</div>
 				</div>
