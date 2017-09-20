@@ -2,8 +2,9 @@ import BaggageReportDialogController from './dialog/baggage-report.controller';
 import dialogTemplate from './dialog/baggage-report.html';
 
 class BaggageReportController {
-	constructor($scope, $mdDialog, SocketService, FlightNotification) {
+	constructor($rootScope, $scope, $mdDialog, SocketService, FlightNotification) {
 		'ngInject';
+		this.$root = $rootScope;
 		this.$mdDialog = $mdDialog;
 		this.$scope = $scope;
 		this.socket = SocketService.io;

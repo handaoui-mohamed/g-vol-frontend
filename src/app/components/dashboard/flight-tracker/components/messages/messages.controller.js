@@ -1,6 +1,7 @@
 class FlightMessagesController {
-	constructor($scope, $element, $timeout, $filter, AccountDetails, SocketService, Toast, MessageService, FlightNotification) {
+	constructor($rootScope, $scope, $element, $timeout, $filter, AccountDetails, SocketService, Toast, MessageService, FlightNotification) {
 		'ngInject';
+		this.$root = $rootScope;
 		this.$element = $element;
 		this.$timeout = $timeout;
 		this.$filter = $filter;

@@ -22,7 +22,7 @@ class PaxReportController {
 				// initilize flight pax report
 				if (!this.flight.paxReport) this.flight.paxReport = {};
 				angular.forEach(paxReport, (value, key) => {
-					this.flight.paxReport[key] = paxReport[key]; F
+					this.flight.paxReport[key] = paxReport[key];
 				});
 			})
 		});

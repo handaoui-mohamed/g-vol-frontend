@@ -143,6 +143,6 @@ md-input-container.md-icon-right>label .md-placeholder {
 
 md-input-container .md-input[disabled],
 [disabled] md-input-container .md-input,
-md-select-value>span:not(.md-select-icon) {
+md-select[disabled] .md-select-value.md-select-placeholder {
     color: rgba(0, 0, 0, 0.87);
 }
