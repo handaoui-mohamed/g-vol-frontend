@@ -1,8 +1,12 @@
 /**
  * @desc angular directive used to limit access to elements according to account role
  * 
- * exemple: <input name="exemple" admin-required>
- * if account is not an admin this element will be deleted
+ * @example <input name="example" admin-required>
+ * if account is not an admin this input will be disabled
+ * 
+ * @example <div class="example-content" admin-required></div>
+ * if account is not an admin this input will be removed
+ * 
  */
 
 let adminRequiredDirective = function (AccountDetails) {

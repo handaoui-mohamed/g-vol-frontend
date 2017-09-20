@@ -5,6 +5,10 @@ body {
     font-size: 100%;
 }
 
+body {
+    zoom: 75%;
+}
+
 // app component style
 .app {
     height: 100%;
@@ -83,7 +87,6 @@ table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+
     background-color: rgb(226, 62, 31);
     color: rgba(255, 255, 255, 1);
 }
-
 
 // page header style, found in accounts, flights and companies list
 .header {

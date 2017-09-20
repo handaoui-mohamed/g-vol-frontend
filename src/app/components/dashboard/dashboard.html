@@ -3,13 +3,13 @@
 	<!-- Flights navigation bar, used to add flights as tabs -->
 	<flights-nav-bar selected-flights="dashVm.selectedFlights" opened-flights="dashVm.openedFlights"></flights-nav-bar>
 	<!-- /Flights navigation bar -->
-	
+
 	<!-- Flight tracker components, showes all selected and opened flights -->
 	<md-content class="flex-container" flex>
 		<flight-tracker ng-show="flight.opened" flight="flight" opened-flights="dashVm.openedFlights" ng-repeat="flight in dashVm.selectedFlights"></flight-tracker>
 	</md-content>
 	<!-- /Flight tracker components -->
-	
+
 	<!-- flight selection helper for users -->
 	<div class="no-flight-selected" ng-if="dashVm.selectedFlights.length === 0 || dashVm.openedFlights === 0" layout="column"
 	 layout-align="center center">

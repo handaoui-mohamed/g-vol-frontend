@@ -7,25 +7,25 @@
  * as a resolve function, to check account authorization
  * and handle redirection in case of rejection
  * 
- * exemples : 
+ * @example 
  * $stateProvider
- * 		.state('home', {
- * 			abstract: true,
- * 			url: '/',
- * 			component: 'main',
- * 			@desc notAllowed is for state that should not be accessed when logged in, like 'login' state
- * 			notAllowed: false,
- * 			@desc accepted account roles should be at the desired state, not necessarily here
- * 			data: {
- * 				roles: ['admin', 'clc']
- * 			}
- * 			@desc resolve function should be at an abstract state level, to handle all state children
- * 			resolve: {
- * 				authorize: ['Authorization', function (Authorization) {
- * 					return Authorization.authorize();
- * 				}]
- * 			}
- * 		});
+  		.state('home', {
+  			abstract: true,
+  			url: '/',
+  			component: 'main',
+  			@desc notAllowed is for state that should not be accessed when logged in, like 'login' state
+  			notAllowed: false,
+  			@desc accepted account roles should be at the desired state, not necessarily here
+  			data: {
+  				roles: ['admin', 'clc']
+  			}
+  			@desc resolve function should be at an abstract state level, to handle all state children
+  			resolve: {
+  				authorize: ['Authorization', function (Authorization) {
+  					return Authorization.authorize();
+  				}]
+  			}
+  		});
  * 
  */
 let authorizationFactory = function ($rootScope, AccountDetails) {

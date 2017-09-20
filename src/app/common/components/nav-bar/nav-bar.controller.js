@@ -28,7 +28,7 @@ class NavBarController {
 		this.selectedLanguage = this.languages[language || this.$translate.preferredLanguage()];
 
 		// get the current zoom levet from localstorage
-		this.$root.currentZoom = parseInt(this.$window.localStorage['zoom'] || "100");
+		// this.$root.currentZoom = parseInt(this.$window.localStorage['zoom'] || "100");
 	}
 
 	logout() {

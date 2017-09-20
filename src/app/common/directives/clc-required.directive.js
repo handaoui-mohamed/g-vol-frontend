@@ -1,8 +1,12 @@
 /**
  * @desc angular directive used to limit access to elements according to account role
  * 
- * exemple: <input name="exemple" clc-required>
- * if account is not a CLC this element will be deleted
+ * @example <input name="example" clc-required>
+ * if account is not a CLC this input will be disabled
+ * 
+ * @example <div class="example-content" clc-required></div>
+ * if account is not a CLC this input will be removed
+ * 
  */
 
 let clcRequiredDirective = function (AccountDetails) {
