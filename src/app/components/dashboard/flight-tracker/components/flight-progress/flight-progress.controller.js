@@ -126,6 +126,7 @@ class FlightProgressController {
 			document.status = data.status;
 			if (document.status) document.finishedAt = data.finishedAt;
 		}
+		this.progress = this.calculateProgress() + '%';
 	}
 }
 
